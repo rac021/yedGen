@@ -53,9 +53,9 @@ public class Processor {
                                                      "target		?target\n"  +
                                                      "source		?source"    ;
     
-    final String mappingCollectionEnd       = "]]"                          ;
+    final String mappingCollectionEnd       = "]]"                             ;
 
-    boolean ExistHeader                     = false ;
+    boolean ExistHeader                     = false                         ;
 
     
     private  JSONObject loadJsonObject ( String pathFile ) throws FileNotFoundException, IOException {
