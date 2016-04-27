@@ -49,7 +49,7 @@ public class Processor {
 
     final String mappingCollectionBegin = "[MappingDeclaration] @collection [[" ;
 
-    private final String mappingCollectionPattern =  "mappingId	?id\n"      +
+    private final String mappingCollectionPattern =  "mappingId	?id\n"        +
                                                      "target		?target\n"  +
                                                      "source		?source"    ;
     
