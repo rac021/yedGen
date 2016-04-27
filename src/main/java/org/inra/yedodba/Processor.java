@@ -38,7 +38,7 @@ public class Processor {
     
     private String  prefixPredicat          =  "oboe-coreX"            ;
     private final String  PrefixDeclaration = "[PrefixDeclaration]"    ;
-    private final String  pref              =  "?pref		?uri"      ;
+    private final String  pref              =  "?pref		?uri"  ;
 
     private final String  SourceDecString   = "[SourceDeclaration]\n"             + 
                                               "sourceUri	?sourceUri\n"             + 
