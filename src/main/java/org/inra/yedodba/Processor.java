@@ -36,9 +36,9 @@ public class Processor {
     private final Map<String, String>   target              =  new  HashMap<>() ;
     private final Map<String, String>   SourceDeclaration   =  new  HashMap<>() ;
     
-    private String  prefixPredicat    =  "oboe-coreX"                  ;
+    private String  prefixPredicat          =  "oboe-coreX"            ;
     private final String  PrefixDeclaration = "[PrefixDeclaration]"    ;
-    private final String  pref              =  "?pref		?uri"  ;
+    private final String  pref              =  "?pref		?uri"          ;
 
     private final String  SourceDecString   = "[SourceDeclaration]\n"           +
                                               "sourceUri	?sourceUri\n"         +
