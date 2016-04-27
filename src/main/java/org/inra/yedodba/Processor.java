@@ -40,12 +40,12 @@ public class Processor {
     private final String  PrefixDeclaration = "[PrefixDeclaration]"    ;
     private final String  pref              =  "?pref		?uri"          ;
 
-    private final String  SourceDecString   = "[SourceDeclaration]\n"            +
-                                              "sourceUri	?sourceUri\n"          +
-                                              "connectionUrl	?connectionUrl\n"  +
-                                              "username	?username\n"             +
-                                              "password	?password\n"             +
-                                              "driverClass	?driverClass"       ;
+    private final String  SourceDecString   = "[SourceDeclaration]\n"+
+                                              "sourceUri	?sourceUri\n"+
+                                              "connectionUrl	?connectionUrl\n"+
+                                              "username	?username\n"+
+                                              "password	?password\n"+
+                                              "driverClass	?driverClass";
 
     final String mappingCollectionBegin = "[MappingDeclaration] @collection [[" ;
 
