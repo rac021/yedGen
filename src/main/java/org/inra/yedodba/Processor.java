@@ -40,18 +40,18 @@ public class Processor {
     private final String  PrefixDeclaration = "[PrefixDeclaration]"    ;
     private final String  pref              =  "?pref		?uri"  ;
 
-    private final String  SourceDecString   = "[SourceDeclaration]\n"     +
-                                        "sourceUri	?sourceUri\n"     +
-                                        "connectionUrl	?connectionUrl\n" +
-                                        "username	?username\n"      +
-                                        "password	?password\n"      +
-                                        "driverClass	?driverClass"     ;
+    private final String  SourceDecString   = "[SourceDeclaration]\n"           +
+                                              "sourceUri	?sourceUri\n"         +
+                                              "connectionUrl	?connectionUrl\n" +
+                                              "username	?username\n"            +
+                                              "password	?password\n"            +
+                                              "driverClass	?driverClass"       ;
 
     final String mappingCollectionBegin = "[MappingDeclaration] @collection [[" ;
 
     private final String mappingCollectionPattern =  "mappingId	?id\n"       +
-                                               "target		?target\n"   +
-                                               "source		?source"     ;
+                                                     "target		?target\n"   +
+                                                     "source		?source"     ;
     
     final String mappingCollectionEnd       = "]]"                           ;
 
@@ -135,17 +135,17 @@ public class Processor {
                                                        .has("y:ShapeNode")) {
                               
                                 String id = jsonArrayGroupNodes.getJSONObject(j)                                         
-                                            .getString("id");
+                                            .getString("id") ;
                                     
                                 String label = jsonArrayGroupNodes.getJSONObject(j)
                                             .getJSONArray("data")
                                             .getJSONObject(1)
                                             .getJSONObject("y:ShapeNode")
                                             .getJSONObject("y:NodeLabel")
-                                            .getString("content");
+                                            .getString("content") ;
                          
-                                  
                                 int code  = -1 ;
+                                
                                 if(label.toLowerCase().startsWith("query_(")) {
                                     code =  Integer.parseInt(label
                                                    .split(Pattern.quote(":"))[0]
@@ -168,8 +168,8 @@ public class Processor {
                                  }
                              }
                            } 
-                                
-                           else
+                               
+                          else
                                
                           if( jsonArrayGroupNodes.toString().startsWith("{\"data\":{") |
                                   jsonArrayGroupNodes.toString().startsWith("[{\"data\":{") ) {
@@ -275,7 +275,6 @@ public class Processor {
                                                          getJSONObject("graph")
                                                          .getJSONObject("node");
                         
-                             
                         if( jsonArrayGroupNodes.getJSONObject("data")
                                                .has("y:ShapeNode")) {
                               
@@ -287,9 +286,9 @@ public class Processor {
                                             .getJSONObject("y:ShapeNode")
                                             .getJSONObject("y:NodeLabel")
                                             .getString("content");
-                         
-                                               
-                                 int code  = -1 ;
+                        
+                                int code  = -1 ;
+                                
                                 if(label.toLowerCase().startsWith("query_(")) {
                                     code =  Integer.parseInt(label
                                                    .split(Pattern.quote(":"))[0]
@@ -302,7 +301,7 @@ public class Processor {
                                  }
                                 else 
                                 if( label.toLowerCase().trim().startsWith("(") && 
-                                    label.toLowerCase().contains(")") )         {
+                                    label.toLowerCase().contains(")") )          {
                                     code =  Integer.parseInt(label
                                                    .split(Pattern.quote(")"))[0]
                                                    .replaceAll("[^0-9]", "")) ;
@@ -389,7 +388,7 @@ public class Processor {
                
                 for (int i = 0; i < jsonArrayEdges.length(); i++)  {
                     
-                    Object obj = jsonArrayEdges.get(i);
+                    Object obj = jsonArrayEdges.get(i) ;
                     
                     JSONObject jsonObject  = (JSONObject) obj ;
                       
@@ -476,15 +475,15 @@ public class Processor {
                                 System.out.println("Label not Found !!") ;
                           }
                        
-                        String id    = jsonObject.getString("id")     + "_" + hash ;
+                          String id    = jsonObject.getString("id")     + "_" + hash ;
                       
-                        String sujet = jsonObject.getString("source") + "_" + hash ;
+                          String sujet = jsonObject.getString("source") + "_" + hash ;
                       
-                        String objet = jsonObject.getString("target") + "_" + hash ;
+                          String objet = jsonObject.getString("target") + "_" + hash ;
                                               
-                        Edge e = new Edge(id, sujet, predicat, objet);
+                          Edge e = new Edge(id, sujet, predicat, objet);
                      
-                        edges.add(e);
+                          edges.add(e);
                         
                     }
                     else {
@@ -496,9 +495,7 @@ public class Processor {
      
     /* Write OBDA FILE */ 
       
-    private void write(  String outFile 
-                              // , GenerationMode genMode 
-    ) throws IOException, Exception {
+    private void write(  String outFile ) throws IOException, Exception {
                
             for ( Edge edge : edges ) {
                 
@@ -554,17 +551,17 @@ public class Processor {
                       target.put(key, ":"+value + " .") ;
                 }
           
-              List<String> outs = new ArrayList<>();
+              List<String> outs = new ArrayList<>() ;
               
               if( !ExistHeader ) {
              
-              outs.add(PrefixDeclaration)      ;
+              outs.add(PrefixDeclaration)  ;
               
                  for (Map.Entry<String, String> entrySet : prefix.entrySet()) {
                     String key   = entrySet.getKey() ;
                     String uri   = entrySet.getValue();
                     outs.add( pref.replace("?pref", key)
-                                  .replace("?uri", uri));
+                                  .replace("?uri", uri)) ;
                  }
               
               outs.add("") ;
@@ -574,7 +571,7 @@ public class Processor {
                                       .replace("?username", SourceDeclaration.get("username"))
                                       .replace("?password", SourceDeclaration.get("password"))
                                       .replace("?driverClass", SourceDeclaration.get("driverClass"))
-              )      ;
+              )  ;
               
               outs.add("")                     ;
               outs.add(mappingCollectionBegin) ;
@@ -592,16 +589,16 @@ public class Processor {
                 String keyByURI = getKeyByURI(target.split(" ")[0]);
                   
                 if(keyByURI.endsWith("_") ) 
-                    keyByURI = keyByURI.substring(0, keyByURI.length() - 1 );
+                    keyByURI = keyByURI.substring(0, keyByURI.length() - 1 ) ;
                     
                 if( !target.startsWith(":null")) { 
                      
                      if( uris.get(target.split(" ")[0]) == null) {
-                           throw new Exception(" No Query found for : "+ target.split(" ")[0] );
+                           throw new Exception(" No Query found for : "+ target.split(" ")[0] ) ;
                       }
                       outs.add( mappingCollectionPattern.replace("?id", keyByURI )
-                                                  .replace("?target", target) 
-                                                  .replace("?source",
+                                                  .replace("?target"  , target) 
+                                                  .replace("?source"  ,
                                                    uris.get(target.split(" ")[0]))
                                                   .replace("  ", " " )
                       );
@@ -610,7 +607,7 @@ public class Processor {
                 }
              }
                 
-                Writer.writeTextFile(outs, outFile);
+                Writer.writeTextFile(outs, outFile) ;
     }
     
     private String getKeyByURI(String target) {
@@ -636,7 +633,7 @@ public class Processor {
     }
     
     
-    public void entryProcess( String directory, 
+    public void entryProcess( String directory , 
                                       String outObdaPathFile ,                                      
                                       String extensionFile ) throws IOException, Exception {
                 
@@ -647,7 +644,7 @@ public class Processor {
          
         for(Path path : files ) {
             if(path.toString().endsWith(extensionFile )) {
-               process(path.toString() );
+               process(path.toString() ) ;
             }            
         }
    
