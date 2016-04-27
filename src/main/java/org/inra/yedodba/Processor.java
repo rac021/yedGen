@@ -49,13 +49,13 @@ public class Processor {
 
     final String mappingCollectionBegin = "[MappingDeclaration] @collection [[" ;
 
-    private final String mappingCollectionPattern =  "mappingId	?id\n"               +
+    private final String mappingCollectionPattern =  "mappingId	?id\n"             +
                                                      "target		?target\n"  +
                                                      "source		?source"    ;
     
-    final String mappingCollectionEnd       = "]]"                                   ;
+    final String mappingCollectionEnd       = "]]"                                  ;
 
-    boolean ExistHeader                     = false                                  ;
+    boolean ExistHeader                     = false                                 ;
 
     
     private  JSONObject loadJsonObject ( String pathFile ) throws FileNotFoundException, IOException {
