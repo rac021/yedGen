@@ -45,7 +45,7 @@ public class Processor {
                                               "connectionUrl	?connectionUrl\n" + 
                                               "username	?username\n"              + 
                                               "password	?password\n"              + 
-                                              "driverClass	?driverClass"      ;
+                                              "driverClass	?driverClass"     ;
 
     final String mappingCollectionBegin = "[MappingDeclaration] @collection [[" ;
 
