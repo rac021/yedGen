@@ -1,6 +1,6 @@
 <h5>obdaYedGen-3.14.2</h5>
 
- OBDA file generator using yEd Graph Editor v 3.14.2
+ > OBDA file generator using yEd Graph Editor v 3.14.2
 
  - ` mvn clean install assembly:single `
  - ` cd target `
@@ -9,6 +9,3 @@
     d '../src/main/resources'                                           \
     out './map.txt'                                                     \
     ext .graphml
-
-> We're living the future so
-> the present is our past.
