@@ -19,9 +19,9 @@ public class Main {
             switch(token)   {
                 case "-d"   :  directory = args[i+1] ; nbParams += 2 ;
                                 break ;
-                case "-out" :  outFile = args[i+1]; nbParams    += 2 ;
+                case "-out" :  outFile   = args[i+1] ; nbParams += 2 ;
                                 break ;
-                case "-ext" :  ext = args[i+1] ; nbParams       += 2 ;
+                case "-ext" :  ext       = args[i+1] ; nbParams += 2 ;
                                 break ;            
             }
         }
