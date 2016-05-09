@@ -1,3 +1,6 @@
+/*eslint no-multi-spaces: "error"*/
+/*eslint key-spacing: ["error", { align: "value" }]*/
+
 <h4>obdaYedGen-3.14.2</h5>
 
  OBDA file generator using yEd Graph Editor v 3.14.2
