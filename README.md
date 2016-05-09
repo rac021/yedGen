@@ -4,8 +4,9 @@
 
  - ``` mvn clean install assembly:single ```
  - ``` cd target ```
-- java -cp YedODBA-3.14.2-1.0-SNAPSHOT-jar-with-dependencies.jar Main  \  <br />
- -d   '../src/main/resources'                                          \  <br />
- -out './map.txt'                                                      \  <br />
- -ext '.graphml''
+ 
+ - java -cp YedODBA-3.14.2-1.0-SNAPSHOT-jar-with-dependencies.jar Main  \  <br />
+   -d   '../src/main/resources'                                         \  <br />
+   -out './map.txt'                                                     \  <br />
+   -ext '.graphml''
 
