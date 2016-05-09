@@ -1,4 +1,3 @@
-
 import org.inra.yedodba.Processor;
 
 /**
@@ -29,6 +28,11 @@ public class Main {
        
         Processor processor = new Processor() ;
 
+        if( nbParams < 6 ) {
+            System.out.println( " missing parameters " ) ;
+            return ;
+        }
+        
         if(directory.isEmpty() || outFile.isEmpty()) {
             System.out.println(" directory or outFile is Empty " ) ;
             return ;
