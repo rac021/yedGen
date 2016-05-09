@@ -7,4 +7,4 @@
  - java -cp YedODBA-3.14.2-1.0-SNAPSHOT-jar-with-dependencies.jar Main  \
    -d '../src/main/resources'                                           \ 
    -out './map.txt'                                                     \
-   -ext '.graphml' ` 
+   -ext '.graphml'
