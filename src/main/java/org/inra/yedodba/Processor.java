@@ -465,11 +465,17 @@ public class Processor {
                           else if(jsonObject.getJSONArray("data")
                                   .getJSONObject(1).has("y:ArcEdge"))
                           {
-                          predicat = jsonObject.getJSONArray("data")
-                                  .getJSONObject(1)
-                                  .getJSONObject("y:ArcEdge")
-                                  .getJSONObject("y:EdgeLabel")
-                                  .getString("content");
+                              if(jsonObject.getJSONArray("data")
+                                           .getJSONObject(1)
+                                           .getJSONObject("y:ArcEdge")
+                                           .has("y:EdgeLabel")) 
+                            { 
+                                predicat = jsonObject.getJSONArray("data")
+                                                     .getJSONObject(1)
+                                                     .getJSONObject("y:ArcEdge")
+                                                     .getJSONObject("y:EdgeLabel")
+                                                     .getString("content") ;
+                            }
                           }  
                           else {
                                 System.out.println("Label not Found !!") ;
