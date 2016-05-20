@@ -4,8 +4,8 @@
 
 - Install procedure :
 
-  -` mvn clean install assembly:single `
-  - ` cd target `
+   -` mvn clean install assembly:single `
+   - ` cd target `
 
 - Arguments :
  
