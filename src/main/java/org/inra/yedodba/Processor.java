@@ -1,25 +1,25 @@
 
 package org.inra.yedodba;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.regex.Pattern;
-import static java.util.stream.Collectors.toList;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.XML;
+import org.json.XML ;
+import java.io.File ;
+import java.util.Map ;
+import java.util.Set ;
+import java.util.List ;
+import java.util.Arrays ;
+import java.util.HashSet ;
+import java.util.HashMap ;
+import org.json.JSONArray ;
+import java.nio.file.Path ;
+import java.io.InputStream ;
+import org.json.JSONObject ;
+import java.util.ArrayList ;
+import java.io.IOException ;
+import java.nio.file.Files ;
+import java.util.regex.Pattern ;
+import java.io.FileInputStream ;
+import java.io.FileNotFoundException ;
+import static java.util.stream.Collectors.toList ;
 
 /**
  *
@@ -81,8 +81,8 @@ public class Processor {
                       
                 for (int i = 0; i < jsonArrayNodes.length(); i++) {
                   
-                    Object obj                 = jsonArrayNodes.get(i);
-                    JSONObject jsonObjectNode  = (JSONObject) obj ;
+                    Object obj                 = jsonArrayNodes.get(i) ;
+                    JSONObject jsonObjectNode  = (JSONObject) obj      ;
                     
                     if(obj != null) {
                     
