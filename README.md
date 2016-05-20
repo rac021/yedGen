@@ -4,14 +4,14 @@
 
 - Install procedure :
 
-  - ` mvn clean install assembly:single `
+  -` mvn clean install assembly:single `
   - ` cd target `
 
 - Arguments :
-- 
-   `-d   : Directory where graphml files are located `
-   `-out : Path of output mapping obda file `
-   `-ext : extension of files involved in the process `
+ 
+  `-d   : Directory where graphml files are located `
+  `-out : Path of output mapping obda file `
+  `-ext : extension of files involved in the process `
 
 
 - Example :
