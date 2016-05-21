@@ -584,10 +584,10 @@ public class Processor {
               outs.add(PrefixDeclaration)  ;
               
                  for (Map.Entry<String, String> entrySet : prefix.entrySet()) {
-                    String key   = entrySet.getKey() ;
-                    String uri   = entrySet.getValue();
+                    String key   = entrySet.getKey()      ;
+                    String uri   = entrySet.getValue()    ;
                     outs.add( pref.replace("?pref", key)
-                                  .replace("?uri", uri)) ;
+                                  .replace("?uri", uri))  ;
                  }
               
               outs.add("") ;
@@ -676,6 +676,6 @@ public class Processor {
    
         write(outObdaPathFile) ;            
          
-        Writer.writeTextFile(Arrays.asList(mappingCollectionEnd), outObdaPathFile);
+        Writer.writeTextFile(Arrays.asList(mappingCollectionEnd), outObdaPathFile) ;
     }
 }
