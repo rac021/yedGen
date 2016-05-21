@@ -1,4 +1,3 @@
-
 package org.inra.yedodba;
 
 import org.json.XML ;
@@ -127,7 +126,7 @@ public class Processor {
                         
                         for (int j = 0; j < jsonArrayGroupNodes.length(); j++) {
                     
-                           if( jsonArrayGroupNodes.toString().startsWith("{\"data\":[") |
+                           if( jsonArrayGroupNodes.toString().startsWith("{\"data\":[") ||
                                      jsonArrayGroupNodes.toString().startsWith("[{\"data\":[") ) {
                                 if( jsonArrayGroupNodes.getJSONObject(j)
                                                        .getJSONArray("data")
@@ -153,7 +152,7 @@ public class Processor {
                                                    .replaceAll("[^0-9]", "")) ;
                                     
                                    source.put(code+hash, label.split(Pattern
-                                                              .quote(":"))[1].trim());
+                                                              .quote(":"))[1].trim()) ;
                                  }
                                 else 
                                 if(label.toLowerCase().trim(
@@ -179,20 +178,20 @@ public class Processor {
                                                        .has("y:ShapeNode")) {
                               
                                 String id = jsonArrayGroupNodes.getJSONObject(j)                                         
-                                            .getString("id");
+                                            .getString("id") ;
                                     
                                 String label = jsonArrayGroupNodes.getJSONObject(j)
                                             .getJSONObject("data")
                                             .getJSONObject("y:ShapeNode")
                                             .getJSONObject("y:NodeLabel")
-                                            .getString("content");
+                                            .getString("content") ;
                                   
                                 int code  = -1 ;
                                 if(label.toLowerCase().startsWith("query_(")) {
                                     code =  Integer.parseInt(label
                                                    .split(Pattern.quote(":"))[0]
                                                    .split(Pattern.quote("_"))[1]
-                                                   .replaceAll("[^0-9]", "")) ;
+                                                   .replaceAll("[^0-9]", ""))  ;
                                     
                                    source.put(code+hash, label.split(Pattern
                                          .quote(":"))[1].trim()) ;
@@ -216,38 +215,41 @@ public class Processor {
                                  }
                                  else 
                                 if(label.replaceAll(" +", " ")
-                                        .startsWith("PREDICAT_PREFIX :"))     {
+                                        .startsWith("PREDICAT_PREFIX :"))      {
                                     prefixPredicat = label.replaceAll(" +", " ")
-                                                          .split(Pattern
-                                                          .quote("PREDICAT_PREFIX :"))[1];
+                                                     .split(Pattern
+                                                     .quote("PREDICAT_PREFIX :"))[1];
                                  }
                                 else 
-                                if(label.toLowerCase().startsWith("obda-")) {
+                                if(label.toLowerCase().startsWith("obda-"))    {
                                     
                                   if( label.replaceAll(" +", " ")
                                            .split(Pattern.quote(" : "))[0]
-                                           .equals("obda-sourceUri"))           {
+                                           .equals("obda-sourceUri"))         {
                                    SourceDeclaration.put("sourceUri",
                                                     label.replaceAll(" +", " ")
-                                                    .split(Pattern.quote(" : "))[1]) ;
+                                                    .split(Pattern
+                                                    .quote(" : "))[1]) ;
                                   }
                                   else if(label.replaceAll(" +", " ")
                                                .split(Pattern.quote(" : "))[0]
-                                               .equals("obda-connectionUrl"))   {
+                                               .equals("obda-connectionUrl")) {
                                    SourceDeclaration.put("connectionUrl", label
                                                     .replaceAll(" +", " ")
-                                                    .split(Pattern.quote(" : "))[1]) ;
+                                                    .split(Pattern
+                                                    .quote(" : "))[1]) ;
                                   }
                                   else if(label.replaceAll(" +", " ")
                                                .split(Pattern.quote(" : "))[0]
-                                               .equals("obda-username"))        {
+                                               .equals("obda-username"))     {
                                    SourceDeclaration.put("username", label
                                                     .replaceAll(" +", " ")
-                                                    .split(Pattern.quote(" : "))[1]);
+                                                    .split(Pattern
+                                                    .quote(" : "))[1]) ;
                                   }
                                   else if(label.replaceAll(" +", " ")
                                                .split(Pattern.quote(" : "))[0]
-                                               .equals("obda-password"))        {
+                                               .equals("obda-password"))     {
                                    SourceDeclaration.put("password", label
                                                     .replaceAll(" +", " ")
                                                     .split(Pattern
@@ -255,10 +257,11 @@ public class Processor {
                                   }
                                   else if(label.replaceAll(" +", " ")
                                                .split(Pattern.quote(" : "))[0]
-                                               .equals("obda-driverClass"))     {
-                                   SourceDeclaration.put("driverClass", 
-                                                    label.replaceAll(" +", " ")
-                                                    .split(Pattern.quote(" : "))[1]) ;
+                                               .equals("obda-driverClass"))  {
+                                   SourceDeclaration.put("driverClass", label
+                                                    .replaceAll(" +", " ")
+                                                    .split(Pattern
+                                                    .quote(" : "))[1]) ;
                                   }
                                  }
                                }
@@ -269,23 +272,23 @@ public class Processor {
                       else 
                             
                       if(jsonObjectNode.getJSONObject("graph")
-                                       .toString().startsWith("{\"node\":{"))  {
+                                       .toString().startsWith("{\"node\":{"))   {
                           
                         JSONObject jsonArrayGroupNodes = jsonObjectNode.
                                                          getJSONObject("graph")
-                                                         .getJSONObject("node");
+                                                         .getJSONObject("node") ;
                         
                         if( jsonArrayGroupNodes.getJSONObject("data")
                                                .has("y:ShapeNode")) {
                               
                                 String id = jsonArrayGroupNodes                                
-                                            .getString("id");
+                                            .getString("id") ;
                                     
                                 String label = jsonArrayGroupNodes
                                             .getJSONObject("data")
                                             .getJSONObject("y:ShapeNode")
                                             .getJSONObject("y:NodeLabel")
-                                            .getString("content");
+                                            .getString("content") ;
                         
                                 int code  = -1 ;
                                 
@@ -314,7 +317,7 @@ public class Processor {
                                 if(label.toLowerCase().startsWith("prefix ")) {
                                     String pref = label.split(Pattern.quote(" "))[1] ;
                                     String uri  = label.split(Pattern.quote(" "))[2] ;                                   
-                                    prefix.put(pref, uri);
+                                    prefix.put(pref, uri) ;
                                  }
                                  else 
                                 if(label.replaceAll(" +", " ")
@@ -322,7 +325,7 @@ public class Processor {
                                     prefixPredicat = label.replaceAll(" +", " ")
                                                           .split(Pattern
                                                           .quote("PREDICAT_PREFIX :"))[1]
-                                                          .trim();
+                                                          .trim() ;
                                  }
                                 
                                 else 
@@ -404,11 +407,11 @@ public class Processor {
                     
                         String id = jsonObject.getString("id") + "_" + hash ;
                        
-                        String sujet = jsonObject.getString("source") ;
+                        String sujet = jsonObject.getString("source")       ;
                        
-                        String objet = jsonObject.getString("target") ;
+                        String objet = jsonObject.getString("target")       ;
                                                
-                        Edge e = new Edge(id, sujet, predicat, objet) ;
+                        Edge e = new Edge(id, sujet, predicat, objet)       ;
                         
                         edges.add(e) ;
                         
@@ -418,23 +421,23 @@ public class Processor {
                                              .has("y:ArcEdge"))
                         {
                        
-                        String id = jsonObject.getString("id") + "_" + hash ;
+                        String id = jsonObject.getString("id") + "_" + hash  ;
                        
-                        String sujet = jsonObject.getString("source") ;
+                        String sujet = jsonObject.getString("source")        ;
                        
-                        String objet = jsonObject.getString("target") ;
+                        String objet = jsonObject.getString("target")        ;
                        
                         String predicat = jsonObject.getJSONObject("data")
                                .getJSONObject("y:ArcEdge")
                                .getJSONObject("y:EdgeLabel")
-                               .getString("content") ;
+                               .getString("content")                         ;
                          
                          
-                        Edge e = new Edge(id, sujet, predicat, objet) ;
+                        Edge e = new Edge(id, sujet, predicat, objet)        ;
                         edges.add( e) ;
                         }  
                         else {
-                        System.err.println(" Oops something went wrong !! ");
+                        System.err.println(" Oops something went wrong !! ") ;
                     }
                         
                     }
@@ -459,7 +462,7 @@ public class Processor {
                                   .getJSONObject(1)
                                   .getJSONObject("y:QuadCurveEdge")
                                   .getJSONObject("y:EdgeLabel")
-                                  .getString("content");
+                                  .getString("content") ;
                           }  
                           
                           else if(jsonObject.getJSONArray("data")
@@ -487,18 +490,25 @@ public class Processor {
                       
                           String objet = jsonObject.getString("target") + "_" + hash ;
                                               
-                          Edge e = new Edge(id, sujet, predicat, objet);
+                          Edge e = new Edge(id, sujet, predicat, objet) ;
                      
-                          edges.add(e);
+                          edges.add(e) ;
                         
                     }
                     else {
-                       System.err.println(" Oups !!!!!! ");
+                       System.err.println(" Oups !!!!!! ") ;
                    }
                 }
             }
 
-     
+    private boolean existPrefixStartWith ( String label ) {
+       return prefix.keySet()
+             .stream()
+             .filter( pref -> label.startsWith(pref) )
+             .findFirst()
+             .isPresent() ;
+    }
+    
     /* Write OBDA FILE */ 
       
     private void write(  String outFile ) throws IOException, Exception {
@@ -509,8 +519,13 @@ public class Processor {
                     Node objet = nodes.get(edge.getObjet()) ;
                          
                     if(!target.containsKey(tmpUris.get(sujet.getCode()))) {
-                            if( objet.getLabel().startsWith(":") || 
-                                objet.getLabel().startsWith("<") )   {
+                            if( objet.getLabel().startsWith(":")  || 
+                                objet.getLabel().startsWith("<")  ||
+                                objet.getLabel().startsWith("{")  ||
+                                objet.getLabel().startsWith("\"") ||
+                                existPrefixStartWith(objet.getLabel()) 
+                             )   
+                            {
                             target.put( tmpUris.get(sujet.getCode()), 
                                         tmpUris.get(sujet.getCode())  + 
                                         " a " +  prefixPredicat + ":" +
@@ -532,8 +547,13 @@ public class Processor {
                                             source.get(sujet.getCode()))   ;
                     }
                     else {
-                           if( objet.getLabel().startsWith(":") || 
-                               objet.getLabel().startsWith("<")   ) {
+                           if( objet.getLabel().startsWith(":")  || 
+                               objet.getLabel().startsWith("<")  ||
+                               objet.getLabel().startsWith("{")  ||
+                               objet.getLabel().startsWith("\"") ||
+                                
+                               existPrefixStartWith(objet.getLabel()) 
+                            ) {
                                target.put( tmpUris.get(sujet.getCode()) ,
                                            target.get(
                                            tmpUris.get(sujet.getCode())) + " ; " +
@@ -552,8 +572,8 @@ public class Processor {
                 }
                 
                 for (Map.Entry<String, String> entrySet : target.entrySet()) {
-                    String key   = entrySet.getKey()   ;
-                    String value = entrySet.getValue() ;
+                    String key   = entrySet.getKey()    ;
+                    String value = entrySet.getValue()  ;
                       target.put(key, ":"+value + " .") ;
                 }
           
@@ -640,8 +660,8 @@ public class Processor {
     
     
     public void entryProcess( String directory , 
-                                      String outObdaPathFile ,                                      
-                                      String extensionFile ) throws IOException, Exception {
+                              String outObdaPathFile ,                                      
+                              String extensionFile ) throws IOException, Exception {
                 
         Writer.checkFile(outObdaPathFile) ;
         ExistHeader = false               ;
