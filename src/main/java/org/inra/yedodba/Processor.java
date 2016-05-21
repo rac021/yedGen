@@ -65,11 +65,11 @@ public class Processor {
                 int ptr                 = 0                             ;
                 while ((ptr = inputStream.read()) != -1 )
                 {
-                    builder.append((char) ptr);
+                    builder.append((char) ptr) ;
                 }
 
-                String xml         = builder.toString()    ;
-                return XML.toJSONObject(xml) ; 
+                String xml         = builder.toString()  ;
+                return XML.toJSONObject(xml)             ; 
     }
     
     
