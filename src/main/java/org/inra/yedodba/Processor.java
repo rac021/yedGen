@@ -90,7 +90,7 @@ public class Processor {
                         String label = jsonObjectNode.getJSONObject("data")
                                                      .getJSONObject("y:ShapeNode")
                                                      .getJSONObject("y:NodeLabel")
-                                                     .getString("content");
+                                                     .getString("content") ;
                       
                         String id       =  jsonObjectNode.getString("id") + "_"+ hash ;
                         String ofEntity =  null ;
