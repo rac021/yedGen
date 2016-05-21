@@ -1,5 +1,5 @@
 
-package org.inra.yedodba;
+package org.inra.yedodba ;
 
 import org.json.XML ;
 import java.io.File ;
