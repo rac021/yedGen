@@ -146,14 +146,15 @@ public class Processor {
                          
                                 int code  = -1 ;
                                 
-                                if(label.toLowerCase().startsWith("query_(")) {
+                                if(label.toLowerCase().startsWith("query_("))  {
                                     code =  Integer.parseInt(label
                                                    .split(Pattern.quote(":"))[0]
                                                    .split(Pattern.quote("_"))[1]
-                                                   .replaceAll("[^0-9]", "")) ;
+                                                   .replaceAll("[^0-9]", ""))  ;
                                     
                                    source.put(code+hash, label.split(Pattern
-                                                              .quote(":"))[1].trim()) ;
+                                                              .quote(":"))[1]
+                                                              .trim())      ;
                                  }
                                 else 
                                 if(label.toLowerCase().trim(
@@ -161,10 +162,11 @@ public class Processor {
                                         .contains(")") )                       {
                                     code =  Integer.parseInt(label
                                                    .split(Pattern.quote(")"))[0]
-                                                   .replaceAll("[^0-9]", "")) ;
+                                                   .replaceAll("[^0-9]", ""))  ;
                                     
                                    tmpUris.put(code+hash , label.split(Pattern
-                                                                .quote(")"))[1].trim()) ;
+                                                                .quote(")"))[1]
+                                                                .trim())      ;
                                  }
                              }
                            } 
@@ -202,10 +204,11 @@ public class Processor {
                                     label.toLowerCase().contains(")") ) {
                                     code =  Integer.parseInt(label
                                                    .split(Pattern.quote(")"))[0]
-                                                   .replaceAll("[^0-9]", "")) ;
+                                                   .replaceAll("[^0-9]", ""))  ;
                                     
                                    tmpUris.put(code+hash, label.split(Pattern
-                                                               .quote(")"))[1].trim());
+                                                               .quote(")")) [1]
+                                                               .trim())       ;
                                  }
                                 else 
                                 if(label.toLowerCase().startsWith("prefix ")) {
@@ -225,7 +228,7 @@ public class Processor {
                                 if(label.toLowerCase().startsWith("obda-"))    {
                                     
                                   if( label.replaceAll(" +", " ")
-                                           .split(Pattern.quote(" : "))[0]
+                                           .split(Pattern.quote(" : ")) [0]
                                            .equals("obda-sourceUri"))         {
                                    SourceDeclaration.put("sourceUri",
                                                     label.replaceAll(" +", " ")
@@ -233,7 +236,7 @@ public class Processor {
                                                     .quote(" : "))[1]) ;
                                   }
                                   else if(label.replaceAll(" +", " ")
-                                               .split(Pattern.quote(" : "))[0]
+                                               .split(Pattern.quote(" : ")) [0]
                                                .equals("obda-connectionUrl")) {
                                    SourceDeclaration.put("connectionUrl", label
                                                     .replaceAll(" +", " ")
@@ -293,22 +296,22 @@ public class Processor {
                         
                                 int code  = -1 ;
                                 
-                                if(label.toLowerCase().startsWith("query_(")) {
+                                if(label.toLowerCase().startsWith("query_("))  {
                                     code =  Integer.parseInt(label
                                                    .split(Pattern.quote(":"))[0]
                                                    .split(Pattern.quote("_"))[1]
-                                                   .replaceAll("[^0-9]", "")) ;
+                                                   .replaceAll("[^0-9]", ""))  ;
                                     
                                    source.put(code+hash, label.split(Pattern
                                                               .quote(":"))[1]
-                                                              .trim()) ;
+                                                              .trim())      ;
                                  }
                                 else 
                                 if( label.toLowerCase().trim().startsWith("(") && 
                                     label.toLowerCase().contains(")") )          {
                                     code =  Integer.parseInt(label
                                                    .split(Pattern.quote(")"))[0]
-                                                   .replaceAll("[^0-9]", "")) ;
+                                                   .replaceAll("[^0-9]", ""))  ;
                                     
                                    tmpUris.put(code+hash, label.split(Pattern
                                                                .quote(")"))[1]
@@ -322,7 +325,7 @@ public class Processor {
                                  }
                                  else 
                                 if(label.replaceAll(" +", " ")
-                                        .startsWith("PREDICAT_PREFIX :"))  {
+                                        .startsWith("PREDICAT_PREFIX :"))      {
                                     prefixPredicat = label.replaceAll(" +", " ")
                                                           .split(Pattern
                                                           .quote("PREDICAT_PREFIX :"))[1]
@@ -334,16 +337,16 @@ public class Processor {
                                     if(label.toLowerCase().startsWith("obda-")) {
 
                                       if( label.replaceAll(" +", " ")
-                                               .split(Pattern.quote(" : "))[0]
-                                               .equals("obda-sourceUri"))       {
+                                               .split(Pattern.quote(" : ")) [0]
+                                               .equals("obda-sourceUri"))     {
                                        SourceDeclaration.put("sourceUri", 
                                                         label.replaceAll(" +", " ")
                                                         .split(Pattern.quote(" : "))[1]) ;
                                       }
                                       
                                       else if(label.replaceAll(" +", " ")
-                                                   .split(Pattern.quote(" : "))[0]
-                                                   .equals("obda-connectionUrl"))  {
+                                                   .split(Pattern.quote(" : ")) [0]
+                                                   .equals("obda-connectionUrl")) {
                                        SourceDeclaration.put("connectionUrl", 
                                                     label.replaceAll(" +", " ")
                                                          .split(Pattern.quote(" : "))[1]) ;
@@ -351,7 +354,7 @@ public class Processor {
                                       
                                       else if(label.replaceAll(" +", " ")
                                                    .split(Pattern.quote(" : "))[0]
-                                                   .equals("obda-username"))    {
+                                                   .equals("obda-username"))     {
                                           
                                        SourceDeclaration.put("username", 
                                                         label.replaceAll(" +", " ")
@@ -361,14 +364,14 @@ public class Processor {
                                       
                                       else if(label.replaceAll(" +", " ")
                                                    .split(Pattern.quote(" : "))[0]
-                                                   .equals("obda-password"))    {
+                                                   .equals("obda-password"))     {
                                        SourceDeclaration.put("password", label
                                                         .replaceAll(" +", " ")
                                                         .split(Pattern.quote(" : "))[1]) ;
                                       }
                                       else if(label.replaceAll(" +", " ")
                                                    .split(Pattern.quote(" : "))[0]
-                                                   .equals("obda-driverClass")){
+                                                   .equals("obda-driverClass"))  {
                                        SourceDeclaration.put("driverClass", 
                                                         label.replaceAll(" +", " ")
                                                         .split(Pattern.quote(" : "))[1]) ;
