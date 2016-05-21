@@ -657,9 +657,9 @@ public class Processor {
     private void process( String pathFile ) throws IOException {
         
         JSONObject jsonObject = loadJsonObject(pathFile) ;
-        int        hash       = getHash(pathFile) ;
-        loadNodes (jsonObject, hash)     ;
-        loadEdges (jsonObject, hash )    ;
+        int        hash       = getHash(pathFile)        ;
+        loadNodes (jsonObject, hash)                     ;
+        loadEdges (jsonObject, hash )                    ;
     }
     
     
