@@ -99,8 +99,8 @@ public class Processor {
                         if(label.contains("(") & label.contains(")")) {
                             code =  Integer.parseInt(
                                     label.split(Pattern.quote("("))[1]
-                                                       .replaceAll("[^0-9]", ""));
-                            ofEntity = label.trim().split(Pattern.quote("("))[0] ;
+                                                       .replaceAll("[^0-9]", "")) ;
+                            ofEntity = label.trim().split(Pattern.quote("("))[0]  ;
                         }
                          
                         Node node ;
