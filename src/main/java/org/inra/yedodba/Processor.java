@@ -669,17 +669,25 @@ public class Processor {
                 
         Writer.checkFile(outObdaPathFile) ;
         ExistHeader = false               ;
-         
+        
+        boolean processed = false ; 
+                
         List<Path> files = Files.list(new File(directory).toPath()).collect(toList()) ;
          
         for(Path path : files ) {
             if(path.toString().endsWith(extensionFile )) {
                process(path.toString() ) ;
+               if ( ! processed ) processed = true ;
             }            
         }
    
-        write(outObdaPathFile) ;            
-         
-        Writer.writeTextFile(Arrays.asList(mappingCollectionEnd), outObdaPathFile) ;
+        if( processed ) {
+          write(outObdaPathFile) ;
+          Writer.writeTextFile(Arrays.asList(mappingCollectionEnd), outObdaPathFile) ;
+        }
+        else {
+            System.out.println(" No File with extension '" +extensionFile + "' found !! " ) ;
+        }
+        
     }
 }
