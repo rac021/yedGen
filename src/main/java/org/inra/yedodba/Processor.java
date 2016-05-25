@@ -31,10 +31,10 @@ public class Processor {
     private final Map<String , Node>    nodes               =  new  HashMap<>() ;
     private final Map<String , String>  prefix              =  new  HashMap<>() ;
     private final Map<Integer, String>  tmpUris             =  new  HashMap<>() ;
-    private final Map<String, String>   uris                =  new  HashMap<>() ;
+    private final Map<String,  String>  uris                =  new  HashMap<>() ;
     private final Map<Integer, String>  source              =  new  HashMap<>() ;
-    private final Map<String, String>   target              =  new  HashMap<>() ;
-    private final Map<String, String>   SourceDeclaration   =  new  HashMap<>() ;
+    private final Map<String,  String>  target              =  new  HashMap<>() ;
+    private final Map<String,  String>  SourceDeclaration   =  new  HashMap<>() ;
     
     private String  prefixPredicat          =  "oboe-coreX"            ;
     private final String  PrefixDeclaration = "[PrefixDeclaration]"    ;
