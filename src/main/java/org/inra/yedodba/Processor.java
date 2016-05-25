@@ -116,10 +116,9 @@ public class Processor {
                         nodes.put(id, node) ;
                     }
                     
-                     if( jsonObjectNode.has("graph")) {
+                     if ( jsonObjectNode.has("graph")) {
                          
-                     if( jsonObjectNode.getJSONObject("graph").toString()
-                                       .startsWith("{\"node\":["))             {
+                      if ( jsonObjectNode.getJSONObject("graph").toString().startsWith("{\"node\":[")) {
                          
                         JSONArray jsonArrayGroupNodes = 
                                   jsonObjectNode.getJSONObject("graph")
