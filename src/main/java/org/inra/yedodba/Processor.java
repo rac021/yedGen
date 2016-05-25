@@ -47,7 +47,7 @@ public class Processor {
                                               "password	?password\n"              + 
                                               "driverClass	?driverClass"     ;
 
-    final String mappingCollectionBegin = "[MappingDeclaration] @collection [[" ;
+    final String mappingCollectionBegin   = "[MappingDeclaration] @collection [[" ;
 
     private final String mappingCollectionPattern =  "mappingId	?id\n"              +
                                                      "target		?target\n"  +
