@@ -127,7 +127,7 @@ public class Processor {
                         
                         for (int j = 0; j < jsonArrayGroupNodes.length(); j++) {
                     
-                           if ( jsonArrayGroupNodes.toString().startsWith("{\"data\":[") ||
+                           if ( jsonArrayGroupNodes.toString().startsWith("{\"data\":[")  ||
                                 jsonArrayGroupNodes.toString().startsWith("[{\"data\":[") ) {
                                   
                                  if ( jsonArrayGroupNodes.getJSONObject(j)
