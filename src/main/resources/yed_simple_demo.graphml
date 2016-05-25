@@ -117,7 +117,7 @@
               <y:Geometry height="30.808519742925228" width="641.8847479554094" x="-516.3917110621917" y="-907.9133040063917"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="608.828125" x="16.528311477704676" y="6.419884871462614">Query_(1): SELECT DISTINC  unite_code, unite_id, unite_name from physicochimiebysitevariableyear<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="608.828125" x="16.528311477704676" y="6.419884871462614">Query_(1): SELECT DISTINCT  unite_code, unite_id, unite_name from physicochimiebysitevariableyear<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
