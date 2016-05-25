@@ -28,7 +28,7 @@ import static java.util.stream.Collectors.toList ;
 public class Processor {
   
     private final Set<Edge>             edges               =  new  HashSet<>() ;
-    private final Map<String , Node>    nodes               =  new  HashMap<>() ;
+    private final Map<String , Node  >  nodes               =  new  HashMap<>() ;
     private final Map<String , String>  prefix              =  new  HashMap<>() ;
     private final Map<Integer, String>  tmpUris             =  new  HashMap<>() ;
     private final Map<String,  String>  uris                =  new  HashMap<>() ;
