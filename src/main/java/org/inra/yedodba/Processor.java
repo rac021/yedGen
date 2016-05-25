@@ -112,8 +112,8 @@ public class Processor {
                           node = new Node( id, code + hash, 
                                            ofEntity,label.split(Pattern.quote("("))[0] ) ;
                         }
-                        nodes.put(id, node) ;
                         
+                        nodes.put(id, node) ;
                     }
                     
                      if( jsonObjectNode.has("graph")) {
