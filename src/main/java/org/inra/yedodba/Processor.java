@@ -190,6 +190,7 @@ public class Processor {
                                             .getString("content") ;
                                   
                                 int code  = -1 ;
+                                
                                 if(label.toLowerCase().startsWith("query_(")) {
                                     code =  Integer.parseInt(label
                                                    .split(Pattern.quote(":"))[0]
@@ -225,7 +226,7 @@ public class Processor {
                                                      .quote("PREDICAT_PREFIX :"))[1];
                                  }
                                 else 
-                                if(label.toLowerCase().startsWith("obda-"))    {
+                                if(label.toLowerCase().startsWith("obda-"))   {
                                     
                                   if( label.replaceAll(" +", " ")
                                            .split(Pattern.quote(" : ")) [0]
