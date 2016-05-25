@@ -688,7 +688,8 @@ public class Processor {
           Writer.writeTextFile(Arrays.asList(mappingCollectionEnd), outObdaPathFile) ;
         }
         else {
-            System.out.println(" No File with extension '" +extensionFile + "' found !! " ) ;
+            System.out.println ( " No File with extension '" +extensionFile + "' found !! " ) ;
+            System.out.println ( "                                                        " ) ;
         }
         
     }
