@@ -410,11 +410,11 @@ public class Processor {
                                 .getJSONObject("y:EdgeLabel")
                                 .getString("content");
                     
-                        String id = jsonObject.getString("id") + "_" + hash ;
+                        String id = jsonObject.getString("id")        + "_" + hash ;
                        
-                        String sujet = jsonObject.getString("source")       ;
+                        String sujet = jsonObject.getString("source") + "_" + hash  ;
                        
-                        String objet = jsonObject.getString("target")       ;
+                        String objet = jsonObject.getString("target") + "_" + hash  ;
                                                
                         Edge e = new Edge(id, sujet, predicat, objet)       ;
                         
@@ -426,11 +426,11 @@ public class Processor {
                                              .has("y:ArcEdge"))
                         {
                        
-                        String id = jsonObject.getString("id") + "_" + hash  ;
+                        String id = jsonObject.getString("id")        + "_" + hash ;
                        
-                        String sujet = jsonObject.getString("source")        ;
+                        String sujet = jsonObject.getString("source") + "_" + hash ;
                        
-                        String objet = jsonObject.getString("target")        ;
+                        String objet = jsonObject.getString("target") + "_" + hash ;
                        
                         String predicat = jsonObject.getJSONObject("data")
                                .getJSONObject("y:ArcEdge")
@@ -501,7 +501,7 @@ public class Processor {
                         
                     }
                     else {
-                       System.err.println(" Oups !!!!!! ") ;
+                       System.err.println(" Oups !!!!!! " ) ;
                    }
                 }
             }
