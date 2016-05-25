@@ -521,9 +521,11 @@ public class Processor {
                
             for ( Edge edge : edges ) {
                 
-                    Node sujet = nodes.get(edge.getSujet()) ;
-                    Node objet = nodes.get(edge.getObjet()) ;
-                         
+                    Node sujet = nodes.get(edge.getSujet())      ;
+                    Node objet = nodes.get(edge.getObjet())      ;
+                     
+                    if(sujet == null || objet == null ) continue ;
+                    
                     if(!target.containsKey(tmpUris.get(sujet.getCode()))) {
                             if( objet.getLabel().startsWith(":")  || 
                                 objet.getLabel().startsWith("<")  ||
@@ -694,3 +696,4 @@ public class Processor {
         
     }
 }
+
