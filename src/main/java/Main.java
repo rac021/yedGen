@@ -1,9 +1,11 @@
+
 import org.inra.yedodba.Processor;
 
 /**
  *
  * @author ryahiaoui
  */
+ 
 public class Main {
     
        public static void main(String[] args) throws Exception {
@@ -29,12 +31,12 @@ public class Main {
         Processor processor = new Processor() ;
 
         if( nbParams < 6 ) {
-            System.out.println( " missing parameters " ) ;
+            System.out.println ( " missing parameters " ) ;
             return ;
         }
         
         if(directory.isEmpty() || outFile.isEmpty()) {
-            System.out.println(" directory or outFile is Empty " ) ;
+            System.out.println (" directory or outFile is Empty " ) ;
             return ;
         }
         
