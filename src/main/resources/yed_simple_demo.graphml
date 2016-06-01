@@ -136,14 +136,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="83.82547566518133" width="359.85163142218653" x="-531.3917110621917" y="-1050.1537618626653"/>
+              <y:Geometry height="83.82547566518133" width="358.1736067816703" x="-531.3917110621917" y="-1050.1537618626653"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="359.85163142218653" x="0.0" y="0.0">URI(s) </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="358.1736067816703" x="0.0" y="0.0">URI(s) </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="2" bottomF="2.3645381651813295" left="7" leftF="6.747597472240955" right="0" rightF="0.0" top="0" topF="0.0"/>
+              <y:BorderInsets bottom="2" bottomF="2.3645381651813295" left="7" leftF="6.747597472240955" right="5" rightF="5.0" top="0" topF="0.0"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -162,10 +162,10 @@
         <node id="n5::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="323.1040339499456" x="-509.64411358995073" y="-1013.6928243626653"/>
+              <y:Geometry height="30.0" width="316.42600930942933" x="-509.64411358995073" y="-1013.6928243626653"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="213.765625" x="54.66920447497279" y="6.015625">(1) measurement/name/{unite_id}<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="213.765625" x="51.330192154714666" y="6.015625">(1) measurement/name/{unite_id}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -184,14 +184,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="121.02837142429689" width="760.080545406552" x="-614.5264502018638" y="-1186.1821332869622"/>
+              <y:Geometry height="121.02837142429689" width="676.9458062668799" x="-531.3917110621917" y="-1186.1821332869622"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="760.080545406552" x="0.0" y="0.0">  Prefix </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="676.9458062668799" x="0.0" y="0.0">  Prefix </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="0" bottomF="0.0" left="103" leftF="103.06240574308049" right="164" rightF="164.18644885505762" top="0" topF="0.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="78" leftF="77.9276666034084" right="106" rightF="106.18644885505762" top="0" topF="0.0"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -210,7 +210,7 @@
         <node id="n6::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="462.8316908084139" x="-496.4640444587833" y="-1110.1537618626653"/>
+              <y:Geometry height="30.0" width="462.8316908084139" x="-438.4640444587833" y="-1110.1537618626653"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="448.720703125" x="7.055493841706948" y="6.015625">prefix oboe-core: http://ecoinformatics.org/oboe/oboe.1.0/oboe-core.owl#<y:LabelModel>
@@ -227,10 +227,10 @@
         <node id="n6::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="444.7429749333207" x="-496.4640444587833" y="-1149.7211957869622"/>
+              <y:Geometry height="30.0" width="437.7429749333207" x="-438.4640444587833" y="-1149.7211957869622"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="421.1875" x="11.77773746666037" y="6.015625">prefix : http://www.anaee-france.fr/ontology/anaee-france_ontology#<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="421.1875" x="8.27773746666037" y="6.015625">prefix : http://www.anaee-france.fr/ontology/anaee-france_ontology#<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -249,14 +249,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="332.0773490234957" width="503.38927141424074" x="166.73917252991419" y="-1186.1821332869622"/>
+              <y:Geometry height="332.0773490234957" width="548.9698334600068" x="155.49303689321766" y="-1186.1821332869622"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="503.38927141424074" x="0.0" y="0.0">SourceDeclaration </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="548.9698334600068" x="0.0" y="0.0">SourceDeclaration </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="8" bottomF="8.404259871462614" left="11" leftF="10.705307438176078" right="9" rightF="8.81287022606466" top="5" topF="5.425454801654496"/>
+              <y:BorderInsets bottom="8" bottomF="8.404259871462614" left="19" leftF="19.138142651593" right="0" rightF="0.0" top="5" topF="5.425454801654496"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -275,10 +275,10 @@
         <node id="n7::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="448.37475516866164" x="195.19264925875945" y="-1144.2957409853077"/>
+              <y:Geometry height="30.0" width="499.83169080841384" x="189.63117954481075" y="-1144.2957409853077"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="200.716796875" x="123.82897914683082" y="6.015625">obda-sourceUri : dbLacsMapping<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="200.716796875" x="149.55744696670695" y="6.015625">obda-sourceUri : dbLacsMapping<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -292,10 +292,10 @@
         <node id="n7::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="448.37475516866164" x="195.19264925875945" y="-1084.2957409853077"/>
+              <y:Geometry height="30.0" width="499.8316908084139" x="189.63117954481066" y="-1084.2957409853077"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="453.87109375" x="-2.748169290669182" y="6.015625">obda-connectionUrl : jdbc:postgresql://127.0.0.1/ola?sendBufferSize=5000<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="494.154296875" x="2.838696966706948" y="6.015625">obda-connectionUrl : jdbc:postgresql://127.0.0.1/anaee_db?sendBufferSize=5000<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -309,10 +309,10 @@
         <node id="n7::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="448.37475516866147" x="195.19264925875945" y="-1018.4521733894601"/>
+              <y:Geometry height="30.0" width="499.83169080841384" x="189.6311795448107" y="-1018.4521733894601"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="169.9140625" x="139.2303463343307" y="6.015625">obda-username :  ryahiaoui<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="183.203125" x="158.31428290420692" y="6.015625">obda-username :  anaee_user<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -326,10 +326,10 @@
         <node id="n7::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="444.7429749333209" x="198.82442949410023" y="-958.4521733894601"/>
+              <y:Geometry height="30.0" width="499.8316908084138" x="189.63117954481072" y="-958.4521733894601"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="165.771484375" x="139.48574527916043" y="6.015625">obda-password  :  yahiaoui<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="173.0546875" x="163.3885016542069" y="6.015625">obda-password  :  anaee_db<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -343,10 +343,10 @@
         <node id="n7::n4">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="444.7429749333207" x="198.82442949410023" y="-907.5090441349291"/>
+              <y:Geometry height="30.0" width="499.83169080841384" x="189.6311795448107" y="-907.5090441349291"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="244.3046875" x="100.21914371666031" y="6.015625">obda-driverClass : org.postgresql.Driver<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="244.3046875" x="127.76350165420692" y="6.015625">obda-driverClass : org.postgresql.Driver<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -365,7 +365,7 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="83.82547566518133" width="309.50656573470644" x="-163.95247053001827" y="-1049.3649112220512"/>
+              <y:Geometry height="83.82547566518133" width="309.50656573470644" x="-163.2181042805214" y="-1049.3649112220512"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="309.50656573470644" x="0.0" y="0.0">PrefixPredicat </y:NodeLabel>
@@ -391,7 +391,7 @@
         <node id="n8::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="272.1040339499456" x="-141.5499387452574" y="-1012.9039737220512"/>
+              <y:Geometry height="30.0" width="272.1040339499456" x="-140.81557249576053" y="-1012.9039737220512"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="183.61328125" x="44.24537634997279" y="6.015625">PREDICAT_PREFIX : oboe-core<y:LabelModel>
