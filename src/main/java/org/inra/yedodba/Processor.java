@@ -390,9 +390,14 @@ public class Processor {
       private void loadEdges ( JSONObject jsonObj, int hash ) 
                                      throws FileNotFoundException, IOException {
                
+               if ( ! jsonObj.getJSONObject("graphml")
+                             .getJSONObject("graph")
+                             .has("edge") )
+                  return ;
+                                     
                JSONArray jsonArrayEdges = jsonObj.getJSONObject("graphml")
                                                  .getJSONObject("graph")
-                                                 .getJSONArray("edge") ;
+                                                 .getJSONArray("edge")   ;
                
                 for (int i = 0; i < jsonArrayEdges.length(); i++)  {
                     
