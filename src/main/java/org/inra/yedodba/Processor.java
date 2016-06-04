@@ -122,7 +122,7 @@ public class Processor {
                          
                         JSONArray jsonArrayGroupNodes = 
                                   jsonObjectNode.getJSONObject("graph")
-                                                .getJSONArray("node");
+                                                .getJSONArray("node") ;
                         
                         for (int j = 0; j < jsonArrayGroupNodes.length(); j++) {
                     
@@ -399,9 +399,9 @@ public class Processor {
                                                  .getJSONObject("graph")
                                                  .getJSONArray("edge")   ;
                
-                for (int i = 0; i < jsonArrayEdges.length(); i++)  {
+                for (int i = 0; i < jsonArrayEdges.length(); i++ ) {
                     
-                    Object obj = jsonArrayEdges.get(i) ;
+                    Object obj = jsonArrayEdges.get(i)        ;
                     
                     JSONObject jsonObject  = (JSONObject) obj ;
                       
@@ -413,15 +413,15 @@ public class Processor {
                         String predicat = jsonObject.getJSONObject("data")
                                 .getJSONObject("y:PolyLineEdge")
                                 .getJSONObject("y:EdgeLabel")
-                                .getString("content");
+                                .getString("content") ;
                     
-                        String id = jsonObject.getString("id")        + "_" + hash ;
+                        String id = jsonObject.getString("id")        + "_" + hash  ;
                        
                         String sujet = jsonObject.getString("source") + "_" + hash  ;
                        
                         String objet = jsonObject.getString("target") + "_" + hash  ;
                                                
-                        Edge e = new Edge(id, sujet, predicat, objet)       ;
+                        Edge       e = new Edge(id, sujet, predicat, objet)         ;
                         
                         edges.add(e) ;
                         
@@ -566,19 +566,33 @@ public class Processor {
                                 
                                existPrefixStartWith(objet.getLabel()) 
                             ) {
-                               target.put( tmpUris.get(sujet.getCode()) ,
-                                           target.get(
-                                           tmpUris.get(sujet.getCode())) + " ; " +
-                                           prefixPredicat + ":"                  + 
-                                           edge.getPredicat() + " "              +
-                                           objet.getLabel() )                    ;
+                               
+                               if(!target.get(
+                                          tmpUris.get(sujet.getCode()))
+                                                 .contains( prefixPredicat + ":" + 
+                                                  edge.getPredicat()  + " "      +
+                                                  objet.getLabel()) 
+                                  )
+                                
+                                target.put( tmpUris.get(sujet.getCode()) ,
+                                            target.get(
+                                            tmpUris.get(sujet.getCode())) + " ; " +
+                                            prefixPredicat + ":"                  + 
+                                            edge.getPredicat() + " "              +
+                                            objet.getLabel() )                    ;
                            }
                            else {
-                               target.put( tmpUris.get(sujet.getCode()),
-                                           target.get(tmpUris.get(sujet.getCode())) + 
-                                           " ; " +  prefixPredicat + ":"            +
-                                           edge.getPredicat() + " :"                + 
-                                           tmpUris.get(objet.getCode()) )           ;
+                               if( !target.get(tmpUris.get(sujet.getCode()))
+                                          .contains(prefixPredicat + ":"         +
+                                           edge.getPredicat()      + " :"        + 
+                                           tmpUris.get(objet.getCode()))
+                                 )
+                                   
+                                target.put( tmpUris.get(sujet.getCode()),
+                                            target.get(tmpUris.get(sujet.getCode())) + 
+                                            " ; " +  prefixPredicat + ":"            +
+                                            edge.getPredicat() + " :"                + 
+                                            tmpUris.get(objet.getCode()) )           ;
                            }
                         }
                 }
