@@ -415,7 +415,7 @@ public class Processor {
                                 .getJSONObject("y:EdgeLabel")
                                 .getString("content") ;
                     
-                        String id = jsonObject.getString("id")        + "_" + hash  ;
+                        String id    = jsonObject.getString("id")     + "_" + hash  ;
                        
                         String sujet = jsonObject.getString("source") + "_" + hash  ;
                        
@@ -431,7 +431,7 @@ public class Processor {
                                              .has("y:ArcEdge"))
                         {
                        
-                        String id = jsonObject.getString("id")        + "_" + hash ;
+                        String id    = jsonObject.getString("id")     + "_" + hash ;
                        
                         String sujet = jsonObject.getString("source") + "_" + hash ;
                        
