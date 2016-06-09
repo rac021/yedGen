@@ -152,9 +152,9 @@ public class Processor {
                                                      .split(Pattern.quote("_"))[1]
                                                      .replaceAll("[^0-9]", ""))  ;
                                       
-                                     source.put(code+hash, label.split(Pattern
-                                                                .quote(":"))[1]
-                                                                .trim())      ;
+                                     source.put(code+hash, label.split( Pattern
+                                                                .quote(": "))[1]
+                                                                .trim())       ;
                                  }
                                  else 
                                  if (label.toLowerCase().trim(
@@ -198,7 +198,7 @@ public class Processor {
                                                     .replaceAll("[^0-9]", ""))  ;
                                     
                                    source.put(code+hash, label.split(Pattern
-                                         .quote(":"))[1].trim()) ;
+                                         .quote(": "))[1].trim())              ;
                                  }
                                 else 
                                 if ( label.toLowerCase().trim().startsWith("(") && 
@@ -304,8 +304,8 @@ public class Processor {
                                                    .replaceAll("[^0-9]", ""))  ;
                                     
                                    source.put(code+hash, label.split(Pattern
-                                                              .quote(":"))[1]
-                                                              .trim())      ;
+                                                              .quote(": "))[1]
+                                                              .trim())       ;
                                  }
                                 else 
                                 if( label.toLowerCase().trim().startsWith("(") && 
