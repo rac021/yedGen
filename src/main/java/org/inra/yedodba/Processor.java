@@ -1,4 +1,3 @@
-
 package org.inra.yedodba ;
 
 import org.json.XML ;
@@ -32,6 +31,7 @@ public class Processor {
     private final Map<String , String>  prefix              =  new  HashMap<>() ;
     private final Map<Integer, String>  tmpUris             =  new  HashMap<>() ;
     private final Map<String,  String>  uris                =  new  HashMap<>() ;
+    private final Map<String,  Integer> numUris             =  new  HashMap<>() ;
     private final Map<Integer, String>  source              =  new  HashMap<>() ;
     private final Map<String,  String>  target              =  new  HashMap<>() ;
     private final Map<String,  String>  SourceDeclaration   =  new  HashMap<>() ;
@@ -109,8 +109,12 @@ public class Processor {
                           node = new Node(id, code + hash, ofEntity, label ) ;
                         }
                         else {
+                          if(label.startsWith(":"))  
                           node = new Node( id, code + hash, 
-                                           ofEntity,label.split(Pattern.quote("("))[0] ) ;
+                                           ofEntity, label.split(Pattern.quote("("))[0] + "::#" ) ;
+                          else
+                          node = new Node( id, code + hash, 
+                                           ofEntity,label.split(Pattern.quote("("))[0] )          ;
                         }
                         
                         nodes.put(id, node) ;
@@ -126,7 +130,7 @@ public class Processor {
                         
                         for (int j = 0; j < jsonArrayGroupNodes.length(); j++) {
                     
-                           if ( jsonArrayGroupNodes.toString().startsWith("{\"data\":[")  ||
+                           if ( jsonArrayGroupNodes.toString().startsWith("{\"data\":[")   ||
                                 jsonArrayGroupNodes.toString().startsWith("[{\"data\":[") ) {
                                   
                                  if ( jsonArrayGroupNodes.getJSONObject(j)
@@ -210,6 +214,14 @@ public class Processor {
                                    tmpUris.put(code+hash, label.split(Pattern
                                                                .quote(")")) [1]
                                                                .trim())       ;
+                                   
+                                   numUris.put( ":" + label.split( Pattern
+                                                           .quote(")")) [1]
+                                                           .trim()      , 
+                                                Integer.parseInt(label
+                                                       .split(Pattern
+                                                       .quote(") ")) [0].trim()
+                                                       .replace("(", "")))    ;
                                  }
                                 else 
                                 if (label.toLowerCase().startsWith("prefix ")) {
@@ -230,7 +242,7 @@ public class Processor {
                                     
                                   if  ( label.replaceAll(" +", " ")
                                              .split(Pattern.quote(" : ")) [0]
-                                             .equals("obda-sourceUri"))         {
+                                             .equals("obda-sourceUri"))        {
                                    SourceDeclaration.put("sourceUri",
                                                     label.replaceAll(" +", " ")
                                                     .split(Pattern
@@ -309,7 +321,7 @@ public class Processor {
                                  }
                                 else 
                                 if( label.toLowerCase().trim().startsWith("(") && 
-                                    label.toLowerCase().contains(")") )          {
+                                    label.toLowerCase().contains(")") )         {
                                     code =  Integer.parseInt(label
                                                    .split(Pattern.quote(")"))[0]
                                                    .replaceAll("[^0-9]", ""))  ;
@@ -317,6 +329,15 @@ public class Processor {
                                    tmpUris.put(code+hash, label.split(Pattern
                                                                .quote(")"))[1]
                                                                .trim()) ;
+                                   
+                                   numUris.put( ":" + label.split( Pattern
+                                                           .quote(")")) [1]
+                                                           .trim()    , 
+                                                Integer.parseInt(label
+                                                       .split(Pattern
+                                                       .quote(") ")) [0].trim()
+                                                       .replace("(", "")))    ;
+                                    
                                  }
                                 else 
                                 if(label.toLowerCase().startsWith("prefix ")) {
@@ -463,7 +484,7 @@ public class Processor {
                                                          .getJSONObject(1)
                                                          .getJSONObject("y:PolyLineEdge")
                                                          .getJSONObject("y:EdgeLabel")
-                                                         .getString("content");
+                                                         .getString("content") ;
                             }
                           else if(jsonObject.getJSONArray("data")
                                   .getJSONObject(1).has("y:QuadCurveEdge"))
@@ -514,6 +535,7 @@ public class Processor {
     private boolean existPrefixStartWith ( String label ) {
        return prefix.keySet()
              .stream()
+             .filter( pref -> !label.endsWith("::#"))
              .filter( pref -> label.startsWith(pref) )
              .findFirst()
              .isPresent() ;
@@ -531,23 +553,41 @@ public class Processor {
                     if(sujet == null || objet == null ) continue ;
                     
                     if(!target.containsKey(tmpUris.get(sujet.getCode()))) {
-                            if( objet.getLabel().startsWith(":")  || 
-                                objet.getLabel().startsWith("<")  ||
-                                objet.getLabel().startsWith("{")  ||
-                                objet.getLabel().startsWith("\"") ||
-                                existPrefixStartWith(objet.getLabel()) 
+                        
+                            if( objet.getLabel().startsWith("<")       ||
+                                objet.getLabel().startsWith("{")       ||
+                                objet.getLabel().startsWith("\"")      ||
+                                existPrefixStartWith(objet.getLabel()) ||
+                                (  objet.getLabel().startsWith(":")    &&
+                                   !objet.getLabel().endsWith("::#")
+                                )
                              )   
                             {
-                            target.put( tmpUris.get(sujet.getCode()), 
-                                        tmpUris.get(sujet.getCode())  + 
-                                        " a " +  prefixPredicat + ":" +
-                                        sujet.getOfEntity() + " ; "   +
-                                        prefixPredicat + ":"          +
-                                        edge.getPredicat() + " "      + 
-                                        objet.getLabel() ) ;
+                           
+                            if(!sujet.getOfEntity().startsWith(":"))      {
+                                
+                                target.put( tmpUris.get(sujet.getCode())  , 
+                                            tmpUris.get(sujet.getCode())  + 
+                                            " a " +  prefixPredicat + ":" +
+                                            sujet.getOfEntity() + " ; "   +
+                                            prefixPredicat + ":"          +
+                                            edge.getPredicat() + " "      + 
+                                            objet.getLabel() ) ;
                             }
                             else {
-                            target.put( tmpUris.get(sujet.getCode()), 
+                                
+                               target.put( tmpUris.get(sujet.getCode())   , 
+                                            tmpUris.get(sujet.getCode())  + 
+                                            " a " + sujet.getOfEntity()   +
+                                            " ; " + prefixPredicat        +
+                                            ":"   + edge.getPredicat()    +
+                                            " "   + objet.getLabel() )    ;
+                            }
+                            
+                            }
+                                                       
+                            else {
+                            target.put( tmpUris.get(sujet.getCode()) ,
                                         tmpUris.get(sujet.getCode()) + 
                                         " a " + prefixPredicat + ":" +
                                         sujet.getOfEntity() + " ;  " +
@@ -555,18 +595,20 @@ public class Processor {
                                         edge.getPredicat() + " :"    +
                                         tmpUris.get(objet.getCode()) ) ;
                             }
+                            
                             uris.put( ":" + tmpUris.get( sujet.getCode() ) ,
                                             source.get(sujet.getCode()))   ;
                     }
                     else {
-                           if( objet.getLabel().startsWith(":")  || 
-                               objet.getLabel().startsWith("<")  ||
-                               objet.getLabel().startsWith("{")  ||
-                               objet.getLabel().startsWith("\"") ||
-                                
-                               existPrefixStartWith(objet.getLabel()) 
-                            ) {
-                               
+                           if( objet.getLabel().startsWith("<")       ||
+                               objet.getLabel().startsWith("{")       ||
+                               objet.getLabel().startsWith("\"")      ||
+                               existPrefixStartWith(objet.getLabel()) ||
+                                 (  objet.getLabel().startsWith(":")  &&
+                                   !objet.getLabel().endsWith("::#")
+                                 )
+                             ) {
+                                                                 
                                if(!target.get(
                                           tmpUris.get(sujet.getCode()))
                                                  .contains( prefixPredicat + ":" + 
@@ -607,7 +649,7 @@ public class Processor {
               
               if( !ExistHeader ) {
              
-              outs.add(PrefixDeclaration)  ;
+                 outs.add(PrefixDeclaration)  ;
               
                  for (Map.Entry<String, String> entrySet : prefix.entrySet()) {
                     String key   = entrySet.getKey()      ;
@@ -629,7 +671,7 @@ public class Processor {
               outs.add(mappingCollectionBegin) ;
               outs.add("")                     ;
               
-              ExistHeader = true ;
+              ExistHeader = true               ;
               
             }
               
@@ -638,37 +680,42 @@ public class Processor {
                 String key    = entrySet.getKey()   ;
                 String target = entrySet.getValue() ;
                     
-                String keyByURI = getKeyByURI(target.split(" ")[0]);
+                int num = numUris.get(target.split(" ")[0]) ;
+                 
+                String keyByURI = getKeyByURI("("+num+")_"+target.split(" ")[0]) ;
                   
                 if(keyByURI.endsWith("_") ) 
                     keyByURI = keyByURI.substring(0, keyByURI.length() - 1 ) ;
                     
                 if( !target.startsWith(":null")) { 
                      
-                     if( uris.get(target.split(" ")[0]) == null) {
+                     if( uris.get(target.split(" ")[0]) == null ) {
                            throw new Exception(" No Query found for : "+ target.split(" ")[0] ) ;
                       }
-                      outs.add( mappingCollectionPattern.replace("?id", keyByURI )
+                     
+                     outs.add( mappingCollectionPattern.replace("?id", keyByURI )
                                                   .replace("?target"  , target) 
                                                   .replace("?source"  ,
                                                    uris.get(target.split(" ")[0]))
                                                   .replace("  ", " " )
-                      );
+                       ) ;
                       
-                      outs.add("");
+                      outs.add("") ;
                 }
              }
                 
-                Writer.writeTextFile(outs, outFile) ;
+             Writer.writeTextFile(outs, outFile) ;
     }
     
     private String getKeyByURI(String target) {
        String code =  target.replaceAll(Pattern.quote("/{"), "_")
+                            .replaceAll(Pattern.quote("-{"), "_")
                             .replaceAll(Pattern.quote("/"), "_")
+                            .replaceAll(Pattern.quote("{"), "_")
                             .replaceAll(Pattern.quote("}"), "_")
                             .replaceAll(Pattern.quote(":"), "_")
                             .replaceAll("_+", "_") ;
-       if(code.startsWith("_")) return code.substring(1, code.length());
+       if(code.startsWith("_")) return code.substring(1, code.length()) ;
        return code ;
     }
     
@@ -714,4 +761,3 @@ public class Processor {
         
     }
 }
-
