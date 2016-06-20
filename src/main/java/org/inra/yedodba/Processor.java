@@ -58,7 +58,6 @@ public class Processor {
 
     boolean ExistHeader                     = false                                 ;
 
-    
     private  JSONObject loadJsonObject ( String pathFile ) throws FileNotFoundException, IOException {
         
           InputStream inputStream       = new FileInputStream(pathFile) ;
@@ -121,7 +120,7 @@ public class Processor {
                         nodes.put(id, node) ;
                     }
                     
-                     if ( jsonObjectNode.has("graph")) {
+                    if ( jsonObjectNode.has("graph")) {
                          
                       if ( jsonObjectNode.getJSONObject("graph").toString().startsWith("{\"node\":[")) {
                          
@@ -161,8 +160,7 @@ public class Processor {
                                                                 .quote(": "))[1]
                                                                 .trim())       ;
                                  }
-                                 else 
-                                 if (label.toLowerCase().trim(
+                                 else if (label.toLowerCase().trim(
                                         ).startsWith("(") & label.toLowerCase()
                                          .contains(")") )                       {
                                      code =  Integer.parseInt(label
@@ -178,114 +176,114 @@ public class Processor {
                                
                           else
                                
-                          if ( jsonArrayGroupNodes.toString().startsWith("{\"data\":{") ||
+                          if ( jsonArrayGroupNodes.toString().startsWith("{\"data\":{")  ||
                               jsonArrayGroupNodes.toString().startsWith("[{\"data\":{") ) {
                               
                                 if ( jsonArrayGroupNodes.getJSONObject(j)
                                                         .getJSONObject("data")
                                                         .has("y:ShapeNode")) {
                               
-                                String id = jsonArrayGroupNodes.getJSONObject(j)                                         
-                                            .getString("id") ;
+                                  String id = jsonArrayGroupNodes.getJSONObject(j)                                         
+                                              .getString("id") ;
+                                      
+                                  String label = jsonArrayGroupNodes.getJSONObject(j)
+                                              .getJSONObject("data")
+                                              .getJSONObject("y:ShapeNode")
+                                              .getJSONObject("y:NodeLabel")
+                                              .getString("content") ;
                                     
-                                String label = jsonArrayGroupNodes.getJSONObject(j)
-                                            .getJSONObject("data")
-                                            .getJSONObject("y:ShapeNode")
-                                            .getJSONObject("y:NodeLabel")
-                                            .getString("content") ;
+                                  int code  = -1 ;
                                   
-                                int code  = -1 ;
-                                
-                                if (label.toLowerCase().startsWith("query_(")) {
-                                     code =  Integer.parseInt(label
-                                                    .split(Pattern.quote(":"))[0]
-                                                    .split(Pattern.quote("_"))[1]
-                                                    .replaceAll("[^0-9]", ""))  ;
-                                    
-                                   source.put(code+hash, label.split(Pattern
-                                         .quote(": "))[1].trim())              ;
-                                 }
-                                else 
-                                if ( label.toLowerCase().trim().startsWith("(") && 
-                                     label.toLowerCase().contains(")") ) {
-                                     code =  Integer.parseInt(label
-                                                    .split(Pattern.quote(")"))[0]
-                                                    .replaceAll("[^0-9]", ""))  ;
-                                    
-                                   tmpUris.put(code+hash, label.split(Pattern
-                                                               .quote(")")) [1]
-                                                               .trim())       ;
-                                   
-                                   numUris.put( ":" + label.split( Pattern
-                                                           .quote(")")) [1]
-                                                           .trim()      , 
-                                                Integer.parseInt(label
-                                                       .split(Pattern
-                                                       .quote(") ")) [0].trim()
-                                                       .replace("(", "")))    ;
-                                 }
-                                else 
-                                if (label.toLowerCase().startsWith("prefix ")) {
-                                    String pref = label.split(Pattern.quote(" "))[1] ;
-                                    String uri  = label.split(Pattern.quote(" "))[2] ;
-                                   
-                                    prefix.put(pref, uri);
-                                 }
-                                else 
-                                if (label.replaceAll(" +", " ")
-                                         .startsWith("PREDICAT_PREFIX :"))      {
-                                     prefixPredicat = label.replaceAll(" +", " ")
-                                                    .split(Pattern
-                                                    .quote("PREDICAT_PREFIX :"))[1] ;
-                                 }
-                                else 
-                                if (label.toLowerCase().startsWith("obda-"))   {
-                                    
-                                  if  ( label.replaceAll(" +", " ")
-                                             .split(Pattern.quote(" : ")) [0]
-                                             .equals("obda-sourceUri"))        {
-                                   SourceDeclaration.put("sourceUri",
-                                                    label.replaceAll(" +", " ")
-                                                    .split(Pattern
-                                                    .quote(" : "))[1]) ;
-                                  }
-                                  else if (label.replaceAll(" +", " ")
+                                  if (label.toLowerCase().startsWith("query_(")) {
+                                       code =  Integer.parseInt(label
+                                                      .split(Pattern.quote(":"))[0]
+                                                      .split(Pattern.quote("_"))[1]
+                                                      .replaceAll("[^0-9]", ""))  ;
+                                      
+                                     source.put(code+hash, label.split(Pattern
+                                           .quote(": "))[1].trim())              ;
+                                   }
+                                  else 
+                                  if ( label.toLowerCase().trim().startsWith("(") && 
+                                       label.toLowerCase().contains(")") ) {
+                                       code =  Integer.parseInt(label
+                                                      .split(Pattern.quote(")"))[0]
+                                                      .replaceAll("[^0-9]", ""))  ;
+                                      
+                                     tmpUris.put(code+hash, label.split(Pattern
+                                                                 .quote(")")) [1]
+                                                                 .trim())       ;
+                                     
+                                     numUris.put( ":" + label.split( Pattern
+                                                             .quote(")")) [1]
+                                                             .trim()      , 
+                                                  Integer.parseInt(label
+                                                         .split(Pattern
+                                                         .quote(") ")) [0].trim()
+                                                         .replace("(", "")))    ;
+                                   }
+                                   else 
+                                   if (label.toLowerCase().startsWith("prefix ")) {
+                                       String pref = label.split(Pattern.quote(" "))[1] ;
+                                       String uri  = label.split(Pattern.quote(" "))[2] ;
+                                     
+                                      prefix.put(pref, uri);
+                                   }
+                                   else 
+                                   if (label.replaceAll(" +", " ")
+                                           .startsWith("PREDICAT_PREFIX :"))      {
+                                       prefixPredicat = label.replaceAll(" +", " ")
+                                                      .split(Pattern
+                                                      .quote("PREDICAT_PREFIX :"))[1] ;
+                                   }
+                                   else 
+                                   if (label.toLowerCase().startsWith("obda-"))   {
+                                      
+                                    if  ( label.replaceAll(" +", " ")
                                                .split(Pattern.quote(" : ")) [0]
-                                               .equals("obda-connectionUrl")) {
-                                   SourceDeclaration.put("connectionUrl", label
-                                                    .replaceAll(" +", " ")
-                                                    .split(Pattern
-                                                    .quote(" : "))[1]) ;
+                                               .equals("obda-sourceUri"))        {
+                                     SourceDeclaration.put("sourceUri",
+                                                      label.replaceAll(" +", " ")
+                                                      .split(Pattern
+                                                      .quote(" : "))[1]) ;
+                                    }
+                                    else if (label.replaceAll(" +", " ")
+                                                 .split(Pattern.quote(" : ")) [0]
+                                                 .equals("obda-connectionUrl")) {
+                                     SourceDeclaration.put("connectionUrl", label
+                                                      .replaceAll(" +", " ")
+                                                      .split(Pattern
+                                                      .quote(" : "))[1]) ;
+                                    }
+                                    else if (label.replaceAll(" +", " ")
+                                                  .split(Pattern.quote(" : "))[0]
+                                                  .equals("obda-username"))     {
+                                     SourceDeclaration.put("username", label
+                                                      .replaceAll(" +", " ")
+                                                      .split(Pattern
+                                                      .quote(" : "))[1]) ;
+                                    }
+                                    else if (label.replaceAll(" +", " ")
+                                                  .split(Pattern.quote(" : "))[0]
+                                                  .equals("obda-password"))     {
+                                     SourceDeclaration.put("password", label
+                                                      .replaceAll(" +", " ")
+                                                      .split(Pattern
+                                                      .quote(" : "))[1]) ;
+                                    }
+                                    else if (label.replaceAll(" +", " ")
+                                                  .split(Pattern.quote(" : "))[0]
+                                                  .equals("obda-driverClass"))  {
+                                     SourceDeclaration.put("driverClass", label
+                                                      .replaceAll(" +", " ")
+                                                      .split(Pattern
+                                                      .quote(" : "))[1]) ;
+                                    }
                                   }
-                                  else if (label.replaceAll(" +", " ")
-                                                .split(Pattern.quote(" : "))[0]
-                                                .equals("obda-username"))     {
-                                   SourceDeclaration.put("username", label
-                                                    .replaceAll(" +", " ")
-                                                    .split(Pattern
-                                                    .quote(" : "))[1]) ;
-                                  }
-                                  else if (label.replaceAll(" +", " ")
-                                                .split(Pattern.quote(" : "))[0]
-                                                .equals("obda-password"))     {
-                                   SourceDeclaration.put("password", label
-                                                    .replaceAll(" +", " ")
-                                                    .split(Pattern
-                                                    .quote(" : "))[1]) ;
-                                  }
-                                  else if (label.replaceAll(" +", " ")
-                                                .split(Pattern.quote(" : "))[0]
-                                                .equals("obda-driverClass"))  {
-                                   SourceDeclaration.put("driverClass", label
-                                                    .replaceAll(" +", " ")
-                                                    .split(Pattern
-                                                    .quote(" : "))[1]) ;
-                                  }
-                                 }
-                               }
-                             } 
-                           }
-                       }
+                              }
+                          } 
+                        }
+                      }
                      
                       else 
                             
@@ -400,17 +398,17 @@ public class Processor {
                                                         .split(Pattern.quote(" : "))[1]) ;
                                       }
                                     }
-                             } // ShapeNode      
-                           }   // isNode Object   
-                         }     // has Graph       
-                       }       // dif null          
-                }              // boucle iterator 
+                      } // ShapeNode      
+                    }   // isNode Object   
+                  }     // has Graph       
+                }       // dif null          
+            }           // boucle iterator 
     }
     
     
     
-      private void loadEdges ( JSONObject jsonObj, int hash ) 
-                                     throws FileNotFoundException, IOException {
+    private void loadEdges ( JSONObject jsonObj, int hash ) 
+                             throws FileNotFoundException, IOException {
                
                if ( ! jsonObj.getJSONObject("graphml")
                              .getJSONObject("graph")
