@@ -42,7 +42,7 @@ public class Processor {
     private final String  pref              =  "?pref		?uri"  ;
 
     private final String  SourceDecString   = "[SourceDeclaration]\n"             + 
-                                              "sourceUri	?sourceUri\n"      + 
+                                              "sourceUri	?sourceUri\n"    + 
                                               "connectionUrl	?connectionUrl\n" + 
                                               "username	?username\n"              + 
                                               "password	?password\n"              + 
