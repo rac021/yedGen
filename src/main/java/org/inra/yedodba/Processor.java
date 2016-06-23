@@ -548,8 +548,11 @@ public class Processor {
                 
                     Node sujet = nodes.get(edge.getSujet())      ;
                     Node objet = nodes.get(edge.getObjet())      ;
-                     
+                            
                     if(sujet == null || objet == null ) continue ;
+                    
+                    String objectProperty =  edge.getPredicat().contains(":") ? edge.getPredicat() : 
+                                             prefixPredicat + ":" + edge.getPredicat() ;
                     
                     if(!target.containsKey(tmpUris.get(sujet.getCode()))) {
                         
@@ -569,8 +572,7 @@ public class Processor {
                                             tmpUris.get(sujet.getCode())  + 
                                             " a " +  prefixPredicat + ":" +
                                             sujet.getOfEntity() + " ; "   +
-                                            prefixPredicat + ":"          +
-                                            edge.getPredicat() + " "      + 
+                                            objectProperty  +  " "        + 
                                             objet.getLabel() ) ;
                             }
                             else {
@@ -590,8 +592,7 @@ public class Processor {
                                         tmpUris.get(sujet.getCode()) + 
                                         " a " + prefixPredicat + ":" +
                                         sujet.getOfEntity() + " ;  " +
-                                        prefixPredicat + ":"         +
-                                        edge.getPredicat() + " :"    +
+                                        objectProperty   +  " :"     +
                                         tmpUris.get(objet.getCode()) ) ;
                             }
                             
@@ -610,29 +611,25 @@ public class Processor {
                                                                  
                                if(!target.get(
                                           tmpUris.get(sujet.getCode()))
-                                                 .contains( prefixPredicat + ":" + 
-                                                  edge.getPredicat()  + " "      +
-                                                  objet.getLabel()) 
+                                                 .contains( objectProperty  
+                                                 + " " + objet.getLabel()) 
                                   )
                                 
                                 target.put( tmpUris.get(sujet.getCode()) ,
                                             target.get(
                                             tmpUris.get(sujet.getCode())) + " ; " +
-                                            prefixPredicat + ":"                  + 
-                                            edge.getPredicat() + " "              +
+                                            objectProperty +  " "                 +
                                             objet.getLabel() )                    ;
                            }
                            else {
                                if( !target.get(tmpUris.get(sujet.getCode()))
-                                          .contains(prefixPredicat + ":"         +
-                                           edge.getPredicat()      + " :"        + 
-                                           tmpUris.get(objet.getCode()))
+                                          .contains( objectProperty  + " :"  
+                                          + tmpUris.get(objet.getCode()))
                                  )
                                    
                                 target.put( tmpUris.get(sujet.getCode()),
                                             target.get(tmpUris.get(sujet.getCode())) + 
-                                            " ; " +  prefixPredicat + ":"            +
-                                            edge.getPredicat() + " :"                + 
+                                            " ; " +  objectProperty + " :"           + 
                                             tmpUris.get(objet.getCode()) )           ;
                            }
                         }
@@ -760,3 +757,4 @@ public class Processor {
         
     }
 }
+
