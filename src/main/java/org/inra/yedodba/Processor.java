@@ -202,7 +202,7 @@ public class Processor {
                                       
                                      source.put(code+hash, label.split(Pattern
                                            .quote(": "))[1].trim())              ;
-                                   }
+                                  }
                                   else 
                                   if ( label.toLowerCase().trim().startsWith("(") && 
                                        label.toLowerCase().contains(")") ) {
@@ -221,23 +221,23 @@ public class Processor {
                                                          .split(Pattern
                                                          .quote(") ")) [0].trim()
                                                          .replace("(", "")))    ;
-                                   }
-                                   else 
-                                   if (label.toLowerCase().startsWith("prefix ")) {
+                                  }
+                                  else 
+                                  if (label.toLowerCase().startsWith("prefix ")) {
                                        String pref = label.split(Pattern.quote(" "))[1] ;
                                        String uri  = label.split(Pattern.quote(" "))[2] ;
                                      
-                                      prefix.put(pref, uri);
-                                   }
-                                   else 
-                                   if (label.replaceAll(" +", " ")
+                                       prefix.put(pref, uri);
+                                  }
+                                  else 
+                                  if (label.replaceAll(" +", " ")
                                            .startsWith("PREDICAT_PREFIX :"))      {
                                        prefixPredicat = label.replaceAll(" +", " ")
-                                                      .split(Pattern
-                                                      .quote("PREDICAT_PREFIX :"))[1] ;
-                                   }
-                                   else 
-                                   if (label.toLowerCase().startsWith("obda-"))   {
+                                                             .split(Pattern
+                                                             .quote("PREDICAT_PREFIX :"))[1] ;
+                                  }
+                                  else 
+                                  if (label.toLowerCase().startsWith("obda-"))   {
                                       
                                     if  ( label.replaceAll(" +", " ")
                                                .split(Pattern.quote(" : ")) [0]
@@ -398,13 +398,13 @@ public class Processor {
                                                         .split(Pattern.quote(" : "))[1]) ;
                                       }
                                     }
-                      } // ShapeNode      
-                    }   // isNode Object   
-                  }     // has Graph       
-                }       // dif null          
-            }           // boucle iterator 
-    }
-    
+                                    
+                       } // ShapeNode      
+                     }  // isNode Object   
+                   }    // has Graph       
+                 }      // dif null          
+              }         // boucle iterator 
+   }
     
     
     private void loadEdges ( JSONObject jsonObj, int hash ) 
