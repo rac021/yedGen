@@ -508,7 +508,7 @@
               <y:Geometry height="30.0" width="4872.625673130879" x="-3168.6900584213117" y="-3268.336093346725"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2927.03125" x="972.7972115654393" y="6.015625">Query_(4):  SELECT     dt.code AS dty_code,     var.code AS var_code,     var.nom AS var_name,     CASE WHEN localestring IS NULL THEN var.nom else localestring END AS var_name_en FROM     datatype dt     INNER JOIN datatypevariableuniteglacpe dtvu      ON dt.id = dtvu.dty_id     INNER JOIN variable_glacpe_varg var      ON dtvu.var_id = var.id      LEFT JOIN localisation  on defaultString =var.nom and entite='variable' and colonne='nom' and localization='en' WHERE     dt.id = 11<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="3138.80078125" x="866.9124459404393" y="6.015625">Query_(4):  SELECT     dt.code AS dty_code,     var.code AS var_code,     var.nom AS var_name,     CASE WHEN localestring IS NULL THEN var.nom else localestring END AS var_name_en FROM     datatype dt     INNER JOIN datatypevariableuniteglacpe dtvu      ON dt.id = dtvu.dty_id     INNER JOIN variable_glacpe_varg var      ON dtvu.var_id = var.id      LEFT JOIN localisation  on defaultString =var.nom and entite='variable' and colonne='nom' and localization='en' WHERE  dt.id = 11 AND var.code = 'azote_ammoniacal'<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1001,7 +1001,7 @@
               <y:Geometry height="30.0" width="546.9148308615408" x="-3782.5067014346537" y="-2330.8100539828292"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="412.369140625" x="67.2728451182702" y="6.015625">(63) ola/observation/experimentalSite/namingStandard/{site_code}<y:LabelModel>
+              <y:NodeLabel alignment="right" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="412.369140625" x="67.27284511827065" y="6.015625">(63) ola/observation/experimentalSite/namingStandard/{site_code}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
