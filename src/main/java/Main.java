@@ -40,8 +40,13 @@ public class Main {
             return ;
         }
         
-        if(ext.length() == 0 ) ext = ".graphml" ;
+        if(ext.length() == 0 ) ext = ".graphml"                     ;
         
-        processor.entryProcess(directory, outFile, ext ) ;
+        long startTime = System.currentTimeMillis()                 ;  
+        processor.entryProcess(directory, outFile, ext )            ;
+        long executionTime = System.currentTimeMillis() - startTime ;
+        System.out.println("Elapsed seconds : " + 
+                                             executionTime / 1000 ) ; 
+        System.out.println(" ")                                     ;
     }
 }
