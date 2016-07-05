@@ -46,7 +46,7 @@ public class Main {
         processor.entryProcess(directory, outFile, ext )            ;
         long executionTime = System.currentTimeMillis() - startTime ;
         System.out.println(" Elapsed seconds : " + 
-                                             executionTime / 1000 ) ; 
+                                      executionTime / 1000 + " s" ) ; 
         System.out.println(" ")                                     ;
     }
 }
