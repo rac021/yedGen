@@ -38,9 +38,11 @@ public class Node {
 
     @Override
     public String toString() {
-        return "Node{" + "id=" + id + 
-                ", code="  + code   +
-                ", label=" + label  +
-                ", ofEntity=" + ofEntity + '}' ;
+           return "Node { " + 
+                "id=" + id  + 
+                ", code = " + code   +
+                ", label="  + label  +
+                ", ofEntity=" + ofEntity + 
+               '}' ;
     }
 }
