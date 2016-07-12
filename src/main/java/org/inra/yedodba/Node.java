@@ -50,6 +50,6 @@ public class Node {
                   ", num = "   + num    +
                   ", label = " + label  +
                   ", ofEntity = " + ofEntity + 
-                  ' } ' ;
+                  " } " ;
     }
 }
