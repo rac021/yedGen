@@ -106,14 +106,14 @@ public class Processor {
                          
                         Node node ;
                         if(code == -1 ) {
-                          node = new Node(id, code + hash, ofEntity, label ) ;
+                          node = new Node(id, code + hash , code , ofEntity, label ) ;
                         }
                         else {
                           if(label.startsWith(":"))  
-                          node = new Node( id, code + hash, 
+                          node = new Node( id, code + hash, code, 
                                            ofEntity, label.split(Pattern.quote("("))[0] + "::#" ) ;
                           else
-                          node = new Node( id, code + hash, 
+                          node = new Node( id, code + hash, code,
                                            ofEntity,label.split(Pattern.quote("("))[0] )          ;
                         }
                         
@@ -414,10 +414,28 @@ public class Processor {
                              .getJSONObject("graph")
                              .has("edge") )
                   return ;
-                                     
-               JSONArray jsonArrayEdges = jsonObj.getJSONObject("graphml")
-                                                 .getJSONObject("graph")
-                                                 .getJSONArray("edge")   ;
+               
+               JSONArray jsonArrayEdges = new JSONArray() ;
+                       
+               if(jsonObj.getJSONObject("graphml")
+                         .getJSONObject("graph")
+                         .get("edge").toString().startsWith("{\"data\""))
+               {
+                jsonArrayEdges.put(jsonObj.getJSONObject("graphml")
+                             .getJSONObject("graph")
+                             .getJSONObject("edge"));
+               }
+               
+               else {
+                
+                jsonArrayEdges = jsonObj.getJSONObject("graphml")
+                                        .getJSONObject("graph")
+                                        .getJSONArray("edge")   ;
+               }
+               
+                jsonArrayEdges = jsonObj.getJSONObject("graphml")
+                                        .getJSONObject("graph")
+                                        .getJSONArray("edge")   ;
                
                 for (int i = 0; i < jsonArrayEdges.length(); i++ ) {
                     
@@ -622,15 +640,34 @@ public class Processor {
                                             objet.getLabel() )                    ;
                            }
                            else {
-                               if( !target.get(tmpUris.get(sujet.getCode()))
+                             
+                               if ( !target.get(tmpUris.get(sujet.getCode()))
                                           .contains( objectProperty  + " :"  
                                           + tmpUris.get(objet.getCode()))
-                                 )
-                                   
-                                target.put( tmpUris.get(sujet.getCode()),
-                                            target.get(tmpUris.get(sujet.getCode())) + 
-                                            " ; " +  objectProperty + " :"           + 
-                                            tmpUris.get(objet.getCode()) )           ;
+                               )
+                                
+                                if(tmpUris.get(objet.getCode()) != null) {   
+                                  
+                                  target.put( tmpUris.get(sujet.getCode()),
+                                              target.get(tmpUris.get(sujet.getCode())) + 
+                                              " ; " +  objectProperty + " :"           + 
+                                              tmpUris.get(objet.getCode()) )           ;
+                                }
+                                
+                                else {
+                                 
+                                 numUris.forEach(( uri, value) -> {
+                                       
+                                   if (value== objet.getNum() ) {
+                                        
+                                        target.put( tmpUris.get(sujet.getCode())     ,
+                                                    target.get(tmpUris.get(sujet.getCode())) + 
+                                                    " ; " +  objectProperty + " :"           + 
+                                                    uri ) ;
+                                   }
+                                 }) ;
+                                  
+                                }
                            }
                         }
                 }
