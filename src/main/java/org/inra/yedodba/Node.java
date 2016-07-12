@@ -8,15 +8,15 @@ package org.inra.yedodba;
 public class Node {
     
     private final String id        ;
-    private final int    code      ;
+    private final int    hash      ;
     private final String label     ;
     private final String ofEntity  ;
-    private final int  num         ;
+    private final int  code        ;
       
-    public Node(String id, int code , int num ,String ofEntity, String label) {
+    public Node(String id, int hash , int code ,String ofEntity, String label) {
         this.id       = id       ;
+        this.hash     = hash     ;
         this.code     = code     ;
-        this.num      = num      ;
         this.ofEntity = ofEntity ;
         this.label    = label    ;
     }
@@ -29,12 +29,12 @@ public class Node {
         return label;
     }
 
-    public int getCode() {
-        return code;
+    public int getHash() {
+        return hash;
     }
 
-    public int getNum() {
-        return num;
+    public int getCode() {
+        return code;
     }
     
     public String getOfEntity() {
@@ -46,8 +46,8 @@ public class Node {
     public String toString() {
            return "Node { "    + 
                   "id=" + id   + 
-                  ", code = "  + code   +
-                  ", num = "   + num    +
+                  ", code = "  + hash   +
+                  ", num = "   + code   +
                   ", label = " + label  +
                   ", ofEntity = " + ofEntity + 
                   " } " ;
