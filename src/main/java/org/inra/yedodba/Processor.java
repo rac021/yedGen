@@ -659,7 +659,7 @@ public class Processor {
                                         
                                         target.put( tmpUris.get(sujet.getCode())     ,
                                                     target.get(tmpUris.get(sujet.getCode())) + 
-                                                    " ; " +  objectProperty + " :"           + 
+                                                    " ; " +  objectProperty + " "            + 
                                                     uri ) ;
                                    }
                                  }) ;
