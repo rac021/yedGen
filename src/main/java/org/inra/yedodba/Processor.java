@@ -433,11 +433,8 @@ public class Processor {
                                         .getJSONArray("edge")   ;
                }
                
-                jsonArrayEdges = jsonObj.getJSONObject("graphml")
-                                        .getJSONObject("graph")
-                                        .getJSONArray("edge")   ;
-               
-                for (int i = 0; i < jsonArrayEdges.length(); i++ ) {
+                   
+               for (int i = 0; i < jsonArrayEdges.length(); i++ ) {
                     
                     Object obj = jsonArrayEdges.get(i)        ;
                     
@@ -546,7 +543,7 @@ public class Processor {
                     else {
                        System.err.println(" Oups !!!!!! " ) ;
                    }
-                }
+               }
             }
 
     private boolean existPrefixStartWith ( String label ) {
