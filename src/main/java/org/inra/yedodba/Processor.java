@@ -156,9 +156,11 @@ public class Processor {
                                                                    .quote(": "))[1]
                                                                    .trim())       ;
                                     }
-                                    else if (label.toLowerCase().trim(
-                                    ).startsWith("(") & label.toLowerCase()
-                                            .contains(")") )                      {
+                                    
+                                    else if (label.toLowerCase()
+                                                  .trim().startsWith("(") && 
+                                                  label.toLowerCase().contains(")") ) {
+                                                      
                                         code =  Integer.parseInt(label
                                                        .split(Pattern.quote(")"))[0]
                                                        .replaceAll("[^0-9]", ""))  ;
@@ -172,8 +174,8 @@ public class Processor {
 
                             else
 
-                            if ( jsonArrayGroupNodes.toString().startsWith("{\"data\":{")  ||
-                                    jsonArrayGroupNodes.toString().startsWith("[{\"data\":{") ) {
+                            if ( jsonArrayGroupNodes.toString().startsWith("{\"data\":{")   ||
+                                 jsonArrayGroupNodes.toString().startsWith("[{\"data\":{") ) {
 
                                 if ( jsonArrayGroupNodes.getJSONObject(j)
                                                         .getJSONObject("data")
