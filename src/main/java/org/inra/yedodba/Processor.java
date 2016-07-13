@@ -96,13 +96,13 @@ public class Processor {
                     if(label.contains("(") && label.contains(")")) {
                         code =  Integer.parseInt(
                                 label.split(Pattern.quote("("))[1]
-                                        .replaceAll("[^0-9]", "")) ;
+                                     .replaceAll("[^0-9]", "")) ;
                         ofEntity = label.trim().split(Pattern.quote("("))[0]  ;
                     }
 
                     Node node ;
                     if(code == -1 ) {
-                        node = new Node(id, code + hash , code , ofEntity, label ) ;
+                        node = new Node (id, code + hash , code , ofEntity, label ) ;
                     }
                     else {
                         if(label.startsWith(":"))
@@ -219,7 +219,7 @@ public class Processor {
                                                         .replace("(", ""))     ;
                                         
                                         if(numUris.values().contains( co )) {
-                                          System.out.println("ALERT : Code : " + co + " Detected multiple times ! ") ;
+                                          System.out.println("ALERT # Code : " + co + " Detected multiple times ! ") ;
                                         }
                                          
                                         numUris.put( ":" + label.split( Pattern
@@ -339,7 +339,7 @@ public class Processor {
                                                             .trim()) ;
 
                                 if (numUris.values().contains( code )) {
-                                   System.out.println("ALERT : Code { " + code + " } Detected multiple times ! ") ;
+                                   System.out.println("ALERT # Code { " + code + " } Detected multiple times ! ") ;
                                 }
                                          
                                 numUris.put( ":" + label.split( Pattern
@@ -628,7 +628,6 @@ public class Processor {
                                               ) ;
                                 }
                             }) ;
-
                         }
                 }
             }
