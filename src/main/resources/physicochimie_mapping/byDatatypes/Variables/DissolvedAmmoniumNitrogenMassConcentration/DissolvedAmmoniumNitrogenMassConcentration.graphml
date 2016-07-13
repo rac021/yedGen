@@ -931,9 +931,9 @@
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="42.0" width="108.0" x="-2221.3152068599356" y="-1361.1595774731265"/>
-          <y:Fill color="#000000" transparent="false"/>
+          <y:Fill color="#FF99CC" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" underlinedText="true" visible="true" width="95.845703125" x="6.0771484375" y="13.1796875">Observation(57)<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" underlinedText="true" visible="true" width="27.056640625" x="40.4716796875" y="13.1796875">(57)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
