@@ -448,8 +448,10 @@ public class Processor {
                     
                 }
                 else {
-                  
+                    
+                    System.err.println(" ") ;
                     System.err.println(" Oops something went wrong !! ")       ;
+                    System.err.println(" ") ;
                 }
 
             }
@@ -510,7 +512,9 @@ public class Processor {
 
             }
             else {
-                System.err.println(" Oups !!!!!! " ) ;
+                System.err.println(" ") ;
+                System.err.println(" Oups !! " ) ;
+                System.err.println(" ") ;
             }
         }
     }
@@ -626,7 +630,9 @@ public class Processor {
                                               .findFirst().get() ;
     
                           if( uri == null ) {
-                             System.err.println(" Uri with code { "+ objet.getCode() + " }  not found ! ") ;
+                             System.err.println(" ") ;
+                             System.err.println("  Uri with code { "+ objet.getCode() + " }  not found ! ") ;
+                             System.err.println(" ") ;
                           }
                           
                           target.put( tmpUris.get(sujet.getHash())             ,
@@ -689,7 +695,9 @@ public class Processor {
             int num = numUris.get(myTarget.split(" ")[0]) ;
 
             if ( myTarget.contains ( ":null" ) ) {
-              System.err.println(" Null Value # Something went wrong with code { " + num + " } ") ;
+              System.err.println(" ") ;
+              System.err.println("  Null Value # Something went wrong with code { " + num + " } ") ;
+              System.err.println(" ") ;
             } 
 
             String keyByURI = getKeyByURI("("+num+")_"+myTarget.split(" ")[0]) ;
