@@ -619,12 +619,16 @@ public class Processor {
 
                         else {
 
-                            String uri = numUris.entrySet()
-                                .stream()
-                                .filter(e -> e.getValue() == objet.getCode() )
-                                .map(Map.Entry::getKey)
-                                .findFirst().get();
-
+                          String uri = numUris.entrySet()
+                                              .stream()
+                                              .filter(e -> e.getValue() == objet.getCode() )
+                                              .map(Map.Entry::getKey)
+                                              .findFirst().get() ;
+    
+                          if( uri == null ) {
+                             System.err.println(" Uri with code { "+ objet.getCode() + " }  not found ! ") ;
+                          }
+                          
                           target.put( tmpUris.get(sujet.getHash())             ,
                                       target.get(tmpUris.get(sujet.getHash())) +
                                       " ; " +  objectProperty + " "            +
