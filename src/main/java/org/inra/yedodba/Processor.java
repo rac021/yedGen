@@ -688,6 +688,10 @@ public class Processor {
 
             int num = numUris.get(myTarget.split(" ")[0]) ;
 
+            if( myTarget.contains ( ":null" ) ) {
+              System.err.println(" Null Value # Something went wrong with code { " + num + " } ") ;
+            } 
+
             String keyByURI = getKeyByURI("("+num+")_"+myTarget.split(" ")[0]) ;
 
             if(keyByURI.endsWith("_") )
