@@ -3,10 +3,10 @@ package org.inra.yedodba ;
 
 import org.json.XML ;
 import java.io.File ;
-import java.util.* ;
+import java.util.*  ;
 
-import org.json.JSONArray ;
-import java.nio.file.Path ;
+import org.json.JSONArray  ;
+import java.nio.file.Path  ;
 import java.io.InputStream ;
 import org.json.JSONObject ;
 
@@ -109,8 +109,8 @@ public class Processor {
                             node = new Node( id, code + hash, code,
                                     ofEntity, label.split(Pattern.quote("("))[0] + "::#" ) ;
                         else
-                            node = new Node( id, code + hash, code,
-                                    ofEntity,label.split(Pattern.quote("("))[0] )          ;
+                            node = new Node ( id, code + hash, code, ofEntity,
+                                              label.split(Pattern.quote("("))[0] )         ;
                     }
 
                     nodes.put(id, node) ;
@@ -213,20 +213,25 @@ public class Processor {
                                                                     .quote(")")) [1]
                                                                     .trim())       ;
 
+                                        int co = Integer.parseInt(label
+                                                        .split(Pattern
+                                                        .quote(") ")) [0].trim()
+                                                        .replace("(", ""))     ;
+                                        
+                                        if(numUris.values().contains( co )) {
+                                          System.out.println("ALERT : Code : " + co + " Detected multiple times ! ") ;
+                                        }
+                                         
                                         numUris.put( ":" + label.split( Pattern
                                                                 .quote(")")) [1]
-                                                                .trim()      ,
-                                                Integer.parseInt(label
-                                                       .split(Pattern
-                                                       .quote(") ")) [0].trim()
-                                                       .replace("(", "")))    ;
+                                                                .trim() , co ) ;
                                     }
                                     else
                                     if (label.toLowerCase().startsWith("prefix ")) {
                                         String pref = label.split(Pattern.quote(" "))[1] ;
                                         String uri  = label.split(Pattern.quote(" "))[2] ;
 
-                                        prefix.put(pref, uri);
+                                        prefix.put(pref, uri) ;
                                     }
                                     else
                                     if (label.replaceAll(" +", " ")
@@ -295,8 +300,8 @@ public class Processor {
                                      .toString().startsWith("{\"node\":{"))   {
 
                         JSONObject jsonArrayGroupNodes = jsonObjectNode.
-                                   getJSONObject("graph")
-                                  .getJSONObject("node") ;
+                                                         getJSONObject("graph")
+                                                        .getJSONObject("node") ;
 
                         if( jsonArrayGroupNodes.getJSONObject("data")
                                                .has("y:ShapeNode")) {
@@ -333,19 +338,18 @@ public class Processor {
                                                             .quote(")"))[1]
                                                             .trim()) ;
 
+                                if (numUris.values().contains( code )) {
+                                   System.out.println("ALERT : Code { " + code + " } Detected multiple times ! ") ;
+                                }
+                                         
                                 numUris.put( ":" + label.split( Pattern
                                                         .quote(")")) [1]
-                                                        .trim()        ,
-                                            Integer.parseInt(label
-                                                   .split(Pattern
-                                                   .quote(") ")) [0].trim()
-                                                   .replace("(", "")))    ;
-
+                                                        .trim() , code ) ;
                             }
                             
                             else
                             
-                            if(label.toLowerCase().startsWith("prefix "))  {
+                            if(label.toLowerCase().startsWith("prefix "))        {
                                 String pref = label.split(Pattern.quote(" "))[1] ;
                                 String uri  = label.split(Pattern.quote(" "))[2] ;
                                 prefix.put(pref, uri) ;
@@ -354,7 +358,7 @@ public class Processor {
                             else
                             
                             if(label.replaceAll(" +", " ")
-                                    .startsWith("PREDICAT_PREFIX :"))      {
+                                    .startsWith("PREDICAT_PREFIX :"))       {
                                 PREFIX_PREDICAT = label.replaceAll(" +", " ")
                                                        .split(Pattern
                                                        .quote("PREDICAT_PREFIX :"))[1]
@@ -445,7 +449,7 @@ public class Processor {
                 }
                 else {
                   
-                    System.err.println(" Oops something went wrong !! ") ;
+                    System.err.println(" Oops something went wrong !! ")       ;
                 }
 
             }
@@ -579,14 +583,12 @@ public class Processor {
                                 source.get(sujet.getHash()))   ;
             }
             else {
-                if (    objet.getLabel().startsWith("<")       ||
-                        objet.getLabel().startsWith("{")       ||
-                        objet.getLabel().startsWith("\"")      ||
-                        existPrefixStartWith(objet.getLabel()) ||
-                        (  objet.getLabel().startsWith(":")  &&
-                          !objet.getLabel().endsWith("::#")
-                        )
-                ) {
+                if ( objet.getLabel().startsWith("<")       ||
+                     objet.getLabel().startsWith("{")       ||
+                     objet.getLabel().startsWith("\"")      ||
+                     existPrefixStartWith(objet.getLabel()) ||
+                     (  objet.getLabel().startsWith(":")    &&
+                       !objet.getLabel().endsWith("::#") ))  {
 
                     if(!target.get(
                             tmpUris.get(sujet.getHash()))
@@ -610,9 +612,9 @@ public class Processor {
                        if (tmpUris.get(objet.getHash()) != null) {
 
                             target.put( tmpUris.get(sujet.getHash()),
-                                    target.get(tmpUris.get(sujet.getHash()))  +
-                                            " ; " +  objectProperty + " :"    +
-                                            tmpUris.get(objet.getHash()) )    ;
+                                    target.get(tmpUris.get(sujet.getHash())) +
+                                          " ; " +  objectProperty + " :"     +
+                                          tmpUris.get(objet.getHash()) )     ;
                        }
 
                         else {
@@ -621,7 +623,7 @@ public class Processor {
 
                                 if (value == objet.getCode() ) {
 
-                                    target.put( tmpUris.get(sujet.getHash())     ,
+                                    target.put( tmpUris.get(sujet.getHash())             ,
                                                 target.get(tmpUris.get(sujet.getHash())) +
                                                  " ; " +  objectProperty + " "           +
                                                  uri 
