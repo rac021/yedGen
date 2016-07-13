@@ -122,7 +122,7 @@ public class Processor {
 
                         JSONArray jsonArrayGroupNodes =
                                 jsonObjectNode.getJSONObject("graph")
-                                        .getJSONArray("node") ;
+                                              .getJSONArray("node") ;
 
                         for (int j = 0; j < jsonArrayGroupNodes.length(); j++) {
 
@@ -138,11 +138,11 @@ public class Processor {
                                             .getString("id") ;
 
                                     String label = jsonArrayGroupNodes.getJSONObject(j)
-                                            .getJSONArray("data")
-                                            .getJSONObject(1)
-                                            .getJSONObject("y:ShapeNode")
-                                            .getJSONObject("y:NodeLabel")
-                                            .getString("content") ;
+                                                                      .getJSONArray("data")
+                                                                      .getJSONObject(1)
+                                                                      .getJSONObject("y:ShapeNode")
+                                                                      .getJSONObject("y:NodeLabel")
+                                                                      .getString("content") ;
 
                                     int code ;
 
@@ -160,12 +160,12 @@ public class Processor {
                                     ).startsWith("(") & label.toLowerCase()
                                             .contains(")") )                      {
                                         code =  Integer.parseInt(label
-                                                .split(Pattern.quote(")"))[0]
-                                                .replaceAll("[^0-9]", ""))  ;
+                                                       .split(Pattern.quote(")"))[0]
+                                                       .replaceAll("[^0-9]", ""))  ;
 
-                                        tmpUris.put(code+hash , label.split(Pattern
-                                                .quote(")"))[1]
-                                                .trim())      ;
+                                        tmpUris.put(code + hash , label.split( Pattern
+                                                                       .quote(")"))[1]
+                                                                       .trim())      ;
                                     }
                                 }
                             }
@@ -180,7 +180,7 @@ public class Processor {
                                                         .has("y:ShapeNode"))       {
 
                                     String id = jsonArrayGroupNodes.getJSONObject(j)
-                                            .getString("id") ;
+                                                                   .getString("id") ;
 
                                     String label = jsonArrayGroupNodes.getJSONObject(j)
                                                                       .getJSONObject("data")
@@ -192,16 +192,19 @@ public class Processor {
 
                                     if (label.toLowerCase().startsWith("query_(")) {
                                         code =  Integer.parseInt(label
-                                                .split(Pattern.quote(":"))[0]
-                                                .split(Pattern.quote("_"))[1]
-                                                .replaceAll("[^0-9]", ""))  ;
+                                                       .split(Pattern.quote(":"))[0]
+                                                       .split(Pattern.quote("_"))[1]
+                                                       .replaceAll("[^0-9]", ""))  ;
 
                                         source.put(code+hash, label.split(Pattern
                                                 .quote(": "))[1].trim())        ;
                                     }
+                                    
                                     else
-                                    if ( label.toLowerCase().trim().startsWith("(") &&
-                                            label.toLowerCase().contains(")") ) {
+                                    
+                                    if ( label.toLowerCase().trim().startsWith("(") 
+                                         && label.toLowerCase().contains(")") )   {
+                                                
                                         code =  Integer.parseInt(label
                                                        .split(Pattern.quote(")"))[0]
                                                        .replaceAll("[^0-9]", ""))  ;
@@ -237,15 +240,16 @@ public class Processor {
 
                                         if  ( label.replaceAll(" +", " ")
                                                    .split(Pattern.quote(" : ")) [0]
-                                                   .equals("obda-sourceUri"))       {
+                                                   .equals("obda-sourceUri"))     {
+                                                       
                                             SourceDeclaration.put("sourceUri",
                                                     label.replaceAll(" +", " ")
                                                          .split(Pattern
                                                          .quote(" : "))[1]) ;
                                         }
-                                        else if (label.replaceAll(" +", " ")
-                                                .split(Pattern.quote(" : ")) [0]
-                                                .equals("obda-connectionUrl")) {
+                                        else if ( label.replaceAll(" +", " ")
+                                                       .split(Pattern.quote(" : ")) [0]
+                                                       .equals("obda-connectionUrl")) {
                                                   
                                             SourceDeclaration.put("connectionUrl", label
                                                              .replaceAll(" +", " ")
@@ -257,9 +261,9 @@ public class Processor {
                                                       .equals("obda-username"))     {
                                                         
                                             SourceDeclaration.put("username", label
-                                                              .replaceAll(" +", " ")
-                                                              .split(Pattern
-                                                              .quote(" : "))[1])  ;
+                                                             .replaceAll(" +", " ")
+                                                             .split(Pattern
+                                                             .quote(" : "))[1])   ;
                                         }
                                         else if (label.replaceAll(" +", " ")
                                                       .split(Pattern.quote(" : "))[0]
@@ -268,16 +272,16 @@ public class Processor {
                                             SourceDeclaration.put("password", label
                                                              .replaceAll(" +", " ")
                                                              .split(Pattern
-                                                             .quote(" : "))[1]) ;
+                                                             .quote(" : "))[1])   ;
                                         }
-                                        else if (label.replaceAll(" +", " ")
-                                                      .split(Pattern.quote(" : "))[0]
-                                                      .equals("obda-driverClass"))  {
+                                        else if ( label.replaceAll(" +", " ")
+                                                       .split(Pattern.quote(" : "))[0]
+                                                       .equals("obda-driverClass"))  {
                                                         
                                             SourceDeclaration.put("driverClass", label
                                                              .replaceAll(" +", " ")
                                                              .split(Pattern
-                                                            .quote(" : "))[1])  ;
+                                                             .quote(" : "))[1])   ;
                                         }
                                     }
                                 }
@@ -288,7 +292,7 @@ public class Processor {
                     else
 
                     if(jsonObjectNode.getJSONObject("graph")
-                            .toString().startsWith("{\"node\":{"))   {
+                                     .toString().startsWith("{\"node\":{"))   {
 
                         JSONObject jsonArrayGroupNodes = jsonObjectNode.
                                    getJSONObject("graph")
@@ -297,8 +301,7 @@ public class Processor {
                         if( jsonArrayGroupNodes.getJSONObject("data")
                                                .has("y:ShapeNode")) {
 
-                            String id = jsonArrayGroupNodes
-                                        .getString("id") ;
+                            String id = jsonArrayGroupNodes.getString("id") ;
 
                             String label = jsonArrayGroupNodes
                                             .getJSONObject("data")
@@ -319,8 +322,8 @@ public class Processor {
                                                            .trim())       ;
                             }
                             else
-                            if( label.toLowerCase().trim().startsWith("(") &&
-                                    label.toLowerCase().contains(")") )     {
+                            if( label.toLowerCase().trim().startsWith("(") 
+                                && label.toLowerCase().contains(")") )   {
                                       
                                 code =  Integer.parseInt(label
                                                .split(Pattern.quote(")"))[0]
@@ -332,7 +335,7 @@ public class Processor {
 
                                 numUris.put( ":" + label.split( Pattern
                                                         .quote(")")) [1]
-                                                        .trim()    ,
+                                                        .trim()        ,
                                             Integer.parseInt(label
                                                    .split(Pattern
                                                    .quote(") ")) [0].trim()
@@ -619,9 +622,10 @@ public class Processor {
                                 if (value == objet.getCode() ) {
 
                                     target.put( tmpUris.get(sujet.getHash())     ,
-                                                 target.get(tmpUris.get(sujet.getHash())) +
-                                                 " ; " +  objectProperty + " "            +
-                                                 uri ) ;
+                                                target.get(tmpUris.get(sujet.getHash())) +
+                                                 " ; " +  objectProperty + " "           +
+                                                 uri 
+                                              ) ;
                                 }
                             }) ;
 
@@ -651,11 +655,11 @@ public class Processor {
 
             outs.add("") ;
 
-            String SOURCE_DEC_STRING = "[SourceDeclaration]\n"            +
-                                        "sourceUri	?sourceUri\n"         +
-                                        "connectionUrl	?connectionUrl\n" +
-                                        "username	?username\n"            +
-                                        "password	?password\n"            +
+            String SOURCE_DEC_STRING = "[SourceDeclaration]\n"              +
+                                        "sourceUri	?sourceUri\n"       +
+                                        "connectionUrl	?connectionUrl\n"   +
+                                        "username	?username\n"        +
+                                        "password	?password\n"        +
                                         "driverClass	?driverClass"       ;
 
             outs.add(SOURCE_DEC_STRING.replace("?sourceUri", SourceDeclaration.get("sourceUri"))
