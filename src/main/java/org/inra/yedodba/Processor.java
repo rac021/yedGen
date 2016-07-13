@@ -619,17 +619,16 @@ public class Processor {
 
                         else {
 
-                            numUris.forEach(( uri, value) -> {
+                            String uri = numUris.entrySet()
+                                .stream()
+                                .filter(e -> e.getValue() == objet.getCode() )
+                                .map(Map.Entry::getKey)
+                                .findFirst().get();
 
-                                if (value == objet.getCode() ) {
-
-                                    target.put( tmpUris.get(sujet.getHash())             ,
-                                                target.get(tmpUris.get(sujet.getHash())) +
-                                                 " ; " +  objectProperty + " "           +
-                                                 uri 
-                                              ) ;
-                                }
-                            }) ;
+                          target.put( tmpUris.get(sujet.getHash())             ,
+                                      target.get(tmpUris.get(sujet.getHash())) +
+                                      " ; " +  objectProperty + " "            +
+                                       uri  )  ;
                         }
                 }
             }
