@@ -1,3 +1,4 @@
+
 package org.inra.yedodba ;
 
 import org.json.XML ;
@@ -568,7 +569,7 @@ public class Processor {
                     String objectProperty =  edge.getPredicat().contains(":") ? edge.getPredicat() : 
                                              prefixPredicat + ":" + edge.getPredicat() ;
                     
-                    if(!target.containsKey(tmpUris.get(sujet.getHash()))) {
+                    if(!target.containsKey(tmpUris.get(sujet.getCode()))) {
                         
                             if( objet.getLabel().startsWith("<")       ||
                                 objet.getLabel().startsWith("{")       ||
@@ -582,8 +583,8 @@ public class Processor {
                            
                             if(!sujet.getOfEntity().startsWith(":"))      {
                                 
-                                target.put( tmpUris.get(sujet.getHash())  , 
-                                            tmpUris.get(sujet.getHash())  + 
+                                target.put( tmpUris.get(sujet.getCode())  , 
+                                            tmpUris.get(sujet.getCode())  + 
                                             " a " +  prefixPredicat + ":" +
                                             sujet.getOfEntity() + " ; "   +
                                             objectProperty  +  " "        + 
@@ -591,8 +592,8 @@ public class Processor {
                             }
                             else {
                                 
-                               target.put( tmpUris.get(sujet.getHash())   , 
-                                            tmpUris.get(sujet.getHash())  + 
+                               target.put( tmpUris.get(sujet.getCode())   , 
+                                            tmpUris.get(sujet.getCode())  + 
                                             " a " + sujet.getOfEntity()   +
                                             " ; " + prefixPredicat        +
                                             ":"   + edge.getPredicat()    +
@@ -602,16 +603,16 @@ public class Processor {
                             }
                                                        
                             else {
-                            target.put( tmpUris.get(sujet.getHash()) ,
-                                        tmpUris.get(sujet.getHash()) + 
+                            target.put( tmpUris.get(sujet.getCode()) ,
+                                        tmpUris.get(sujet.getCode()) + 
                                         " a " + prefixPredicat + ":" +
                                         sujet.getOfEntity() + " ;  " +
                                         objectProperty   +  " :"     +
-                                        tmpUris.get(objet.getHash()) ) ;
+                                        tmpUris.get(objet.getCode()) ) ;
                             }
                             
-                            uris.put( ":" + tmpUris.get( sujet.getHash() ) ,
-                                            source.get(sujet.getHash()))   ;
+                            uris.put( ":" + tmpUris.get( sujet.getCode() ) ,
+                                            source.get(sujet.getCode()))   ;
                     }
                     else {
                            if( objet.getLabel().startsWith("<")       ||
@@ -624,40 +625,40 @@ public class Processor {
                              ) {
                                                                  
                                if(!target.get(
-                                          tmpUris.get(sujet.getHash()))
+                                          tmpUris.get(sujet.getCode()))
                                                  .contains( objectProperty  
                                                  + " " + objet.getLabel()) 
                                   )
                                 
-                                target.put( tmpUris.get(sujet.getHash()) ,
+                                target.put( tmpUris.get(sujet.getCode()) ,
                                             target.get(
-                                            tmpUris.get(sujet.getHash())) + " ; " +
+                                            tmpUris.get(sujet.getCode())) + " ; " +
                                             objectProperty +  " "                 +
                                             objet.getLabel() )                    ;
                            }
                            else {
                              
-                               if ( !target.get(tmpUris.get(sujet.getHash()))
+                               if ( !target.get(tmpUris.get(sujet.getCode()))
                                           .contains( objectProperty  + " :"  
-                                          + tmpUris.get(objet.getHash()))
+                                          + tmpUris.get(objet.getCode()))
                                )
                                 
-                                if(tmpUris.get(objet.getHash()) != null) {   
+                                if(tmpUris.get(objet.getCode()) != null) {   
                                   
-                                  target.put( tmpUris.get(sujet.getHash()),
-                                              target.get(tmpUris.get(sujet.getHash())) + 
+                                  target.put( tmpUris.get(sujet.getCode()),
+                                              target.get(tmpUris.get(sujet.getCode())) + 
                                               " ; " +  objectProperty + " :"           + 
-                                              tmpUris.get(objet.getHash()) )           ;
+                                              tmpUris.get(objet.getCode()) )           ;
                                 }
                                 
                                 else {
                                  
                                  numUris.forEach(( uri, value) -> {
                                        
-                                   if (value== objet.getCode() ) {
+                                   if (value== objet.getNum() ) {
                                         
-                                        target.put( tmpUris.get(sujet.getHash())     ,
-                                                    target.get(tmpUris.get(sujet.getHash())) + 
+                                        target.put( tmpUris.get(sujet.getCode())     ,
+                                                    target.get(tmpUris.get(sujet.getCode())) + 
                                                     " ; " +  objectProperty + " "            + 
                                                     uri ) ;
                                    }
