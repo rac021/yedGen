@@ -135,7 +135,7 @@ public class Processor {
                                                         .has("y:ShapeNode")) {
 
                                     String id = jsonArrayGroupNodes.getJSONObject(j)
-                                            .getString("id") ;
+                                                .getString("id") ;
 
                                     String label = jsonArrayGroupNodes.getJSONObject(j)
                                                                       .getJSONArray("data")
@@ -426,10 +426,8 @@ public class Processor {
                     edges.add(e) ;
 
                 }
-                else
-                if(jsonObject.getJSONObject("data")
-                        .has("y:ArcEdge"))
-                {
+                
+                else if ( jsonObject.getJSONObject("data").has("y:ArcEdge") )  {
 
                     String id    = jsonObject.getString("id")     + "_" + hash ;
 
