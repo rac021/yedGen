@@ -688,7 +688,7 @@ public class Processor {
 
             int num = numUris.get(myTarget.split(" ")[0]) ;
 
-            if( myTarget.contains ( ":null" ) ) {
+            if ( myTarget.contains ( ":null" ) ) {
               System.err.println(" Null Value # Something went wrong with code { " + num + " } ") ;
             } 
 
