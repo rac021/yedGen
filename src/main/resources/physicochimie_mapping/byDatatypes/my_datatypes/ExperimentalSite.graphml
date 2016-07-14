@@ -51,7 +51,7 @@
     <node id="n2">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="304.84668181561153" x="1074.7749322296988" y="-398.37115431923826"/>
+          <y:Geometry height="30.0" width="304.84668181561153" x="1074.7749322296988" y="-372.04928962796237"/>
           <y:Fill color="#F6FF00CC" transparent="false"/>
           <y:BorderStyle color="#CC9900" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="300.748046875" x="2.049317470305823" y="7.1796875">:Anaee-franceExperimentalNetworkNamingStandard<y:LabelModel>
@@ -68,7 +68,7 @@
     <node id="n3">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="107.99999999999994" x="976.1934527832491" y="-316.4742375884715"/>
+          <y:Geometry height="30.0" width="107.99999999999994" x="976.1934527832491" y="-82.46912601510138"/>
           <y:Fill color="#000000" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="96.6611328125" x="5.66943359375" y="7.1796875">oboe-core:Name<y:LabelModel>
@@ -153,7 +153,7 @@
     <node id="n8">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="285.80091340225647" x="1093.820700643054" y="-139.95131859407343"/>
+          <y:Geometry height="30.0" width="285.80091340225647" x="1093.820700643054" y="-279.993027919875"/>
           <y:Fill color="#F6FF00CC" transparent="false"/>
           <y:BorderStyle color="#CC9900" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="275.318359375" x="5.241277013628178" y="7.1796875">:Anaee-franceExperimentalSiteNamingStandard<y:LabelModel>
@@ -206,8 +206,8 @@
         <y:ShapeNode>
           <y:Geometry height="42.0" width="108.0" x="676.1813534242619" y="-211.95131859407343"/>
           <y:Fill color="#000000" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="95.845703125" x="6.0771484375" y="13.1796875">Observation(62)<y:LabelModel>
+          <y:BorderStyle color="#333300" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" underlinedText="true" visible="true" width="95.845703125" x="6.0771484375" y="13.1796875">Observation(62)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -484,6 +484,57 @@
         </node>
       </graph>
     </node>
+    <node id="n16">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="165.43593128236273" x="918.7575215008865" y="82.92495871734343"/>
+          <y:Fill color="#F6FF00CC" transparent="false"/>
+          <y:BorderStyle color="#CC9900" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="103.0869140625" x="31.17450860993131" y="7.1796875">:NamingStandard<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="roundrectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n17">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="214.80123596060918" x="869.39221682264" y="5.18407866842665"/>
+          <y:Fill color="#00FF00" transparent="false"/>
+          <y:BorderStyle color="#FF0000" type="line" width="3.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="165.6943359375" x="24.55345001155456" y="7.1796875">&lt;{site_name}^^xsd:string&gt;<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="roundrectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n18">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="42.0" width="108.0" x="676.1813534242619" y="-0.8159213315733496"/>
+          <y:Fill color="#000000" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="104.4248046875" x="1.78759765625" y="13.1796875">Measurement(63)<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="roundrectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
     <edge id="e0" source="n11" target="n12">
       <data key="d8"/>
       <data key="d10">
@@ -517,7 +568,7 @@
           <y:Path sx="-33.02062097721159" sy="5.632366114176193" tx="-18.703605610720388" ty="14.991037874668791"/>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="centered" modelPosition="center" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" visible="true" width="94.0439453125" x="-47.0219936477838" y="-45.08936500533497">ofCharacteristic<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="centered" modelPosition="center" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" visible="true" width="94.0439453125" x="-47.0219936477838" y="35.94814866709228">ofCharacteristic<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
@@ -528,15 +579,15 @@
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-35.13523567970469" sy="3.01203324690141" tx="-109.34412033356011" ty="-2.5195989857970744">
-            <y:Point x="1009.3752324700356" y="-127.4709175798705"/>
+            <y:Point x="1009.3752324700356" y="-267.51262690567205"/>
           </y:Path>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" visible="true" width="81.6513671875" x="-19.714328221084884" y="44.48728859688731">usesStandard<y:LabelModel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" visible="true" width="81.6513671875" x="-19.714328221084884" y="-73.16323115371893">usesStandard<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5" segment="1"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5" segment="-1"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -593,13 +644,10 @@
       <data key="d8"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="25.088897448600164" sy="20.979544367916446" tx="-110.78966842144496" ty="-15.010003996188061">
-            <y:Point x="1116.4086047160597" y="-434.1260069681333"/>
-            <y:Point x="1116.4086047160597" y="-416.25494904351035"/>
-          </y:Path>
+          <y:Path sx="25.088897448600164" sy="20.979544367916446" tx="-110.78966842144496" ty="-15.010003996188061"/>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" anchorX="2.000035380122199" anchorY="5.553182854057923" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" rotationAngle="90.0" textColor="#333333" upX="1.0" upY="1.8369701987210297E-16" visible="true" width="81.6513671875" x="2.0000353801221964" y="5.553182854057923">usesStandard<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="2.0000353801224264" anchorY="23.19797014299394" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" rotationAngle="90.0" textColor="#333333" upX="1.0" upY="1.8369701987210297E-16" visible="true" width="81.6513671875" x="2.0000353801224238" y="23.19797014299394">usesStandard<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -683,6 +731,74 @@
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
           <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="side_slider" preferredPlacement="center_on_edge" ratio="0.0" textColor="#333333" visible="true" width="94.0439453125" x="10.099370353397035" y="-17.640616033315382">ofCharacteristic<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e13" source="n18" target="n17">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#999999" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="side_slider" preferredPlacement="center" ratio="0.0" textColor="#333333" visible="true" width="55.6357421875" x="10.148638580511943" y="-17.640624548126084">hasValue<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e14" source="n18" target="n16">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="-82.70024449081006" ty="2.6381419635304155">
+            <y:Point x="730.6323742604484" y="99.31554837385113"/>
+          </y:Path>
+          <y:LineStyle color="#999999" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" anchorX="30.611580712042496" anchorY="56.35155080675267" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" upX="0.0066307316991342504" upY="-0.999978016456929" visible="true" width="81.6513671875" x="30.611580712042496" y="40.711269643106014">usesStandard<y:LabelModel>
+              <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5" segment="-1"/>
+            </y:ModelParameter>
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e15" source="n11" target="n18">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="4.504163358258268" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#999999" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="side_slider" preferredPlacement="center" ratio="0.125" textColor="#333333" visible="true" width="101.1875" x="2.0000179750431926" y="26.805458969012534">hasMeasurement<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e16" source="n18" target="n3">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="25.632374260448387" sy="-21.034573198151985" tx="-35.14925373546657" ty="-2.892523168435787">
+            <y:Point x="755.8137276847103" y="-70.36164918353717"/>
+          </y:Path>
+          <y:LineStyle color="#999999" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" visible="true" width="94.0439453125" x="37.15691054647971" y="-67.51115467956225">ofCharacteristic<y:LabelModel>
+              <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5" segment="1"/>
+            </y:ModelParameter>
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
