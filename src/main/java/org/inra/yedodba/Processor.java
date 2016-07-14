@@ -719,9 +719,9 @@ public class Processor {
             if(keyByURI.endsWith("_") )
                 keyByURI = keyByURI.substring(0, keyByURI.length() - 1 ) ;
 
-            if( !myTarget.startsWith(":null")) {
+            if ( ! myTarget.startsWith (":null") ) {
 
-                if( uris.get(myTarget.split(" ")[0]) == null ) {
+                if ( uris.get(myTarget.split(" ")[0] ) == null ) {
                     throw new Exception(" No Query found for : " + myTarget.split(" ")[0] ) ;
                 }
 
