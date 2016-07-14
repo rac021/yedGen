@@ -258,14 +258,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="307.40754852690486" width="1877.91524598929" x="581.8544852532507" y="-1067.6837183284433"/>
+              <y:Geometry height="364.6245800121254" width="1886.6233160208326" x="573.146415221708" y="-1067.6837183284433"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1877.91524598929" x="0.0" y="0.0"> Querie(s) </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1886.6233160208326" x="0.0" y="0.0"> Querie(s) </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="13" bottomF="12.834173398321013" left="1" leftF="1.2427180528434292" right="26" rightF="25.511653473567094" top="5" topF="5.426250515048196"/>
+              <y:BorderInsets bottom="20" bottomF="20.297264461610666" left="0" leftF="0.0" right="26" rightF="25.511653473567094" top="5" topF="5.426250515048196"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -301,7 +301,7 @@
         <node id="n14::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1820.3408338572603" x="598.9172439117131" y="-972.7538560353585"/>
+              <y:Geometry height="30.0" width="1820.3408338572603" x="588.966455827327" y="-922.9999156134276"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1651.029296875" x="84.65576849113017" y="6.015625">Query_(64): SELECT site_glacpe_sit.code AS site_code,  CASE site_glacpe_sit.code   WHEN 'annecy' THEN '#AnnecyLake'     WHEN 'bourget' THEN '#BourgetLake'        WHEN 'leman' THEN '#GenevaLake'     ELSE '#unknown_uri'     END  AS uri     FROM 	 public.site_glacpe_sit <y:LabelModel>
@@ -318,7 +318,7 @@
         <node id="n14::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1821.1608744628797" x="598.0972033060941" y="-918.6513169880291"/>
+              <y:Geometry height="30.0" width="1821.1608744628797" x="588.146415221708" y="-868.8973765660982"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="288.759765625" x="766.2005544189399" y="6.015625">Query_(65): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -335,7 +335,7 @@
         <node id="n14::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1820.3408338572603" x="598.0972033060941" y="-869.011464116141"/>
+              <y:Geometry height="30.0" width="1820.3408338572603" x="588.146415221708" y="-819.2575236942101"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="288.759765625" x="765.7905341161302" y="6.015625">Query_(66): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -352,10 +352,27 @@
         <node id="n14::n4">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1820.3408338572603" x="598.0972033060941" y="-818.1103431998595"/>
+              <y:Geometry height="30.0" width="1820.3408338572603" x="588.146415221708" y="-768.3564027779286"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="288.759765625" x="765.7905341161302" y="6.015625">Query_(67): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n14::n5">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="30.0" width="1820.9349161909117" x="598.3231615780621" y="-974.9281553480578"/>
+              <y:Fill color="#99CCFF" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="674.095703125" x="573.4196065329559" y="6.015625">Query_(63): SELECT 	site_glacpe_sit.code AS site_code , site_glacpe_sit.nom AS site_name FROM site_glacpe_sit<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -374,14 +391,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="306.64898965600867" width="589.6088783988076" x="-35.67661277698903" y="-1066.9251594575471"/>
+              <y:Geometry height="363.8660211412292" width="604.1265530235349" x="-48.68985400677775" y="-1066.9251594575471"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="589.6088783988076" x="0.0" y="0.0">URI(s) </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="604.1265530235349" x="0.0" y="0.0">URI(s) </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="14" bottomF="14.09544144271456" left="5" leftF="4.914363886797673" right="7" rightF="7.049561108831881" top="4" topF="3.6078268748592563"/>
+              <y:BorderInsets bottom="20" bottomF="20.297264461610666" left="8" leftF="7.976817032200302" right="19" rightF="18.73074086012491" top="4" topF="3.6078268748592563"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -400,7 +417,7 @@
         <node id="n15::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.914830861541" x="-15.258084620522595" y="-819.371611244253"/>
+              <y:Geometry height="30.0" width="546.914830861541" x="-25.208872704908686" y="-819.2575236942101"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="422.822265625" x="62.04628261827048" y="6.015625">(66) ola/measurement/experimentalNetwork/standardName/soereOla<y:LabelModel>
@@ -417,7 +434,7 @@
         <node id="n15::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615408" x="-15.762248890191358" y="-972.7538560353585"/>
+              <y:Geometry height="30.0" width="546.9148308615408" x="-25.71303697457745" y="-922.9999156134276"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="414.21484375" x="66.34999355577042" y="6.015625">(64) ola/measurement/experimentalSite/standardName/{site_code}<y:LabelModel>
@@ -434,7 +451,7 @@
         <node id="n15::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615404" x="-15.032126348553675" y="-1026.8563950826879"/>
+              <y:Geometry height="30.0" width="546.9148308615404" x="-25.71303697457722" y="-1026.8563950826879"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="308.318359375" x="119.2982357432702" y="6.015625">(62) ola/observation/experimentalSite/{site_code}<y:LabelModel>
@@ -451,7 +468,7 @@
         <node id="n15::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615408" x="-15.25808462052214" y="-869.011464116141"/>
+              <y:Geometry height="30.0" width="546.9148308615408" x="-25.71303697457745" y="-768.3564027779286"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="154.55078125" x="196.18202480577042" y="6.015625">(67) ola/observation/lake<y:LabelModel>
@@ -468,10 +485,27 @@
         <node id="n15::n4">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.914830861541" x="-15.762248890190904" y="-918.6513169880291"/>
+              <y:Geometry height="30.0" width="546.914830861541" x="-25.713036974576994" y="-868.8973765660982"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="259.45703125" x="143.72889980577048" y="6.015625">(65) ola/observation/experimentalNetwork<y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n15::n5">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="30.0" width="546.9148308615404" x="-25.713036974577193" y="-974.9281553480578"/>
+              <y:Fill color="#99CCFF" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="388.73828125" x="79.08827480577017" y="6.015625">(63) ola/measurement/experimentalSite/localName/{site_code}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
