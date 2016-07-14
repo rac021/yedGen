@@ -588,7 +588,7 @@ public class Processor {
                             tmpUris.get(sujet.getHash())           +
                                     " a " + PREFIX_PREDICAT + ":"  +
                                     sujet.getOfEntity() + " ;  "   +
-                                    objectProperty                 +
+                                    objectProperty      + " "      +
                                     uri ) ;                        ;
                       
                         if( uri == null ) {
@@ -644,7 +644,7 @@ public class Processor {
                        
                        target.put( tmpUris.get(sujet.getHash())             ,
                                    target.get(tmpUris.get(sujet.getHash())) +
-                                   " ; " +  objectProperty                  +
+                                   " ; "  +  objectProperty   +  " "        +
                                    uri )                                    ;
                       
                         if( uri == null ) {
