@@ -74,7 +74,7 @@ public class Processor {
                                           .getJSONObject("graph")
                                           .getJSONArray("node") ;
 
-        for (int i = 0; i < jsonArrayNodes.length(); i++) {
+        for (int i = 0; i < jsonArrayNodes.length(); i++)      {
 
             Object obj                 = jsonArrayNodes.get(i) ;
             
@@ -267,10 +267,10 @@ public class Processor {
                                                       .split(Pattern.quote(" : "))[0]
                                                       .equals("obda-username"))     {
                                                         
-                                            SourceDeclaration.put("username", label
-                                                             .replaceAll(" +", " ")
+                                            SourceDeclaration.put("username",  label
+                                                             .replaceAll(" +" , " ")
                                                              .split(Pattern
-                                                             .quote(" : "))[1])   ;
+                                                             .quote(" : "))[1])    ;
                                         }
                                         else if (label.replaceAll(" +", " ")
                                                       .split(Pattern.quote(" : "))[0]
@@ -299,14 +299,13 @@ public class Processor {
                     else
 
                     if(jsonObjectNode.getJSONObject("graph")
-                                     .toString().startsWith("{\"node\":{"))   {
+                                     .toString().startsWith("{\"node\":{"))    {
 
                         JSONObject jsonArrayGroupNodes = jsonObjectNode.
-                                                         getJSONObject("graph")
+                                                         getJSONObject("graph" )
                                                         .getJSONObject("node") ;
 
-                        if( jsonArrayGroupNodes.getJSONObject("data")
-                                               .has("y:ShapeNode")) {
+                        if( jsonArrayGroupNodes.getJSONObject("data").has("y:ShapeNode")) {
 
                             String id = jsonArrayGroupNodes.getString("id") ;
 
@@ -575,12 +574,31 @@ public class Processor {
                 }
 
                 else {
-                    target.put( tmpUris.get(sujet.getHash()) ,
+                    
+                        String uri =  tmpUris.get(objet.getHash()) != null ?
+                                              tmpUris.get(objet.getHash()) : 
+                                              numUris.entrySet()
+                                                     .stream()
+                                                     .filter(e -> e.getValue() == objet.getCode() )
+                                                     .map(Map.Entry::getKey)
+                                                     .findFirst().get()  ;
+                         
+                       
+                       target.put( tmpUris.get(sujet.getHash()) ,
                             tmpUris.get(sujet.getHash())           +
                                     " a " + PREFIX_PREDICAT + ":"  +
                                     sujet.getOfEntity() + " ;  "   +
                                     objectProperty   +  " :"       +
-                                    tmpUris.get(objet.getHash()) ) ;
+                                    uri ) ;                        ;
+                      
+                        if( uri == null ) {
+                            System.err.println(" ") ;
+                            System.err.println("  Uri with code { "+ objet.getCode() + " }  not found ! ") ;
+                            System.err.println(" ") ;
+                        }
+
+                    
+                    
                 }
 
                 uris.put( ":" + tmpUris.get( sujet.getHash() ) ,
@@ -613,33 +631,29 @@ public class Processor {
                                 + tmpUris.get(objet.getHash()) )
                     )
 
-                       if (tmpUris.get(objet.getHash()) != null) {
-
-                            target.put( tmpUris.get(sujet.getHash()),
-                                    target.get(tmpUris.get(sujet.getHash())) +
-                                          " ; " +  objectProperty + " :"     +
-                                          tmpUris.get(objet.getHash()) )     ;
-                       }
-
-                        else {
-
-                          String uri = numUris.entrySet()
-                                              .stream()
-                                              .filter(e -> e.getValue() == objet.getCode() )
-                                              .map(Map.Entry::getKey)
-                                              .findFirst().get() ;
-    
-                          if( uri == null ) {
-                             System.err.println(" ") ;
-                             System.err.println("  Uri with code { "+ objet.getCode() + " }  not found ! ") ;
-                             System.err.println(" ") ;
-                          }
-                          
-                          target.put( tmpUris.get(sujet.getHash())             ,
-                                      target.get(tmpUris.get(sujet.getHash())) +
-                                      " ; " +  objectProperty + " "            +
-                                       uri  )  ;
+                    { 
+                        
+                        String uri =  tmpUris.get(objet.getHash()) != null ?
+                                              tmpUris.get(objet.getHash()) : 
+                                              numUris.entrySet()
+                                                     .stream()
+                                                     .filter(e -> e.getValue() == objet.getCode() )
+                                                     .map(Map.Entry::getKey)
+                                                     .findFirst().get()  ;
+                         
+                       
+                       target.put( tmpUris.get(sujet.getHash())             ,
+                                   target.get(tmpUris.get(sujet.getHash())) +
+                                   " ; " +  objectProperty + " :"           +
+                                   uri )                                    ;
+                      
+                        if( uri == null ) {
+                            System.err.println(" ") ;
+                            System.err.println("  Uri with code { "+ objet.getCode() + " }  not found ! ") ;
+                            System.err.println(" ") ;
                         }
+
+                    }
                 }
             }
         }
