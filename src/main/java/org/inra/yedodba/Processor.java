@@ -32,9 +32,9 @@ public class Processor {
     private final Map<String,  String>  target              =  new  HashMap<>() ;
     private final Map<String,  String>  SourceDeclaration   =  new  HashMap<>() ;
 
-    private static String  PREFIX_PREDICAT         =  "oboe-coreX"             ;
-    private static final String  PREFIXDECLARATION = "[PrefixDeclaration]"     ;
-    private static final String  PREF              =  "?pref		?uri"  ;
+    private static String  PREFIX_PREDICAT         =  "oboe-coreX"              ;
+    private static final String  PREFIXDECLARATION = "[PrefixDeclaration]"      ;
+    private static final String  PREF              =  "?pref		?uri"   ;
 
     private static final String MAPPING_COLLECTION_BEGIN   = "[MappingDeclaration] @collection [[" ;
 
@@ -71,8 +71,8 @@ public class Processor {
     private void loadNodes ( JSONObject jsonObj , int hash) {
 
         JSONArray jsonArrayNodes = jsonObj.getJSONObject("graphml")
-                                          .getJSONObject("graph")
-                                          .getJSONArray("node") ;
+                                          .getJSONObject( "graph" )
+                                          .getJSONArray( "node" ) ;
 
         for (int i = 0; i < jsonArrayNodes.length(); i++)      {
 
@@ -220,7 +220,7 @@ public class Processor {
                                                         .quote(") ")) [0].trim()
                                                         .replace("(", ""))     ;
                                         
-                                        if(numUris.values().contains( co )) {
+                                        if ( numUris.values().contains( co ) ) {
                                           System.out.println("ALERT # Code : " + co + " Detected multiple times ! ") ;
                                         }
                                          
@@ -576,7 +576,7 @@ public class Processor {
                 else {
                     
                         String uri =  tmpUris.get(objet.getHash()) != null ?
-                                              tmpUris.get(objet.getHash()) : 
+                                              ":" + tmpUris.get(objet.getHash()) : 
                                               numUris.entrySet()
                                                      .stream()
                                                      .filter(e -> e.getValue() == objet.getCode() )
@@ -588,7 +588,7 @@ public class Processor {
                             tmpUris.get(sujet.getHash())           +
                                     " a " + PREFIX_PREDICAT + ":"  +
                                     sujet.getOfEntity() + " ;  "   +
-                                    objectProperty   +  " :"       +
+                                    objectProperty                 +
                                     uri ) ;                        ;
                       
                         if( uri == null ) {
@@ -634,7 +634,7 @@ public class Processor {
                     { 
                         
                         String uri =  tmpUris.get(objet.getHash()) != null ?
-                                              tmpUris.get(objet.getHash()) : 
+                                              ":" + tmpUris.get(objet.getHash()) : 
                                               numUris.entrySet()
                                                      .stream()
                                                      .filter(e -> e.getValue() == objet.getCode() )
@@ -644,7 +644,7 @@ public class Processor {
                        
                        target.put( tmpUris.get(sujet.getHash())             ,
                                    target.get(tmpUris.get(sujet.getHash())) +
-                                   " ; " +  objectProperty + " :"           +
+                                   " ; " +  objectProperty                  +
                                    uri )                                    ;
                       
                         if( uri == null ) {
