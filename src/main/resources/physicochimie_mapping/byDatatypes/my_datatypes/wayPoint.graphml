@@ -20,7 +20,7 @@
           <y:Geometry height="30.0" width="161.2559252928828" x="-420.6670105507672" y="-244.98883580869824"/>
           <y:Fill color="#00FF00" transparent="false"/>
           <y:BorderStyle color="#339966" type="line" width="2.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="158.052734375" x="1.6015954589413468" y="7.1796875">&lt;{latitude}^^xsd:double&gt;<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="158.052734375" x="1.6015954589414036" y="7.1796875">&lt;{latitude}^^xsd:double&gt;<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -54,7 +54,7 @@
           <y:Geometry height="30.0" width="96.7000000000001" x="35.20660688594825" y="-248.13901644318094"/>
           <y:Fill color="#F6FF00CC" transparent="false"/>
           <y:BorderStyle color="#CC9900" type="line" width="2.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="93.7705078125" x="1.4647460937501364" y="7.1796875">:DecimalDegree<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="93.7705078125" x="1.4647460937500512" y="7.1796875">:DecimalDegree<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -122,7 +122,7 @@
           <y:Geometry height="30.0" width="103.15198560424426" x="-420.6670105507672" y="-618.7868482544482"/>
           <y:Fill color="#F6FF00CC" transparent="false"/>
           <y:BorderStyle color="#CC9900" type="line" width="2.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="64.7861328125" x="19.182926395872073" y="7.1796875">:Longitude<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="64.7861328125" x="19.18292639587213" y="7.1796875">:Longitude<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -156,7 +156,7 @@
           <y:Geometry height="36.0" width="150.36701300196404" x="-188.31068854810138" y="-617.6182561950318"/>
           <y:Fill color="#666666" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="2.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="131.8955078125" x="9.235752594732048" y="10.1796875">oboe-spatial:WayPoint<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="131.8955078125" x="9.23575259473202" y="10.1796875">oboe-spatial:WayPoint<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -173,7 +173,7 @@
           <y:Geometry height="42.0" width="108.0" x="-167.1271820471191" y="-437.8878420315732"/>
           <y:Fill color="#000000" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="95.845703125" x="6.0771484375" y="13.1796875">Observation(59)<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" underlinedText="true" visible="true" width="95.845703125" x="6.0771484375" y="13.1796875">Observation(59)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -301,7 +301,7 @@
               <y:Geometry height="30.0" width="546.9148308615405" x="-920.7882976430157" y="-887.0883316772638"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="365.400390625" x="90.7572201182702" y="6.015625">(59) ola/observation/wayPoint/{site_code}/{platform_code}<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="365.400390625" x="90.75722011827031" y="6.015625">(59) ola/observation/wayPoint/{site_code}/{platform_code}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -318,7 +318,7 @@
               <y:Geometry height="30.0" width="546.9148308615405" x="-921.5184201846538" y="-840.0264952347079"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="439.0" x="53.9574154307702" y="6.015625">(60) ola/measurement/wayPoint/longitude/{site_code}/{platform_code}
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="439.0" x="53.95741543077031" y="6.015625">(60) ola/measurement/wayPoint/longitude/{site_code}/{platform_code}
 <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
@@ -336,7 +336,7 @@
               <y:Geometry height="30.0" width="546.914830861541" x="-920.7882976430166" y="-794.9356057741475"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="428.494140625" x="59.210345118270425" y="6.015625">(61) ola/measurement/wayPoint/latitude/{site_code}/{platform_code}
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="428.494140625" x="59.21034511827054" y="6.015625">(61) ola/measurement/wayPoint/latitude/{site_code}/{platform_code}
 <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
