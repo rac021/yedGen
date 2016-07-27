@@ -14,6 +14,7 @@ import java.io.IOException ;
 import java.nio.file.Files ;
 import java.util.regex.Pattern ;
 import java.io.FileInputStream ;
+import java.util.regex.Matcher;
 import static java.util.stream.Collectors.toList ;
 
 /**
@@ -22,19 +23,22 @@ import static java.util.stream.Collectors.toList ;
  */
 public class Processor {
 
-    private final Set<Edge>             edges               =  new  HashSet<>() ;
-    private final Map<String , Node  >  nodes               =  new  HashMap<>() ;
-    private final Map<String , String>  prefix              =  new  HashMap<>() ;
-    private final Map<Integer, String>  tmpUris             =  new  HashMap<>() ;
-    private final Map<String,  String>  uris                =  new  HashMap<>() ;
-    private final Map<String,  Integer> numUris             =  new  HashMap<>() ;
-    private final Map<Integer, String>  source              =  new  HashMap<>() ;
-    private final Map<String,  String>  target              =  new  HashMap<>() ;
-    private final Map<String,  String>  SourceDeclaration   =  new  HashMap<>() ;
+    private final Set<Edge>             edges               =  new  HashSet<>()   ;
+    private final Map<String , Node  >  nodes               =  new  HashMap<>()   ;
+    private final Map<String , String>  prefix              =  new  HashMap<>()   ;
+    private final Map<Integer, String>  tmpUris             =  new  HashMap<>()   ;
+    private final Map<String,  String>  uris                =  new  HashMap<>()   ;
+    private final Map<String,  Integer> numUris             =  new  HashMap<>()   ;
+    private final Map<Integer, String>  source              =  new  HashMap<>()   ;
+    private final Map<String,  String>  target              =  new  HashMap<>()   ;
+    private final Map<String,  String>  SourceDeclaration   =  new  HashMap<>()   ;
+    
+    private final Map<String,  String>  PATTERNS            =  new  HashMap<>()   ;
+    private final List<String>          VARIABLES           =  new  ArrayList<>() ;
 
-    private static String  PREFIX_PREDICAT         =  "oboe-coreX"              ;
-    private static final String  PREFIXDECLARATION = "[PrefixDeclaration]"      ;
-    private static final String  PREF              =  "?pref		?uri"   ;
+    private static String  PREFIX_PREDICAT         =  "oboe-coreX"                ;
+    private static final String  PREFIXDECLARATION = "[PrefixDeclaration]"        ;
+    private static final String  PREF              =  "?pref		?uri"     ;
 
     private static final String MAPPING_COLLECTION_BEGIN   = "[MappingDeclaration] @collection [[" ;
 
@@ -44,7 +48,15 @@ public class Processor {
 
     private static final String MAPPING_COLLECTION_END     = "]]" ;
 
-    private boolean existHeader = false                           ;
+    private boolean existHeader      = false                  ;
+    private boolean isGraphPattern   = false                  ;
+    
+    private static final String  MATCHER_VARIABLE = "#VARIABLE" ;
+    private static final String  MATCHER_PATTERN  = "##PATTERN" ;
+    
+    
+    String linker  = null ;
+      
 
     private  JSONObject loadJsonObject ( String pathFile ) throws IOException {
 
@@ -68,7 +80,7 @@ public class Processor {
     }
 
 
-    private void loadNodes ( JSONObject jsonObj , int hash) {
+    private void loadNodes ( JSONObject jsonObj , int hash)       {
 
         JSONArray jsonArrayNodes = jsonObj.getJSONObject("graphml")
                                           .getJSONObject( "graph" )
@@ -95,13 +107,13 @@ public class Processor {
 
                     if(label.contains("(") && label.contains(")")) {
                         code =  Integer.parseInt(
-                                label.split(Pattern.quote("("))[1]
-                                     .replaceAll("[^0-9]", "")) ;
+                                  label.split(Pattern.quote("("))[1]
+                                       .replaceAll("[^0-9]", ""))   ;
                         ofEntity = label.trim().split(Pattern.quote("("))[0]  ;
                     }
-
+                   
                     Node node ;
-                    if(code == -1 ) {
+                    if(code == -1 && ! label.startsWith(MATCHER_PATTERN) ) {
                         node = new Node (id, code + hash , code , ofEntity, label ) ;
                     }
                     else {
@@ -142,11 +154,11 @@ public class Processor {
                                                                       .getJSONObject(1)
                                                                       .getJSONObject("y:ShapeNode")
                                                                       .getJSONObject("y:NodeLabel")
-                                                                      .getString("content") ;
-
+                                                                      .getString("content") ;                                                                         
+                                     
                                     int code ;
 
-                                    if (label.toLowerCase().startsWith("query_(")) {
+                                    if (label.toLowerCase(Locale.FRENCH).startsWith("query_(")) {
                                         code =  Integer.parseInt(label
                                                        .split(Pattern.quote(":"))[0]
                                                        .split(Pattern.quote("_"))[1]
@@ -183,12 +195,23 @@ public class Processor {
 
                                     String id = jsonArrayGroupNodes.getJSONObject(j)
                                                                    .getString("id") ;
-
+                                    
                                     String label = jsonArrayGroupNodes.getJSONObject(j)
                                                                       .getJSONObject("data")
                                                                       .getJSONObject("y:ShapeNode")
                                                                       .getJSONObject("y:NodeLabel")
                                                                       .getString("content") ;
+                                    
+                                    if (label.startsWith(MATCHER_PATTERN) && label.contains(" ")) {
+                                            isGraphPattern = true     ;
+                                            PATTERNS.put(label.replaceAll(" +", " ").split(" ")[0], 
+                                                         label.replaceAll(" +", " ")
+                                                              .replaceFirst(label.split(" ")[0],"")) ;
+                                    }
+                                    else if (label.startsWith(MATCHER_VARIABLE) && label.contains(" ")) {                                           
+                                            VARIABLES.add(label.replaceAll(" +", " ")
+                                                     .replaceFirst(label.split(" ")[0],"")) ;
+                                    }
 
                                     int code ;
 
@@ -199,7 +222,7 @@ public class Processor {
                                                        .replaceAll("[^0-9]", ""))  ;
 
                                         source.put(code+hash, label.split(Pattern
-                                                .quote(": "))[1].trim())        ;
+                                              .quote(": "))[1].trim())          ;
                                     }
                                     
                                     else
@@ -238,9 +261,11 @@ public class Processor {
                                     else
                                     if (label.replaceAll(" +", " ")
                                             .startsWith("PREDICAT_PREFIX :"))       {
+                                        
                                         PREFIX_PREDICAT = label.replaceAll(" +", " ")
                                                                .split(Pattern
                                                                .quote("PREDICAT_PREFIX :"))[1] ;
+                                        
                                     }
                                     else
                                     if (label.toLowerCase().startsWith("obda-"))    {
@@ -317,6 +342,14 @@ public class Processor {
 
                             int code ;
 
+                            if (label.startsWith(MATCHER_PATTERN) && label.contains(" ")) {
+                                    isGraphPattern = true     ;
+                                    PATTERNS.put(label.split(" ")[0], label.replaceAll(" +", " ").replaceFirst(label.split(" ")[0],"")) ;
+                            }
+                            else if (label.startsWith(MATCHER_VARIABLE) && label.contains(" ")) {                                  
+                                  VARIABLES.add(label.replaceAll(" +", " ").replaceFirst(label.split(" ")[0],"")) ;
+                            }
+                            
                             if(label.toLowerCase().startsWith("query_("))  {
                                 code =  Integer.parseInt(label
                                                .split(Pattern.quote(":"))[0]
@@ -378,8 +411,9 @@ public class Processor {
 
         if ( ! jsonObj.getJSONObject("graphml")
                       .getJSONObject("graph")
-                      .has("edge") )
-        return ;
+                      .has("edge") )    {
+           return ;
+        }
 
         JSONArray jsonArrayEdges = new JSONArray() ;
 
@@ -399,7 +433,7 @@ public class Processor {
                                     .getJSONArray("edge")   ;
         }
 
-
+        
         for (int i = 0; i < jsonArrayEdges.length(); i++ ) {
 
             Object obj = jsonArrayEdges.get(i)        ;
@@ -505,15 +539,15 @@ public class Processor {
 
                 String objet = jsonObject.getString("target") + "_" + hash ;
 
-                Edge e = new Edge(id, sujet, predicat, objet) ;
+                Edge   e     = new Edge(id, sujet, predicat, objet)        ;
 
                 edges.add(e) ;
 
             }
             else {
-                System.err.println(" ") ;
+                System.err.println(" ")          ;
                 System.err.println(" Oups !! " ) ;
-                System.err.println(" ") ;
+                System.err.println(" ")          ;
             }
         }
     }
@@ -581,30 +615,36 @@ public class Processor {
                                                      .stream()
                                                      .filter(e -> e.getValue() == objet.getCode() )
                                                      .map(Map.Entry::getKey)
-                                                     .findFirst().get()  ;
-                         
+                                                     .findFirst().get()  ;                         
                        
-                       target.put( tmpUris.get(sujet.getHash()) ,
-                            tmpUris.get(sujet.getHash())           +
-                                    " a " + PREFIX_PREDICAT + ":"  +
-                                    sujet.getOfEntity() + " ;  "   +
-                                    objectProperty      + " "      +
-                                    uri ) ;                        ;
-                      
+                        if(!sujet.getLabel().startsWith(MATCHER_PATTERN)) {
+                            target.put( tmpUris.get(sujet.getHash()) ,
+                                 tmpUris.get(sujet.getHash())           +
+                                         " a " + PREFIX_PREDICAT + ":"  +
+                                         sujet.getOfEntity() + " ;  "   +
+                                         objectProperty      + " "      +
+                                         uri ) ;                        ;
+                        }
+                        else {
+                            String targ = target.get(sujet.getLabel()) != null ? target.get(sujet.getLabel()) : " " ;
+                            target.put( sujet.getLabel() ,
+                               targ + objectProperty  + " " + uri + " _+_ " ) ;
+                        }
+                        
                         if( uri == null ) {
                             System.err.println(" ") ;
                             System.err.println("  Uri with code { "+ objet.getCode() + " }  not found ! ") ;
                             System.err.println(" ") ;
-                        }
-
-                    
+                        }                    
                     
                 }
 
-                uris.put( ":" + tmpUris.get( sujet.getHash() ) ,
-                                source.get(sujet.getHash()))   ;
+               if(tmpUris.get( sujet.getHash()) != null)
+                    uris.put( ":" + tmpUris.get( sujet.getHash() ) ,
+                                    source.get(sujet.getHash()))   ;
             }
-            else {
+            else {               
+               
                 if ( objet.getLabel().startsWith("<")       ||
                      objet.getLabel().startsWith("{")       ||
                      objet.getLabel().startsWith("\"")      ||
@@ -633,20 +673,33 @@ public class Processor {
 
                     { 
                         
-                        String uri =  tmpUris.get(objet.getHash()) != null ?
-                                              ":" + tmpUris.get(objet.getHash()) : 
-                                              numUris.entrySet()
-                                                     .stream()
-                                                     .filter(e -> e.getValue() == objet.getCode() )
-                                                     .map(Map.Entry::getKey)
-                                                     .findFirst().get()  ;
-                         
+                       String uri =  "" ;
+                       
+                       if( objet.getLabel().startsWith(MATCHER_PATTERN) || objet.getLabel().startsWith(MATCHER_VARIABLE) ) {
+                            
+                              target.put( tmpUris.get(sujet.getHash())      ,
+                                   target.get(tmpUris.get(sujet.getHash())) +
+                                   " ; "  +  objectProperty   +  " "        +
+                                   objet.getLabel() )       ;
+                              
+                       }
+                       else {
+                       uri =  tmpUris.get(objet.getHash()) != null ?
+                                     ":" + tmpUris.get(objet.getHash()) : 
+                                      numUris.entrySet()
+                                             .stream()
+                                             .filter(e -> e.getValue() == objet.getCode() )
+                                             .map(Map.Entry::getKey)
+                                             .findFirst().get()  ;
+                       
                        
                        target.put( tmpUris.get(sujet.getHash())             ,
                                    target.get(tmpUris.get(sujet.getHash())) +
                                    " ; "  +  objectProperty   +  " "        +
                                    uri )                                    ;
                       
+                       }
+                                               
                         if( uri == null ) {
                             System.err.println(" ") ;
                             System.err.println("  Uri with code { "+ objet.getCode() + " }  not found ! ") ;
@@ -661,10 +714,14 @@ public class Processor {
         for (Map.Entry<String, String> entrySet : target.entrySet()) {
             String key   = entrySet.getKey()    ;
             String value = entrySet.getValue()  ;
-            target.put(key, ":" + value + " .") ;
+            
+            if( !key.startsWith(MATCHER_PATTERN) )
+                target.put(key, ":" + value + " .") ;
+            else
+                target.put(key, value + " .") ;
         }
 
-        List<String> outs = new ArrayList<>() ;
+        List<String> outs    = new ArrayList<>() ;
 
         if( !existHeader ) {
 
@@ -700,26 +757,38 @@ public class Processor {
             existHeader = true                 ;
 
         }
-
+      
         for (Map.Entry<String, String> entrySet : target.entrySet()) {
 
             String key    = entrySet.getKey()     ;
             String myTarget = entrySet.getValue() ;
 
-            int num = numUris.get(myTarget.split(" ")[0]) ;
+            int num         = -10 ;
+            String keyByURI = null ;
+            
+            if(!key.startsWith(MATCHER_PATTERN)) {
+                
+                num = numUris.get(myTarget.split(" ")[0]) ;
+                 
+                numUris.get(myTarget.split(" ")[0]) ;
 
-            if ( myTarget.contains ( ":null" ) ) {
-              System.err.println(" ") ;
-              System.err.println("  Null Value # Something went wrong with code { " + num + " } ") ;
-              System.err.println(" ") ;
-            } 
+                if ( myTarget.contains ( ":null" ) ) {
+                  System.err.println(" ") ;
+                  System.err.println("  Null Value # Something went wrong with code { " + num + " } ") ;
+                  System.err.println(" ") ;
+                } 
 
-            String keyByURI = getKeyByURI("("+num+")_"+myTarget.split(" ")[0]) ;
-
-            if(keyByURI.endsWith("_") )
+                keyByURI = getKeyByURI("("+num+")_"+myTarget.split(" ")[0]) ;
+            
+            }
+            else {
+                 continue ;                
+            }
+            
+            if(keyByURI.endsWith("_") ) {
                 keyByURI = keyByURI.substring(0, keyByURI.length() - 1 ) ;
-
-            if ( ! myTarget.startsWith (":null") ) {
+            }
+            if ( ! myTarget.startsWith (":null") && ! myTarget.endsWith(" _+_  .") ) {
 
                 if ( uris.get(myTarget.split(" ")[0] ) == null ) {
                     throw new Exception(" No Query found for : " + myTarget.split(" ")[0] ) ;
@@ -733,11 +802,131 @@ public class Processor {
 
                 outs.add("") ;
             }
+            
         }
 
-        Writer.writeTextFile(outs, outFile) ;
+       if(!isGraphPattern ) {
+              Writer.checkFile(outFile)         ;
+            Writer.writeTextFile(outs, outFile) ;
+            Writer.writeTextFile(Collections.singletonList(MAPPING_COLLECTION_END), outFile) ;
+       }
+       
+       else  {           
+                               
+             List<String> copyOuts ;
+             
+             String _fileName = outFile.substring(0, outFile.lastIndexOf('.')) ;
+             
+             String extension = outFile.substring(outFile.lastIndexOf('.')) ;
+             
+             for(String vari : VARIABLES ) {
+                
+                String pattern_id = vari.trim().replaceAll(" +", " ").split(" ")[0] ;
+                String variable = vari.trim().replaceAll(" +", " ").split(" ")[1] ;
+               
+                Pattern p = Pattern.compile("\\{.*?\\}") ;
+                Matcher m = p.matcher(vari) ;
+
+                copyOuts = new ArrayList<>(outs) ;
+                               
+                 while (m.find()) {
+                     
+                    String param = m.group().replace("{", "")
+                                    .replace("}","").trim().replaceAll(" +", " ") ;
+                    
+                    String param_0 = param.split("=")[0] ;
+                    String param_1 = param.split("=")[1] ;
+                    outs.replaceAll( x -> x.replaceAll( Pattern
+                        .quote(param_0),param_1).replace(MATCHER_VARIABLE, variable ) ) ;
+                }
+                
+                outs.addAll(getOutFotPattern(pattern_id ));
+                
+                outs.replaceAll( x -> x.replaceAll(MATCHER_PATTERN, linker) ) ;
+                
+                String fileName =  _fileName + "_" + variable.replaceFirst(":", "") + extension ;
+                
+                Writer.checkFile( fileName )  ;
+                
+                Writer.writeTextFile(outs, fileName ) ;
+                Writer.writeTextFile(Collections.singletonList(MAPPING_COLLECTION_END), fileName ) ;
+                
+                outs = new ArrayList<>(copyOuts) ;
+                
+             }  
+       }
+        
     }
 
+    private List<String> getOutFotPattern( String key ) {
+      
+        List<String> out = new ArrayList<>() ;
+        
+        linker = null ;
+        
+        int num_start = Integer.parseInt(PATTERNS.get(key.trim()).trim().split(" ")[0]) ;
+                  
+        String URI_PATTERN = PATTERNS.get(key.trim()).trim().split(" ")[1] ;
+                  
+        String objectProperty =  PATTERNS.get(key.trim()).trim().split(" ")[2] ;
+                  
+        String  keyByURI = getKeyByURI("("+ key.replace("##", "") +")") ;
+        
+        Pattern p = Pattern.compile("\\{.*?\\}") ;
+        
+        Matcher m = p.matcher(PATTERNS.get(key.trim())) ;
+        
+        m.find() ;                
+                  
+        String query =  m.group(0).replace("{", "").replace("}","") ;
+                  
+        String entities =  PATTERNS.get(key.trim()).split("} ")[1] ;
+                  
+        String[] entityTab = entities.split(" ") ;
+                  
+        for (int i = 0; i < entityTab.length; i++) {
+                      
+            String entity = entityTab[i]          ;
+            String type   = entity.split("_")[0]  ;
+            String classe = entity.split("_")[1]  ;
+                     
+            String uri = URI_PATTERN.replace(MATCHER_VARIABLE , classe.toLowerCase(Locale.FRENCH) ) ;
+                        
+            if(i == entityTab.length -1 ) {
+                         
+              out.add( MAPPING_COLLECTION_PATTERN
+                      .replace("?id", keyByURI+"_"+classe+ "_"+num_start++ )
+                      .replace("?target"  ,  uri + " a " + type + "; " +
+                      "oboe-core:ofEntity :" + classe + " ; " + 
+                      target.get(MATCHER_PATTERN).replace("_+_  .", ".") )
+                      .replace(" _+_ ", " ; ")
+                      .replace("?source"  , query )
+              ) ;
+                      }
+                      else {
+                         
+                         String nextEntityClass = entityTab[i+1].split("_")[1] ;
+                         String nextUri = " " + URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() ) ;
+                         
+                         if(i == 0 ) {
+                              linker = uri ;
+                         }
+                         
+                        out.add( MAPPING_COLLECTION_PATTERN
+                                 .replace("?id", keyByURI+"_"+classe+ "_"+num_start++ )
+                                 .replace("?target"  , uri + " a " + type + "; " +
+                                 "oboe-core:ofEntity :" + classe + " ; " + objectProperty + nextUri )
+                                 .replace("?source"  , query )
+                        ) ;
+                      }
+                      
+                      out.add("") ;
+                  }
+                
+           return out ;
+    }
+    
+    
     private String getKeyByURI(String target) {
         String code =  target.replaceAll(Pattern.quote("/{"), "_")
                              .replaceAll(Pattern.quote("-{"), "_")
@@ -745,7 +934,8 @@ public class Processor {
                              .replaceAll(Pattern.quote("{"), "_" )
                              .replaceAll(Pattern.quote("}"), "_" )
                              .replaceAll(Pattern.quote(":"), "_" )
-                             .replaceAll("_+", "_")              ;
+                             .replaceAll("_+", "_")              
+                             .replaceAll("##", "")              ;
                              
         if(code.startsWith("_")) return code.substring(1, code.length()) ;
         return code ;
@@ -768,10 +958,9 @@ public class Processor {
                               String outObdaPathFile ,
                               String extensionFile ) throws Exception {
 
-        Writer.checkFile(outObdaPathFile) ;
-        existHeader = false               ;
+        existHeader       = false  ;
 
-        boolean processed = false ;
+        boolean processed = false  ;
 
         List<Path> files = Files.list(new File(directory).toPath()).collect(toList()) ;
 
@@ -783,8 +972,7 @@ public class Processor {
         }
 
         if( processed ) {
-            write(outObdaPathFile) ;
-            Writer.writeTextFile(Collections.singletonList(MAPPING_COLLECTION_END), outObdaPathFile) ;
+           write(outObdaPathFile) ;
         }
         else {
             System.out.println ( " No File with extension '" +extensionFile + "' found !! " ) ;
@@ -793,3 +981,4 @@ public class Processor {
 
     }
 }
+
