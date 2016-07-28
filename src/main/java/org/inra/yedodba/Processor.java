@@ -51,7 +51,7 @@ public class Processor {
     private boolean existHeader      = false                  ;
     private boolean isGraphPattern   = false                  ;
     
-    private static final String  MATCHER_VARIABLE = "#VARIABLE" ;
+    private static final String  MATCHER_VARIABLE = "?VARIABLE" ;
     private static final String  MATCHER_PATTERN  = "##PATTERN" ;
     
     
@@ -99,7 +99,8 @@ public class Processor {
                     String label = jsonObjectNode.getJSONObject("data")
                                                  .getJSONObject("y:ShapeNode")
                                                  .getJSONObject("y:NodeLabel")
-                                                 .getString("content") ;
+                                                 .getString("content").trim()
+                                                 .replaceAll(" +", " ") ;
 
                     String id       =  jsonObjectNode.getString("id") + "_"+ hash ;
                     String ofEntity =  null ;
@@ -109,7 +110,7 @@ public class Processor {
                         code =  Integer.parseInt(
                                   label.split(Pattern.quote("("))[1]
                                        .replaceAll("[^0-9]", ""))   ;
-                        ofEntity = label.trim().split(Pattern.quote("("))[0]  ;
+                        ofEntity = label.split(Pattern.quote("("))[0]  ;
                     }
                    
                     Node node ;
@@ -154,7 +155,8 @@ public class Processor {
                                                                       .getJSONObject(1)
                                                                       .getJSONObject("y:ShapeNode")
                                                                       .getJSONObject("y:NodeLabel")
-                                                                      .getString("content") ;                                                                         
+                                                                      .getString("content").trim()
+                                                                      .replaceAll(" +", " ") ;;                                                                         
                                      
                                     int code ;
 
@@ -170,7 +172,7 @@ public class Processor {
                                     }
                                     
                                     else if (label.toLowerCase()
-                                                  .trim().startsWith("(") && 
+                                                  .startsWith("(") && 
                                                   label.toLowerCase().contains(")") ) {
                                                       
                                         code =  Integer.parseInt(label
@@ -200,17 +202,17 @@ public class Processor {
                                                                       .getJSONObject("data")
                                                                       .getJSONObject("y:ShapeNode")
                                                                       .getJSONObject("y:NodeLabel")
-                                                                      .getString("content") ;
+                                                                      .getString("content").trim()
+                                                                      .replaceAll(" +", " ") ;
                                     
                                     if (label.startsWith(MATCHER_PATTERN) && label.contains(" ")) {
                                             isGraphPattern = true     ;
-                                            PATTERNS.put(label.replaceAll(" +", " ").split(" ")[0], 
-                                                         label.replaceAll(" +", " ")
-                                                              .replaceFirst(label.split(" ")[0],"")) ;
+                                            PATTERNS.put(label.split(" ")[0], 
+                                                         label.replaceFirst(Pattern.quote(label
+                                                              .split(" ")[0]),"").trim()) ;
                                     }
                                     else if (label.startsWith(MATCHER_VARIABLE) && label.contains(" ")) {                                           
-                                            VARIABLES.add(label.replaceAll(" +", " ")
-                                                     .replaceFirst(label.split(" ")[0],"")) ;
+                                            VARIABLES.add(label.replaceFirst(Pattern.quote(MATCHER_VARIABLE),"")) ;
                                     }
 
                                     int code ;
@@ -227,7 +229,7 @@ public class Processor {
                                     
                                     else
                                     
-                                    if ( label.toLowerCase().trim().startsWith("(") 
+                                    if ( label.toLowerCase().startsWith("(") 
                                          && label.toLowerCase().contains(")") )   {
                                                 
                                         code =  Integer.parseInt(label
@@ -259,59 +261,47 @@ public class Processor {
                                         prefix.put(pref, uri) ;
                                     }
                                     else
-                                    if (label.replaceAll(" +", " ")
-                                            .startsWith("PREDICAT_PREFIX :"))       {
+                                    if (label.startsWith("PREDICAT_PREFIX :"))       {
                                         
-                                        PREFIX_PREDICAT = label.replaceAll(" +", " ")
-                                                               .split(Pattern
+                                        PREFIX_PREDICAT = label.split(Pattern
                                                                .quote("PREDICAT_PREFIX :"))[1] ;
                                         
                                     }
                                     else
                                     if (label.toLowerCase().startsWith("obda-"))    {
 
-                                        if  ( label.replaceAll(" +", " ")
-                                                   .split(Pattern.quote(" : ")) [0]
+                                        if  ( label.split(Pattern.quote(" : ")) [0]
                                                    .equals("obda-sourceUri"))     {
                                                        
                                             SourceDeclaration.put("sourceUri",
-                                                    label.replaceAll(" +", " ")
-                                                         .split(Pattern
+                                                    label.split(Pattern
                                                          .quote(" : "))[1]) ;
                                         }
-                                        else if ( label.replaceAll(" +", " ")
-                                                       .split(Pattern.quote(" : ")) [0]
+                                        else if ( label.split(Pattern.quote(" : ")) [0]
                                                        .equals("obda-connectionUrl")) {
                                                   
                                             SourceDeclaration.put("connectionUrl", label
-                                                             .replaceAll(" +", " ")
                                                              .split(Pattern
                                                              .quote(" : "))[1]) ;
                                         }
-                                        else if (label.replaceAll(" +", " ")
-                                                      .split(Pattern.quote(" : "))[0]
+                                        else if (label.split(Pattern.quote(" : "))[0]
                                                       .equals("obda-username"))     {
                                                         
                                             SourceDeclaration.put("username",  label
-                                                             .replaceAll(" +" , " ")
                                                              .split(Pattern
                                                              .quote(" : "))[1])    ;
                                         }
-                                        else if (label.replaceAll(" +", " ")
-                                                      .split(Pattern.quote(" : "))[0]
+                                        else if (label.split(Pattern.quote(" : "))[0]
                                                       .equals("obda-password"))     {
                                                   
                                             SourceDeclaration.put("password", label
-                                                             .replaceAll(" +", " ")
                                                              .split(Pattern
                                                              .quote(" : "))[1])   ;
                                         }
-                                        else if ( label.replaceAll(" +", " ")
-                                                       .split(Pattern.quote(" : "))[0]
+                                        else if ( label.split(Pattern.quote(" : "))[0]
                                                        .equals("obda-driverClass"))  {
                                                         
                                             SourceDeclaration.put("driverClass", label
-                                                             .replaceAll(" +", " ")
                                                              .split(Pattern
                                                              .quote(" : "))[1])   ;
                                         }
@@ -338,16 +328,19 @@ public class Processor {
                                             .getJSONObject("data")
                                             .getJSONObject("y:ShapeNode")
                                             .getJSONObject("y:NodeLabel")
-                                            .getString("content") ;
+                                            .getString("content").trim()
+                                            .replaceAll(" +", " ") ;
 
                             int code ;
 
                             if (label.startsWith(MATCHER_PATTERN) && label.contains(" ")) {
                                     isGraphPattern = true     ;
-                                    PATTERNS.put(label.split(" ")[0], label.replaceAll(" +", " ").replaceFirst(label.split(" ")[0],"")) ;
+                                    PATTERNS.put(label.split(" ")[0], label.replaceFirst(label
+                                                                           .split(" ")[0],"")
+                                                                           .trim()) ;
                             }
                             else if (label.startsWith(MATCHER_VARIABLE) && label.contains(" ")) {                                  
-                                  VARIABLES.add(label.replaceAll(" +", " ").replaceFirst(label.split(" ")[0],"")) ;
+                                  VARIABLES.add(label.replaceFirst(label.split(" ")[0],"")) ;
                             }
                             
                             if(label.toLowerCase().startsWith("query_("))  {
@@ -361,7 +354,7 @@ public class Processor {
                                                            .trim())       ;
                             }
                             else
-                            if( label.toLowerCase().trim().startsWith("(") 
+                            if( label.toLowerCase().startsWith("(") 
                                 && label.toLowerCase().contains(")") )   {
                                       
                                 code =  Integer.parseInt(label
@@ -391,10 +384,8 @@ public class Processor {
                             
                             else
                             
-                            if(label.replaceAll(" +", " ")
-                                    .startsWith("PREDICAT_PREFIX :"))       {
-                                PREFIX_PREDICAT = label.replaceAll(" +", " ")
-                                                       .split(Pattern
+                            if(label.startsWith("PREDICAT_PREFIX :"))       {
+                                PREFIX_PREDICAT = label.split(Pattern
                                                        .quote("PREDICAT_PREFIX :"))[1]
                                                        .trim() ;
                             }
@@ -581,6 +572,7 @@ public class Processor {
                 if( objet.getLabel().startsWith("<")           ||
                         objet.getLabel().startsWith("{")       ||
                         objet.getLabel().startsWith("\"")      ||
+                        objet.getLabel().startsWith("?")       ||
                         existPrefixStartWith(objet.getLabel()) ||
                         (  objet.getLabel().startsWith(":")    &&
                            !objet.getLabel().endsWith("::#")
@@ -648,6 +640,7 @@ public class Processor {
                 if ( objet.getLabel().startsWith("<")       ||
                      objet.getLabel().startsWith("{")       ||
                      objet.getLabel().startsWith("\"")      ||
+                     objet.getLabel().startsWith("?")       ||
                      existPrefixStartWith(objet.getLabel()) ||
                      (  objet.getLabel().startsWith(":")    &&
                        !objet.getLabel().endsWith("::#") ))  {
@@ -860,28 +853,29 @@ public class Processor {
 
     private List<String> getOutFotPattern( String key ) {
       
-        List<String> out = new ArrayList<>() ;
+        List<String> out      = new ArrayList<>() ;
         
-        linker = null ;
+        linker                = null              ;
         
-        int num_start = Integer.parseInt(PATTERNS.get(key.trim()).trim().split(" ")[0]) ;
+        int num_start         = Integer.parseInt(PATTERNS.get(key).split(" ")[0]) ;
                   
-        String URI_PATTERN = PATTERNS.get(key.trim()).trim().split(" ")[1] ;
+        String URI_PATTERN    = PATTERNS.get(key).split(" ")[1]  ;
                   
-        String objectProperty =  PATTERNS.get(key.trim()).trim().split(" ")[2] ;
+        String objectProperty =  PATTERNS.get(key).split(" ")[2] ;
                   
-        String  keyByURI = getKeyByURI("("+ key.replace("##", "") +")") ;
+        String  keyByURI      = getKeyByURI("("+ key.replace("##", "") +")") ;
         
-        Pattern p = Pattern.compile("\\{.*?\\}") ;
+        Pattern p             = Pattern.compile("\\{.*?\\}") ;
         
-        Matcher m = p.matcher(PATTERNS.get(key.trim())) ;
+        Matcher m             = p.matcher(PATTERNS.get(key)) ;
         
-        m.find() ;                
+        m.find() ;      
                   
-        String query =  m.group(0).replace("{", "").replace("}","") ;
+        String query          =  m.group(0).replace("{", "").replace("}","") ;
                   
-        String entities =  PATTERNS.get(key.trim()).split("} ")[1] ;
-                  
+        String entities       = PATTERNS.get(key.trim()).split("} ")[1] ;
+
+        
         String[] entityTab = entities.split(" ") ;
                   
         for (int i = 0; i < entityTab.length; i++) {
@@ -902,28 +896,30 @@ public class Processor {
                       .replace(" _+_ ", " ; ")
                       .replace("?source"  , query )
               ) ;
-                      }
-                      else {
+            }
+            
+            else {
                          
-                         String nextEntityClass = entityTab[i+1].split("_")[1] ;
-                         String nextUri = " " + URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() ) ;
+              String nextEntityClass = entityTab[i+1].split("_")[1] ;
+              String nextUri = " " + URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() ) ;
                          
-                         if(i == 0 ) {
-                              linker = uri ;
-                         }
+              if(i == 0 ) {
+                    linker = uri ;
+              }
                          
-                        out.add( MAPPING_COLLECTION_PATTERN
-                                 .replace("?id", keyByURI+"_"+classe+ "_"+num_start++ )
-                                 .replace("?target"  , uri + " a " + type + "; " +
-                                 "oboe-core:ofEntity :" + classe + " ; " + objectProperty + nextUri )
-                                 .replace("?source"  , query )
-                        ) ;
-                      }
+              out.add( MAPPING_COLLECTION_PATTERN
+                       .replace("?id", keyByURI+"_"+classe+ "_"+num_start++ )
+                       .replace("?target"  , uri + " a " + type + "; " +
+                       "oboe-core:ofEntity :" + classe + " ; " + objectProperty + nextUri )
+                       .replace("?source"  , query )
+              ) ;
+              
+            }
                       
-                      out.add("") ;
-                  }
+              out.add("") ;
+        }
                 
-           return out ;
+        return out ;
     }
     
     
