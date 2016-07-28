@@ -1421,7 +1421,7 @@
               <y:Geometry height="30.0" width="2235.7239387880113" x="-3048.4117023086565" y="-1879.4138358499586"/>
               <y:Fill color="#FF99CC" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1290.94140625" x="472.3912662690054" y="6.015625">##PATTERN_1 20 ola/observation/variable/?VARIABLE  oboe-code:haContext {SELECT id from (values ('1')) s(id) } oboe-core:Observation_Ammonium oboe-core:Observation_Solutes oboe-core:Observation_Water <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1290.94140625" x="472.3912662690054" y="6.015625">##PATTERN_1 20 ola/observation/variable/?VARIABLE  oboe-core:haContext {SELECT id from (values ('1')) s(id) } oboe-core:Observation_Ammonium oboe-core:Observation_Solutes oboe-core:Observation_Water <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1472,7 +1472,7 @@
               <y:Geometry height="30.0" width="2235.7239387880113" x="-3048.4117023086565" y="-1737.1116349545537"/>
               <y:Fill color="#FF99CC" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1099.873046875" x="567.9254459565054" y="6.015625">##PATTERN_2 20 ola/observation/variable/?VARIABLE oboe-code:haContext {SELECT id from (values ('1')) s(id) } oboe-core:Observation_Ammonium oboe-core:Observation_Solutes<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1099.873046875" x="567.9254459565054" y="6.015625">##PATTERN_2 20 ola/observation/variable/?VARIABLE oboe-core:haContext {SELECT id from (values ('1')) s(id) } oboe-core:Observation_Ammonium oboe-core:Observation_Solutes<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
