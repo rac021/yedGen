@@ -904,7 +904,12 @@ public class Processor {
                          
               String nextEntityClass = entityTab[i+1].split("_")[1] ;
               String nextUri = " " + URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() ) ;
-                         
+              
+              if( ! nextUri.startsWith(Pattern.quote(":")))
+                    nextUri = " :" + URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() ) ;
+              else
+                    nextUri = " " + URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() )  ;
+                  
               if(i == 0 ) {
                     linker = uri ;
               }
