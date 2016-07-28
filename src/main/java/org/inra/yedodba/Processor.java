@@ -885,8 +885,10 @@ public class Processor {
             String classe = entity.split("_")[1]  ;
                      
             String uri = URI_PATTERN.replace(MATCHER_VARIABLE , classe.toLowerCase(Locale.FRENCH) ) ;
-                        
-            if(i == entityTab.length -1 ) {
+            
+            if ( ! uri.startsWith(Pattern.quote(":")) )  uri = ":" + uri  ;      
+            
+            if ( i == entityTab.length -1 ) {
                          
               out.add( MAPPING_COLLECTION_PATTERN
                       .replace("?id", keyByURI+"_"+classe+ "_"+num_start++ )
