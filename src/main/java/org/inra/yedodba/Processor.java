@@ -915,9 +915,9 @@ public class Processor {
               }
                          
               out.add( MAPPING_COLLECTION_PATTERN
-                       .replace("?id", keyByURI+"_"+classe+ "_"+num_start++ )
+                       .replace("?id", keyByURI + "_" + classe + "_" + num_start++ )
                        .replace("?target"  , uri + " a " + type + "; " +
-                       "oboe-core:ofEntity :" + classe + " ; " + objectProperty + nextUri )
+                       "oboe-core:ofEntity :" + classe + " ; " + objectProperty + nextUri + " ." )
                        .replace("?source"  , query )
               ) ;
               
