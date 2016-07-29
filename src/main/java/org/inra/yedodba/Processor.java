@@ -29,7 +29,10 @@ public class Processor {
     private final Map<Integer, String>  tmpUris             =  new  HashMap<>()   ;
     private final Map<String,  String>  uris                =  new  HashMap<>()   ;
     private final Map<String,  Integer> numUris             =  new  HashMap<>()   ;
+    
     private final Map<Integer, String>  source              =  new  HashMap<>()   ;
+    private final Map<Integer, Integer> sourceByCode        =  new  HashMap<>()   ;
+      
     private final Map<String,  String>  target              =  new  HashMap<>()   ;
     private final Map<String,  String>  SourceDeclaration   =  new  HashMap<>()   ;
     
@@ -51,8 +54,9 @@ public class Processor {
     private boolean existHeader      = false                  ;
     private boolean isGraphPattern   = false                  ;
     
-    private static final String  MATCHER_VARIABLE = "?VARIABLE" ;
-    private static final String  MATCHER_PATTERN  = "##PATTERN" ;
+    private static final String  MATCHER_VARIABLE   = "?VARIABLE" ;
+    private static final String  MATCHER_PATTERN    = "##PATTERN" ;
+    private static final String  OF_ENTITY_PATTERN  = "oboe-core:ofEntity" ;
     
     
     String linker  = null ;
@@ -169,6 +173,8 @@ public class Processor {
                                         source.put(code+hash, label.split( Pattern
                                                                    .quote(": "))[1]
                                                                    .trim())       ;
+                                                                   
+                                        sourceByCode.put(code, code + hash )      ;
                                     }
                                     
                                     else if (label.toLowerCase()
@@ -224,7 +230,9 @@ public class Processor {
                                                        .replaceAll("[^0-9]", ""))  ;
 
                                         source.put(code+hash, label.split(Pattern
-                                              .quote(": "))[1].trim())          ;
+                                              .quote(": "))[1].trim())             ;
+                                              
+                                        sourceByCode.put(code, code + hash )       ;
                                     }
                                     
                                     else
@@ -352,6 +360,8 @@ public class Processor {
                                 source.put(code+hash, label.split(Pattern
                                                            .quote(": "))[1]
                                                            .trim())       ;
+                                                           
+                                sourceByCode.put(code, code + hash )      ;
                             }
                             else
                             if( label.toLowerCase().startsWith("(") 
@@ -821,21 +831,21 @@ public class Processor {
                 Matcher m = p.matcher(vari) ;
 
                 copyOuts = new ArrayList<>(outs) ;
-                               
+                
+                outs.addAll(getOutForPattern(pattern_id ));
+                 
                  while (m.find()) {
                      
                     String param = m.group().replace("{", "")
                                     .replace("}","").trim().replaceAll(" +", " ") ;
                     
-                    String param_0 = param.split("=")[0] ;
-                    String param_1 = param.split("=")[1] ;
-                    outs.replaceAll( x -> x.replaceAll( Pattern
-                        .quote(param_0),param_1).replace(MATCHER_VARIABLE, variable ) ) ;
+                    String param_0 = param.split("=")[0]              ;
+                    String param_1 = param.split("=")[1]              ;
+                    outs.replaceAll( x -> x.replace(param_0,param_1)) ;
                 }
-                
-                outs.addAll(getOutFotPattern(pattern_id ));
-                
-                outs.replaceAll( x -> x.replaceAll(MATCHER_PATTERN, linker) ) ;
+               
+                outs.replaceAll( x -> x.replace(MATCHER_PATTERN, linker)
+                                        .replace(MATCHER_VARIABLE, variable )) ;
                 
                 String fileName =  _fileName + "_" + variable.replaceFirst(":", "") + extension ;
                 
@@ -851,81 +861,91 @@ public class Processor {
         
     }
 
-    private List<String> getOutFotPattern( String key ) {
+    private List<String> getOutForPattern( String patternId ) {
       
         List<String> out      = new ArrayList<>() ;
         
         linker                = null              ;
         
-        int num_start         = Integer.parseInt(PATTERNS.get(key).split(" ")[0]) ;
+        int num_start         = Integer.parseInt(PATTERNS.get(patternId).split(" ")[0]) ;
                   
-        String URI_PATTERN    = PATTERNS.get(key).split(" ")[1]  ;
+        String URI_PATTERN    = PATTERNS.get(patternId).split(" ")[1]  ;
                   
-        String objectProperty =  PATTERNS.get(key).split(" ")[2] ;
+        String objectProperty =  PATTERNS.get(patternId).split(" ")[2] ;
                   
-        String  keyByURI      = getKeyByURI("("+ key.replace("##", "") +")") ;
+        String  keyByURI      = getKeyByURI("("+ patternId.replace("##", "") +")") ;
         
         Pattern p             = Pattern.compile("\\{.*?\\}") ;
         
-        Matcher m             = p.matcher(PATTERNS.get(key)) ;
+        Matcher m             = p.matcher(PATTERNS.get(patternId)) ;
+       
+        List<String> vars = new ArrayList();
         
-        m.find() ;      
-                  
-        String query          =  m.group(0).replace("{", "").replace("}","") ;
-                  
-        String entities       = PATTERNS.get(key.trim()).split("} ")[1] ;
+        while (m.find()) {
+        
+            vars.add( m.group().replace("{", "").replace("}","").trim() ) ;
+        
+        }
+            
+        for (int i = 0; i < vars.size(); i++) {
 
-        
-        String[] entityTab = entities.split(" ") ;
-                  
-        for (int i = 0; i < entityTab.length; i++) {
-                      
-            String entity = entityTab[i]          ;
-            String type   = entity.split("_")[0]  ;
-            String classe = entity.split("_")[1]  ;
-                     
-            String uri = URI_PATTERN.replace(MATCHER_VARIABLE , classe.toLowerCase(Locale.FRENCH) ) ;
-            
-            if ( ! uri.startsWith(Pattern.quote(":")) )  uri = ":" + uri  ;      
-            
-            if ( i == entityTab.length -1 ) {
-                         
-              out.add( MAPPING_COLLECTION_PATTERN
-                      .replace("?id", keyByURI+"_"+classe+ "_"+num_start++ )
-                      .replace("?target"  ,  uri + " a " + type + " ; " +
-                      "oboe-core:ofEntity :" + classe + " ; " + 
-                      target.get(MATCHER_PATTERN).replace("_+_  .", ".") )
-                      .replace(" _+_ ", " ; ")
-                      .replace("?source"  , query )
-              ) ;
+            String entity = vars.get(i).split(" " )[0]  ;
+            String type   = entity.split("_")[0]        ;
+            String classe = entity.split("_")[1]        ;
+
+            int numQuery = Integer.parseInt(vars.get(i)
+                                  .split(" " )[1].split("_")[1]) ;
+                
+            String query = source.get(sourceByCode.get(numQuery)) ;
+                
+            if( query == null ) {
+                System.out.println("")   ;
+                System.out.println(" NumQuery [ "+numQuery+" ] not found in numUris Map !! " ) ;
+                System.out.println("")   ;
             }
             
+            String uri = URI_PATTERN.replace(MATCHER_VARIABLE , classe.toLowerCase(Locale.FRENCH) ) ;
+
+            if(! uri.startsWith(Pattern.quote(":"))) uri = ":" + uri  ;
+
+            if(i == vars.size() -1 ) {
+
+                  out.add( MAPPING_COLLECTION_PATTERN
+                          .replace("?id", keyByURI+"_"+classe+ "_"+num_start++ )
+                          .replace("?target"  ,  uri + " a " + type + " ; " +
+                           OF_ENTITY_PATTERN + " :" + classe + " ; " + 
+                           target.get(MATCHER_PATTERN).replace("_+_  .", ".") )
+                          .replace(" _+_ ", " ; ")
+                          .replace("?source"  , query )
+                  ) ;
+            }
+
             else {
-                         
-              String nextEntityClass = entityTab[i+1].split("_")[1] ;
-              String nextUri = " " + URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() ) ;
-              
+
+              String nextEntityClass = vars.get(i+1).split(" ")[0].split("_")[1] ;
+              String nextUri = URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() ) ;
+
               if( ! nextUri.startsWith(Pattern.quote(":")))
-                    nextUri = " :" + URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() ) ;
+                  nextUri = " :" + URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() ) ;
               else
-                    nextUri = " " + URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() )  ;
-                  
+                  nextUri = " " + URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() ) ;
+
               if(i == 0 ) {
                     linker = uri ;
               }
-                         
+
               out.add( MAPPING_COLLECTION_PATTERN
-                       .replace("?id", keyByURI + "_" + classe + "_" + num_start++ )
+                       .replace("?id", keyByURI+"_"+classe+ "_"+num_start++ )
                        .replace("?target"  , uri + " a " + type + " ; " +
-                       "oboe-core:ofEntity :" + classe + " ; " + objectProperty + nextUri + " ." )
+                        OF_ENTITY_PATTERN + " :" + classe + " ; " + objectProperty + nextUri + " ." )
                        .replace("?source"  , query )
               ) ;
-              
+
             }
-                      
-              out.add("") ;
+
+            out.add("") ;
         }
-                
+               
         return out ;
     }
     
