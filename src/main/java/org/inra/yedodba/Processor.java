@@ -875,7 +875,7 @@ public class Processor {
                   
         String  keyByURI      = getKeyByURI("("+ patternId.replace("##", "") +")") ;
         
-        Pattern p             = Pattern.compile("\\{.*?\\}") ;
+        Pattern p             = Pattern.compile("\\[.*?\\]") ;
         
         Matcher m             = p.matcher(PATTERNS.get(patternId)) ;
        
@@ -883,7 +883,7 @@ public class Processor {
         
         while (m.find()) {
         
-            vars.add( m.group().replace("{", "").replace("}","").trim() ) ;
+            vars.add( m.group().replace("[", "").replace("]","").trim() ) ;
         
         }
             
