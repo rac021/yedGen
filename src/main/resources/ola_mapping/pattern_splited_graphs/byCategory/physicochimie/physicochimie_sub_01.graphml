@@ -20,14 +20,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="1736.7772507691752" width="1342.2208129911205" x="-4522.602061704989" y="-3299.0369895119134"/>
+              <y:Geometry height="1650.3919348615846" width="1342.2208129911205" x="-4487.020288226311" y="-3177.39431449854"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1342.2208129911205" x="0.0" y="0.0"> Querie(s) </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="32" bottomF="31.627105022830847" left="40" leftF="39.53388127853941" right="34" rightF="33.603799086758045" top="0" topF="0.0"/>
+              <y:BorderInsets bottom="25" bottomF="24.977995850041452" left="40" leftF="39.53388127853941" right="44" rightF="44.4444750318803" top="35" topF="35.054910803080475"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -46,24 +46,7 @@
         <node id="n0::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="130.39175713848272" width="538.2535479280186" x="-4468.0681804264495" y="-2932.1344693889264"/>
-              <y:Fill color="#99CCFF" transparent="false"/>
-              <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="538.2535479280186" x="0.0" y="20.28962856924136">Query_(3):  SELECT dt.code AS dty_code, var.code AS var_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id WHERE dt.id = ?NUM_DTYPE and var.nom = ?FILTER_VAR<y:LabelModel>
-                  <y:SmartNodeLabelModel distance="4.0"/>
-                </y:LabelModel>
-                <y:ModelParameter>
-                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-                </y:ModelParameter>
-              </y:NodeLabel>
-              <y:Shape type="rectangle"/>
-            </y:ShapeNode>
-          </data>
-        </node>
-        <node id="n0::n1">
-          <data key="d6">
-            <y:ShapeNode>
-              <y:Geometry height="114.99392207009078" width="457.072340672785" x="-4468.068180426446" y="-2746.5926139566395"/>
+              <y:Geometry height="114.99392207009078" width="457.072340672785" x="-4432.486406947768" y="-2742.929794504864"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="61.875" modelName="custom" textColor="#000000" visible="true" width="457.072340672785" x="0.0" y="26.559461035045388">Query_(5): SELECT dt.code AS dty_code , var.code AS var_code FROM public.datatype dt	INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id WHERE dt.id = ?NUM_DTYPE and var.nom = ?FILTER_VAR<y:LabelModel>
@@ -77,10 +60,10 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n0::n2">
+        <node id="n0::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="114.99392207009078" width="306.9863933397464" x="-3927.2158994187926" y="-2746.5926139566395"/>
+              <y:Geometry height="114.99392207009078" width="306.9863933397464" x="-3891.6341259401147" y="-2742.929794504864"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="306.9863933397464" x="0.0" y="47.51258603504539">Query_(6): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -94,10 +77,10 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n0::n3">
+        <node id="n0::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="114.99392207009078" width="306.9863933397462" x="-3546.812117085495" y="-2746.5926139566395"/>
+              <y:Geometry height="114.99392207009078" width="306.9863933397462" x="-3511.2303436068173" y="-2742.929794504864"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="306.9863933397462" x="0.0" y="47.51258603504539">Query_(7): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -111,10 +94,10 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n0::n4">
+        <node id="n0::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="137.87127546833744" width="588.6627901126906" x="-4468.068180426446" y="-3262.5760520119134"/>
+              <y:Geometry height="137.87127546833744" width="588.6627901126906" x="-4432.486406947768" y="-3105.8784661954596"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="117.75" modelName="custom" textColor="#000000" visible="true" width="588.6627901126906" x="0.0" y="10.060637734168722">Query_(1): SELECT dt.code AS dty_code, var.code AS var_code , mc.mchimie_id AS mesure_id, ssc.schimie_id AS sequence_id, vmc.vmchimie_id AS value_id  FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id INNER JOIN sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id WHERE dt.id = ?NUM_DTYPE and var.nom = ?FILTER_VAR<y:LabelModel>
@@ -128,13 +111,13 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n0::n5">
+        <node id="n0::n4">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="130.39175713848272" width="588.2297842473936" x="-3828.0555079931423" y="-3106.5435838531776"/>
+              <y:Geometry height="137.87127546833744" width="588.2297842473936" x="-3792.4737345144645" y="-3105.8784661954596"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.2297842473936" x="0.0" y="20.28962856924136">Query_(2): SELECT dt.code AS dty_code, vmc.vmchimie_id AS value_id, vmc.valeur AS value FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var2 ON dtvu.var_id = var2.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var2.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = ?NUM_DTYPE and var2.nom = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.2297842473936" x="0.0" y="24.029387734168722">Query_(2): SELECT dt.code AS dty_code, vmc.vmchimie_id AS value_id, vmc.valeur AS value FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var2 ON dtvu.var_id = var2.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var2.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = ?NUM_DTYPE and var2.nom = ?FILTER_VAR<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -145,10 +128,10 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n0::n6">
+        <node id="n0::n5">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="166.24347782839914" width="574.9139271463678" x="-4460.5417395159475" y="-2576.448593592744"/>
+              <y:Geometry height="166.24347782839914" width="574.9139271463678" x="-4424.95996603727" y="-2554.3732509273623"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="574.9139271463678" x="0.0" y="31.23111391419934">Query_(20): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id FROM datatype dt INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id INNER JOIN sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE dt.id = ?NUM_DTYPE and var.nom = ?FILTER_VAR<y:LabelModel>
@@ -162,10 +145,10 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n0::n7">
+        <node id="n0::n6">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="167.7462095339838" width="589.3749352195109" x="-3829.20065896526" y="-2577.951325298329"/>
+              <y:Geometry height="167.7462095339838" width="589.3749352195109" x="-3793.6188854865823" y="-2555.875982632947"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="589.3749352195109" x="0.0" y="31.982479766991673">Query_(21): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id FROM datatype dt INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id INNER JOIN sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE dt.id = ?NUM_DTYPE and var.nom = ?FILTER_VAR<y:LabelModel>
@@ -179,10 +162,10 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n0::n8">
+        <node id="n0::n7">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="167.74620953398426" width="599.0587230151878" x="-4182.2232153150335" y="-2380.2051157643446"/>
+              <y:Geometry height="167.74620953398426" width="599.0587230151878" x="-4424.95996603727" y="-2336.3870421604624"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="131.71875" modelName="custom" textColor="#000000" visible="true" width="599.0587230151878" x="0.0" y="18.013729766992128">Query_(22): SELECT DISTINCT dt.code AS dty_code, vmc.mchimie_id AS mesure_id,  sc.schimie_id AS sequence_id, pla.code AS platform_code, site.code AS site_code FROM 	datatype dt INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id INNER JOIN sous_sequence_chimie_sschimie ssc	 ON mc.sschimie_id = ssc.sschimie_id INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id INNER JOIN plateforme_pla pla ON ssc.loc_id = pla.loc_id INNER JOIN public.site_glacpe_sit site ON pla.id = site.id WHERE dt.id = ?NUM_DTYPE and var.nom = ?FILTER_VAR<y:LabelModel>
@@ -196,10 +179,10 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n0::n9">
+        <node id="n0::n8">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="151.3190236802784" width="490.05220758007135" x="-4468.068180426448" y="-2179.0642281512896"/>
+              <y:Geometry height="151.3190236802784" width="490.05220758007135" x="-4432.48640694777" y="-2116.8981016879775"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="490.05220758007135" x="0.0" y="23.768886840139203">Query_(50): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = ?NUM_DTYPE and var.nom = ?FILTER_VAR<y:LabelModel>
@@ -213,10 +196,10 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n0::n10">
+        <node id="n0::n9">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="147.8378510090588" width="438.5266368633004" x="-3920.7072310893514" y="-2175.58305548007"/>
+              <y:Geometry height="147.8378510090588" width="438.5266368633004" x="-3885.1254576106735" y="-2113.416929016758"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="117.75" modelName="custom" textColor="#000000" visible="true" width="438.5266368633004" x="0.0" y="15.043925504529398">Query_(51): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, mc.profondeurmin AS depth_min FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = ?NUM_DTYPE and var.nom = ?FILTER_VAR<y:LabelModel>
@@ -230,10 +213,10 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n0::n11">
+        <node id="n0::n10">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="151.3190236802784" width="490.05220758007135" x="-4468.068180426448" y="-1960.3144851008788"/>
+              <y:Geometry height="151.3190236802784" width="490.05220758007135" x="-4432.48640694777" y="-1918.4080168223068"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="490.05220758007135" x="0.0" y="23.768886840139203">Query_(53): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, mc.profondeurmax AS depth_max FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = ?NUM_DTYPE and var.nom = ?FILTER_VAR<y:LabelModel>
@@ -247,10 +230,10 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n0::n12">
+        <node id="n0::n11">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="151.31902368027795" width="599.0587230151882" x="-4468.068180426448" y="-1760.4929317721721"/>
+              <y:Geometry height="151.31902368027795" width="599.0587230151882" x="-4432.48640694777" y="-1718.5864634936001"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="599.0587230151882" x="0.0" y="23.768886840138975">Query_(55): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id FROM datatype dt 	 INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id 	 INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc	ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id 	 INNER JOIN sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id 	 INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE dt.id = ?NUM_DTYPE AND var.nom = ?FILTER_VAR<y:LabelModel>
@@ -264,13 +247,13 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n0::n13">
+        <node id="n0::n12">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="151.31902368027818" width="599.0587230151878" x="-3828.043770815815" y="-1760.2058674458472"/>
+              <y:Geometry height="151.31902368027818" width="588.218047070066" x="-3792.4619973371373" y="-1718.2993991672752"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="117.75" modelName="custom" textColor="#000000" visible="true" width="599.0587230151878" x="0.0" y="16.784511840139203">Query_(56): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id, date( sc.date_prelevement ) AS date FROM 	public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id 	 INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN public.valeur_mesure_chimie_vmchimie vmc	ON var.id = vmc.var_id 	 INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id 	 INNER JOIN public.sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id 	 INNER JOIN public.sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE dt.id = ?NUM_DTYPE AND var.nom = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="131.71875" modelName="custom" textColor="#000000" visible="true" width="588.218047070066" x="0.0" y="9.800136840139203">Query_(56): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id, date( sc.date_prelevement ) AS date FROM 	public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id 	 INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN public.valeur_mesure_chimie_vmchimie vmc	ON var.id = vmc.var_id 	 INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id 	 INNER JOIN public.sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id 	 INNER JOIN public.sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE dt.id = ?NUM_DTYPE AND var.nom = ?FILTER_VAR<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -281,10 +264,10 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n0::n14">
+        <node id="n0::n13">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="55.264150803061966" width="194.7497431495458" x="-3423.7347909501723" y="-2175.58305548007"/>
+              <y:Geometry height="55.264150803061966" width="194.7497431495458" x="-3398.993693416617" y="-2113.416929016758"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="194.7497431495458" x="0.0" y="10.663325401530983">Query_(52): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -298,13 +281,30 @@
             </y:ShapeNode>
           </data>
         </node>
+        <node id="n0::n14">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="55.264150803061966" width="205.85231694157073" x="-3885.125457610674" y="-1918.4080168223068"/>
+              <y:Fill color="#99CCFF" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="205.85231694157073" x="-4.547473508864641E-13" y="10.663325401530983">Query_(54): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
         <node id="n0::n15">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="55.264150803061966" width="191.20614425258827" x="-3920.7072310893514" y="-1947.9565667847387"/>
+              <y:Geometry height="55.264150803061966" width="205.85231694157073" x="-3885.1254576106735" y="-1822.3531439450903"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="191.20614425258827" x="0.0" y="10.663325401530983">Query_(54): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="205.85231694157073" x="-4.547473508864641E-13" y="10.663325401530983">Query_(9999): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -318,10 +318,10 @@
         <node id="n0::n16">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="130.39175713848272" width="588.2297842473929" x="-3828.0555079931423" y="-2932.134469388927"/>
+              <y:Geometry height="130.39175713848272" width="538.2535479280186" x="-4432.486406947772" y="-2920.664371185234"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.2297842473929" x="0.0" y="20.28962856924136">Query_(4):  SELECT     dt.code AS dty_code,     var.code AS var_code,     var.nom AS var_name,     CASE WHEN localestring IS NULL THEN var.nom else localestring END AS var_name_en FROM     datatype dt     INNER JOIN datatypevariableuniteglacpe dtvu      ON dt.id = dtvu.dty_id     INNER JOIN variable_glacpe_varg var      ON dtvu.var_id = var.id      LEFT JOIN localisation  on defaultString =var.nom and entite='variable' and colonne='nom' and localization='en' WHERE  dt.id = ?NUM_DTYPE AND var.code = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="538.2535479280186" x="0.0" y="20.28962856924136">Query_(3):  SELECT dt.code AS dty_code, var.code AS var_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id WHERE dt.id = ?NUM_DTYPE and var.nom = ?FILTER_VAR<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -335,10 +335,10 @@
         <node id="n0::n17">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="55.264150803061966" width="205.85231694157073" x="-3688.0329111676224" y="-1947.9565667847387"/>
+              <y:Geometry height="130.39175713848272" width="588.2297842473929" x="-3792.4737345144645" y="-2920.6643711852344"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="205.85231694157073" x="0.0" y="10.663325401530983">Query_(9999): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.2297842473929" x="0.0" y="20.28962856924136">Query_(4):  SELECT     dt.code AS dty_code,     var.code AS var_code,     var.nom AS var_name,     CASE WHEN localestring IS NULL THEN var.nom else localestring END AS var_name_en FROM     datatype dt     INNER JOIN datatypevariableuniteglacpe dtvu      ON dt.id = dtvu.dty_id     INNER JOIN variable_glacpe_varg var      ON dtvu.var_id = var.id      LEFT JOIN localisation  on defaultString =var.nom and entite='variable' and colonne='nom' and localization='en' WHERE  dt.id = ?NUM_DTYPE AND var.code = ?FILTER_VAR<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -357,14 +357,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="779.8183291323544" width="644.3630807301056" x="-3096.1707695161886" y="-2742.107511633925"/>
+              <y:Geometry height="779.8183291323544" width="628.087586428675" x="-3096.1707695161886" y="-2742.107511633925"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="644.3630807301056" x="0.0" y="0.0">URI(s) </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="628.087586428675" x="0.0" y="0.0">URI(s) </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="20" bottomF="20.403591017969575" left="26" leftF="25.70724555686047" right="26" rightF="25.749344586911775" top="8" topF="8.096538885844438"/>
+              <y:BorderInsets bottom="20" bottomF="20.403591017969575" left="26" leftF="25.70724555686047" right="21" rightF="21.165953127496323" top="8" topF="8.096538885844438"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -621,7 +621,7 @@
         <node id="n1::n14">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615404" x="-3039.471864234535" y="-2027.69277351954"/>
+              <y:Geometry height="30.0" width="546.9148308615404" x="-3051.1639670765508" y="-2027.69277351954"/>
               <y:Fill color="#FF99CC" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#FFFFFF" visible="true" width="464.98046875" x="40.9671810557702" y="6.015625">(57) ola/observation/experimentalPlot/{site_code}/{platform_code}<y:LabelModel>
