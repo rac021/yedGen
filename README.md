@@ -13,11 +13,11 @@
    - `-ext : extension of files involved in the process `
 
 
-- Example ( ` cd target ` ) :
+- Example :
 
- - java -cp YedODBA-3.14.2-1.0-SNAPSHOT-jar-with-dependencies.jar Main  \  
-   -d '../src/main/resources'                                           \  
-   -out './mapping.obda'                                                \  
+ - java -cp target/yedGen-1.0-SNAPSHOT-jar-with-dependencies.jar Main \ 
+   -d 'src/main/resources/demo/'                                      \
+   -out './mapping.obda'                                              \  
    -ext '.graphml'
 
 
