@@ -22,7 +22,7 @@
    -ext '.graphml'
 ```
 
-### Supports features :
+- Supports features :
 
    - **FullGraph** : One graph -> One obda file mapping
    - **GraphChunks** : Multiple graphs -> one obda file mapping
