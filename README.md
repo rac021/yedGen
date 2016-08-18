@@ -22,6 +22,13 @@
    -ext '.graphml'
 ```
 
+### Supports features :
+
+   - FullGraph : One graph -> One obda file mapping
+   - GraphChunks : Multiple graphs -> one obda file mapping
+   - PatternGraphChunks : One [ multiple ] graph(s) -> multiple obda files
+ 
+
 ### Graphml files example :
  
    - Graph
