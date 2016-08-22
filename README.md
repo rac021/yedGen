@@ -101,7 +101,7 @@
         
          `:Variable` : name of the Entity concerned by this Variable
          
-         `{ ?Matcher=value}` : replace all matchers in the result mapping by value ( for each variable )
+         `{ ?Matcher=value }` : replace all matchers in the result mapping by value ( for each variable )
    
 
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * Example :
