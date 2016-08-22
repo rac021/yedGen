@@ -55,7 +55,9 @@
 
 ```  
 
-           `Gives the following mapping :`
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ **Gives the following mapping :**
          
  
  ```
