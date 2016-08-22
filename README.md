@@ -102,30 +102,30 @@
          `:Variable` : name of the Entity concerned by this Variable
          
          `{ ?Matcher=value}` : replace all matchers in the result mapping by value ( for each variable )
-      
-      
-         * Example :
    
-          - The following declaration 
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * Example :
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - The following declaration 
 
 ```  
-      ?VARIABLE  ##PATTERN_1 :Nitrogen 
-      { ?VAR_URI=nitrogen } 
-      { ?standardVar=oboe-standard:MilligramPerLiter } 
-      { ?NUM_DTYPE=11 } 
-      { ?FILTER_VAR='azote ammoniacal'  } 
+         ?VARIABLE  ##PATTERN_1 :Nitrogen 
+         { ?VAR_URI=nitrogen } 
+         { ?standardVar=oboe-standard:MilligramPerLiter } 
+         { ?NUM_DTYPE=11 } 
+         { ?FILTER_VAR='azote ammoniacal'  } 
       
 ```  
 
 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp; *reliying to the ##PATTERN_1 will Replace :*
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *reliying to the ##PATTERN_1 will Replace :*
 
-```  
-      ?VARIABLE     in the Graph BY   ":Nitrogen"
-      ?VAR_URI                   BY   nitrogen   ( for example in sql queries )
-      ?standardVar               BY   oboe-standard:MilligramPerLiter
- 
+   ```  
+         ?VARIABLE     in the Graph BY   ":Nitrogen"
+         ?VAR_URI                   BY   nitrogen   ( for example in sql queries )
+         ?standardVar               BY   oboe-standard:MilligramPerLiter
+    
 ``` 
 ----------------------------------------------------------------------------------
 
