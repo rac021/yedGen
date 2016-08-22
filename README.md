@@ -132,21 +132,21 @@
 
 ### Graphml files example :
  
-   - Graph
+   - Graph 
 <p align="center"> 
 ![graphchunks](https://cloud.githubusercontent.com/assets/7684497/17357917/617c5234-595f-11e6-8b72-5f0ee9615828.jpg)
 </p>
 
-   - URIs
+   - URIs 
 <p align="center"> 
 ![uris](https://cloud.githubusercontent.com/assets/7684497/17358066/27b5ed2a-5960-11e6-887f-3b2cb5641e4f.jpg)
 </p>
-   - Queries
+   - Queries 
 <p align="center"> 
 ![pattern_queries](https://cloud.githubusercontent.com/assets/7684497/17855399/d4be1c3c-6878-11e6-969a-f98deb9c0005.png)
 </p>
 
-   - Variables
+   - Variables 
  <p align="center"> 
 ![variables_declaration](https://cloud.githubusercontent.com/assets/7684497/17358262/470792ea-5961-11e6-9a60-fbf46de3d60c.jpg)
 </p>
