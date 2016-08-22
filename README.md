@@ -147,7 +147,7 @@
 ![pattern_queries](https://cloud.githubusercontent.com/assets/7684497/17855399/d4be1c3c-6878-11e6-969a-f98deb9c0005.png)
 
 
-   - Variables 
+   - Patterns + Variables 
 
 ![variables_declaration](https://cloud.githubusercontent.com/assets/7684497/17358262/470792ea-5961-11e6-9a60-fbf46de3d60c.jpg)
 
