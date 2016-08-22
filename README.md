@@ -65,7 +65,7 @@
      oboe-core:ofEntity Ammonium 
      oboe-core:hasContext ola/observation/variable/Solutes/{dty_code}/{mesure_id}
    
-   - source : Q_20
+   - source : Query_20
 ```  
 
 ```  
@@ -75,7 +75,7 @@
      oboe-core:ofEntity Solutes 
      oboe-core:hasContext ola/observation/variable/Water/{dty_code}/{mesure_id}
    
-   - source : Q_21
+   - source : Query_21
    
 ```
 
@@ -85,7 +85,7 @@
    - target ola/observation/variable/Water/{dty_code}/{mesure_id} a oboe-core:Observation 
      oboe-core:ofEntity Water oboe-core:hasContext ...`
    
-   - source : Q_22
+   - source : Query_22
    
 ```  
    
