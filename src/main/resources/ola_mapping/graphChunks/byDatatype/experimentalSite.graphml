@@ -258,14 +258,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="364.6245800121254" width="1886.6233160208326" x="573.146415221708" y="-1067.6837183284433"/>
+              <y:Geometry height="405.00678831980997" width="1235.7286183245965" x="588.2998811441174" y="-1108.0659266361279"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1886.6233160208326" x="0.0" y="0.0"> Querie(s) </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1235.7286183245965" x="0.0" y="0.0"> Querie(s) </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="20" bottomF="20.297264461610666" left="0" leftF="0.0" right="26" rightF="25.511653473567094" top="5" topF="5.426250515048196"/>
+              <y:BorderInsets bottom="27" bottomF="27.408741877399507" left="30" leftF="30.04723422770121" right="46" rightF="46.197821777283025" top="19" topF="18.73558269575915"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -284,10 +284,10 @@
         <node id="n14::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1820.9349161909117" x="598.3231615780621" y="-1025.7965303133951"/>
+              <y:Geometry height="88.21651631617112" width="563.1620568773706" x="633.3471153718186" y="-1052.8694064403687"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="539.013671875" x="640.9606221579559" y="6.015625">Query_(62): SELECT 	public.site_glacpe_sit.code AS site_code FROM 	public.site_glacpe_sit<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="563.1620568773706" x="0.0" y="34.12388315808562">Query_(62): SELECT 	public.site_glacpe_sit.code AS site_code FROM 	public.site_glacpe_sit<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -301,10 +301,10 @@
         <node id="n14::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1820.3408338572603" x="588.966455827327" y="-922.9999156134276"/>
+              <y:Geometry height="88.21651631617112" width="1129.4835623196125" x="633.3471153718186" y="-914.0652988645413"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1651.029296875" x="84.65576849113017" y="6.015625">Query_(64): SELECT site_glacpe_sit.code AS site_code,  CASE site_glacpe_sit.code   WHEN 'annecy' THEN '#AnnecyLake'     WHEN 'bourget' THEN '#BourgetLake'        WHEN 'leman' THEN '#GenevaLake'     ELSE '#unknown_uri'     END  AS uri     FROM 	 public.site_glacpe_sit <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="1129.4835623196125" x="0.0" y="27.13950815808562">Query_(64): SELECT site_glacpe_sit.code AS site_code,  CASE site_glacpe_sit.code   WHEN 'annecy' THEN '#AnnecyLake'  WHEN 'bourget' THEN '#BourgetLake'   WHEN 'leman' THEN '#GenevaLake'   ELSE '#unknown_uri'    END  AS uri    FROM 	public.site_glacpe_sit <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -318,10 +318,10 @@
         <node id="n14::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1821.1608744628797" x="588.146415221708" y="-868.8973765660982"/>
+              <y:Geometry height="39.61353470378856" width="319.2503579017075" x="633.3471153718186" y="-787.4678801937174"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="288.759765625" x="766.2005544189399" y="6.015625">Query_(65): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="319.2503579017075" x="0.0" y="9.822392351894337">Query_(65): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -335,10 +335,10 @@
         <node id="n14::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1820.3408338572603" x="588.146415221708" y="-819.2575236942101"/>
+              <y:Geometry height="42.0" width="319.00018296757617" x="1038.7138925149025" y="-787.4678801937174"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="288.759765625" x="765.7905341161302" y="6.015625">Query_(66): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="319.00018296757617" x="0.0" y="11.015625">Query_(66): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -352,10 +352,10 @@
         <node id="n14::n4">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1820.3408338572603" x="588.146415221708" y="-768.3564027779286"/>
+              <y:Geometry height="39.61353470378856" width="319.0001829675763" x="1443.8304947238548" y="-786.2746475456116"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="288.759765625" x="765.7905341161302" y="6.015625">Query_(67): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="319.0001829675763" x="1.1368683772161603E-13" y="9.822392351894223">Query_(67): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -369,10 +369,10 @@
         <node id="n14::n5">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1820.9349161909117" x="598.3231615780621" y="-974.9281553480578"/>
+              <y:Geometry height="88.21651631617112" width="520.908133744666" x="1236.288687529071" y="-1052.8694064403687"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="674.095703125" x="573.4196065329559" y="6.015625">Query_(63): SELECT 	site_glacpe_sit.code AS site_code , site_glacpe_sit.nom AS site_name FROM site_glacpe_sit<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="520.908133744666" x="0.0" y="27.13950815808562">Query_(63): SELECT 	site_glacpe_sit.code AS site_code , site_glacpe_sit.nom AS site_name FROM site_glacpe_sit<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -505,7 +505,7 @@
               <y:Geometry height="30.0" width="546.9148308615404" x="-25.713036974577193" y="-974.9281553480578"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="388.73828125" x="79.08827480577017" y="6.015625">(63) ola/measurement/experimentalSite/localName/{site_code}<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="388.73828125" x="79.0882748057702" y="6.015625">(63) ola/measurement/experimentalSite/localName/{site_code}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
