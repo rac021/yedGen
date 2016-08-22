@@ -44,17 +44,17 @@
 
    * Example :
 
-      The following pattern :
+      - The following pattern :
    
 ```
         ##PATTERN_1  20  ola/observation/variable/?VARIABLE/{dty_code}/{mesure_id} 
            oboe-core:hasContext 
             [ oboe-core:Observation_Ammonium Q_20 ] 
             [ oboe-core:Observation_Solutes Q_21 ] 
-            [ oboe-core:Observation_Water Q_22 ]`
-``` 
+            [ oboe-core:Observation_Water Q_22 ]
 
-     Will gives the following mapping  :
+```  
+           - Gives the following mapping :
  
  ```
       - mappingId	(20)_ola_observation_variable_ammonium 
@@ -66,6 +66,7 @@
       - source : Query_20
 ```  
 
+        
 ```  
       - mappingId	(21)_ola_observation_variable_solute
       
