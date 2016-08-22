@@ -190,14 +190,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="182.01692352690475" width="1219.8802286909115" x="-322.4330097164003" y="-923.571433562749"/>
+              <y:Geometry height="268.3573185670682" width="1142.1433696697281" x="-307.82474090705057" y="-1009.9118286029125"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1219.8802286909115" x="0.0" y="0.0"> Querie(s) </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1142.1433696697281" x="0.0" y="0.0"> Querie(s) </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="9" bottomF="9.456731084727608" left="0" leftF="0.0" right="0" rightF="0.0" top="1" topF="1.0397104641406258"/>
+              <y:BorderInsets bottom="5" bottomF="4.794160322646121" left="11" leftF="11.304017531044565" right="12" rightF="11.870069426960299" top="5" topF="4.74053549450332"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -216,10 +216,10 @@
         <node id="n10::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1189.8131731308797" x="-307.4330097164003" y="-886.0707855986084"/>
+              <y:Geometry height="94.34594594594591" width="529.4846413558615" x="-281.520723376006" y="-968.7103556084091"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="966.578125" x="111.61752406543985" y="6.015625">Query_(59): SELECT pla.code AS platform_code, site.code AS site_code FROM public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="529.4846413558615" x="0.0" y="30.204222972972957">Query_(59): SELECT pla.code AS platform_code, site.code AS site_code FROM public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -233,10 +233,10 @@
         <node id="n10::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1189.8802286909115" x="-307.4330097164003" y="-838.152782335233"/>
+              <y:Geometry height="94.34594594594591" width="529.4846413558615" x="277.96391797985564" y="-968.7103556084091"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1129.052734375" x="30.413747157955754" y="6.015625">Query_(60): SELECT pla.code AS platform_code, site.code AS site_code, pla.longitude AS longitude FROM	public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="529.4846413558615" x="0.0" y="23.219847972972957">Query_(60): SELECT pla.code AS platform_code, site.code AS site_code, pla.longitude AS longitude FROM	public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -250,10 +250,10 @@
         <node id="n10::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1189.8131731308797" x="-307.4330097164003" y="-796.0112411205719"/>
+              <y:Geometry height="94.34594594594591" width="529.4846413558615" x="-281.520723376006" y="-855.6946163044363"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1111.85546875" x="38.97885219043985" y="6.015625">Query_(61): SELECT pla.code AS platform_code, site.code AS site_code, pla.latitude AS latitude FROM	public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="529.4846413558615" x="0.0" y="23.219847972972957">Query_(61): SELECT pla.code AS platform_code, site.code AS site_code, pla.latitude AS latitude FROM	public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
