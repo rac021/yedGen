@@ -122,14 +122,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="161.50911102690475" width="4041.00118348929" x="572.3444077087884" y="-1575.6027700146838"/>
+              <y:Geometry height="455.15330295531953" width="1269.7193489614801" x="617.4270327735555" y="-1867.2782119430988"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="4041.00118348929" x="0.0" y="0.0"> Querie(s) </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1269.7193489614801" x="0.0" y="0.0"> Querie(s) </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="23" bottomF="23.2879051315565" left="11" leftF="11.200773544795538" right="13" rightF="13.338150003582996" top="14" topF="14.314154029274505"/>
+              <y:BorderInsets bottom="26" bottomF="25.785340717498684" left="23" leftF="22.810067494521377" right="33" rightF="32.696997859137355" top="30" topF="30.033189821823953"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -148,10 +148,10 @@
         <node id="n6::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="3986.4287321608954" x="598.5787090335998" y="-1524.8276784854093"/>
+              <y:Geometry height="131.30045288531755" width="1184.212283607821" x="655.237100268077" y="-1800.7840846212748"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="970.392578125" x="1508.0180770179477" y="6.015625">Query_(57):  SELECT pla.code AS platform_code, site.code AS site_code FROM public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="1184.212283607821" x="-1.1368683772161603E-13" y="55.66585144265878">Query_(57):  SELECT pla.code AS platform_code, site.code AS site_code FROM public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -165,10 +165,10 @@
         <node id="n6::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="3986.4622599409113" x="598.5451812535839" y="-1482.3815641193355"/>
+              <y:Geometry height="173.21788166544934" width="1184.2122836078213" x="655.2371002680771" y="-1626.1281313707273"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="3980.810546875" x="2.8258565329556404" y="6.015625">Query_(58): SELECT site.code AS site_code, pla.code AS platform_code, CASE pla.code         WHEN 'grand_lac' THEN '#GrandLacPlatform'  WHEN 'petit_lac' THEN '#PetitLacPlatform'          WHEN 'shl_jetee' THEN '#ShlPier' WHEN 'shl_port' THEN '#ShlHarbour'  WHEN 'shl1' THEN '#Shl1Platform' WHEN 'shl2' THEN '#Shl2Platform'         WHEN 'shl_rives' THEN '#ShlBanks'       WHEN 'defaut_leman' THEN '#DefaultGenevaLakePlot'  	WHEN 'defaut_bourget'THEN '#DefaultBourgetLakePlot'  WHEN 'frayere_perche'THEN '#PerchSpawningArea'  ELSE '#unknown_uri' END AS uri FROM	public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="61.875" modelName="custom" textColor="#000000" visible="true" width="1184.2122836078213" x="0.0" y="55.671440832724784">Query_(58): SELECT site.code AS site_code, pla.code AS platform_code, CASE pla.code         WHEN 'grand_lac' THEN '#GrandLacPlatform'  WHEN 'petit_lac' THEN '#PetitLacPlatform'          WHEN 'shl_jetee' THEN '#ShlPier' WHEN 'shl_port' THEN '#ShlHarbour'  WHEN 'shl1' THEN '#Shl1Platform' WHEN 'shl2' THEN '#Shl2Platform'         WHEN 'shl_rives' THEN '#ShlBanks'       WHEN 'defaut_leman' THEN '#DefaultGenevaLakePlot'  	WHEN 'defaut_bourget'THEN '#DefaultBourgetLakePlot'  WHEN 'frayere_perche'THEN '#PerchSpawningArea'  ELSE '#unknown_uri' END AS uri FROM	public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
