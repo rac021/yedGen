@@ -34,7 +34,7 @@
 
    *  1- Pattern :
    
-      `##PATTERN_Code` : Declare a specific pattern
+      `##PATTERN_CODE` : Declare a specific pattern
 
       `NUM` : Index of the first Entity ( the following entities will have an incremental index )
       
@@ -46,7 +46,7 @@
 
    * Example :
 
-      - The following pattern :
+      - The following pattern 
    
 ```
         ##PATTERN_1  20  ola/observation/variable/?VARIABLE/{dty_code}/{mesure_id} 
@@ -72,7 +72,6 @@
       - source : Query_20
 ```  
 
-        
 ```  
       - mappingId	(21)_ola_observation_variable_solute
       
@@ -94,8 +93,43 @@
    
 ```  
    
-   *  2- Variable :
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; *  2- Variable :
    
+         `?VARIABLE` : Declare Variable 
+   
+         `##PATTERN_CODE` : Link current Variable to the Pattern PATTERN_CODE.
+        
+         `:Variable` : name of the Entity concerned by this Variable
+         
+         `{ ?Matcher=value}` : replace all matchers in the result mapping by value ( for each variable )
+      
+
+   * Example :
+   
+      - The following declaration 
+
+```  
+      ?VARIABLE  ##PATTERN_1 :Nitrogen 
+      { ?VAR_URI=nitrogen } 
+      { ?standardVar=oboe-standard:MilligramPerLiter } 
+      { ?NUM_DTYPE=11 } 
+      { ?FILTER_VAR='azote ammoniacal'  } 
+      
+```  
+
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp; **reliying to the ##PATTERN_1 will Replace :**
+
+```  
+      ?VARIABLE     in the Graph BY   ":Nitrogen"
+      ?VAR_URI                   BY   nitrogen   ( for example in sql queries )
+      ?standardVar               BY   oboe-standard:MilligramPerLiter
+ 
+``` 
+----------------------------------------------------------------------------------
+
+
 ### Graphml files example :
  
    - Graph
