@@ -32,7 +32,7 @@
 
 - Description of [**PatternGraphChunks**]( https://github.com/rac021/yedGen/blob/master/README.md#graphml-files-example-) format :
 
-   *  1- Pattern :
+   *  1- Description of Patterns declarations :
    
       `##PATTERN_CODE` : Declare a specific pattern
 
@@ -93,7 +93,8 @@
    
 ```  
    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; *  2- Variable :
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+       *  2- Description of the Variables declarations :
    
          `?VARIABLE` : Declare Variable 
    
