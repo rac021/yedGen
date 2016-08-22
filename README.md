@@ -155,3 +155,13 @@
 <p align="center">
 ![connexion](https://cloud.githubusercontent.com/assets/7684497/17358431/4cb8b362-5962-11e6-9dce-3ccb9a59e9c4.jpg)
 </p>
+
+
+----------------------------------------------------------------------------------
+
+
+## Legends ( AnaEE-France ) :
+
+![legend](https://cloud.githubusercontent.com/assets/7684497/17856407/b5ec0738-687d-11e6-988e-dfbf6e843556.png)
+
+
