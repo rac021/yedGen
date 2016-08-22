@@ -28,6 +28,8 @@
    - **GraphChunks** : Multiple graphs -> one obda file mapping
    - **PatternGraphChunks** : One [ multiple ] graph(s) -> multiple obda files
  
+----------------------------------------------------------------------------------
+
 - Description of **PatternGraphChunks** format :
 
    *  1- Pattern :
