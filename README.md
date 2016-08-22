@@ -66,7 +66,7 @@
       - mappingId	(20)_ola_observation_variable_ammonium 
       
       - target ola/observation/variable/Ammonium/{dty_code}/{mesure_id} a oboe-core:Observation 
-        oboe-core:ofEntity Ammonium 
+        oboe-core:ofEntity :Ammonium 
         oboe-core:hasContext ola/observation/variable/Solutes/{dty_code}/{mesure_id}
       
       - source : Query_20
@@ -76,7 +76,7 @@
       - mappingId	(21)_ola_observation_variable_solute
       
       - target ola/observation/variable/Solutes/{dty_code}/{mesure_id} a oboe-core:Observation
-        oboe-core:ofEntity Solutes 
+        oboe-core:ofEntity :Solutes 
         oboe-core:hasContext ola/observation/variable/Water/{dty_code}/{mesure_id}
       
       - source : Query_21
@@ -87,7 +87,7 @@
       - mappingId	(22)_ola_observation_variable_solute
       
       - target ola/observation/variable/Water/{dty_code}/{mesure_id} a oboe-core:Observation 
-        oboe-core:ofEntity Water oboe-core:hasContext ...`
+        oboe-core:ofEntity :Water oboe-core:hasContext ...`
       
       - source : Query_22
    
