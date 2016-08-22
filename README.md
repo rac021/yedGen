@@ -54,7 +54,9 @@
             [ oboe-core:Observation_Water Q_22 ]
 
 ```  
-           - Gives the following mapping :
+
+           `Gives the following mapping :`
+         
  
  ```
       - mappingId	(20)_ola_observation_variable_ammonium 
