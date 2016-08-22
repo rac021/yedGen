@@ -59,7 +59,7 @@
 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- **Gives the following mapping :**
+ *Gives the following mapping :*
          
  
  ```
@@ -95,7 +95,7 @@
    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; *  **2- Description of the Variables declarations :**
    
-         `?VARIABLE` : Declare Variable 
+         `?VARIABLE` : Declare Variable
    
          `##PATTERN_CODE` : Link current Variable to the Pattern PATTERN_CODE.
         
@@ -103,10 +103,10 @@
          
          `{ ?Matcher=value}` : replace all matchers in the result mapping by value ( for each variable )
       
-
-   * Example :
+      
+         * Example :
    
-      - The following declaration 
+          - The following declaration 
 
 ```  
       ?VARIABLE  ##PATTERN_1 :Nitrogen 
@@ -119,7 +119,7 @@
 
 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp; **reliying to the ##PATTERN_1 will Replace :**
+ &nbsp;&nbsp; *reliying to the ##PATTERN_1 will Replace :*
 
 ```  
       ?VARIABLE     in the Graph BY   ":Nitrogen"
