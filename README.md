@@ -143,7 +143,9 @@
 
    - Queries
 
-![queries](https://cloud.githubusercontent.com/assets/7684497/17358127/8560d2fa-5960-11e6-84bb-dca580e70cb5.jpg)
+#![queries](https://cloud.githubusercontent.com/assets/7684497/17358127/8560d2fa-5960-11e6-84bb-dca580e70cb5.jpg)
+
+![pattern_queries](https://cloud.githubusercontent.com/assets/7684497/17855399/d4be1c3c-6878-11e6-969a-f98deb9c0005.png)
 
 
    - Variables
