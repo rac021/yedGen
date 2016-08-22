@@ -28,7 +28,69 @@
    - **GraphChunks** : Multiple graphs -> one obda file mapping
    - **PatternGraphChunks** : One [ multiple ] graph(s) -> multiple obda files
  
+- Description of **PatternGraphChunks** format :
 
+   *  1- Pattern :
+   
+      `##PATTERN_Code` : Declare a specific pattern
+
+      `NUM` : Index of the first Entity ( the following entities will have an incremental index )
+      
+      `IRU` : pattern URI for variables. Do not touch the **?VARIABLE**
+      
+      `ObjectProperty` : used as object property between entities of the pattern
+      
+      `[ ObjectProperty_Entity SqlQueryIndex ]` : Object Property "_" Entity SqlQueryIndex
+
+   Example :
+
+   The following pattern :
+   
+```
+   ##PATTERN_1  20  ola/observation/variable/?VARIABLE/{dty_code}/{mesure_id} 
+      oboe-core:hasContext 
+       [ oboe-core:Observation_Ammonium Q_20 ] 
+       [ oboe-core:Observation_Solutes Q_21 ] 
+       [ oboe-core:Observation_Water Q_22 ]`
+   
+```
+
+   Will gives the following mapping  :
+
+ 
+ ```
+   - mappingId	(20)_ola_observation_variable_ammonium 
+   
+   - target ola/observation/variable/Ammonium/{dty_code}/{mesure_id} a oboe-core:Observation 
+     oboe-core:ofEntity Ammonium 
+     oboe-core:hasContext ola/observation/variable/Solutes/{dty_code}/{mesure_id}
+   
+   - source : Q_20
+```  
+
+```  
+   - mappingId	(21)_ola_observation_variable_solute
+   
+   - target ola/observation/variable/Solutes/{dty_code}/{mesure_id} a oboe-core:Observation
+     oboe-core:ofEntity Solutes 
+     oboe-core:hasContext ola/observation/variable/Water/{dty_code}/{mesure_id}
+   
+   - source : Q_21
+   
+```
+
+```  
+   - mappingId	(22)_ola_observation_variable_solute
+   
+   - target ola/observation/variable/Water/{dty_code}/{mesure_id} a oboe-core:Observation 
+     oboe-core:ofEntity Water oboe-core:hasContext ...`
+   
+   - source : Q_22
+   
+```  
+   
+   *  2- Variable :
+   
 ### Graphml files example :
  
    - Graph
