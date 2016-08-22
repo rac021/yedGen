@@ -30,7 +30,7 @@
  
 ----------------------------------------------------------------------------------
 
-- Description of **PatternGraphChunks** format :
+- Description of [**PatternGraphChunks**]( https://github.com/rac021/yedGen/blob/master/README.md#graphml-files-example-) format :
 
    *  1- Pattern :
    
