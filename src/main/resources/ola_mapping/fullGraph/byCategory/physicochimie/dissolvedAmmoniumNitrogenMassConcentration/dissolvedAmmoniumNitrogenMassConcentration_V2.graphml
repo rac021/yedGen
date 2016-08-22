@@ -20,14 +20,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="1348.0325485269045" width="4939.43868348929" x="-3194.6555922912116" y="-3460.769436681351"/>
+              <y:Geometry height="2417.0706458893737" width="1579.265395578192" x="-3786.6635442570064" y="-4452.54926090104"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="4939.43868348929" x="0.0" y="0.0"> Querie(s) </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1579.265395578192" x="0.0" y="0.0"> Querie(s) </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="9" bottomF="8.537298398321127" left="9" leftF="9.294308967324469" right="26" rightF="25.511653473568003" top="28" topF="28.18886990936653"/>
+              <y:BorderInsets bottom="34" bottomF="33.96344787537237" left="39" leftF="38.58913519216094" right="42" rightF="42.01512054829345" top="24" topF="23.972798771460475"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -46,10 +46,10 @@
         <node id="n0::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.0881382210555" x="-3168.4212909664" y="-3311.624546077402"/>
+              <y:Geometry height="138.2751517709121" width="708.3289629575552" x="-3733.074409064845" y="-4223.840372858667"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2938.5859375" x="966.7511003605277" y="6.015625">Query_(3):  SELECT dt.code AS dty_code, var.code AS var_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal' <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="75.84375" modelName="custom" textColor="#000000" visible="true" width="708.3289629575552" x="0.0" y="31.21570088545559">Query_(3):  SELECT dt.code AS dty_code, var.code AS var_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal' <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -63,10 +63,10 @@
         <node id="n0::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.098646357259" x="-3168.4212909664" y="-3227.0235691467556"/>
+              <y:Geometry height="138.2751517709121" width="708.3289629575552" x="-3733.074409064845" y="-4052.624398340072"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1727.78125" x="1572.1586981786295" y="6.015625">Query_(5): SELECT dt.code AS dty_code , var.code AS var_code FROM public.datatype dt	INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal'<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="708.3289629575552" x="0.0" y="45.1844508854565">Query_(5): SELECT dt.code AS dty_code , var.code AS var_code FROM public.datatype dt	INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal'<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -80,10 +80,10 @@
         <node id="n0::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.0881382210555" x="-3168.1525235114887" y="-3144.3985207468163"/>
+              <y:Geometry height="138.2751517709121" width="320.4069961562491" x="-2972.7422321846634" y="-4052.624398340072"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="281.125" x="2295.4815691105277" y="6.015625">Query_(6): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="320.4069961562491" x="0.0" y="59.15320088545559">Query_(6): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -97,10 +97,10 @@
         <node id="n0::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.625673130879" x="-3168.4212909664" y="-3185.711044946786"/>
+              <y:Geometry height="138.2751517709121" width="320.4069961562491" x="-2584.8202653833578" y="-4052.624398340072"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="281.125" x="2295.7503365654393" y="6.015625">Query_(7): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="320.4069961562491" x="0.0" y="59.15320088545559">Query_(7): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -114,10 +114,10 @@
         <node id="n0::n4">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.625673130879" x="-3168.4212909664" y="-3396.1196292719846"/>
+              <y:Geometry height="138.2751517709121" width="708.3289629575552" x="-3733.074409064845" y="-4392.115524629579"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="3135.73046875" x="868.4476021904393" y="6.015625">Query_(1): SELECT dt.code AS dty_code, var.code AS var_code , mc.mchimie_id AS mesure_id, vmc.vmchimie_id AS value_id  FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal'  <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="75.84375" modelName="custom" textColor="#000000" visible="true" width="708.3289629575552" x="0.0" y="31.21570088545559">Query_(1): SELECT dt.code AS dty_code, var.code AS var_code , mc.mchimie_id AS mesure_id, vmc.vmchimie_id AS value_id  FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal'  <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -131,10 +131,10 @@
         <node id="n0::n5">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.625673130879" x="-3168.4212909664" y="-3354.3896521744628"/>
+              <y:Geometry height="138.2751517709121" width="708.3289629575554" x="-2972.7422321846634" y="-4392.115524629579"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2929.7265625" x="971.4495553154393" y="6.015625">Query_(2): SELECT dt.code AS dty_code, vmc.vmchimie_id AS value_id, vmc.valeur AS value FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal'<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="75.84375" modelName="custom" textColor="#000000" visible="true" width="708.3289629575554" x="0.0" y="31.2157008854565">Query_(2): SELECT dt.code AS dty_code, vmc.vmchimie_id AS value_id, vmc.valeur AS value FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal'<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -148,10 +148,10 @@
         <node id="n0::n6">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.625673130879" x="-3168.4212909664" y="-3048.4197053383928"/>
+              <y:Geometry height="138.2751517709121" width="708.3289629575552" x="-3733.074409064845" y="-3881.4084238214764"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2868.431640625" x="1002.0970162529393" y="6.015625">Query_(20): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal' <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="75.84375" modelName="custom" textColor="#000000" visible="true" width="708.3289629575552" x="0.0" y="31.21570088545559">Query_(20): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal' <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -165,10 +165,10 @@
         <node id="n0::n7">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.625673130879" x="-3168.4212909664" y="-3009.7544405275844"/>
+              <y:Geometry height="138.2751517709121" width="708.3289629575554" x="-2972.7422321846634" y="-3881.4084238214755"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2868.431640625" x="1002.0970162529393" y="6.015625">Query_(21): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal' <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="75.84375" modelName="custom" textColor="#000000" visible="true" width="708.3289629575554" x="0.0" y="31.2157008854565">Query_(21): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal' <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -182,10 +182,10 @@
         <node id="n0::n8">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.0881382210555" x="-3168.4212909664" y="-2968.7906415017405"/>
+              <y:Geometry height="138.2751517709139" width="708.3289629575556" x="-3733.074409064845" y="-3713.1332720505643"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="4830.115234375" x="20.986451923027744" y="6.015625">Query_(22): SELECT DISTINCT dt.code AS dty_code, vmc.mchimie_id AS mesure_id,  sc.schimie_id AS sequence_id, pla.code AS platform_code, site.code AS site_code FROM 	datatype dt INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id INNER JOIN sous_sequence_chimie_sschimie ssc	 ON mc.sschimie_id = ssc.sschimie_id INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id INNER JOIN plateforme_pla pla ON ssc.loc_id = pla.loc_id INNER JOIN public.site_glacpe_sit site ON pla.id = site.id WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal' <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="117.75" modelName="custom" textColor="#000000" visible="true" width="708.3289629575556" x="0.0" y="10.262575885457409">Query_(22): SELECT DISTINCT dt.code AS dty_code, vmc.mchimie_id AS mesure_id,  sc.schimie_id AS sequence_id, pla.code AS platform_code, site.code AS site_code FROM 	datatype dt INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id INNER JOIN sous_sequence_chimie_sschimie ssc	 ON mc.sschimie_id = ssc.sschimie_id INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id INNER JOIN plateforme_pla pla ON ssc.loc_id = pla.loc_id INNER JOIN public.site_glacpe_sit site ON pla.id = site.id WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal' <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -199,10 +199,10 @@
         <node id="n0::n9">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.0881382210555" x="-3168.4212909664" y="-2913.6311229663393"/>
+              <y:Geometry height="138.2751517709139" width="708.3289629575556" x="-3733.074409064845" y="-3530.956032563001"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2864.6171875" x="1003.7354753605277" y="6.015625">Query_(50): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal'<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="75.84375" modelName="custom" textColor="#000000" visible="true" width="708.3289629575556" x="0.0" y="31.2157008854565">Query_(50): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal'<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -216,10 +216,10 @@
         <node id="n0::n10">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.0881382210555" x="-3168.4212909664" y="-2870.0210874639642"/>
+              <y:Geometry height="138.2751517709139" width="708.3289629575556" x="-2972.7422321846634" y="-3530.956032563001"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="3070.591796875" x="900.7481706730277" y="6.015625">Query_(51): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, mc.profondeurmin AS depth_min FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal'<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="75.84375" modelName="custom" textColor="#000000" visible="true" width="708.3289629575556" x="0.0" y="31.21570088545741">Query_(51): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, mc.profondeurmin AS depth_min FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal'<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -233,10 +233,10 @@
         <node id="n0::n11">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.625673130879" x="-3168.4212909664" y="-2784.2724545233955"/>
+              <y:Geometry height="138.2751517709121" width="1033.3316543818205" x="-3297.7449236089287" y="-3336.7482206564437"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="3077.623046875" x="897.5013131279393" y="6.015625">Query_(53): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, mc.profondeurmax AS depth_max FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal'<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="61.875" modelName="custom" textColor="#000000" visible="true" width="1033.3316543818205" x="0.0" y="38.20007588545559">Query_(53): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, mc.profondeurmax AS depth_max FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = 11 and var.nom = 'Azote Ammoniacal'<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -250,10 +250,10 @@
         <node id="n0::n12">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.625673130879" x="-3168.4212909664" y="-2694.097283410543"/>
+              <y:Geometry height="138.2751517709139" width="708.3289629575552" x="-3733.074409064845" y="-3142.5404087498882"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="3651.466796875" x="610.5794381279393" y="6.015625">Query_(55): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id FROM datatype dt 	 INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id 	 INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc	ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id 	 INNER JOIN sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id 	 INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE dt.id = 11 AND var.nom = 'Azote Ammoniacal' <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="708.3289629575552" x="-4.547473508864641E-13" y="24.23132588545741">Query_(55): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id FROM datatype dt 	 INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id 	 INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc	ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id 	 INNER JOIN sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id 	 INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE dt.id = 11 AND var.nom = 'Azote Ammoniacal' <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -267,10 +267,10 @@
         <node id="n0::n13">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.6256731308795" x="-3168.4212909664" y="-2647.662408372973"/>
+              <y:Geometry height="138.2751517709121" width="708.3289629575554" x="-2972.7422321846634" y="-3142.5404087498864"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="4159.33984375" x="356.64291469043974" y="6.015625">Query_(56): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id, date( sc.date_prelevement ) AS date FROM 	public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id 	 INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN public.valeur_mesure_chimie_vmchimie vmc	ON var.id = vmc.var_id 	 INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id 	 INNER JOIN public.sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id 	 INNER JOIN public.sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE dt.id = 11 AND var.nom = 'Azote Ammoniacal' <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="708.3289629575554" x="0.0" y="17.24695088545559">Query_(56): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id, date( sc.date_prelevement ) AS date FROM 	public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id 	 INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN public.valeur_mesure_chimie_vmchimie vmc	ON var.id = vmc.var_id 	 INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id 	 INNER JOIN public.sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id 	 INNER JOIN public.sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE dt.id = 11 AND var.nom = 'Azote Ammoniacal' <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -284,10 +284,10 @@
         <node id="n0::n14">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.6256731308795" x="-3168.4212909664" y="-2604.7638987200658"/>
+              <y:Geometry height="138.2751517709139" width="708.328962957555" x="-3733.074409064845" y="-2956.925862856897"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="970.392578125" x="1951.1165475029397" y="6.015625">Query_(57):  SELECT pla.code AS platform_code, site.code AS site_code FROM public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="708.328962957555" x="0.0" y="52.16882588545741">Query_(57):  SELECT pla.code AS platform_code, site.code AS site_code FROM public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -301,10 +301,10 @@
         <node id="n0::n15">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.692728690911" x="-3168.4212909664" y="-2560.6836333073793"/>
+              <y:Geometry height="138.2751517709139" width="708.3289629575554" x="-2972.7422321846634" y="-2956.925862856897"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="3980.810546875" x="445.94109090795564" y="6.015625">Query_(58): SELECT site.code AS site_code, pla.code AS platform_code, CASE pla.code         WHEN 'grand_lac' THEN '#GrandLacPlatform'  WHEN 'petit_lac' THEN '#PetitLacPlatform'          WHEN 'shl_jetee' THEN '#ShlPier' WHEN 'shl_port' THEN '#ShlHarbour'  WHEN 'shl1' THEN '#Shl1Platform' WHEN 'shl2' THEN '#Shl2Platform'         WHEN 'shl_rives' THEN '#ShlBanks'       WHEN 'defaut_leman' THEN '#DefaultGenevaLakePlot'  	WHEN 'defaut_bourget'THEN '#DefaultBourgetLakePlot'  WHEN 'frayere_perche'THEN '#PerchSpawningArea'  ELSE '#unknown_uri' END AS uri FROM	public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="708.3289629575554" x="0.0" y="24.23132588545741">Query_(58): SELECT site.code AS site_code, pla.code AS platform_code, CASE pla.code         WHEN 'grand_lac' THEN '#GrandLacPlatform'  WHEN 'petit_lac' THEN '#PetitLacPlatform'          WHEN 'shl_jetee' THEN '#ShlPier' WHEN 'shl_port' THEN '#ShlHarbour'  WHEN 'shl1' THEN '#Shl1Platform' WHEN 'shl2' THEN '#Shl2Platform'         WHEN 'shl_rives' THEN '#ShlBanks'       WHEN 'defaut_leman' THEN '#DefaultGenevaLakePlot'  	WHEN 'defaut_bourget'THEN '#DefaultBourgetLakePlot'  WHEN 'frayere_perche'THEN '#PerchSpawningArea'  ELSE '#unknown_uri' END AS uri FROM	public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -318,10 +318,10 @@
         <node id="n0::n16">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.692728690911" x="-3168.4212909664" y="-2373.9603736663034"/>
+              <y:Geometry height="138.2751517709139" width="708.328962957555" x="-2972.7422321846634" y="-2585.696771070914"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="539.013671875" x="2166.8395284079556" y="6.015625">Query_(62): SELECT 	public.site_glacpe_sit.code AS site_code FROM 	public.site_glacpe_sit<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="708.328962957555" x="0.0" y="59.15320088545741">Query_(62): SELECT 	public.site_glacpe_sit.code AS site_code FROM 	public.site_glacpe_sit<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -335,10 +335,10 @@
         <node id="n0::n17">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.09864635726" x="-3167.8272086327493" y="-2286.4739142330795"/>
+              <y:Geometry height="138.2751517709139" width="708.328962957555" x="-2972.7422321846634" y="-2408.3317605509437"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1651.029296875" x="1610.53467474113" y="6.015625">Query_(64): SELECT site_glacpe_sit.code AS site_code,  CASE site_glacpe_sit.code   WHEN 'annecy' THEN '#AnnecyLake'     WHEN 'bourget' THEN '#BourgetLake'        WHEN 'leman' THEN '#GenevaLake'     ELSE '#unknown_uri'     END  AS uri     FROM 	 public.site_glacpe_sit <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="708.328962957555" x="0.0" y="45.18445088545741">Query_(64): SELECT site_glacpe_sit.code AS site_code,  CASE site_glacpe_sit.code   WHEN 'annecy' THEN '#AnnecyLake'     WHEN 'bourget' THEN '#BourgetLake'        WHEN 'leman' THEN '#GenevaLake'     ELSE '#unknown_uri'     END  AS uri     FROM 	 public.site_glacpe_sit <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -352,10 +352,10 @@
         <node id="n0::n18">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.6256731308795" x="-3168.4212909664" y="-2512.0187887172106"/>
+              <y:Geometry height="138.2751517709139" width="708.3289629575552" x="-3733.074409064845" y="-2771.3113169639055"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="966.578125" x="1953.0237740654397" y="6.015625">Query_(59): SELECT pla.code AS platform_code, site.code AS site_code FROM public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="708.3289629575552" x="-4.547473508864641E-13" y="52.16882588545741">Query_(59): SELECT pla.code AS platform_code, site.code AS site_code FROM public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -369,10 +369,10 @@
         <node id="n0::n19">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.692728690911" x="-3168.4212909664" y="-2464.100785453835"/>
+              <y:Geometry height="138.2751517709139" width="708.328962957555" x="-2972.7422321846634" y="-2771.3113169639055"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1129.052734375" x="1871.8199971579556" y="6.015625">Query_(60): SELECT pla.code AS platform_code, site.code AS site_code, pla.longitude AS longitude FROM	public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="708.328962957555" x="0.0" y="52.16882588545741">Query_(60): SELECT pla.code AS platform_code, site.code AS site_code, pla.longitude AS longitude FROM	public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -386,10 +386,10 @@
         <node id="n0::n20">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.6256731308795" x="-3168.4212909664" y="-2421.959244239174"/>
+              <y:Geometry height="138.2751517709139" width="708.3289629575554" x="-3733.074409064845" y="-2585.696771070914"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1111.85546875" x="1880.3851021904397" y="6.015625">Query_(61): SELECT pla.code AS platform_code, site.code AS site_code, pla.latitude AS latitude FROM	public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="708.3289629575554" x="0.0" y="52.16882588545741">Query_(61): SELECT pla.code AS platform_code, site.code AS site_code, pla.latitude AS latitude FROM	public.site_glacpe_sit site INNER JOIN public.plateforme_pla pla ON site.id = pla.id <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -403,10 +403,10 @@
         <node id="n0::n21">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.918686962879" x="-3168.647249238368" y="-2247.5026853575678"/>
+              <y:Geometry height="138.2751517709139" width="708.3289629575559" x="-3733.074409064845" y="-2222.7172146579524"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="288.759765625" x="2292.0794606689396" y="6.015625">Query_(65): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="708.3289629575559" x="0.0" y="59.15320088545741">Query_(65): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -420,10 +420,10 @@
         <node id="n0::n22">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.09864635726" x="-3168.647249238368" y="-2205.381643687868"/>
+              <y:Geometry height="51.99876099472567" width="706.614928872036" x="-2971.028198099145" y="-2207.687095907595"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="288.759765625" x="2291.66944036613" y="6.015625">Query_(66): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="706.614928872036" x="0.0" y="16.015005497362836">Query_(66): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -437,10 +437,10 @@
         <node id="n0::n23">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.09864635726" x="-3170.361283323887" y="-2166.274186552768"/>
+              <y:Geometry height="51.99876099472567" width="706.614928872036" x="-2972.7422321846634" y="-2136.440823881764"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="288.759765625" x="2291.66944036613" y="6.015625">Query_(67): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="706.614928872036" x="0.0" y="16.015005497362836">Query_(67): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -454,10 +454,10 @@
         <node id="n0::n24">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.0881382210555" x="-3168.4212909664" y="-2828.305537657579"/>
+              <y:Geometry height="57.498451243405725" width="379.528666329571" x="-3733.074409064845" y="-3336.7482206564455"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="288.759765625" x="2291.6641862980277" y="6.015625">Query_(52): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="379.528666329571" x="0.0" y="18.764850621702863">Query_(52): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -471,10 +471,10 @@
         <node id="n0::n25">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.625673130879" x="-3168.4212909664" y="-2742.0124004412746"/>
+              <y:Geometry height="57.498451243405725" width="379.528666329571" x="-3733.074409064845" y="-3255.9715201289373"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="288.759765625" x="2291.9329537529393" y="6.015625">Query_(54): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="379.528666329571" x="0.0" y="18.764850621702863">Query_(54): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -488,10 +488,10 @@
         <node id="n0::n26">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.692728690911" x="-3168.4212909664" y="-2329.4731697653992"/>
+              <y:Geometry height="138.2751517709139" width="708.3289629575556" x="-3733.074409064845" y="-2408.3317605509437"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="674.095703125" x="2099.2985127829556" y="6.015625">Query_(63): SELECT 	site_glacpe_sit.code AS site_code , site_glacpe_sit.nom AS site_name FROM site_glacpe_sit<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="708.3289629575556" x="0.0" y="59.15320088545741">Query_(63): SELECT 	site_glacpe_sit.code AS site_code , site_glacpe_sit.nom AS site_name FROM site_glacpe_sit<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -505,10 +505,10 @@
         <node id="n0::n27">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="4872.625673130879" x="-3168.6900584213117" y="-3268.336093346725"/>
+              <y:Geometry height="138.2751517709121" width="708.3289629575552" x="-2972.7422321846634" y="-4223.840372858667"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="3138.80078125" x="866.9124459404393" y="6.015625">Query_(4):  SELECT     dt.code AS dty_code,     var.code AS var_code,     var.nom AS var_name,     CASE WHEN localestring IS NULL THEN var.nom else localestring END AS var_name_en FROM     datatype dt     INNER JOIN datatypevariableuniteglacpe dtvu      ON dt.id = dtvu.dty_id     INNER JOIN variable_glacpe_varg var      ON dtvu.var_id = var.id      LEFT JOIN localisation  on defaultString =var.nom and entite='variable' and colonne='nom' and localization='en' WHERE  dt.id = 11 AND var.code = 'azote_ammoniacal'<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="75.84375" modelName="custom" textColor="#000000" visible="true" width="708.3289629575552" x="0.0" y="31.21570088545559">Query_(4):  SELECT     dt.code AS dty_code,     var.code AS var_code,     var.nom AS var_name,     CASE WHEN localestring IS NULL THEN var.nom else localestring END AS var_name_en FROM     datatype dt     INNER JOIN datatypevariableuniteglacpe dtvu      ON dt.id = dtvu.dty_id     INNER JOIN variable_glacpe_varg var      ON dtvu.var_id = var.id      LEFT JOIN localisation  on defaultString =var.nom and entite='variable' and colonne='nom' and localization='en' WHERE  dt.id = 11 AND var.code = 'azote_ammoniacal'<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -527,7 +527,7 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="1347.2739896560083" width="589.6088783988075" x="-3802.4210653214514" y="-3460.010877810455"/>
+              <y:Geometry height="1347.2739896560088" width="589.6088783988075" x="-2145.1794020252837" y="-3395.241097847112"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="589.6088783988075" x="0.0" y="0.0">URI(s) </y:NodeLabel>
@@ -553,7 +553,7 @@
         <node id="n1::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.914830861541" x="-3782.002537164985" y="-2167.5354545971613"/>
+              <y:Geometry height="30.0" width="546.914830861541" x="-2124.7608738688173" y="-2102.765674633818"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="422.822265625" x="62.04628261827065" y="6.015625">(66) ola/measurement/experimentalNetwork/standardName/soereOla<y:LabelModel>
@@ -570,7 +570,7 @@
         <node id="n1::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615405" x="-3781.7765788930155" y="-2513.036334795866"/>
+              <y:Geometry height="30.0" width="546.9148308615405" x="-2124.534915596848" y="-2448.2665548325226"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="365.400390625" x="90.7572201182702" y="6.015625">(59) ola/observation/wayPoint/{site_code}/{platform_code}<y:LabelModel>
@@ -587,7 +587,7 @@
         <node id="n1::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615408" x="-3782.5067014346537" y="-2286.5998695300623"/>
+              <y:Geometry height="30.0" width="546.9148308615408" x="-2125.265038138486" y="-2221.830089566719"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="414.21484375" x="66.34999355577065" y="6.015625">(64) ola/measurement/experimentalSite/standardName/{site_code}<y:LabelModel>
@@ -604,7 +604,7 @@
         <node id="n1::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.914830861541" x="-3781.776578893016" y="-2695.080855816187"/>
+              <y:Geometry height="30.0" width="546.914830861541" x="-2124.5349155968484" y="-2630.3110758528437"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="366.173828125" x="90.37050136827065" y="6.015625">(55) ola/observation/timeInstant/{dty_code}/{sequence_id}<y:LabelModel>
@@ -621,7 +621,7 @@
         <node id="n1::n4">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="547.6449534031782" x="-3786.076135775793" y="-3312.7500706661567"/>
+              <y:Geometry height="30.0" width="547.6449534031782" x="-2128.834472479625" y="-3247.9802907028134"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="317.623046875" x="115.01095326408904" y="6.015625">(3) ola/observation/variable/{dty_code}/{var_code}<y:LabelModel>
@@ -638,7 +638,7 @@
         <node id="n1::n5">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="547.6449534031782" x="-3786.0761357757933" y="-3228.755490135127"/>
+              <y:Geometry height="30.0" width="547.6449534031782" x="-2128.8344724796257" y="-3163.9857101717835"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="423.51953125" x="62.06271107658904" y="6.015625">(5) ola/measurement/variable/standardName/{dty_code}/{var_code}<y:LabelModel>
@@ -655,7 +655,7 @@
         <node id="n1::n6">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="547.6449534031783" x="-3786.0761357757933" y="-3186.4002591364647"/>
+              <y:Geometry height="30.0" width="547.6449534031783" x="-2128.8344724796257" y="-3121.630479173122"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="339.7421875" x="103.95138295158904" y="6.015625">(6) ola/observation/variableCategory/physicalChemistry<y:LabelModel>
@@ -672,7 +672,7 @@
         <node id="n1::n7">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="547.6449534031783" x="-3786.0761357757933" y="-3142.733406330437"/>
+              <y:Geometry height="30.0" width="547.6449534031783" x="-2128.8344724796257" y="-3077.9636263670936"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="445.638671875" x="51.00314076408904" y="6.015625">(7) ola/measurement/variableCategory/standardName/physicalChemistry<y:LabelModel>
@@ -689,7 +689,7 @@
         <node id="n1::n8">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="547.6449534031786" x="-3786.076135775794" y="-3395.3610704010885"/>
+              <y:Geometry height="30.0" width="547.6449534031786" x="-2128.834472479626" y="-3330.5912904377456"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="327.607421875" x="110.0187657640895" y="6.015625">(1) ola/observation/nitrogen/{dty_code}/{mesure_id}
@@ -707,7 +707,7 @@
         <node id="n1::n9">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="547.6449534031784" x="-3786.0761357757933" y="-3355.6894026614978"/>
+              <y:Geometry height="30.0" width="547.6449534031784" x="-2128.8344724796257" y="-3290.919622698155"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="448.6328125" x="49.50607045158904" y="6.015625">(2) ola/measurement/nitrogen/massConcentration/{dty_code}/{value_id}<y:LabelModel>
@@ -724,7 +724,7 @@
         <node id="n1::n10">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="547.6449534031783" x="-3782.506701434654" y="-3046.936284368602"/>
+              <y:Geometry height="30.0" width="547.6449534031783" x="-2125.2650381384865" y="-2982.166504405259"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="353.025390625" x="97.30978138908904" y="6.015625">(20) ola/observation/ammonium/{dty_code}/{mesure_id}<y:LabelModel>
@@ -741,7 +741,7 @@
         <node id="n1::n11">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="547.6449534031784" x="-3782.5067014346537" y="-3007.2471756516925"/>
+              <y:Geometry height="30.0" width="547.6449534031784" x="-2125.265038138486" y="-2942.477395688349"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="327.58984375" x="110.02755482658904" y="6.015625">(21) ola/observation/solutes/{dty_code}/{mesure_id}<y:LabelModel>
@@ -758,7 +758,7 @@
         <node id="n1::n12">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="547.6449534031782" x="-3782.5067014346537" y="-2967.5580669347833"/>
+              <y:Geometry height="30.0" width="547.6449534031782" x="-2125.265038138486" y="-2902.78828697144"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="318.90625" x="114.36935170158904" y="6.015625">(22) ola/observation/water/{dty_code}/{mesure_id}<y:LabelModel>
@@ -775,7 +775,7 @@
         <node id="n1::n13">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="547.6449534031782" x="-3782.5067014346537" y="-2914.6384085088744"/>
+              <y:Geometry height="30.0" width="547.6449534031782" x="-2125.265038138486" y="-2849.868628545531"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="359.69921875" x="93.97286732658904" y="6.015625">(50) ola/observation/spatialEntity/{dty_code}/{mesure_id}<y:LabelModel>
@@ -792,7 +792,7 @@
         <node id="n1::n14">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615404" x="-3781.776578893016" y="-2870.2061791217475"/>
+              <y:Geometry height="30.0" width="546.9148308615404" x="-2124.5349155968484" y="-2805.436399158404"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="432.9765625" x="56.9691341807702" y="6.015625">(51) ola/measurement/spatialEntity/depthMin/{dty_code}/{mesure_id}<y:LabelModel>
@@ -809,7 +809,7 @@
         <node id="n1::n15">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="547.6449534031782" x="-3782.5067014346537" y="-2784.2374732246326"/>
+              <y:Geometry height="30.0" width="547.6449534031782" x="-2125.265038138486" y="-2719.4676932612892"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="436.4921875" x="55.57638295158904" y="6.015625">(53) ola/measurement/spatialEntity/depthMax/{dty_code}/{mesure_id}<y:LabelModel>
@@ -826,7 +826,7 @@
         <node id="n1::n16">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615404" x="-3781.7765788930155" y="-2649.705569234132"/>
+              <y:Geometry height="30.0" width="546.9148308615404" x="-2124.534915596848" y="-2584.9357892707885"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="410.2890625" x="68.3128841807702" y="6.015625">(56) ola/measurement/timeInstant/date/{dty_code}/{sequence_id}<y:LabelModel>
@@ -843,7 +843,7 @@
         <node id="n1::n17">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615395" x="-3781.776578893015" y="-2604.3302826520767"/>
+              <y:Geometry height="30.0" width="546.9148308615395" x="-2124.5349155968474" y="-2539.5605026887333"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="413.34765625" x="66.78358730576974" y="6.015625">(57) ola/observation/experimentalPlot/{site_code}/{platform_code}<y:LabelModel>
@@ -860,7 +860,7 @@
         <node id="n1::n18">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615399" x="-3781.7765788930155" y="-2561.884168286003"/>
+              <y:Geometry height="30.0" width="546.9148308615399" x="-2124.534915596848" y="-2497.1143883226596"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="519.244140625" x="13.835345118270197" y="6.015625">(58) ola/measurement/experimentalPlot/standardName/{site_code}/{platform_code}<y:LabelModel>
@@ -877,7 +877,7 @@
         <node id="n1::n19">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615404" x="-3781.776578893016" y="-2375.020238435596"/>
+              <y:Geometry height="30.0" width="546.9148308615404" x="-2124.5349155968484" y="-2310.250458472253"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="308.318359375" x="119.2982357432702" y="6.015625">(62) ola/observation/experimentalSite/{site_code}<y:LabelModel>
@@ -894,7 +894,7 @@
         <node id="n1::n20">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615405" x="-3782.5067014346537" y="-2465.97449835331"/>
+              <y:Geometry height="30.0" width="546.9148308615405" x="-2125.265038138486" y="-2401.2047183899667"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="439.0" x="53.9574154307702" y="6.015625">(60) ola/measurement/wayPoint/longitude/{site_code}/{platform_code}
@@ -912,7 +912,7 @@
         <node id="n1::n21">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.914830861541" x="-3781.7765788930164" y="-2420.8836088927496"/>
+              <y:Geometry height="30.0" width="546.914830861541" x="-2124.534915596849" y="-2356.1138289294063"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="428.494140625" x="59.21034511827065" y="6.015625">(61) ola/measurement/wayPoint/latitude/{site_code}/{platform_code}
@@ -930,7 +930,7 @@
         <node id="n1::n22">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615408" x="-3782.0025371649845" y="-2206.8151603409374"/>
+              <y:Geometry height="30.0" width="546.9148308615408" x="-2124.760873868817" y="-2142.045380377594"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="154.55078125" x="196.1820248057702" y="6.015625">(67) ola/observation/lake<y:LabelModel>
@@ -947,7 +947,7 @@
         <node id="n1::n23">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.914830861541" x="-3782.506701434653" y="-2247.5026853575678"/>
+              <y:Geometry height="30.0" width="546.914830861541" x="-2125.2650381384856" y="-2182.7329053942244"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="259.45703125" x="143.72889980577065" y="6.015625">(65) ola/observation/experimentalNetwork<y:LabelModel>
@@ -964,7 +964,7 @@
         <node id="n1::n24">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615408" x="-3781.776578893016" y="-2828.0188040510225"/>
+              <y:Geometry height="30.0" width="546.9148308615408" x="-2124.5349155968484" y="-2763.249024087679"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="311.166015625" x="117.87440761827065" y="6.015625">(52) ola/characteristic/depthRelativeToSurface/min<y:LabelModel>
@@ -981,7 +981,7 @@
         <node id="n1::n25">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615408" x="-3781.7765788930164" y="-2740.4561423982423"/>
+              <y:Geometry height="30.0" width="546.9148308615408" x="-2124.534915596849" y="-2675.686362434899"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="314.681640625" x="116.1165951182702" y="6.015625">(54) ola/characteristic/depthRelativeToSurface/max<y:LabelModel>
@@ -998,7 +998,7 @@
         <node id="n1::n26">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="546.9148308615408" x="-3782.5067014346537" y="-2330.8100539828292"/>
+              <y:Geometry height="30.0" width="546.9148308615408" x="-2125.265038138486" y="-2266.040274019486"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="388.73828125" x="79.08827480577065" y="6.015625">(63) ola/measurement/experimentalSite/localName/{site_code}<y:LabelModel>
@@ -1015,7 +1015,7 @@
         <node id="n1::n27">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="547.6449534031783" x="-3786.0761357757933" y="-3268.121355543391"/>
+              <y:Geometry height="30.0" width="547.6449534031783" x="-2128.8344724796257" y="-3203.351575580047"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="398.04296875" x="74.80099232658904" y="6.015625">(4) ola/measurement/variable/localName/{dty_code}/{var_code}<y:LabelModel>
@@ -1139,7 +1139,7 @@
           <y:Geometry height="30.0" width="167.49816513761527" x="-1736.4954615622837" y="-886.4514736100476"/>
           <y:Fill color="#F6FF00CC" transparent="false"/>
           <y:BorderStyle color="#CC9900" type="line" width="2.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="165.34765625" x="1.0752544438075802" y="7.1796875">:DepthRelativeToSurface(52)<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="168.1162109375" x="-0.3090228999424198" y="7.1796875">:DepthRelativeToSurface(52)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1272,10 +1272,10 @@
     <node id="n16">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="427.4722904857526" x="-1743.0108736333893" y="-1923.429986961555"/>
+          <y:Geometry height="30.0" width="433.20022928033285" x="-1743.0108736333893" y="-1923.429986961555"/>
           <y:Fill color="#008000" transparent="false"/>
           <y:BorderStyle color="#FF0000" type="line" width="3.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFF00" visible="true" width="420.0302734375" x="3.7210085241263187" y="7.1796875">&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#SoereOla&gt;<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFF00" visible="true" width="420.0302734375" x="6.584977921416339" y="7.1796875">&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#SoereOla&gt;<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1408,7 +1408,7 @@
     <node id="n24">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="285.80091340225647" x="-1589.00114672545" y="-1539.7523186499295"/>
+          <y:Geometry height="30.0" width="285.80091340225647" x="-1591.7282686649821" y="-1539.7523186499295"/>
           <y:Fill color="#F6FF00CC" transparent="false"/>
           <y:BorderStyle color="#CC9900" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="275.318359375" x="5.241277013628178" y="7.1796875">:Anaee-franceExperimentalSiteNamingStandard<y:LabelModel>
@@ -1493,7 +1493,7 @@
     <node id="n29">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="161.2559252928828" x="-2867.6945494838346" y="-1399.2089183294147"/>
+          <y:Geometry height="30.0" width="161.2559252928828" x="-2867.6945494838346" y="-1389.932874802078"/>
           <y:Fill color="#00FF00" transparent="false"/>
           <y:BorderStyle color="#339966" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="158.052734375" x="1.6015954589415742" y="7.1796875">&lt;{latitude}^^xsd:double&gt;<y:LabelModel>
@@ -1646,7 +1646,7 @@
     <node id="n38">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="96.7000000000001" x="-2411.820932047119" y="-1402.3590989638974"/>
+          <y:Geometry height="30.0" width="96.7000000000001" x="-2391.4845714856447" y="-1393.0830554365607"/>
           <y:Fill color="#F6FF00CC" transparent="false"/>
           <y:BorderStyle color="#CC9900" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="93.7705078125" x="1.464746093749909" y="7.1796875">:DecimalDegree<y:LabelModel>
@@ -1663,7 +1663,7 @@
     <node id="n39">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="102.5" x="-2605.4613652948647" y="-1322.477433147404"/>
+          <y:Geometry height="30.0" width="102.5" x="-2605.4613652948647" y="-1305.2818356619664"/>
           <y:Fill color="#F6FF00CC" transparent="false"/>
           <y:BorderStyle color="#CC9900" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="55.1669921875" x="23.66650390625" y="7.1796875">:Latitude<y:LabelModel>
@@ -1680,7 +1680,7 @@
     <node id="n40">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="42.0" width="108.0" x="-2608.2113652948647" y="-1406.377510388831"/>
+          <y:Geometry height="42.0" width="108.0" x="-2608.2113652948647" y="-1397.1014668614944"/>
           <y:Fill color="#000000" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="104.4248046875" x="1.78759765625" y="13.1796875">Measurement(61)<y:LabelModel>
@@ -1697,7 +1697,7 @@
     <node id="n41">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="108.0" x="-2590.046615285394" y="-1686.3981736743162"/>
+          <y:Geometry height="30.0" width="108.0" x="-2590.046615285394" y="-1707.6599123087062"/>
           <y:Fill color="#F6FF00CC" transparent="false"/>
           <y:BorderStyle color="#CC9900" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="93.7705078125" x="7.11474609375" y="7.1796875">:DecimalDegree<y:LabelModel>
@@ -1714,7 +1714,7 @@
     <node id="n42">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="103.15198560424426" x="-2671.0107605507674" y="-1733.2868482544486"/>
+          <y:Geometry height="30.0" width="103.15198560424426" x="-2671.0107605507674" y="-1767.6599123087062"/>
           <y:Fill color="#F6FF00CC" transparent="false"/>
           <y:BorderStyle color="#CC9900" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="64.7861328125" x="19.182926395872073" y="7.1796875">:Longitude<y:LabelModel>
@@ -1748,7 +1748,7 @@
     <node id="n44">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="36.0" width="150.36701300196404" x="-2438.6544385481016" y="-1654.4189182665125"/>
+          <y:Geometry height="36.0" width="150.36701300196404" x="-2438.6544385481016" y="-1705.6926286265866"/>
           <y:Fill color="#666666" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="131.8955078125" x="9.23575259473182" y="10.1796875">oboe-spatial:WayPoint<y:LabelModel>
@@ -2020,7 +2020,7 @@
     <node id="n60">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="228.83414974692357" x="-1952.1337835201027" y="-387.43560947535786"/>
+          <y:Geometry height="30.0" width="228.83414974692357" x="-2004.3808408825746" y="-392.4662745367028"/>
           <y:Fill color="#99CCFF" transparent="false"/>
           <y:BorderStyle color="#FF0000" type="line" width="3.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="188.6826171875" x="20.075766279711843" y="7.1796875">oboe-standard:MilligramPerLiter<y:LabelModel>
@@ -2224,7 +2224,7 @@
     <node id="n72">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="165.43593128236273" x="-1488.4360742832466" y="-1336.692926607334"/>
+          <y:Geometry height="30.0" width="165.43593128236273" x="-1478.534215973833" y="-1336.692926607334"/>
           <y:Fill color="#F6FF00CC" transparent="false"/>
           <y:BorderStyle color="#CC9900" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="103.0869140625" x="31.17450860993131" y="7.1796875">:NamingStandard<y:LabelModel>
@@ -2275,7 +2275,7 @@
     <node id="n75">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="107.99999999999994" x="-1413.9273552627258" y="-1842.54207477355"/>
+          <y:Geometry height="30.0" width="107.99999999999994" x="-1417.8106443530564" y="-1842.54207477355"/>
           <y:Fill color="#000000" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="96.6611328125" x="5.66943359375" y="7.1796875">oboe-core:Name<y:LabelModel>
@@ -2430,10 +2430,10 @@
       <data key="d8"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="5.7776718029992935" sy="-21.0" tx="-70.47106171799123" ty="0.0"/>
+          <y:Path sx="5.7776718029992935" sy="-21.0" tx="-18.224004355519355" ty="0.0"/>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" anchorX="83.65134096349266" anchorY="-14.619747437093451" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" rotationAngle="90.0" textColor="#333333" upX="-1.0" upY="-6.123233995736766E-17" visible="true" width="81.6513671875" x="1.9999737759926575" y="-30.26037243709346">usesStandard<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="83.65134096349288" anchorY="-17.132638561515932" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" rotationAngle="90.0" textColor="#333333" upX="-1.0" upY="-6.123233995736766E-17" visible="true" width="81.6513671875" x="1.9999737759928848" y="-32.77326356151593">usesStandard<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -2663,7 +2663,7 @@
           </y:Path>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" visible="true" width="81.6513671875" x="10.132398196424901" y="24.846612637710905">usesStandard<y:LabelModel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" visible="true" width="81.6513671875" x="7.405276256892876" y="24.846612637710905">usesStandard<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -2729,7 +2729,7 @@
           </y:Path>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="free" modelPosition="anywhere" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" visible="true" width="48.677734375" x="-20.410604977501407" y="-34.930043075845106">ofEntity<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="free" modelPosition="anywhere" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" visible="true" width="48.677734375" x="6.3783700119529385" y="-73.96937040774651">ofEntity<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
@@ -2774,7 +2774,7 @@
           <y:Path sx="-38.92735037495913" sy="-21.026823166317627" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="centered" modelPosition="center" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" visible="true" width="94.0439453125" x="-47.0219259517703" y="-83.24298479144863">ofCharacteristic<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="centered" modelPosition="center" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" visible="true" width="94.0439453125" x="-47.0219259517703" y="-100.42951681857744">ofCharacteristic<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
@@ -2787,11 +2787,11 @@
           <y:Path sx="44.460802088291985" sy="0.73694023422604" tx="0.0" ty="-0.034030879558258675"/>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" anchorX="-1.9999844260191821" anchorY="-4.980493398761155" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" upX="-1.0" upY="-6.123233995736766E-17" visible="true" width="81.6513671875" x="-17.640609426019182" y="-86.63186058626115">usesStandard<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="-1.9999844260191821" anchorY="-21.82819845920244" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" upX="-1.0" upY="-6.123233995736766E-17" visible="true" width="81.6513671875" x="-17.640609426019182" y="-103.47956564670244">usesStandard<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.0" segment="-1"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -2804,12 +2804,12 @@
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="53.256990661610416" sy="1.1685920594165964" tx="0.0" ty="0.0">
-            <y:Point x="-2639.346481715941" y="-1384.2089183294145"/>
-            <y:Point x="-2639.346481715941" y="-1384.2089183294147"/>
+            <y:Point x="-2639.346481715941" y="-1374.9328748020778"/>
+            <y:Point x="-2639.346481715941" y="-1374.932874802078"/>
           </y:Path>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="side_slider" preferredPlacement="center" ratio="0.2752046859929752" textColor="#333333" visible="true" width="55.6357421875" x="-87.75370827844108" y="1.9999439752727994">hasValue<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="side_slider" preferredPlacement="center" ratio="0.2752046859929752" textColor="#333333" visible="true" width="55.6357421875" x="-87.75370827844108" y="1.999986526046996">hasValue<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
@@ -2822,7 +2822,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="centered" modelPosition="center" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" visible="true" width="94.0439453125" x="-47.02191216986466" y="13.095233310007416">ofCharacteristic<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="centered" modelPosition="center" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" visible="true" width="94.0439453125" x="-47.02191216986466" y="17.095580183582115">ofCharacteristic<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
@@ -2835,7 +2835,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" anchorX="3.379340070746366" anchorY="-2.035200864644139" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" upX="-0.010388367131899022" upY="-0.9999460394582964" visible="true" width="81.6513671875" x="3.216859516074008" y="-18.523206267211798">usesStandard<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="5.166663567297292" anchorY="-2.048548942894513" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" upX="-0.009387584593773474" upY="-0.9999559356569142" visible="true" width="81.6513671875" x="5.019835877010303" y="-18.454993865698352">usesStandard<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -3389,10 +3389,13 @@
       <data key="d8"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-17.90746115070533" sy="0.08977060630036249" tx="-92.47322268567973" ty="14.981886393524519"/>
+          <y:Path sx="-17.90746115070533" sy="0.08977060630036249" tx="-93.71232278987424" ty="14.981886393524519">
+            <y:Point x="-1621.7479510761927" y="-1857.45020236764"/>
+            <y:Point x="-1620.1230817830972" y="-1857.45020236764"/>
+          </y:Path>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="side_slider" preferredPlacement="center" ratio="0.0" textColor="#333333" visible="true" width="55.6357421875" x="1.9999737284947514" y="-25.798056218862484">hasValue<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="side_slider" preferredPlacement="center" ratio="0.0" textColor="#333333" visible="true" width="55.6357421875" x="1.9999737284947514" y="-19.86930751590762">hasValue<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
@@ -3545,7 +3548,7 @@
           </y:Path>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" anchorX="23.23661950070391" anchorY="56.315531001905356" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" upX="0.00719445878921631" upY="-0.9999741195464662" visible="true" width="81.6513671875" x="23.23661950070391" y="40.675310788373906">usesStandard<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="28.190032578591854" anchorY="56.3403472391044" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" upX="0.006805837138037447" upY="-0.999976840022233" visible="true" width="81.6513671875" x="28.190032578591854" y="40.70008447563167">usesStandard<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -3579,7 +3582,7 @@
           <y:Path sx="46.937042340073276" sy="-6.0" tx="-49.75840924463728" ty="0.0"/>
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="side_slider" preferredPlacement="center_on_edge" ratio="0.0" textColor="#333333" visible="true" width="94.0439453125" x="10.107386051075082" y="-17.640585515737484">ofCharacteristic<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="side_slider" preferredPlacement="center_on_edge" ratio="0.0" textColor="#333333" visible="true" width="94.0439453125" x="10.154261051075082" y="-17.640585515737484">ofCharacteristic<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
