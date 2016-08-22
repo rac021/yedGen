@@ -36,7 +36,7 @@
 
       `NUM` : Index of the first Entity ( the following entities will have an incremental index )
       
-      `IRU` : pattern URI for variables. Do not touch the **?VARIABLE**
+      `IRI` : pattern URI for variables. Do not touch the **?VARIABLE**
       
       `ObjectProperty` : used as object property between entities of the pattern
       
