@@ -123,7 +123,7 @@
 
    ```  
          ?VARIABLE     in the Graph BY   ":Nitrogen"
-         ?VAR_URI                   BY   nitrogen   ( for example in sql queries )
+         ?VAR_URI                   BY   nitrogen   ( interesting for example for customise sql queries )
          ?standardVar               BY   oboe-standard:MilligramPerLiter
     
 ``` 
