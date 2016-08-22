@@ -162,6 +162,6 @@
 
 ## Legends ( AnaEE-France ) :
 
-![legend](https://cloud.githubusercontent.com/assets/7684497/17856407/b5ec0738-687d-11e6-988e-dfbf6e843556.png)
+![legend](https://cloud.githubusercontent.com/assets/7684497/17859486/1aa449c2-688a-11e6-9a7b-da8ca56f79f7.png)
 
 
