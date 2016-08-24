@@ -1357,14 +1357,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="381.87343182336826" width="2068.850313555675" x="-3096.170769516189" y="-1917.1069171011359"/>
-              <y:Fill color="#F5F5F5" transparent="false"/>
+              <y:Geometry height="381.87343182336826" width="2019.051795190806" x="-3097.020575874567" y="-1917.1069171011359"/>
+              <y:Fill color="#E2DFDF" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="2068.850313555675" x="0.0" y="0.0">Variables(s)  </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="2019.051795190806" x="0.0" y="0.0">Variables(s)  </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="28" bottomF="28.33788610045667" left="42" leftF="41.69890528165388" right="36" rightF="36.21852119394316" top="14" topF="13.852327713065506"/>
+              <y:BorderInsets bottom="28" bottomF="28.33788610045667" left="12" leftF="12.47626883560406" right="16" rightF="15.642639275124111" top="14" topF="13.852327713065506"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -1383,10 +1383,10 @@
         <node id="n44::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1960.9328870800773" x="-3039.4718642345347" y="-1799.3417273504278"/>
-              <y:Fill color="#999999" transparent="false"/>
+              <y:Geometry height="30.0" width="1376.8943926151328" x="-3069.544307038963" y="-1799.3417273504278"/>
+              <y:Fill color="#CC99FF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1368.103515625" x="296.41468572753865" y="6.015625">##PATTERN_1 20 ola/observation/variable/?VARIABLE/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Ammonium Q_20 ] [ oboe-core:Observation_Solutes Q_21 ] [ oboe-core:Observation_Water Q_22 ]<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1368.103515625" x="4.395438495066628" y="6.015625">##PATTERN_1 20 ola/observation/variable/?VARIABLE/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Ammonium Q_20 ] [ oboe-core:Observation_Solutes Q_21 ] [ oboe-core:Observation_Water Q_22 ]<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1400,8 +1400,8 @@
         <node id="n44::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1960.9328870800773" x="-3039.4718642345347" y="-1747.6703572936735"/>
-              <y:Fill color="#CCFFCC" transparent="false"/>
+              <y:Geometry height="30.0" width="1960.9328870800773" x="-3069.5443070389624" y="-1747.6703572936735"/>
+              <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1923.431640625" x="18.750623227538654" y="6.015625">?VARIABLE  ##PATTERN_1 :Nitrogen { ?VAR_URI=nitrogen } { ?standardVar=oboe-standard:MilligramPerLiter } {  ?NUM_DTYPE=11 } { ?FILTER_VAR='azote ammoniacal'  } { ?FILTER_NamingStandard=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedAmmoniumNitrogenMassConcentration&gt;}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
@@ -1417,8 +1417,8 @@
         <node id="n44::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1960.9328870800773" x="-3039.4718642345347" y="-1608.5713713782243"/>
-              <y:Fill color="#CCFFCC" transparent="false"/>
+              <y:Geometry height="30.0" width="1960.9328870800773" x="-3069.5443070389624" y="-1608.5713713782243"/>
+              <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1819.474609375" x="70.72913885253865" y="6.015625">?VARIABLE ##PATTERN_2 :Calcium { ?VAR_URI=calcium } { ?standardVar=oboe-standard:MilligramPerLiter } {  ?NUM_DTYPE=11 } { ?FILTER_VAR='calcium'  } { ?FILTER_NamingStandard=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolveCalciumNitrogenMassConcentration&gt;}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
@@ -1434,10 +1434,10 @@
         <node id="n44::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1960.9328870800773" x="-3039.4718642345347" y="-1657.039526455023"/>
-              <y:Fill color="#999999" transparent="false"/>
+              <y:Geometry height="30.0" width="1376.8943926151328" x="-3069.544307038963" y="-1657.039526455023"/>
+              <y:Fill color="#CC99FF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1133.142578125" x="413.89515447753865" y="6.015625">##PATTERN_2 20 ola/observation/variable/?VARIABLE/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Ammonium Q_20 ] [ oboe-core:Observation_Solutes Q_22] <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1133.142578125" x="121.87590724506663" y="6.015625">##PATTERN_2 20 ola/observation/variable/?VARIABLE/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Ammonium Q_20 ] [ oboe-core:Observation_Solutes Q_22] <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1451,10 +1451,10 @@
         <node id="n44::n4">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="212.57577790824325" x="-3039.471864234535" y="-1866.7936518880704"/>
+              <y:Geometry height="30.0" width="231.56889967946108" x="-3069.544307038963" y="-1866.7936518880704"/>
               <y:Fill color="#00FFFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="190.984375" x="10.795701454121627" y="6.015625">Note : Do not touch ?VARIABLE<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="214.275390625" x="8.646754527230769" y="6.015625">Note : Do not touch ?VARIABLE<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
