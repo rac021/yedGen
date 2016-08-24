@@ -149,7 +149,7 @@
 
    - Patterns + Variables 
 
-![variables_declaration](https://cloud.githubusercontent.com/assets/7684497/17358262/470792ea-5961-11e6-9a60-fbf46de3d60c.jpg)
+![pattern_variables](https://cloud.githubusercontent.com/assets/7684497/17929254/8fb382ac-69ff-11e6-8408-97406c340bec.png)
 
    - Connexion 
 <p align="center">
