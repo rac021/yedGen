@@ -132,26 +132,31 @@
 
 ### Graphml files example :
  
-   - Graph 
+   - [Graph](https://github.com/rac021/yedGen/blob/master/src/main/resources/ola_mapping/patternGraphChunks/byCategory/physicochimie/physicochimie_sub_01.graphml)
 
 ![graphchunks](https://cloud.githubusercontent.com/assets/7684497/17357917/617c5234-595f-11e6-8b72-5f0ee9615828.jpg)
 
+----------------------------------------------------------------------------------
 
-   - URIs 
+   - [URIs](https://github.com/rac021/yedGen/blob/master/src/main/resources/ola_mapping/patternGraphChunks/byCategory/physicochimie/physicochimie_sub_01.graphml)
 
 ![uris](https://cloud.githubusercontent.com/assets/7684497/17358066/27b5ed2a-5960-11e6-887f-3b2cb5641e4f.jpg)
 
+----------------------------------------------------------------------------------
 
-   - Queries 
+   - [Queries](https://github.com/rac021/yedGen/blob/master/src/main/resources/ola_mapping/patternGraphChunks/byCategory/physicochimie/physicochimie_sub_01.graphml)
 
 ![pattern_queries](https://cloud.githubusercontent.com/assets/7684497/17855399/d4be1c3c-6878-11e6-969a-f98deb9c0005.png)
 
+----------------------------------------------------------------------------------
 
-   - Patterns + Variables 
+   - [Patterns + Variables](https://github.com/rac021/yedGen/blob/master/src/main/resources/ola_mapping/patternGraphChunks/byCategory/physicochimie/physicochimie_sub_01.graphml)
 
 ![pattern_variables](https://cloud.githubusercontent.com/assets/7684497/17929254/8fb382ac-69ff-11e6-8408-97406c340bec.png)
 
-   - Connexion 
+----------------------------------------------------------------------------------
+
+   - [Connexion](https://github.com/rac021/yedGen/blob/master/src/main/resources/ola_mapping/patternGraphChunks/connexion/connexion.graphml)
 <p align="center">
 ![connexion](https://cloud.githubusercontent.com/assets/7684497/17358431/4cb8b362-5962-11e6-9dce-3ccb9a59e9c4.jpg)
 </p>
