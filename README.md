@@ -95,13 +95,13 @@
    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; *  **2- Description of the Variables declarations :**
    
-         `?VARIABLE` : Declare Variable
+          ?VARIABLE : Declare Variable
    
-         `##PATTERN_CODE` : Link current Variable to the Pattern PATTERN_CODE.
+          ##PATTERN_CODE : Link current Variable to the Pattern PATTERN_CODE.
         
-         `:Variable` : name of the Entity concerned by this Variable
+          :Variable : name of the Entity concerned by this Variable
          
-         `{ ?Matcher=value }` : replace all matchers in the result mapping by value ( for each variable )
+          { ?Matcher=value } : replace all matchers in the result mapping by value ( for each variable )
    
 
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * Example :
