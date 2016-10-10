@@ -924,12 +924,12 @@ public class Processor {
             else {
 
               String nextEntityClass = vars.get(i+1).split(" ")[0].split("_")[1] ;
-              String nextUri = URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() ) ;
+              String nextUri = URI_PATTERN.replace( MATCHER_ENTITY , nextEntityClass.toLowerCase() ) ;
 
               if( ! nextUri.startsWith(Pattern.quote(":")))
-                  nextUri = " :" + URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() ) ;
+                  nextUri = " :" + URI_PATTERN.replace( MATCHER_ENTITY , nextEntityClass.toLowerCase() ) ;
               else
-                  nextUri = " " + URI_PATTERN.replace( MATCHER_VARIABLE , nextEntityClass.toLowerCase() ) ;
+                  nextUri = " " + URI_PATTERN.replace( MATCHER_ENTITY , nextEntityClass.toLowerCase() ) ;
 
               if(i == 0 ) {
                     linker = uri ;
