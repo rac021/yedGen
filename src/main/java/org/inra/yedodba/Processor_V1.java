@@ -25,7 +25,7 @@ import static java.util.stream.Collectors.toList ;
  *
  * @author ryahiaoui
  */
-public class Processor_v1 {
+public class Processor_V1 {
   
     private final Set<Edge>             edges               =  new  HashSet<>() ;
     private final Map<String , Node  >  nodes               =  new  HashMap<>() ;
