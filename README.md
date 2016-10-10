@@ -152,7 +152,7 @@
 
    - [Patterns + Variables](https://github.com/rac021/yedGen/blob/master/src/main/resources/ola_mapping/patternGraphChunks/byCategory/physicochimie/physicochimie_sub_01.graphml)
 
-![pattern_variables](https://cloud.githubusercontent.com/assets/7684497/17929254/8fb382ac-69ff-11e6-8408-97406c340bec.png)
+![pattern_variables](https://cloud.githubusercontent.com/assets/7684497/19230055/71977920-8ed2-11e6-9e9a-da0405c3e763.png)
 
 ----------------------------------------------------------------------------------
 
