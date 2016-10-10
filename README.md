@@ -49,7 +49,7 @@
       - The following pattern 
    
 ```
-        ##PATTERN_1  20  ola/observation/variable/?VARIABLE/{dty_code}/{mesure_id} 
+        ##PATTERN_1  20  ola/observation/?ENTITY/{dty_code}/{mesure_id} 
            oboe-core:hasContext 
             [ oboe-core:Observation_Ammonium Q_20 ] 
             [ oboe-core:Observation_Solutes Q_21 ] 
@@ -63,36 +63,42 @@
          
  
  ```
-      - mappingId	(20)_ola_observation_variable_ammonium 
+      - mappingId	(PATTERN_1)_Ammonium_20
       
-      - target ola/observation/variable/Ammonium/{dty_code}/{mesure_id} a oboe-core:Observation 
+      - target ola/observation/ammonium/{dty_code}/{mesure_id} a oboe-core:Observation 
         oboe-core:ofEntity :Ammonium 
-        oboe-core:hasContext ola/observation/variable/Solutes/{dty_code}/{mesure_id}
+        oboe-core:hasContext ola/observation/solutes/{dty_code}/{mesure_id}
       
       - source : Query_20
 ```  
 
 ```  
-      - mappingId	(21)_ola_observation_variable_solute
+      - mappingId	(PATTERN_1)_Solutes_21
       
-      - target ola/observation/variable/Solutes/{dty_code}/{mesure_id} a oboe-core:Observation
+      - target ola/observation/solutes/{dty_code}/{mesure_id} a oboe-core:Observation
         oboe-core:ofEntity :Solutes 
-        oboe-core:hasContext ola/observation/variable/Water/{dty_code}/{mesure_id}
+        oboe-core:hasContext ola/observation/water/{dty_code}/{mesure_id}
       
       - source : Query_21
    
 ```
 
 ```  
-      - mappingId	(22)_ola_observation_variable_solute
+      - mappingId	(PATTERN_1)_Water_22
       
-      - target ola/observation/variable/Water/{dty_code}/{mesure_id} a oboe-core:Observation 
+      - target ola/observation/water/{dty_code}/{mesure_id} a oboe-core:Observation 
         oboe-core:ofEntity :Water oboe-core:hasContext ...`
       
       - source : Query_22
    
 ```  
    
+----------------------------------------------------------------------------------------
+   
+![pattern_mapping_details](https://cloud.githubusercontent.com/assets/7684497/19231617/5297477c-8edb-11e6-8216-4508e91044d9.png)
+
+----------------------------------------------------------------------------------------
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; *  **2- Description of the Variables declarations :**
    
           ?VARIABLE : Declare Variable
@@ -127,8 +133,6 @@
         ?standardVar               BY   oboe-standard:MilligramPerLiter
     
 ``` 
-
-![pattern_mapping_details](https://cloud.githubusercontent.com/assets/7684497/19231617/5297477c-8edb-11e6-8216-4508e91044d9.png)
 
 ----------------------------------------------------------------------------------
 
