@@ -122,9 +122,9 @@
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *reliying to the ##PATTERN_1 will Replace :*
 
    ```  
-         ?VARIABLE     in the Graph BY   ":Nitrogen"
-         ?VAR_URI                   BY   nitrogen   ( interesting for example for customise sql queries )
-         ?standardVar               BY   oboe-standard:MilligramPerLiter
+        ?VARIABLE     in the Graph BY   ":Nitrogen"
+        ?VAR_URI                   BY   nitrogen   ( interesting for example for customise sql queries )
+        ?standardVar               BY   oboe-standard:MilligramPerLiter
     
 ``` 
 
