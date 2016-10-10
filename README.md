@@ -127,6 +127,9 @@
          ?standardVar               BY   oboe-standard:MilligramPerLiter
     
 ``` 
+
+![pattern_mapping_details](https://cloud.githubusercontent.com/assets/7684497/19231617/5297477c-8edb-11e6-8216-4508e91044d9.png)
+
 ----------------------------------------------------------------------------------
 
 
