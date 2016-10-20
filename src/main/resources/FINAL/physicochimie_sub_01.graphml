@@ -49,7 +49,7 @@
               <y:Geometry height="114.99392207009078" width="457.072340672785" x="-4432.486406947768" y="-2742.929794504864"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="61.875" modelName="custom" textColor="#000000" visible="true" width="457.072340672785" x="0.0" y="26.559461035045388">Query_(5): SELECT dt.code AS dty_code , var.code AS var_code FROM datatype dt	INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id WHERE dt.id = ?NUM_DTYPE AND LOWER(var.nom) = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="75.84375" modelName="custom" textColor="#000000" visible="true" width="457.072340672785" x="0.0" y="19.575086035045388">Query_(5): SELECT dt.code AS dty_code , var.code AS var_code FROM datatype dt	INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -100,7 +100,7 @@
               <y:Geometry height="137.87127546833744" width="588.6627901126906" x="-4432.486406947768" y="-3105.8784661954596"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="588.6627901126906" x="0.0" y="17.045012734168722">Query_(1): SELECT dt.code AS dty_code, var.code AS var_code , mc.mchimie_id AS mesure_id, vmc.vmchimie_id AS value_id  FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = ?NUM_DTYPE AND LOWER(var.nom) = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="588.6627901126906" x="0.0" y="17.045012734168722">Query_(1): SELECT dt.code AS dty_code, var.code AS var_code , mc.mchimie_id AS mesure_id, vmc.vmchimie_id AS value_id  FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -117,7 +117,7 @@
               <y:Geometry height="137.87127546833744" width="588.2297842473936" x="-3792.4737345144645" y="-3105.8784661954596"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.2297842473936" x="0.0" y="24.029387734168722">Query_(2): SELECT dt.code AS dty_code, vmc.vmchimie_id AS value_id, vmc.valeur AS value FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var2 ON dtvu.var_id = var2.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var2.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = ?NUM_DTYPE AND LOWER(var2.nom) = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.2297842473936" x="0.0" y="24.029387734168722">Query_(2): SELECT dt.code AS dty_code, vmc.vmchimie_id AS value_id, vmc.valeur AS value FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var2 ON dtvu.var_id = var2.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var2.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var2.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -134,7 +134,7 @@
               <y:Geometry height="166.24347782839914" width="574.9139271463678" x="-4424.95996603727" y="-2554.3732509273623"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="574.9139271463678" x="0.0" y="38.21548891419934">Query_(20): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = ?NUM_DTYPE AND LOWER(var.nom) = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="574.9139271463678" x="0.0" y="38.21548891419934">Query_(20): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -151,7 +151,7 @@
               <y:Geometry height="167.7462095339838" width="589.3749352195109" x="-3793.6188854865823" y="-2555.875982632947"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="589.3749352195109" x="0.0" y="38.96685476699167">Query_(21): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = ?NUM_DTYPE AND LOWER(var.nom) = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="589.3749352195109" x="0.0" y="38.96685476699167">Query_(21): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -168,7 +168,7 @@
               <y:Geometry height="167.74620953398426" width="628.087586428675" x="-4424.95996603727" y="-2336.3870421604624"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="131.71875" modelName="custom" textColor="#000000" visible="true" width="628.087586428675" x="0.0" y="18.013729766992128">Query_(22): SELECT DISTINCT dt.code AS dty_code, vmc.mchimie_id AS mesure_id,  sc.schimie_id AS sequence_id, pla.code AS platform_code, site.code AS site_code FROM 	datatype dt INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id INNER JOIN sous_sequence_chimie_sschimie ssc	 ON mc.sschimie_id = ssc.sschimie_id INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id INNER JOIN plateforme_pla pla ON ssc.loc_id = pla.loc_id INNER JOIN public.site_glacpe_sit site ON pla.id = site.id WHERE dt.id = ?NUM_DTYPE AND LOWER(var.nom) = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="131.71875" modelName="custom" textColor="#000000" visible="true" width="628.087586428675" x="0.0" y="18.013729766992128">Query_(22): SELECT DISTINCT dt.code AS dty_code, vmc.mchimie_id AS mesure_id,  sc.schimie_id AS sequence_id, pla.code AS platform_code, site.code AS site_code FROM 	datatype dt INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id INNER JOIN sous_sequence_chimie_sschimie ssc	 ON mc.sschimie_id = ssc.sschimie_id INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id INNER JOIN plateforme_pla pla ON ssc.loc_id = pla.loc_id INNER JOIN public.site_glacpe_sit site ON pla.id = site.id WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -185,7 +185,7 @@
               <y:Geometry height="151.3190236802784" width="490.05220758007135" x="-4432.48640694777" y="-2116.8981016879775"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="490.05220758007135" x="0.0" y="30.753261840139203">Query_(50): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = ?NUM_DTYPE and LOWER(var.nom) = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="490.05220758007135" x="0.0" y="23.768886840139203">Query_(50): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE  LOWER(dt.name) = LOWER(?DATATYPE_SQL) and LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -202,7 +202,7 @@
               <y:Geometry height="147.8378510090588" width="438.5266368633004" x="-3885.1254576106735" y="-2113.416929016758"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="438.5266368633004" x="0.0" y="22.028300504529398">Query_(51): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, mc.profondeurmin AS depth_min FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = ?NUM_DTYPE AND LOWER(var.nom) = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="117.75" modelName="custom" textColor="#000000" visible="true" width="438.5266368633004" x="0.0" y="15.043925504529398">Query_(51): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, mc.profondeurmin AS depth_min FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE  LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -219,7 +219,7 @@
               <y:Geometry height="151.3190236802784" width="490.05220758007135" x="-4432.48640694777" y="-1918.4080168223068"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="490.05220758007135" x="0.0" y="23.768886840139203">Query_(53): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, mc.profondeurmax AS depth_max FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE dt.id = ?NUM_DTYPE AND LOWER(var.nom) = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="117.75" modelName="custom" textColor="#000000" visible="true" width="490.05220758007135" x="0.0" y="16.784511840139203">Query_(53): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, mc.profondeurmax AS depth_max FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE  LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -236,7 +236,7 @@
               <y:Geometry height="151.31902368027795" width="599.0587230151882" x="-4432.48640694777" y="-1718.5864634936001"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="599.0587230151882" x="0.0" y="23.768886840138975">Query_(55): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id FROM datatype dt 	 INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id 	 INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc	ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id 	 INNER JOIN sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id 	 INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE dt.id = ?NUM_DTYPE AND LOWER(var.nom) = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="599.0587230151882" x="0.0" y="23.768886840138975">Query_(55): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id FROM datatype dt 	 INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id 	 INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc	ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id 	 INNER JOIN sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id 	 INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -253,7 +253,7 @@
               <y:Geometry height="151.31902368027818" width="588.218047070066" x="-3792.4619973371373" y="-1718.2993991672752"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="117.75" modelName="custom" textColor="#000000" visible="true" width="588.218047070066" x="0.0" y="16.784511840139203">Query_(56): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id, date( sc.date_prelevement ) AS date FROM 	datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id 	 INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc	ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id 	 INNER JOIN sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id 	 INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE dt.id = ?NUM_DTYPE AND LOWER(var.nom) = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="117.75" modelName="custom" textColor="#000000" visible="true" width="588.218047070066" x="0.0" y="16.784511840139203">Query_(56): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id, date( sc.date_prelevement ) AS date FROM 	datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id 	 INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc	ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id 	 INNER JOIN sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id 	 INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -321,7 +321,7 @@
               <y:Geometry height="130.39175713848272" width="588.662790112694" x="-4432.486406947772" y="-2920.664371185234"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.662790112694" x="0.0" y="20.28962856924136">Query_(3):  SELECT dt.code AS dty_code, var.code AS var_code, mc.mchimie_id AS mesure_id FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id WHERE dt.id = ?NUM_DTYPE AND LOWER(var.nom) = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.662790112694" x="0.0" y="20.28962856924136">Query_(3):  SELECT dt.code AS dty_code, var.code AS var_code, mc.mchimie_id AS mesure_id FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -338,7 +338,7 @@
               <y:Geometry height="130.39175713848272" width="588.2297842473929" x="-3792.4737345144645" y="-2920.6643711852344"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.2297842473929" x="0.0" y="20.28962856924136">Query_(4):  SELECT     dt.code AS dty_code,     var.code AS var_code,     var.nom AS var_name,     CASE WHEN localestring IS NULL THEN var.nom else localestring END AS var_name_en FROM     datatype dt     INNER JOIN datatypevariableuniteglacpe dtvu      ON dt.id = dtvu.dty_id     INNER JOIN variable_glacpe_varg var      ON dtvu.var_id = var.id      LEFT JOIN localisation  on defaultString =var.nom and entite='variable' and colonne='nom' and localization='en' WHERE  dt.id = ?NUM_DTYPE AND LOWER(var.nom) = ?FILTER_VAR<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.2297842473929" x="0.0" y="20.28962856924136">Query_(4):  SELECT     dt.code AS dty_code,     var.code AS var_code,     var.nom AS var_name,     CASE WHEN localestring IS NULL THEN var.nom else localestring END AS var_name_en FROM     datatype dt     INNER JOIN datatypevariableuniteglacpe dtvu      ON dt.id = dtvu.dty_id     INNER JOIN variable_glacpe_varg var      ON dtvu.var_id = var.id      LEFT JOIN localisation  on defaultString =var.nom and entite='variable' and colonne='nom' and localization='en' WHERE  WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1357,14 +1357,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="620.0118094359382" width="2471.519448012297" x="-3122.9402709275196" y="-2147.0141890728937"/>
+              <y:Geometry height="620.0118094359382" width="3556.440391923911" x="-3099.1308724954642" y="-2147.0141890728937"/>
               <y:Fill color="#E2DFDF" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="2471.519448012297" x="0.0" y="0.0">Variable(s)    </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="3556.440391923911" x="0.0" y="0.0">Variable(s)    </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="26" bottomF="25.637507690180428" left="35" leftF="34.59282631858014" right="77" rightF="76.53735099218784" top="14" topF="13.852327713065279"/>
+              <y:BorderInsets bottom="26" bottomF="25.637507690180428" left="66" leftF="66.32397221781548" right="155" rightF="155.0982756529679" top="14" topF="13.852327713065279"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -1383,7 +1383,7 @@
         <node id="n44::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1437.9724357069035" x="-3073.3474446089394" y="-2029.2489993221857"/>
+              <y:Geometry height="30.0" width="1437.9724357069035" x="-3017.8069002776488" y="-2029.2489993221857"/>
               <y:Fill color="#CC99FF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1298.734375" x="69.61903035345176" y="6.015625">##PATTERN_1 20 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Ammonium Q_20 ] [ oboe-core:Observation_Solutes Q_21 ] [ oboe-core:Observation_Water Q_22 ]<y:LabelModel>
@@ -1400,10 +1400,10 @@
         <node id="n44::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="2330.3892707015284" x="-3073.347444608939" y="-1977.5776292654314"/>
+              <y:Geometry height="30.0" width="3305.0181440531273" x="-3017.8069002776483" y="-1977.5776292654314"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2162.236328125" x="84.0764712882642" y="6.015625">?VARIABLE  ##PATTERN_1 :Nitrogen { ?VAR_ENTITY_URI=nitrogen } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?NUM_DTYPE=11 } { ?FILTER_VAR='azote ammoniacal'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedAmmoniumNitrogenMassConcentration&gt;}<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2280.173828125" x="512.4221579640634" y="6.015625">?VARIABLE  ##PATTERN_1 :Nitrogen { ?VAR_ENTITY_URI=nitrogen } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='azote ammoniacal'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedAmmoniumNitrogenMassConcentration&gt;}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1417,10 +1417,10 @@
         <node id="n44::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="2330.3892707015284" x="-3073.347444608939" y="-1838.4786433499821"/>
+              <y:Geometry height="30.0" width="3305.0181440531273" x="-3017.8069002776483" y="-1838.4786433499821"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2071.24609375" x="129.5715884757642" y="6.015625">?VARIABLE ##PATTERN_2 :CalciumMassConcentration { ?VAR_ENTITY_URI=calcium } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?NUM_DTYPE=11 } { ?FILTER_VAR='calcium'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#CalciumMassConcentration&gt;}<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2189.18359375" x="557.9172751515634" y="6.015625">?VARIABLE ##PATTERN_2 :CalciumMassConcentration { ?VAR_ENTITY_URI=calcium } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='calcium'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#CalciumMassConcentration&gt;}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1434,7 +1434,7 @@
         <node id="n44::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1437.9724357069035" x="-3073.3474446089394" y="-1886.9467984267808"/>
+              <y:Geometry height="30.0" width="1437.9724357069035" x="-3017.8069002776488" y="-1886.9467984267808"/>
               <y:Fill color="#CC99FF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1063.7734375" x="187.09949910345176" y="6.015625">##PATTERN_2 20 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Ammonium Q_20 ] [ oboe-core:Observation_Solutes Q_22] <y:LabelModel>
@@ -1451,7 +1451,7 @@
         <node id="n44::n4">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="367.25456157671124" x="-3073.3474446089394" y="-2096.7009238598284"/>
+              <y:Geometry height="30.0" width="367.25456157671124" x="-3017.8069002776488" y="-2096.7009238598284"/>
               <y:Fill color="#00FFFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="287.822265625" x="39.71614797585562" y="6.015625">Note : Do not touch ?ENTITY &amp; ?VARIABLE<y:LabelModel>
@@ -1468,10 +1468,10 @@
         <node id="n44::n5">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="2330.3892707015284" x="-3073.347444608939" y="-1720.9079504308788"/>
+              <y:Geometry height="30.0" width="3305.0181440531273" x="-3017.8069002776483" y="-1720.9079504308788"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1638.619140625" x="345.8850650382642" y="6.015625">?VARIABLE  ##PATTERN_1 :WaterPH { ?VAR_ENTITY_URI=ph } { ?UNIT_STANDARD_NAME_GRAPH=:pHUnit} {  ?NUM_DTYPE=11 } { ?FILTER_VAR='ph'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#WaterPH&gt;}<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="1756.556640625" x="774.2307517140634" y="6.015625">?VARIABLE  ##PATTERN_1 :WaterPH { ?VAR_ENTITY_URI=ph } { ?UNIT_STANDARD_NAME_GRAPH=:pHUnit} {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='ph'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#WaterPH&gt;}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1485,10 +1485,10 @@
         <node id="n44::n6">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="2330.389270701529" x="-3073.3474446089394" y="-1597.639887327136"/>
+              <y:Geometry height="30.0" width="3305.018144053128" x="-3017.8069002776488" y="-1597.639887327136"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2275.9140625" x="27.237604100764656" y="6.015625">?VARIABLE  ##PATTERN_1 :DissolvedSulphatesMassConcentration { ?VAR_ENTITY_URI=sulfates } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?NUM_DTYPE=11 } { ?FILTER_VAR='sulfates'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedAmmoniumNitrogenMassConcentration&gt;}<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2393.8515625" x="455.5832907765639" y="6.015625">?VARIABLE  ##PATTERN_1 :DissolvedSulphatesMassConcentration { ?VAR_ENTITY_URI=sulfates } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='sulfates'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedAmmoniumNitrogenMassConcentration&gt;}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1502,10 +1502,10 @@
         <node id="n44::n7">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="2330.389270701529" x="-3073.3474446089394" y="-1657.639887327136"/>
+              <y:Geometry height="30.0" width="3305.018144053128" x="-3017.8069002776488" y="-1657.639887327136"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2249.001953125" x="40.693658788264656" y="6.015625">?VARIABLE  ##PATTERN_1 :DissolvedPotassiumMassConcentration { ?VAR_ENTITY_URI=potassium } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?NUM_DTYPE=11 } { ?FILTER_VAR='potassium'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedPotassiumMassConcentration&gt;}<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2366.939453125" x="469.0393454640639" y="6.015625">?VARIABLE  ##PATTERN_1 :DissolvedPotassiumMassConcentration { ?VAR_ENTITY_URI=potassium } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='potassium'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedPotassiumMassConcentration&gt;}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1519,10 +1519,10 @@
         <node id="n44::n8">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="2330.3892707015284" x="-3073.347444608939" y="-1775.864541552171"/>
+              <y:Geometry height="30.0" width="3305.0181440531273" x="-3017.8069002776483" y="-1775.864541552171"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2212.990234375" x="58.6995181632642" y="6.015625">?VARIABLE  ##PATTERN_1 :DissolvedChlorideMassConcentration { ?VAR_ENTITY_URI=chlorures } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?NUM_DTYPE=11 } { ?FILTER_VAR='chlorures'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedChlorideMassConcentration&gt;}<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="2330.927734375" x="487.04520483906344" y="6.015625">?VARIABLE  ##PATTERN_1 :DissolvedChlorideMassConcentration { ?VAR_ENTITY_URI=chlorures } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='chlorures'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedChlorideMassConcentration&gt;}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
