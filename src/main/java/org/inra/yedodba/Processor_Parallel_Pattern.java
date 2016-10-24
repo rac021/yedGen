@@ -1,4 +1,8 @@
 
+
+##PATTERN_PARALLEL_1 Observation(6) ofEntity :VariableCategorie , hasMeasurement  Measurement(7) ; Measurement(7)  usesStandard :Anaee-franceVariableCategoryNamingStandard , ofCharacteristic oboe-core:Name , hasValue ?CATEGORY_STANDARD_NAME_GRAPH
+
+
 package org.inra.yedodba ;
 
 import org.json.XML ;
@@ -37,7 +41,7 @@ public class Processor_Parallel_Patter {
     private final Map<String,  String>  SourceDeclaration   =  new  HashMap<>()   ;
     
     private final Map<String,  String>  PATTERNS            =  new  HashMap<>()   ;
-    private final Map<String,  String>  PATTERNS_GENERICS   =  new  HashMap<>()   ;
+    private final Map<String,  String>  PATTERNS_PARALLEL   =  new  HashMap<>()   ;
     private final List<String>          VARIABLES           =  new  ArrayList<>() ;
 
     private static String  PREFIX_PREDICAT         =  "oboe-coreX"                ;
@@ -55,13 +59,11 @@ public class Processor_Parallel_Patter {
     private boolean existHeader      = false                  ;
     private boolean isGraphPattern   = false                  ;
     
-    private static final String  MATCHER_VARIABLE        = "?VARIABLE"          ;
-    private static final String  MATCHER_ENTITY          = "?ENTITY"            ;
-    private static final String  MATCHER_PATTERN         = "##PATTERN"          ;
-    private static final String  MATCHER_PATTERN_GENERIC = "##PATTERN_GENERIC"  ;
-    private static final String  OF_ENTITY_PATTERN       = "oboe-core:ofEntity" ;
-    
-    //private String hashParralellPattern = null ; 
+    private static final String  MATCHER_VARIABLE         = "?VARIABLE"          ;
+    private static final String  MATCHER_ENTITY           = "?ENTITY"            ;
+    private static final String  MATCHER_PATTERN          = "##PATTERN"          ;
+    private static final String  MATCHER_PATTERN_PARALLEL = "##PATTERN_PARALLEL" ;
+    private static final String  OF_ENTITY_PATTERN        = "oboe-core:ofEntity" ;
     
     String linker  = null ;
 
@@ -221,9 +223,9 @@ public class Processor_Parallel_Patter {
                                                          label.replaceFirst(Pattern.quote(label
                                                               .split(" ")[0]),"").trim()) ;
                                     }
-                                    if (label.startsWith(MATCHER_PATTERN_GENERIC) && label.contains(" ")) {
+                                    if (label.startsWith(MATCHER_PATTERN_PARALLEL) && label.contains(" ")) {
                                             isGraphPattern = true     ;
-                                            PATTERNS_GENERICS.put(label.split(" ")[0] ,
+                                            PATTERNS_PARALLEL.put(label.split(" ")[0] ,
                                                          label.replaceFirst(Pattern.quote(label
                                                               .split(" ")[0]),"").trim()) ;
                                     }
@@ -577,7 +579,7 @@ public class Processor_Parallel_Patter {
 
     private void treatParallelPatterns( int hash , int applyCode ) {
      
-        for (Map.Entry<String, String > patt : PATTERNS_GENERICS.entrySet()) {
+        for (Map.Entry<String, String > patt : PATTERNS_PARALLEL.entrySet()) {
             
             String key     = patt.getKey()   ;
             String pattern = patt.getValue() ;
