@@ -1,5 +1,7 @@
 
 
+/home/ryahiaoui/Bureau/Anaee-Test-Multiple-Variables/data/yedGen/
+
 ##PATTERN_PARALLEL_1 Observation(6) ofEntity :VariableCategorie , hasMeasurement  Measurement(7) ; Measurement(7)  usesStandard :Anaee-franceVariableCategoryNamingStandard , ofCharacteristic oboe-core:Name , hasValue ?CATEGORY_STANDARD_NAME_GRAPH
 
 
