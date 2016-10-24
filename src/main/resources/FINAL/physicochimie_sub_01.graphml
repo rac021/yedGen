@@ -338,7 +338,7 @@
               <y:Geometry height="130.39175713848272" width="588.2297842473929" x="-3792.4737345144645" y="-2920.6643711852344"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.2297842473929" x="0.0" y="20.28962856924136">Query_(4):  SELECT     dt.code AS dty_code,     var.code AS var_code,     var.nom AS var_name,     CASE WHEN localestring IS NULL THEN var.nom else localestring END AS var_name_en FROM     datatype dt     INNER JOIN datatypevariableuniteglacpe dtvu      ON dt.id = dtvu.dty_id     INNER JOIN variable_glacpe_varg var      ON dtvu.var_id = var.id      LEFT JOIN localisation  on defaultString =var.nom and entite='variable' and colonne='nom' and localization='en' WHERE  WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.2297842473929" x="0.0" y="20.28962856924136">Query_(4):  SELECT     dt.code AS dty_code,     var.code AS var_code,     var.nom AS var_name,     CASE WHEN localestring IS NULL THEN var.nom else localestring END AS var_name_en FROM     datatype dt     INNER JOIN datatypevariableuniteglacpe dtvu      ON dt.id = dtvu.dty_id     INNER JOIN variable_glacpe_varg var      ON dtvu.var_id = var.id      LEFT JOIN localisation  on defaultString =var.nom and entite='variable' and colonne='nom' and localization='en' WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = ?VARIABLE_SQL<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -966,7 +966,7 @@
           <y:Geometry height="36.0" width="239.0321764665009" x="-3880.699302433757" y="-105.72150410757999"/>
           <y:Fill color="#99CCFF" transparent="false"/>
           <y:BorderStyle color="#FF0000" type="line" width="3.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="219.5908203125" x="9.720678077000684" y="10.1796875">?CATEGORY_STANDARD_NAME_GRAPH<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="219.5908203125" x="9.72067807700023" y="10.1796875">?CATEGORY_STANDARD_NAME_GRAPH<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1221,7 +1221,7 @@
           <y:Geometry height="36.0" width="188.7797103130165" x="-3146.6681149538244" y="-391.0599694587278"/>
           <y:Fill color="#99CCFF" transparent="false"/>
           <y:BorderStyle color="#3366FF" type="line" width="2.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="178.70703125" x="5.0363395315084745" y="10.1796875">?VAR_CHARACTERISTIC_GRAPH<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="178.70703125" x="5.03633953150802" y="10.1796875">?VAR_CHARACTERISTIC_GRAPH<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1403,7 +1403,7 @@
               <y:Geometry height="30.0" width="4149.286349576139" x="-3017.8069002776483" y="-1830.692673679072"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="3388.1171875" x="380.5845810380697" y="6.015625">?VARIABLE  ##PATTERN_1 :Nitrogen { ?VAR_ENTITY_URI=nitrogen } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='azote ammoniacal'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedAmmoniumNitrogenMassConcentration&gt;} { ?VAR_CHARACTERISTIC_GRAPH=:MassConcentration } { ?CATEGORY_STANDARD_NAME_GRAPH=http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; }<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="3398.171875" x="375.5572372880697" y="6.015625">?VARIABLE  ##PATTERN_1 :Nitrogen { ?VAR_ENTITY_URI=nitrogen } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='azote ammoniacal'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedAmmoniumNitrogenMassConcentration&gt;} { ?VAR_CHARACTERISTIC_GRAPH=:MassConcentration } { ?CATEGORY_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; }<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
