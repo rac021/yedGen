@@ -581,12 +581,12 @@ public class Processor_V1 {
                              )   
                             {
                            
-                            if(!sujet.getOfEntity().startsWith(":"))      {
+                            if(!sujet.getType().startsWith(":"))      {
                                 
                                 target.put( tmpUris.get(sujet.getHash())  , 
                                             tmpUris.get(sujet.getHash())  + 
                                             " a " +  prefixPredicat + ":" +
-                                            sujet.getOfEntity() + " ; "   +
+                                            sujet.getType()+ " ; "   +
                                             objectProperty  +  " "        + 
                                             objet.getLabel() ) ;
                             }
@@ -594,7 +594,7 @@ public class Processor_V1 {
                                 
                                target.put( tmpUris.get(sujet.getHash())   , 
                                             tmpUris.get(sujet.getHash())  + 
-                                            " a " + sujet.getOfEntity()   +
+                                            " a " + sujet.getType()+
                                             " ; " + prefixPredicat        +
                                             ":"   + edge.getPredicat()    +
                                             " "   + objet.getLabel() )    ;
@@ -606,7 +606,7 @@ public class Processor_V1 {
                             target.put( tmpUris.get(sujet.getHash()) ,
                                         tmpUris.get(sujet.getHash()) + 
                                         " a " + prefixPredicat + ":" +
-                                        sujet.getOfEntity() + " ;  " +
+                                        sujet.getType()+ " ;  " +
                                         objectProperty   +  " :"     +
                                         tmpUris.get(objet.getHash()) ) ;
                             }
