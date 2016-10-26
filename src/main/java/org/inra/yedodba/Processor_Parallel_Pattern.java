@@ -1,8 +1,8 @@
 
 
-/home/ryahiaoui/Bureau/Anaee-Test-Multiple-Variables/data/yedGen/
+// /home/ryahiaoui/Bureau/Anaee-Test-Multiple-Variables/data/yedGen/
 
-##PATTERN_PARALLEL_1 Observation(6) ofEntity :VariableCategorie , hasMeasurement  Measurement(7) ; Measurement(7)  usesStandard :Anaee-franceVariableCategoryNamingStandard , ofCharacteristic oboe-core:Name , hasValue ?CATEGORY_STANDARD_NAME_GRAPH
+// ##PATTERN_PARALLEL_1 Observation(6) ofEntity :VariableCategorie , hasMeasurement  Measurement(7) ; Measurement(7)  usesStandard :Anaee-franceVariableCategoryNamingStandard , ofCharacteristic oboe-core:Name , hasValue ?CATEGORY_STANDARD_NAME_GRAPH
 
 
 
@@ -28,7 +28,7 @@ import static java.util.stream.Collectors.toList ;
  *
  * @author ryahiaoui
  */
-public class Processor {
+public class Processor_Parallel_Pattern {
 
     private final Set<Edge>             edges               =  new  HashSet<>()   ;
     private final Map<String , Node  >  nodes               =  new  HashMap<>()   ;
@@ -608,7 +608,7 @@ public class Processor {
 
                         target.put( tmpUris.get(sujet.getHash())   ,
                                 tmpUris.get(sujet.getHash())          +
-                                        " a " + sujet.getOfEntity()   +
+                                        " a " + sujet.getType()+
                                         " ; " + PREFIX_PREDICAT       +
                                         ":"   + edge.getPredicat()    +
                                         " "   + objet.getLabel() )    ;
@@ -630,7 +630,7 @@ public class Processor {
                             target.put( tmpUris.get(sujet.getHash()) ,
                                  tmpUris.get(sujet.getHash())           +
                                          " a " + PREFIX_PREDICAT + ":"  +
-                                         sujet.getOfEntity() + " ;  "   +
+                                         sujet.getType()+ " ;  "   +
                                          objectProperty      + " "      +
                                          uri ) ;                        ;
                         }
