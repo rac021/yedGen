@@ -46,9 +46,9 @@ public class Node {
     public String toString() {
            return "Node { "    + 
                   "id=" + id   + 
-                  ", code = "  + hash   +
+                  ", code = "  + hash    +
                   ", num = "   + code    +
-                  ", label = " + label  +
+                  ", label = " + label   +
                   ", ofEntity = " + type + 
                   " } " ;
     }
