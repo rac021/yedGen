@@ -1,5 +1,4 @@
 
-
 package org.inra.yedodba ;
 
 import org.json.XML ;
@@ -20,7 +19,7 @@ import static java.util.stream.Collectors.toList ;
 
 /**
  *
- * @author ryahiaoui
+ * @author ryahiaoui 26-10-2016 17:20
  */
 public class Processor {
 
@@ -705,7 +704,7 @@ public class Processor {
                                                      .stream()
                                                      .filter(e -> e.getValue() == objet.getCode() )
                                                      .map(Map.Entry::getKey)
-                                                     .findFirst().get()  ;                         
+                                                     .findFirst().get()  ;
                        
                         if(!sujet.getLabel().startsWith(MATCHER_PATTERN_CONTEXT)) {
                             target.put( tmpUris.get(sujet.getHash()) ,
