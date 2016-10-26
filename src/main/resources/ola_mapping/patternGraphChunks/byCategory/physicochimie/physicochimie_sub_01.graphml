@@ -437,7 +437,7 @@
               <y:Geometry height="30.0" width="689.1727100022624" x="-3089.9311624990305" y="-3187.6172244509494"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="557.0078125" x="66.08244875113132" y="6.015625">(6) ola/observation/variableCategory/physicalChemistry/?CATEGORY_STANDARD_NAME_URI<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="442.38671875" x="123.39299562613132" y="6.015625">(6) ola/observation/variableCategory/?CATEGORY_STANDARD_NAME_URI<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -454,7 +454,7 @@
               <y:Geometry height="30.0" width="692.7421443434025" x="-3089.9311624990305" y="-3143.9503716449217"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="662.904296875" x="14.918923734201144" y="6.015625">(7) ola/measurement/variableCategory/standardName/physicalChemistry/?CATEGORY_STANDARD_NAME_URI<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="548.283203125" x="72.22947060920114" y="6.015625">(7) ola/measurement/variableCategory/standardName/?CATEGORY_STANDARD_NAME_URI<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -932,7 +932,7 @@
           <y:Geometry height="42.0" width="136.41165730199873" x="-3373.83385314062" y="-830.1099753472477"/>
           <y:Fill color="#FF9900" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="129.76171875" x="3.3249692759995924" y="13.1796875">##PATTERN_CONTEXT<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="129.76171875" x="3.3249692759991376" y="13.1796875">##PATTERN_CONTEXT<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1473,7 +1473,7 @@
           <y:Geometry height="42.0" width="137.3611372815517" x="-3713.450496141148" y="-340.01753244217775"/>
           <y:Fill color="#FF0066" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="133.82421875" x="1.7684592657760732" y="13.1796875">##PATTERN_PARALLEL<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="133.82421875" x="1.7684592657756184" y="13.1796875">##PATTERN_PARALLEL<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
