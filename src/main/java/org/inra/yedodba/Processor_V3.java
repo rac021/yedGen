@@ -593,7 +593,7 @@ public class Processor_V3 {
                         target.put( tmpUris.get(sujet.getHash())  ,
                                 tmpUris.get(sujet.getHash())           +
                                         " a " +  PREFIX_PREDICAT + ":" +
-                                        sujet.getOfEntity() + " ; "    +
+                                        sujet.getType() + " ; "    +
                                         objectProperty  +  " "         +
                                         objet.getLabel() )             ;
                     }
