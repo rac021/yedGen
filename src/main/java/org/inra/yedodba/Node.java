@@ -7,39 +7,39 @@ package org.inra.yedodba;
  */
 public class Node {
     
-    private final String id        ;
-    private final int    hash      ;
-    private final String label     ;
-    private final String ofEntity  ;
-    private final int  code        ;
+    private final String id     ;
+    private final int    hash   ;
+    private final String label  ;
+    private final String type   ;
+    private final int    code   ;
       
-    public Node(String id, int hash , int code ,String ofEntity, String label) {
-        this.id       = id       ;
-        this.hash     = hash     ;
-        this.code     = code     ;
-        this.ofEntity = ofEntity ;
-        this.label    = label    ;
+    public Node(String id, int hash , int code ,String type , String label) {
+        this.id     = id     ;
+        this.hash   = hash   ;
+        this.code   = code   ;
+        this.type   = type   ;
+        this.label  = label  ;
     }
 
     public String getId() {
-        return id;
+        return id ;
     }
 
     public String getLabel() {
-        return label;
+        return label ;
     }
 
     public int getHash() {
-        return hash;
+        return hash ;
     }
 
     public int getCode() {
         return code;
     }
     
-    public String getOfEntity() {
-        if(ofEntity == null ) return ""      ;
-        return ofEntity.replaceAll(" ", "" ) ;
+    public String getType() {
+        if(type == null ) return ""      ;
+        return type.replaceAll(" ", "" ) ;
     }
 
     @Override
@@ -47,9 +47,9 @@ public class Node {
            return "Node { "    + 
                   "id=" + id   + 
                   ", code = "  + hash   +
-                  ", num = "   + code   +
+                  ", num = "   + code    +
                   ", label = " + label  +
-                  ", ofEntity = " + ofEntity + 
+                  ", ofEntity = " + type + 
                   " } " ;
     }
 }
