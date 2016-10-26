@@ -588,12 +588,12 @@ public class Processor_V4 {
                            !objet.getLabel().endsWith("::#")
                         )
                 ) {
-                    if(!sujet.getOfEntity().startsWith(":"))      {
+                    if(!sujet.getType().startsWith(":"))      {
 
                         target.put( tmpUris.get(sujet.getHash())  ,
                                 tmpUris.get(sujet.getHash())           +
                                         " a " +  PREFIX_PREDICAT + ":" +
-                                        sujet.getOfEntity() + " ; "    +
+                                        sujet.getType() + " ; "    +
                                         objectProperty  +  " "         +
                                         objet.getLabel() )             ;
                     }
@@ -601,7 +601,7 @@ public class Processor_V4 {
 
                         target.put( tmpUris.get(sujet.getHash())   ,
                                 tmpUris.get(sujet.getHash())          +
-                                        " a " + sujet.getOfEntity()   +
+                                        " a " + sujet.getType()   +
                                         " ; " + PREFIX_PREDICAT       +
                                         ":"   + edge.getPredicat()    +
                                         " "   + objet.getLabel() )    ;
@@ -623,7 +623,7 @@ public class Processor_V4 {
                             target.put( tmpUris.get(sujet.getHash()) ,
                                  tmpUris.get(sujet.getHash())           +
                                          " a " + PREFIX_PREDICAT + ":"  +
-                                         sujet.getOfEntity() + " ;  "   +
+                                         sujet.getType() + " ;  "   +
                                          objectProperty      + " "      +
                                          uri ) ;                        ;
                         }
