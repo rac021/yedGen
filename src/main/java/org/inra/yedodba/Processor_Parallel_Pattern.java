@@ -5,6 +5,7 @@
 ##PATTERN_PARALLEL_1 Observation(6) ofEntity :VariableCategorie , hasMeasurement  Measurement(7) ; Measurement(7)  usesStandard :Anaee-franceVariableCategoryNamingStandard , ofCharacteristic oboe-core:Name , hasValue ?CATEGORY_STANDARD_NAME_GRAPH
 
 
+
 package org.inra.yedodba ;
 
 import org.json.XML ;
@@ -27,7 +28,7 @@ import static java.util.stream.Collectors.toList ;
  *
  * @author ryahiaoui
  */
-public class Processor_Parallel_Patter {
+public class Processor {
 
     private final Set<Edge>             edges               =  new  HashSet<>()   ;
     private final Map<String , Node  >  nodes               =  new  HashMap<>()   ;
@@ -43,7 +44,6 @@ public class Processor_Parallel_Patter {
     private final Map<String,  String>  SourceDeclaration   =  new  HashMap<>()   ;
     
     private final Map<String,  String>  PATTERNS            =  new  HashMap<>()   ;
-    private final Map<String,  String>  PATTERNS_PARALLEL   =  new  HashMap<>()   ;
     private final List<String>          VARIABLES           =  new  ArrayList<>() ;
 
     private static String  PREFIX_PREDICAT         =  "oboe-coreX"                ;
@@ -61,11 +61,10 @@ public class Processor_Parallel_Patter {
     private boolean existHeader      = false                  ;
     private boolean isGraphPattern   = false                  ;
     
-    private static final String  MATCHER_VARIABLE         = "?VARIABLE"          ;
-    private static final String  MATCHER_ENTITY           = "?ENTITY"            ;
-    private static final String  MATCHER_PATTERN          = "##PATTERN"          ;
-    private static final String  MATCHER_PATTERN_PARALLEL = "##PATTERN_PARALLEL" ;
-    private static final String  OF_ENTITY_PATTERN        = "oboe-core:ofEntity" ;
+    private static final String  MATCHER_VARIABLE   = "?VARIABLE"          ;
+    private static final String  MATCHER_ENTITY     = "?ENTITY"            ;
+    private static final String  MATCHER_PATTERN    = "##PATTERN"          ;
+    private static final String  OF_ENTITY_PATTERN  = "oboe-core:ofEntity" ;
     
     String linker  = null ;
 
@@ -92,7 +91,7 @@ public class Processor_Parallel_Patter {
     }
 
 
-    private void loadNodes ( JSONObject jsonObj , int hash )      {
+    private void loadNodes ( JSONObject jsonObj , int hash)       {
 
         JSONArray jsonArrayNodes = jsonObj.getJSONObject("graphml")
                                           .getJSONObject( "graph" )
@@ -225,13 +224,6 @@ public class Processor_Parallel_Patter {
                                                          label.replaceFirst(Pattern.quote(label
                                                               .split(" ")[0]),"").trim()) ;
                                     }
-                                    if (label.startsWith(MATCHER_PATTERN_PARALLEL) && label.contains(" ")) {
-                                            isGraphPattern = true     ;
-                                            PATTERNS_PARALLEL.put(label.split(" ")[0] ,
-                                                         label.replaceFirst(Pattern.quote(label
-                                                              .split(" ")[0]),"").trim()) ;
-                                    }
-                                    
                                     else if (label.startsWith(MATCHER_VARIABLE) && label.contains(" ")) {                                           
                                             VARIABLES.add(label.replaceFirst(Pattern.quote(MATCHER_VARIABLE),"")) ;
                                     }
@@ -386,9 +378,9 @@ public class Processor_Parallel_Patter {
                                                .split(Pattern.quote(")"))[0]
                                                .replaceAll("[^0-9]", ""))  ;
 
-                                tmpUris.put( code+hash, label.split(Pattern
-                                                             .quote(")"))[1]
-                                                             .trim()) ;
+                                tmpUris.put(code+hash, label.split(Pattern
+                                                            .quote(")"))[1]
+                                                            .trim()) ;
 
                                 if (numUris.values().contains( code )) {
                                    System.out.println("ALERT # Code { " + code + " } Detected multiple times ! ") ;
@@ -579,73 +571,8 @@ public class Processor_Parallel_Patter {
     
     /* Write OBDA FILE */
 
-    private void treatParallelPatterns( int hash , int applyCode ) {
-     
-        for (Map.Entry<String, String > patt : PATTERNS_PARALLEL.entrySet()) {
-            
-            String key     = patt.getKey()   ;
-            String pattern = patt.getValue() ;
-            
-            String[] entities = pattern.split(";") ;
-            
-            for( String entity : entities ) {
-                
-                String[] subEntity = entity.trim().split(" ") ;
-                
-                String value = "" , uri = "" , tmpUri = ""  ;
-                int codeQuery = -1 ;
-                
-                for( int i = 0 ; i < subEntity.length ; i++ ) {
-                 
-                    String token = subEntity[i] ;
-                    
-                    if( token.equals(",")) {
-                        value += token + " " ;
-                        continue       ;
-                    }
-                    String type     =  null     ;
-                    int code        =  -1       ;
-
-                    if(token.contains("(") && token.contains(")")) {
-                         code =  Integer.parseInt(
-                                   token.split(Pattern.quote("("))[1]
-                                        .replaceAll("[^0-9]", ""))  ;
-                         type = token.split(Pattern.quote("("))[0]  ;
-                    
-                         tmpUri = tmpUris.get( code + hash ) + "/" + applyCode ;                        
-                    }
-                            
-                     if ( tmpUri == null ) return ;
-                     
-                     if(i == 0 )  { 
-                        uri = tmpUri     ;
-                        codeQuery = code ;
-                        value += tmpUri + " a " +  PREFIX_PREDICAT + ":" + type + " , " ;
-                     }
-                     else {
-                         if( code == -1 )
-                            value += ( token.contains(":") || token.startsWith("?")) ? " " + token + " " : PREFIX_PREDICAT + ":" + token + " " ;
-                         else 
-                            value += tmpUri + " " ;
-                     }
-                }
-                
-                target.put(uri, value )        ;    
-                if(codeQuery != -1 ) {
-                  numUris.put( ":" + uri , codeQuery )                    ;
-                  uris.put(    ":" + uri , source.get(hash + codeQuery) ) ;
-                }
-                  
-            }
-            
-            // rac rac             
-        }       
-    }
-    
     private void write(  String outFile ) throws Exception {
-        
-        /* Treate GENERIC_PATTERN */
- 
+
         for ( Edge edge : edges ) {
 
             Node sujet = nodes.get(edge.getSujet())      ;
@@ -673,7 +600,7 @@ public class Processor_Parallel_Patter {
                         target.put( tmpUris.get(sujet.getHash())  ,
                                 tmpUris.get(sujet.getHash())           +
                                         " a " +  PREFIX_PREDICAT + ":" +
-                                        sujet.getType() + " ; "    +
+                                        sujet.getType()+ " ; "    +
                                         objectProperty  +  " "         +
                                         objet.getLabel() )             ;
                     }
@@ -681,7 +608,7 @@ public class Processor_Parallel_Patter {
 
                         target.put( tmpUris.get(sujet.getHash())   ,
                                 tmpUris.get(sujet.getHash())          +
-                                        " a " + sujet.getType()   +
+                                        " a " + sujet.getOfEntity()   +
                                         " ; " + PREFIX_PREDICAT       +
                                         ":"   + edge.getPredicat()    +
                                         " "   + objet.getLabel() )    ;
@@ -703,7 +630,7 @@ public class Processor_Parallel_Patter {
                             target.put( tmpUris.get(sujet.getHash()) ,
                                  tmpUris.get(sujet.getHash())           +
                                          " a " + PREFIX_PREDICAT + ":"  +
-                                         sujet.getType() + " ;  "   +
+                                         sujet.getOfEntity() + " ;  "   +
                                          objectProperty      + " "      +
                                          uri ) ;                        ;
                         }
@@ -904,29 +831,17 @@ public class Processor_Parallel_Patter {
              
              for(String vari : VARIABLES ) {
                 
-                String pattern_id = null , variable  ;
-
-                if( vari.trim().replaceAll(" +", " ").split(" ")[0].startsWith(MATCHER_PATTERN)) {
-                    pattern_id = vari.trim().replaceAll(" +", " ").split(" ")[0] ;
-                    variable   = vari.trim().replaceAll(" +", " ").split(" ")[1] ;
-                }
-                else {
-                    variable   = vari.trim().replaceAll(" +", " ").split(" ")[0] ;
-                }
-                
+                String pattern_id = vari.trim().replaceAll(" +", " ").split(" ")[0] ;
+                String variable   = vari.trim().replaceAll(" +", " ").split(" ")[1] ;
+               
                 Pattern p = Pattern.compile("\\{.*?\\}") ;
                 Matcher m = p.matcher(vari) ;
 
                 copyOuts = new ArrayList<>(outs) ;
                 
-                if(pattern_id != null ) {
-                  outs.addAll(getOutForPattern(pattern_id ));
-                }
-                else {
-                    target.get(MATCHER_PATTERN);
-                }
-                
-                while (m.find()) {
+                outs.addAll(getOutForPattern(pattern_id ));
+                 
+                 while (m.find()) {
                      
                     String param = m.group().replace("{", "")
                                     .replace("}","").trim().replaceAll(" +", " ") ;
@@ -936,21 +851,9 @@ public class Processor_Parallel_Patter {
                     outs.replaceAll( x -> x.replace(param_0,param_1)) ;
                 }
                
-                if( linker != null ) {
-                    outs.replaceAll( x -> x.replace( MATCHER_PATTERN , linker )
-                                           .replace( MATCHER_VARIABLE, variable  )
-                                           .replace( MATCHER_ENTITY  , variable )) ;
-                }
-                else {
-                    
-                    /* the ( ;.* ) is used to remove the object property of MATCHER_PATTERN */
-                    
-                    outs.replaceAll( x -> x.replaceAll(";.* " + MATCHER_PATTERN , target.get(MATCHER_PATTERN) )
-                                           .replace("_+_  .", "") 
-                                           .replace(" _+_ ", " ; ")
-                                           .replace( MATCHER_VARIABLE, variable  )
-                                           .replace( MATCHER_ENTITY  , variable )) ;
-                }
+                outs.replaceAll( x -> x.replace( MATCHER_PATTERN , linker)
+                                       .replace( MATCHER_VARIABLE, variable  )
+                                       .replace( MATCHER_ENTITY  , variable )) ;
                 
                 String fileName =  _fileName + "_" + variable.replaceFirst(":", "") + extension ;
                 
@@ -1023,7 +926,6 @@ public class Processor_Parallel_Patter {
                           .replace(" _+_ ", " ; ")
                           .replace("?source"  , query )
                   ) ;
-                  
             }
 
             else {
@@ -1036,6 +938,10 @@ public class Processor_Parallel_Patter {
               else
                   nextUri = " " + URI_PATTERN.replace( MATCHER_ENTITY , nextEntityClass.toLowerCase() ) ;
 
+              if(i == 0 ) {
+                    linker = uri ;
+              }
+
               out.add( MAPPING_COLLECTION_PATTERN
                        .replace("?id", keyByURI+"_"+classe+ "_"+num_start++ )
                        .replace("?target"  , uri + " a " + type + " ; " +
@@ -1043,10 +949,6 @@ public class Processor_Parallel_Patter {
                        .replace("?source"  , query )
               ) ;
 
-            }
-            
-            if(i == 0 ) {
-               linker = uri ;
             }
 
             out.add("") ;
@@ -1080,12 +982,10 @@ public class Processor_Parallel_Patter {
         int        hash       = getHash(pathFile)        ;
         loadNodes (jsonObject, hash)                     ;
         loadEdges (jsonObject, hash )                    ;
-        treatParallelPatterns( hash , 1)                 ;
-        
     }
 
 
-    public void entryProcess( String directory       ,
+    public void entryProcess( String directory ,
                               String outObdaPathFile ,
                               String extensionFile ) throws Exception {
 
