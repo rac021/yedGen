@@ -797,7 +797,7 @@ public class Processor {
                                               .stream()
                                               .filter(e -> e.getValue() == objet.getCode() )
                                               .map(Map.Entry::getKey)
-                                              .findFirst().
+                                              .findFirst()
                                               .orElse(null);
 
 
