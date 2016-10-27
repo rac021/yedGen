@@ -44,12 +44,12 @@ public class Node {
 
     @Override
     public String toString() {
-           return "Node { "    + 
-                  "id=" + id   + 
-                  ", code = "  + hash    +
-                  ", num = "   + code    +
-                  ", label = " + label   +
-                  ", ofEntity = " + type + 
+           return "Node { "             + 
+                  "Id =" + id           + 
+                  ", Hash = "  + hash   +
+                  ", Num = "   + code   +
+                  ", Label = " + label  +
+                  ", Type = "  + type   + 
                   " } " ;
     }
 }
