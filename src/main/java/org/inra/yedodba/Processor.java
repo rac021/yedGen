@@ -726,9 +726,7 @@ public class Processor {
                         if( uri == null ) {
                             System.err.println(" ")           ;
                             System.err.println(" -------- " ) ;
-                            System.err.print(" Uri with code { " + objet.getCode() + " }  not found !! -->  ") ;
-                            System.err.print(" Label { " + objet.getLabel() + " }  : ") ;
-                            System.err.println(" Type  { " + objet.getType()  + " }  ") ;
+                            System.err.println(" Uri Not found for : " + objet.toString() ) ;
                             System.err.println(" -------- ") ;
                             System.err.println(" ")          ;
                         }                    
