@@ -697,7 +697,7 @@ public class Processor {
 
                 }
 
-                else {
+                else if ( objet.getCode() != -1 ) {
                     
                         String uri =  tmpUris.get(objet.getHash()) != null ?
                                               ":" + tmpUris.get(objet.getHash()) : 
@@ -711,7 +711,7 @@ public class Processor {
                         if( !sujet.getLabel().startsWith(MATCHER_PATTERN_CONTEXT)  &&
                             !sujet.getLabel().startsWith(MATCHER_PATTERN_PARALLEL )) {
                             target.put( tmpUris.get(sujet.getHash()) ,
-                                 tmpUris.get(sujet.getHash())           +
+                                        tmpUris.get(sujet.getHash())           +
                                          " a " + PREFIX_PREDICAT + ":"  +
                                          sujet.getType() + " ;  "   +
                                          objectProperty      + " "      +
@@ -722,15 +722,15 @@ public class Processor {
                             target.put( sujet.getLabel() ,
                                targ + objectProperty  + " " + uri + " _+_ " ) ;
                         }
-                        
+                       
                         if( uri == null ) {
-                            System.err.println(" ")         ;
-                            System.err.println(" --------") ;
-                            System.err.println("  Uri with code { "+ objet.getCode() + " }  not found ! ") ;
-                            System.err.println("  Label { "+ objet.getLabel() + " }  ") ;
-                            System.err.println("  Type  { "+ objet.getType()  + " }  ") ;
-                            System.err.println(" --------") ;
-                            System.err.println(" ")         ;
+                            System.err.println(" ")           ;
+                            System.err.println(" -------- " ) ;
+                            System.err.print(" Uri with code { " + objet.getCode() + " }  not found !! -->  ") ;
+                            System.err.print(" Label { " + objet.getLabel() + " }  : ") ;
+                            System.err.println(" Type  { " + objet.getType()  + " }  ") ;
+                            System.err.println(" -------- ") ;
+                            System.err.println(" ")          ;
                         }                    
                     
                 }
@@ -1226,3 +1226,4 @@ public class Processor {
 
     }
 }
+
