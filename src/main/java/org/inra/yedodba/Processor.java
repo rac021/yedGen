@@ -365,6 +365,12 @@ public class Processor {
                                                                            .split(" ")[0],"")
                                                                            .trim()) ;
                             }
+                            else if (label.startsWith(MATCHER_PATTERN_PARALLEL) && label.contains(" ")) {
+                                            isGraphPattern = true     ;
+                                            PATTERNS_PARALLEL.put(label.split(" ")[0] ,
+                                                         label.replaceFirst(Pattern.quote(label
+                                                              .split(" ")[0]),"").trim()) ;
+                            }
                             else if (label.startsWith(MATCHER_VARIABLE) && label.contains(" ")) {                                  
                                   VARIABLES.add(label.replaceFirst(label.split(" ")[0],"")) ;
                             }
@@ -661,7 +667,9 @@ public class Processor {
 
             if(sujet == null || objet == null ) continue ;
 
-            if( objet.getLabel().startsWith( MATCHER_PATTERN_PARALLEL) ) continue ;
+             if( objet.getLabel().startsWith( MATCHER_PATTERN_PARALLEL) ) {
+                tmpUris.put(objet.getHash(), MATCHER_PATTERN_PARALLEL ) ;
+            }
             
             String objectProperty =  edge.getPredicat().contains(":") ? edge.getPredicat() :
                     
@@ -789,7 +797,8 @@ public class Processor {
                                               .stream()
                                               .filter(e -> e.getValue() == objet.getCode() )
                                               .map(Map.Entry::getKey)
-                                              .findFirst().get()  ;
+                                              .findFirst().
+                                              .orElse(null);
 
 
                         target.put( tmpUris.get(sujet.getHash())             ,
