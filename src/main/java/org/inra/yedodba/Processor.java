@@ -697,7 +697,7 @@ public class Processor {
 
                 }
 
-                else if ( objet.getCode() != -1 ) {
+                else {
                     
                         String uri =  tmpUris.get(objet.getHash()) != null ?
                                               ":" + tmpUris.get(objet.getHash()) : 
