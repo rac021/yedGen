@@ -117,27 +117,27 @@ public class Processor {
                                                  .replaceAll(" +", " ") ;
 
                     String id       =  jsonObjectNode.getString("id") + "_"+ hash ;
-                    String ofEntity =  null ;
-                    int code        =  -1   ;
+                    String type     =  null ;
+                    int    code     =  -1   ;
 
                     if(label.contains("(") && label.contains(")")) {
                         code =  Integer.parseInt(
                                   label.split(Pattern.quote("("))[1]
                                        .replaceAll("[^0-9]", ""))   ;
-                        ofEntity = label.split(Pattern.quote("("))[0]  ;
+                        type = label.split(Pattern.quote("("))[0]  ;
                     }
                    
                     Node node ;
                     if(code == -1 && ! label.startsWith(MATCHER_PATTERN_CONTEXT) 
                                   && ! label.startsWith(MATCHER_PATTERN_PARALLEL ) ) {
-                        node = new Node (id, code + hash , code , ofEntity, label ) ;
+                        node = new Node (id, code + hash , code , type, label ) ;
                     }
                     else {
                         if(label.startsWith(":"))
                             node = new Node( id, code + hash, code,
-                                    ofEntity, label.split(Pattern.quote("("))[0] + "::#" ) ;
+                                    type, label.split(Pattern.quote("("))[0] + "::#" ) ;
                         else
-                            node = new Node ( id, code + hash, code, ofEntity,
+                            node = new Node ( id, code + hash, code, type,
                                               label.split(Pattern.quote("("))[0] )         ;
                     }
 
