@@ -128,7 +128,8 @@ public class Processor {
                     }
                    
                     Node node ;
-                    if(code == -1 && ! label.startsWith(MATCHER_PATTERN_CONTEXT) ) {
+                    if(code == -1 && ! label.startsWith(MATCHER_PATTERN_CONTEXT) 
+                                  && ! label.startsWith(MATCHER_PATTERN_PARALLEL ) ) {
                         node = new Node (id, code + hash , code , ofEntity, label ) ;
                     }
                     else {
@@ -707,7 +708,8 @@ public class Processor {
                                                      .findFirst()
                                                      .orElse(null) ;
                        
-                        if(!sujet.getLabel().startsWith(MATCHER_PATTERN_CONTEXT)) {
+                        if( !sujet.getLabel().startsWith(MATCHER_PATTERN_CONTEXT)  &&
+                            !sujet.getLabel().startsWith(MATCHER_PATTERN_PARALLEL )) {
                             target.put( tmpUris.get(sujet.getHash()) ,
                                  tmpUris.get(sujet.getHash())           +
                                          " a " + PREFIX_PREDICAT + ":"  +
@@ -722,9 +724,13 @@ public class Processor {
                         }
                         
                         if( uri == null ) {
-                            System.err.println(" ") ;
+                            System.err.println(" ")         ;
+                            System.err.println(" --------") ;
                             System.err.println("  Uri with code { "+ objet.getCode() + " }  not found ! ") ;
-                            System.err.println(" ") ;
+                            System.err.println("  Label { "+ objet.getLabel() + " }  ") ;
+                            System.err.println("  Type  { "+ objet.getType()  + " }  ") ;
+                            System.err.println(" --------") ;
+                            System.err.println(" ")         ;
                         }                    
                     
                 }
