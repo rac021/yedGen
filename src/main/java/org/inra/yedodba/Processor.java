@@ -704,7 +704,8 @@ public class Processor {
                                                      .stream()
                                                      .filter(e -> e.getValue() == objet.getCode() )
                                                      .map(Map.Entry::getKey)
-                                                     .findFirst().get()  ;
+                                                     .findFirst()
+                                                     .orElse(null) ;
                        
                         if(!sujet.getLabel().startsWith(MATCHER_PATTERN_CONTEXT)) {
                             target.put( tmpUris.get(sujet.getHash()) ,
