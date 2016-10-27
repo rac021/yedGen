@@ -661,6 +661,8 @@ public class Processor {
 
             if(sujet == null || objet == null ) continue ;
 
+            if( objet.getLabel().startsWith( MATCHER_PATTERN_PARALLEL) ) continue ;
+            
             String objectProperty =  edge.getPredicat().contains(":") ? edge.getPredicat() :
                     
             PREFIX_PREDICAT + ":" + edge.getPredicat() ;
