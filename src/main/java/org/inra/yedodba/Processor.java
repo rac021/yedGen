@@ -646,7 +646,8 @@ public class Processor {
                      }
                 }
                
-                target_parallel.put( ":" + uri, value ) ;    
+                target_parallel.put( ":" + uri, value ) ;  
+                
                 if(codeQuery != -1 ) {
                   uris_num_parallel.put( ":" + uri , codeQuery )                               ;
                   uris_queries_parallel.put(    ":" + uri , source.get(hash + codeQuery) )     ;
@@ -654,7 +655,6 @@ public class Processor {
                 }
                 
             }
-                       
         }       
     }
     
@@ -674,7 +674,7 @@ public class Processor {
             String objectProperty =  edge.getPredicat().contains(":") ? edge.getPredicat() :
                     
             PREFIX_PREDICAT + ":" + edge.getPredicat() ;
- 
+
             if(!target.containsKey(tmpUris.get(sujet.getHash()))) {
 
                 if( objet.getLabel().startsWith("<")           ||
