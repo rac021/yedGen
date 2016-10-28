@@ -675,6 +675,9 @@ public class Processor {
                     
             PREFIX_PREDICAT + ":" + edge.getPredicat() ;
 
+            
+          
+             
             if(!target.containsKey(tmpUris.get(sujet.getHash()))) {
 
                 if( objet.getLabel().startsWith("<")           ||
@@ -686,6 +689,7 @@ public class Processor {
                            !objet.getLabel().endsWith("::#")
                         )
                 ) {
+                    
                     if(!sujet.getType().startsWith(":"))      {
 
                         target.put( tmpUris.get(sujet.getHash())  ,
@@ -708,39 +712,55 @@ public class Processor {
                 }
 
                 else {
-                    
-                        String uri =  tmpUris.get(objet.getHash()) != null ?
-                                              ":" + tmpUris.get(objet.getHash()) : 
-                                              uris_num.entrySet()
-                                                     .stream()
-                                                     .filter(e -> e.getValue() == objet.getCode() )
-                                                     .map(Map.Entry::getKey)
-                                                     .findFirst()
-                                                     .orElse(null) ;
-                       
-                        if( !sujet.getLabel().startsWith(MATCHER_PATTERN_CONTEXT)  &&
-                            !sujet.getLabel().startsWith(MATCHER_PATTERN_PARALLEL )) {
-                            target.put( tmpUris.get(sujet.getHash()) ,
+                     
+                        if( objet.getLabel().startsWith(MATCHER_PATTERN_PARALLEL )) {
+                            
+                             target.put( tmpUris.get(sujet.getHash()) ,
                                         tmpUris.get(sujet.getHash())           +
                                          " a " + PREFIX_PREDICAT + ":"  +
                                          sujet.getType() + " ;  "   +
                                          objectProperty      + " "      +
-                                         uri ) ;                        ;
+                                         objet.getLabel() )                      ; 
                         }
+                        
                         else {
-                            String targ = target.get(sujet.getLabel()) != null ? target.get(sujet.getLabel()) : " " ;
-                            target.put( sujet.getLabel() ,
-                               targ + objectProperty  + " " + uri + " _+_ " ) ;
+                            
+                            String uri =  tmpUris.get(objet.getHash()) != null ?
+                                          ":" + tmpUris.get(objet.getHash()) : 
+                                               uris_num.entrySet()
+                                                       .stream()
+                                                       .filter(e -> e.getValue() == objet.getCode() )
+                                                       .map(Map.Entry::getKey)
+                                                       .findFirst()
+                                                       .orElse(null) ;
+ 
+                            if( !sujet.getLabel().startsWith(MATCHER_PATTERN_CONTEXT)  &&
+                                     !sujet.getLabel().startsWith(MATCHER_PATTERN_PARALLEL )) {
+
+                                target.put( tmpUris.get(sujet.getHash()) ,
+                                            tmpUris.get(sujet.getHash())           +
+                                             " a " + PREFIX_PREDICAT + ":"  +
+                                             sujet.getType() + " ;  "   +
+                                             objectProperty      + " "      +
+                                             uri )                          ;                            
+
+
+                            }
+                            else {
+
+                                String targ = target.get(sujet.getLabel()) != null ? target.get(sujet.getLabel()) : " " ;
+                                target.put( sujet.getLabel() ,
+                                   targ + objectProperty  + " " + uri + " _+_ " ) ;
+                            }
+
+                            if( uri == null ) {
+                                System.err.println(" ")           ;
+                                System.err.println(" -------- " ) ;
+                                System.err.println(" Uri Not found for : " + objet.toString() ) ;
+                                System.err.println(" -------- ") ;
+                                System.err.println(" ")          ;
+                            }                    
                         }
-                       
-                        if( uri == null ) {
-                            System.err.println(" ")           ;
-                            System.err.println(" -------- " ) ;
-                            System.err.println(" Uri Not found for : " + objet.toString() ) ;
-                            System.err.println(" -------- ") ;
-                            System.err.println(" ")          ;
-                        }                    
-                    
                 }
 
                if(tmpUris.get( sujet.getHash()) != null)
@@ -748,7 +768,7 @@ public class Processor {
                                     source.get(sujet.getHash()))   ;
             }
             else {               
-               
+                               
                 if ( objet.getLabel().startsWith("<")       ||
                      objet.getLabel().startsWith("{")       ||
                      objet.getLabel().startsWith("\"")      ||
@@ -791,6 +811,7 @@ public class Processor {
                               
                        }
                        else {
+                        
                         uri =  tmpUris.get(objet.getHash()) != null ?
                                  ":" + tmpUris.get(objet.getHash()) : 
                                        uris_num.entrySet()
@@ -1071,9 +1092,9 @@ public class Processor {
                     }
                 }
                 
-                String final_root_uris =  parallel_root_uris_out.replaceFirst(", ", "") ;                                          
-                
-                outs.replaceAll( x -> x.replaceAll(MATCHER_PATTERN_PARALLEL,   final_root_uris )) ;
+                String final_root_uris =  parallel_root_uris_out.replaceFirst(", ", "").trim() ;
+
+                outs.replaceAll( x -> x.replaceAll(MATCHER_PATTERN_PARALLEL, final_root_uris )) ;
                 
                 String fileName =  _fileName + "_" + variable.replaceFirst(":", "") + extension ;
                 
@@ -1235,4 +1256,3 @@ public class Processor {
 
     }
 }
-
