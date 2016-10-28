@@ -740,9 +740,8 @@ public class Processor {
                                              sujet.getType() + " ;  "   +
                                              objectProperty      + " "      +
                                              uri )                          ;                            
-
-
                             }
+                            
                             else {
 
                                 String targ = target.get(sujet.getLabel()) != null ? target.get(sujet.getLabel()) : " " ;
@@ -817,7 +816,6 @@ public class Processor {
                                               .map(Map.Entry::getKey)
                                               .findFirst()
                                               .orElse(null);
-
 
                         target.put( tmpUris.get(sujet.getHash())             ,
                                     target.get(tmpUris.get(sujet.getHash())) +
@@ -1002,7 +1000,6 @@ public class Processor {
                                            .replace( MATCHER_ENTITY  , variable )
                     ) ;
                 }
-
                 
                 /* PATTERN_PARALLEL */ 
                 
@@ -1085,7 +1082,6 @@ public class Processor {
                         }
 
                         parallel_root_uris_out = String.join(" , ", parallel_root_uris_out, parallel_root_uris_tmp ) ;
-
                     }
                 }
                 
@@ -1164,7 +1160,6 @@ public class Processor {
                           .replace(" _+_ ", " ; ")
                           .replace("?source"  , query )
                   ) ;
-                  
             }
 
             else {
