@@ -674,10 +674,7 @@ public class Processor {
             String objectProperty =  edge.getPredicat().contains(":") ? edge.getPredicat() :
                     
             PREFIX_PREDICAT + ":" + edge.getPredicat() ;
-
-            
-          
-             
+ 
             if(!target.containsKey(tmpUris.get(sujet.getHash()))) {
 
                 if( objet.getLabel().startsWith("<")           ||
