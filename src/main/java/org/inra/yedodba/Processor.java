@@ -687,15 +687,29 @@ public class Processor {
                         )
                 ) {
                     
-                    if(!sujet.getType().startsWith(":"))      {
+                    if(!sujet.getType().startsWith(":") && !sujet.getType().startsWith("?"))  {
 
-                        target.put( tmpUris.get(sujet.getHash())  ,
-                                tmpUris.get(sujet.getHash())           +
-                                        " a " +  PREFIX_PREDICAT + ":" +
-                                        sujet.getType() + " ; "    +
-                                        objectProperty  +  " "         +
-                                        objet.getLabel() )             ;
+                        if(objet.getLabel().startsWith("?") && objet.getCode() >  0 ) {
+                            
+                            target.put( tmpUris.get(sujet.getHash())  ,
+                                    tmpUris.get(sujet.getHash())           +
+                                            " a " +  PREFIX_PREDICAT + ":" +
+                                            sujet.getType() + " ; "    +
+                                            objectProperty  +  " :"         +
+                                            tmpUris.get(objet.getHash()) )             ;
+                        }
+                        
+                        else {
+                            
+                            target.put( tmpUris.get(sujet.getHash())  ,
+                                    tmpUris.get(sujet.getHash())           +
+                                            " a " +  PREFIX_PREDICAT + ":" +
+                                            sujet.getType() + " ; "    +
+                                            objectProperty  +  " "         +
+                                            objet.getLabel() )             ;
+                        }
                     }
+                    
                     else {
 
                         target.put( tmpUris.get(sujet.getHash())   ,
@@ -1156,9 +1170,10 @@ public class Processor {
                           .replace("?id", keyByURI+"_"+classe+ "_"+num_start++ )
                           .replace("?target"  ,  uri + " a " + type + " ; " +
                            OF_ENTITY_PATTERN + " :" + classe + " ; " + 
-                           target.get(MATCHER_PATTERN_CONTEXT).replace("_+_  .", ".") )
-                          .replace(" _+_ ", " ; ")
-                          .replace("?source"  , query )
+                           target.getOrDefault(MATCHER_PATTERN_CONTEXT, "")
+                                 .replace("_+_  .", ".") )
+                                 .replace(" _+_ ", " ; ")
+                                 .replace("?source"  , query )
                   ) ;
             }
 
