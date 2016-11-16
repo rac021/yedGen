@@ -19,10 +19,10 @@
 - Example :
 
 ```
-❯   java -cp target/yedGen-1.0-SNAPSHOT-jar-with-dependencies.jar entypoint.Main  \
-   -d 'src/main/resources/demo'                                                   \
-   -out './mapping.obda'                                                          \
-   -csv './my_csv.csv'                                                            \
+❯   java -cp target/yedGen_2.0-1.0-SNAPSHOT-jar-with-dependencies.jar entypoint.Main  \
+   -d 'src/main/resources/demo'                                                       \
+   -out './mapping.obda'                                                              \
+   -csv './my_csv.csv'                                                                \
    -ext '.graphml'
 ```
 
