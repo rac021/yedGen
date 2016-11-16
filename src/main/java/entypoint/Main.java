@@ -12,7 +12,7 @@ public class Main {
     
        public static void main (String[] args) throws Exception    {
         
-        String directory = "" , outFile = "" , ext = "" , csv = "" ;
+        String directory = null , outFile = null , ext = null , csv = null ;
         
         boolean includingGraphVariables = false ,  verbose = false ;
        
