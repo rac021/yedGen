@@ -11,14 +11,18 @@
    - `-d   : Directory where graphml files are located `
    - `-out : Path of output mapping obda file `
    - `-ext : extension of files involved in the process `
-
+   - `-csv : Path od the CSV file ( containing variables )`
+   - `-ig  : include listed variables in graphml files`
+   - `-v   :  enable verbose mode // not implemented yet`   
+   
 
 - Example :
 
 ```
-❯   java -cp target/yedGen-1.0-SNAPSHOT-jar-with-dependencies.jar Main  \
-   -d 'src/main/resources/demo'                                         \
-   -out './mapping.obda'                                                \
+❯   java -cp target/yedGen-1.0-SNAPSHOT-jar-with-dependencies.jar entypoint.Main  \
+   -d 'src/main/resources/demo'                                                   \
+   -out './mapping.obda'                                                          \
+   -csv './my_csv.csv'                                                            \
    -ext '.graphml'
 ```
 
