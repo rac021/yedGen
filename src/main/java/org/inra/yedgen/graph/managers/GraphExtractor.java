@@ -1,0 +1,688 @@
+
+
+package org.inra.yedgen.graph.managers;
+
+import org.json.XML;
+import java.io.File;
+import java.util.Map;
+import java.util.Set;
+import java.util.List;
+import java.util.Locale;
+import java.util.HashMap;
+import org.json.JSONArray;
+import java.nio.file.Path;
+import org.json.JSONObject;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.io.FileInputStream;
+import java.util.regex.Pattern;
+import org.inra.yedgen.graph.utils.Utils;
+import org.inra.yedgen.graph.entities.Edge;
+import org.inra.yedgen.processor.entities.Node;
+import static java.util.stream.Collectors.toList;
+
+/**
+ *
+ * @author ryahiaoui
+ */
+public class GraphExtractor {
+ 
+    private final Map< Integer, Map< Integer, String>> mapUris             ;
+    private final Map< Integer, Set<Edge>>             mapEdges            ;
+    private final Map< Integer, Map< String, Node>>    mapNodes            ;
+    private final Map< Integer, Map< Integer, String>> mapQueries          ;
+    private final Map< Integer, Map< String, String>>  mapConcepts         ;
+    private final Map< Integer, Map< String, String>>  mapVariables        ;
+    private final Map< Integer, Map< String, String>>  mapPatternContexts  ;
+    private final Map< Integer, Map< String, String>>  mapPatternParallels ;
+
+    
+    private String metaPatternVariable                                     ;
+    private String metaPatternContext                                      ;
+    private String metaPatternParallel                                     ;
+    
+    private Integer metaPatternHash                                        ;
+    
+    private final Map<String,  String>  SourceDeclaration =  new  HashMap<>()   ;
+    //private final Map<String,  String>  meta_paterns      =  new  HashMap<>()   ;
+//    private final List<String>          VARIABLES         =  new  ArrayList<>() ;
+    private final Map<String , String>  prefixs             =  new  HashMap<>()   ;
+
+    public static String  PREFIX_PREDICAT          =  "oboe-coreX"              ;
+    
+    private static final String  PREFIXDECLARATION = "[PrefixDeclaration]"      ;
+    private static final String  PREF              =  "?pref		?uri"   ;
+
+    private static final String MAPPING_COLLECTION_BEGIN   = "[MappingDeclaration] @collection [[" ;
+
+    private static final String MAPPING_COLLECTION_PATTERN =  "mappingId	?id\n"      +
+                                                              "target		?target\n"  +
+                                                              "source		?source"    ;
+
+    private static final String MAPPING_COLLECTION_END     = "]]" ;
+
+    private static final String  MATCHER_VARIABLE         = "?VARIABLE"          ;
+    private static final String  MATCHER_PATTERN_CONTEXT  = "##PATTERN_CONTEXT"  ;
+    private static final String  MATCHER_PATTERN_PARALLEL = "##PATTERN_PARALLEL" ;
+    public  static final String  OF_ENTITY_PATTERN        = "oboe-core:ofEntity" ;
+    
+    private static final String  META_PATTERN_CONTEXT  = "##META_PATTERN_CONTEXT"  ;
+    private static final String  META_PATTERN_PARALLEL = "##META_PATTERN_PARALLEL" ;
+    private static final String  META_VERIABLE         = "?META_VARIABLE"          ;
+    
+    
+    private  JSONObject loadJsonObject ( String pathFile ) throws IOException {
+
+        String xml ;
+
+        try ( InputStream inputStream = new FileInputStream(pathFile) )  {
+
+            StringBuilder builder = new StringBuilder() ;
+
+            int ptr ;
+
+            while ((ptr = inputStream.read()) != -1 )
+            {
+                builder.append((char) ptr) ;
+            }
+
+            xml = builder.toString() ;
+        }
+
+        return XML.toJSONObject(xml) ;
+    }
+
+
+    private void loadConcepts ( JSONObject jsonObj , Integer hash )  {
+
+        JSONArray jsonArrayConcepts = jsonObj.getJSONObject("graphml")
+                                             .getJSONObject( "graph" )
+                                             .getJSONArray( "node" ) ;
+
+        for (int i = 0; i < jsonArrayConcepts.length(); i++)      {
+
+            Object obj                    = jsonArrayConcepts.get(i) ;
+            
+            JSONObject jsonObjectConcept  = (JSONObject) obj      ;
+
+            if(obj != null) {
+
+                if(obj.toString().startsWith("{\"data\":{")) {
+
+                    String label = jsonObjectConcept.getJSONObject("data")
+                                                    .getJSONObject("y:ShapeNode")
+                                                    .getJSONObject("y:NodeLabel")
+                                                    .getString("content").trim()
+                                                    .replaceAll(" +", " ") ;
+  
+                    String id       =  jsonObjectConcept.getString("id") ;
+
+                    Utils.putInMap(mapConcepts, hash, id , label ) ;
+                    
+                }
+
+                if ( jsonObjectConcept.has("graph")) {
+
+                    if ( jsonObjectConcept.getJSONObject("graph").toString().startsWith("{\"node\":[")) {
+
+                        JSONArray jsonArrayGroupConcepts =
+                                jsonObjectConcept.getJSONObject("graph")
+                                                 .getJSONArray("node") ;
+
+                        for (int j = 0; j < jsonArrayGroupConcepts.length(); j++) {
+
+                            if ( jsonArrayGroupConcepts.toString().startsWith("{\"data\":[")   ||
+                                    jsonArrayGroupConcepts.toString().startsWith("[{\"data\":[") ) {
+
+                                if ( jsonArrayGroupConcepts.getJSONObject(j)
+                                                        .getJSONArray("data")
+                                                        .getJSONObject(1)
+                                                        .has("y:ShapeNode")) {
+
+                                    String id = jsonArrayGroupConcepts.getJSONObject(j)
+                                                .getString("id") ;
+
+                                    String label = jsonArrayGroupConcepts.getJSONObject(j)
+                                                                      .getJSONArray("data")
+                                                                      .getJSONObject(1)
+                                                                      .getJSONObject("y:ShapeNode")
+                                                                      .getJSONObject("y:NodeLabel")
+                                                                      .getString("content").trim()
+                                                                      .replaceAll(" +", " ") ;
+                                     
+                                    Integer code ;
+
+                                    if (label.toLowerCase(Locale.FRENCH).startsWith("query_(")) {
+                                        code =  Integer.parseInt(label
+                                                       .split(Pattern.quote(":"))[0]
+                                                       .split(Pattern.quote("_"))[1]
+                                                       .replaceAll("[^0-9]", ""))  ;
+
+                                        Utils.putInMap( mapQueries, hash, code , label.split( Pattern
+                                                                                .quote(": "))[1]
+                                                                                .trim() ) ;
+                                    }
+                                    
+                                    else if (label.toLowerCase()
+                                                  .startsWith("(") && 
+                                                  label.toLowerCase().contains(")") ) {
+                                                      
+                                        code =  Integer.parseInt(label
+                                                       .split(Pattern.quote(")"))[0]
+                                                       .replaceAll("[^0-9]", ""))  ;
+
+                                        Utils.putInMap( mapUris, hash, code , label.split( Pattern
+                                                                                   .quote(")"))[1]
+                                                                                   .trim())      ;
+                                        
+                                    }
+                                }
+                            }
+
+                            else
+
+                            if ( jsonArrayGroupConcepts.toString().startsWith("{\"data\":{")   ||
+                                 jsonArrayGroupConcepts.toString().startsWith("[{\"data\":{") ) {
+
+                                if ( jsonArrayGroupConcepts.getJSONObject(j)
+                                                        .getJSONObject("data")
+                                                        .has("y:ShapeNode"))       {
+
+                                    String id = jsonArrayGroupConcepts.getJSONObject(j).getString("id") ;
+                                    
+                                    String label = jsonArrayGroupConcepts.getJSONObject(j)
+                                                                      .getJSONObject("data")
+                                                                      .getJSONObject("y:ShapeNode")
+                                                                      .getJSONObject("y:NodeLabel")
+                                                                      .getString("content").trim()
+                                                                      .replaceAll(" +", " ") ;
+                                    
+                                    if (label.startsWith(MATCHER_PATTERN_CONTEXT) && label.contains(" ")) {
+                                            
+                                        
+                                            Utils.putInMap( mapPatternContexts, 
+                                                            hash, 
+                                                            label.split(" ")[0] , 
+                                                            label.replaceFirst(Pattern.quote(label
+                                                                 .split(" ")[0]),"").trim() ) ; 
+                                            
+                                    }
+                                    if (label.startsWith(MATCHER_PATTERN_PARALLEL) && label.contains(" ")) {
+                                            
+                                            Utils.putInMap( mapPatternParallels, 
+                                                            hash, 
+                                                            label.split(" ")[0] , 
+                                                            label.replaceFirst(Pattern.quote(label
+                                                                 .split(" ")[0]),"").trim() ) ;  
+                                    }
+                                    
+                                    else if (label.startsWith(MATCHER_VARIABLE) && label.contains(" ")) {
+                                        
+                                        Utils.putInMap( mapVariables, 
+                                                        hash, 
+                                                        id , 
+                                                        label.trim().replaceFirst( Pattern.quote(MATCHER_VARIABLE),"") ) ;  
+                                    }
+                                    
+                                    else if (label.startsWith(META_VERIABLE) && label.contains(" ")) {                                           
+                                        metaPatternVariable = label.replaceFirst(Pattern.quote(META_VERIABLE),"") ;
+                                        metaPatternHash     = hash                                                ;
+                                    }
+                                    else if ( label.startsWith(META_PATTERN_CONTEXT) && label.contains(" ")) {                                           
+                                        metaPatternContext = label.replaceFirst(Pattern.quote(META_PATTERN_CONTEXT),"")   ;
+                                    }
+                                    else if ( label.startsWith(META_PATTERN_PARALLEL) && label.contains(" ")) {                                           
+                                        metaPatternParallel = label.replaceFirst(Pattern.quote(META_PATTERN_PARALLEL),"") ;
+                                    }
+
+                                    int code ;
+
+                                    if (label.toLowerCase().startsWith("query_(")) {
+                                        
+                                        code =  Integer.parseInt(label
+                                                       .split(Pattern.quote(":"))[0]
+                                                       .split(Pattern.quote("_"))[1]
+                                                       .replaceAll("[^0-9]", ""))  ;
+
+                                         Utils.putInMap( mapQueries , 
+                                                         hash , 
+                                                         code , 
+                                                         label.split( Pattern.quote(": "))[1]
+                                                              .trim()) ;
+                                    }
+                                    
+                                    else
+                                    
+                                    if ( label.toLowerCase().startsWith("(") 
+                                         && label.toLowerCase().contains(")") )   {
+                                                
+                                        code =  Integer.parseInt(label
+                                                       .split(Pattern.quote(")"))[0]
+                                                       .replaceAll("[^0-9]", ""))  ;
+
+                                        Utils.putInMap( mapUris , 
+                                                        hash    , 
+                                                        code    , 
+                                                        label.split(Pattern
+                                                             .quote(")")) [1]
+                                                             .trim())       ;
+                                    }
+                                    else
+                                    if (label.toLowerCase().startsWith("prefix ")) {
+                                        String pref = label.split(Pattern.quote(" "))[1] ;
+                                        String uri  = label.split(Pattern.quote(" "))[2] ;
+
+                                        prefixs .put(pref, uri) ;
+                                    }
+                                    else
+                                    if (label.startsWith("PREDICAT_PREFIX :"))       {
+                                        
+                                        PREFIX_PREDICAT = label.split(Pattern
+                                                               .quote("PREDICAT_PREFIX :"))[1] ;
+                                        
+                                    }
+                                    else
+                                    if (label.toLowerCase().startsWith("obda-"))    {
+
+                                        if  ( label.split(Pattern.quote(" : ")) [0]
+                                                   .equals("obda-sourceUri"))     {
+                                                       
+                                            SourceDeclaration.put("sourceUri",
+                                                    label.split(Pattern
+                                                         .quote(" : "))[1]) ;
+                                        }
+                                        else if ( label.split(Pattern.quote(" : ")) [0]
+                                                       .equals("obda-connectionUrl")) {
+                                                  
+                                            SourceDeclaration.put("connectionUrl", label
+                                                             .split(Pattern
+                                                             .quote(" : "))[1]) ;
+                                        }
+                                        else if (label.split(Pattern.quote(" : "))[0]
+                                                      .equals("obda-username"))     {
+                                                        
+                                            SourceDeclaration.put("username",  label
+                                                             .split(Pattern
+                                                             .quote(" : "))[1])    ;
+                                        }
+                                        else if (label.split(Pattern.quote(" : "))[0]
+                                                      .equals("obda-password"))     {
+                                                  
+                                            SourceDeclaration.put("password", label
+                                                             .split(Pattern
+                                                             .quote(" : "))[1])   ;
+                                        }
+                                        else if ( label.split(Pattern.quote(" : "))[0]
+                                                       .equals("obda-driverClass"))  {
+                                                        
+                                            SourceDeclaration.put("driverClass", label
+                                                             .split(Pattern
+                                                             .quote(" : "))[1])   ;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    else
+
+                    if(jsonObjectConcept.getJSONObject("graph")
+                                     .toString().startsWith("{\"node\":{"))    {
+
+                        JSONObject jsonArrayGroupNodes = jsonObjectConcept.
+                                                         getJSONObject("graph" )
+                                                        .getJSONObject("node") ;
+
+                        if( jsonArrayGroupNodes.getJSONObject("data").has("y:ShapeNode")) {
+
+                            String id = jsonArrayGroupNodes.getString("id") ;
+
+                            String label = jsonArrayGroupNodes
+                                            .getJSONObject("data")
+                                            .getJSONObject("y:ShapeNode")
+                                            .getJSONObject("y:NodeLabel")
+                                            .getString("content").trim()
+                                            .replaceAll(" +", " ") ;
+
+                            int code ;
+
+                            if (label.startsWith(MATCHER_PATTERN_CONTEXT) && label.contains(" ")) {
+                                    
+                                Utils.putInMap( mapPatternContexts , 
+                                                hash    , 
+                                                label.split(" ")[0]    , 
+                                                label.replaceFirst(Pattern.quote(label
+                                                                           .split(" ")[0]),"").trim() ) ; 
+                                
+                            }
+                            else if (label.startsWith(MATCHER_PATTERN_PARALLEL) && label.contains(" ")) {
+
+                                Utils.putInMap( mapPatternParallels , 
+                                                hash,
+                                                label.split(" ")[0] , 
+                                                label.replaceFirst(Pattern.quote( label
+                                                     .split(" ")[0]),"").trim() ) ; 
+
+                            }
+                            
+                            else if (label.startsWith(MATCHER_VARIABLE) && label.contains(" ")) {  
+
+                                Utils.putInMap( mapVariables, 
+                                                hash, 
+                                                id , 
+                                                label.trim().replaceFirst(label.split(" ")[0],"") ) ;  
+                            }
+                            
+                            else if (label.startsWith(META_VERIABLE) && label.contains(" ")) {                                           
+                                  metaPatternVariable = label.replaceFirst(Pattern.quote(META_VERIABLE),"")       ;
+                                  metaPatternHash     = hash                                                      ;
+                            }
+                            else if (label.startsWith(META_PATTERN_CONTEXT) && label.contains(" ")) {                                           
+                                  metaPatternContext = label.replaceFirst(Pattern.quote(META_PATTERN_CONTEXT),"") ;
+                            }
+                            else if (label.startsWith(META_PATTERN_PARALLEL) && label.contains(" ")) {                                           
+                                 metaPatternParallel = label.replaceFirst(Pattern.quote(META_PATTERN_PARALLEL),"") ;
+                            }
+
+                            if(label.toLowerCase().startsWith("query_("))  {
+                                
+                                code =  Integer.parseInt(label
+                                               .split(Pattern.quote(":"))[0]
+                                               .split(Pattern.quote("_"))[1]
+                                               .replaceAll("[^0-9]", ""))  ;
+
+                                Utils.putInMap( mapQueries , 
+                                                hash ,
+                                                code , 
+                                                label.split( Pattern
+                                                     .quote(": "))[1]
+                                                     .trim()) ;
+                                 
+                            }
+                            else
+                            if( label.toLowerCase().startsWith("(") 
+                                && label.toLowerCase().contains(")") )   {
+                                      
+                                code =  Integer.parseInt(label
+                                               .split(Pattern.quote(")"))[0]
+                                               .replaceAll("[^0-9]", ""))  ;
+
+                                Utils.putInMap( mapUris , 
+                                                hash    ,
+                                                code    , 
+                                                label.split(Pattern
+                                                     .quote(")"))[1]
+                                                     .trim()) ;
+                            }
+                            
+                            else
+                            
+                            if(label.toLowerCase().startsWith("prefix "))        {
+                                String pref = label.split(Pattern.quote(" "))[1] ;
+                                String uri  = label.split(Pattern.quote(" "))[2] ;
+                                prefixs .put(pref, uri) ;
+                            }
+                            
+                            else
+                            
+                            if(label.startsWith("PREDICAT_PREFIX :"))       {
+                                PREFIX_PREDICAT = label.split(Pattern
+                                                       .quote("PREDICAT_PREFIX :"))[1]
+                                                       .trim() ;
+                            }
+
+                        } // ShapeNode
+                    }     // isNode Object
+                }         // has Graph
+            }             // dif null
+        }                 // boucle iterator
+    }
+
+
+    private void loadEdges ( JSONObject jsonObj, int hash ) {
+
+        if ( ! jsonObj.getJSONObject("graphml")
+                      .getJSONObject("graph")
+                      .has("edge") )    {
+           return ;
+        }
+
+        JSONArray jsonArrayEdges = new JSONArray() ;
+
+        if(jsonObj.getJSONObject("graphml")
+                  .getJSONObject("graph")
+                  .get("edge").toString().startsWith("{\"data\""))
+        {
+            jsonArrayEdges.put(jsonObj.getJSONObject("graphml")
+                          .getJSONObject("graph")
+                          .getJSONObject("edge"));
+        }
+
+        else {
+
+            jsonArrayEdges = jsonObj.getJSONObject("graphml")
+                                    .getJSONObject("graph")
+                                    .getJSONArray("edge")   ;
+        }
+
+        
+        for (int i = 0; i < jsonArrayEdges.length(); i++ ) {
+
+            Object obj = jsonArrayEdges.get(i)        ;
+
+            JSONObject jsonObject  = (JSONObject) obj ;
+
+            if(obj.toString().startsWith("{\"data\":{")) {
+
+                if(jsonObject.getJSONObject("data")
+                             .has("y:PolyLineEdge"))
+                {
+                    String predicat = jsonObject.getJSONObject("data")
+                                                .getJSONObject("y:PolyLineEdge")
+                                                .getJSONObject("y:EdgeLabel")
+                                                .getString("content") ;
+
+                    String id    = jsonObject.getString("id")     ;
+
+                    String sujet = jsonObject.getString("source") ;
+
+                    String objet = jsonObject.getString("target") ;
+
+                    Edge       e = new Edge( hash, id, sujet, predicat, objet ) ;
+
+                    Utils.putInMap(mapEdges, hash, e);
+
+                }
+                
+                else if ( jsonObject.getJSONObject("data").has("y:ArcEdge") )  {
+
+                    String id    = jsonObject.getString("id")     ;
+
+                    String sujet = jsonObject.getString("source") ;
+
+                    String objet = jsonObject.getString("target") ;
+
+                    String predicat = jsonObject.getJSONObject("data")
+                                                .getJSONObject("y:ArcEdge")
+                                                .getJSONObject("y:EdgeLabel")
+                                                .getString("content")          ;
+
+                    Edge e = new Edge( hash , id, sujet, predicat, objet)      ;
+
+                    Utils.putInMap(mapEdges, hash, e); 
+                    
+                }
+                else {
+                    System.err.println(" ") ;
+                    System.err.println(" Oops something went wrong !! ")       ;
+                    System.err.println(" ") ;
+                }
+            }
+            
+            else
+            
+            if(obj.toString().startsWith("{\"data\":[")) {
+
+                String predicat  = "" ;
+
+                if(jsonObject.getJSONArray("data")
+                             .getJSONObject(1).has("y:PolyLineEdge"))
+                {
+                    predicat = jsonObject.getJSONArray("data")
+                                         .getJSONObject(1)
+                                         .getJSONObject("y:PolyLineEdge")
+                                         .getJSONObject("y:EdgeLabel")
+                                         .getString("content") ;
+                }
+                else if(jsonObject.getJSONArray("data")
+                                  .getJSONObject(1).has("y:QuadCurveEdge"))
+                {
+                    predicat = jsonObject.getJSONArray("data")
+                                         .getJSONObject(1)
+                                         .getJSONObject("y:QuadCurveEdge")
+                                         .getJSONObject("y:EdgeLabel")
+                                         .getString("content") ;
+                }
+
+                else if(jsonObject.getJSONArray("data")
+                                  .getJSONObject(1).has("y:ArcEdge"))
+                {
+                    if(jsonObject.getJSONArray("data")
+                                 .getJSONObject(1)
+                                 .getJSONObject("y:ArcEdge")
+                                 .has("y:EdgeLabel"))
+                    {
+                        predicat = jsonObject.getJSONArray("data")
+                                             .getJSONObject(1)
+                                             .getJSONObject("y:ArcEdge")
+                                             .getJSONObject("y:EdgeLabel")
+                                             .getString("content") ;
+                    }
+                }
+                else {
+                    System.out.println("Label not Found !!") ;
+                }
+
+                String id    = jsonObject.getString("id")      ;
+
+                String sujet = jsonObject.getString("source")  ;
+
+                String objet = jsonObject.getString("target")  ;
+
+                Edge   e     = new Edge(hash, id, sujet, predicat, objet) ;
+
+                Utils.putInMap(mapEdges, hash, e); 
+
+            }
+            else {
+                System.err.println(" ")          ;
+                System.err.println(" Oups !! " ) ;
+                System.err.println(" ")          ;
+            }
+        }
+    }
+
+    private void process( String pathFile ) throws IOException {
+
+        JSONObject jsonObject = loadJsonObject(pathFile) ;
+        int        hash       = Utils.getHash(pathFile)  ;
+        loadConcepts ( jsonObject, hash )                ;
+        loadEdges ( jsonObject, hash )                   ;
+    }   
+    
+    public void genGraphPopulatingManagers( String directory     ,
+                                            String extensionFile ) throws Exception {
+
+        boolean processed = false  ;
+
+        List<Path> files = Files.list(new File(directory).toPath()).collect(toList()) ;
+
+        for(Path path : files ) {
+            if(path.toString().endsWith(extensionFile )) {
+                process(path.toString() )           ;
+                if ( ! processed ) processed = true ;
+            }
+        }
+        
+//        if( processed ) {
+//            genNodes() ;
+//        }
+        if( ! processed ) {
+            System.out.println ( " No File with extension '" + extensionFile + "' found !! " ) ;
+            System.out.println ( "                                                        " )  ;
+        }
+    }
+
+    public Map<Integer, Map<Integer, String>> getMapUris() {
+        return mapUris;
+    }
+
+    public Map<Integer, Set<Edge>> getMapEdges() {
+        return mapEdges;
+    }
+
+    public Map<Integer, Map<String, Node>> getMapNodes() {
+        return mapNodes;
+    }
+
+    public Map<Integer, Map<Integer, String>> getMapQueries() {
+        return mapQueries;
+    }
+
+    public Map<Integer, Map<String, String>> getMapConcepts() {
+        return mapConcepts;
+    }
+
+    public Map<Integer, Map<String, String>> getMapPatternContexts() {
+        return mapPatternContexts;
+    }
+
+    public Map<Integer, Map<String, String>> getMapPatternParallels() {
+        return mapPatternParallels;
+    }
+
+    public Map<Integer, Map<String, String>> getMapVariables() {
+        return mapVariables;
+    }
+
+    public String getMetaPatternVariable() {
+        return metaPatternVariable;
+    }
+
+    public String getMetaPatternContext() {
+        return metaPatternContext;
+    }
+
+    public String getMetaPatternParallel() {
+        return metaPatternParallel;
+    }
+
+    public Map<String, String> getPrefixs() {
+        return prefixs;
+    }
+
+    public Map<String, String> getSourceDeclaration() {
+        return SourceDeclaration;
+    }
+
+    public Integer getMetaPatternHash() {
+        return metaPatternHash;
+    }
+    
+    /* Constructor */
+    
+    public GraphExtractor ()  {
+        
+       mapUris              = new HashMap<>()         ;
+       mapNodes             = new HashMap<>()         ;
+       mapEdges             = new HashMap<>()         ;
+       mapQueries           = new HashMap<>()         ;
+       mapConcepts          = new HashMap<>()         ;
+       mapVariables         = new HashMap<>()         ;
+       mapPatternContexts   = new HashMap<>()         ;
+       mapPatternParallels  = new HashMap<>()         ;
+    }
+
+}
