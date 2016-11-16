@@ -263,7 +263,7 @@ public class Processor {
             Writer.checkFile( outFile )           ;
             Writer.writeTextFile(outPut, outFile) ;
             
-            MessageErrors.printMessageInfoGeneratedVariable( "Unknown Variable"   ,
+            MessageErrors.printMessageInfoGeneratedVariable( "Undefined Variable" ,
                                                              outFile            ) ;
 
          } catch (IOException ex) {
