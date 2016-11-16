@@ -20,7 +20,7 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="1650.3919348615846" width="1342.2208129911205" x="-4533.280914105273" y="-3248.4127285804"/>
+              <y:Geometry height="1650.3919348615846" width="1342.2208129911205" x="-4581.229705832129" y="-3248.3472180463536"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1342.2208129911205" x="0.0" y="0.0"> Querie(s) </y:NodeLabel>
@@ -46,7 +46,7 @@
         <node id="n0::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="114.99392207009078" width="457.072340672785" x="-4478.74703282673" y="-2813.948208586724"/>
+              <y:Geometry height="114.99392207009078" width="457.072340672785" x="-4526.695824553586" y="-2813.8826980526774"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="75.84375" modelName="custom" textColor="#000000" visible="true" width="457.072340672785" x="0.0" y="19.575086035045388">Query_(5): SELECT dt.code AS dty_code , var.code AS var_code FROM datatype dt	INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
@@ -63,7 +63,7 @@
         <node id="n0::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="114.99392207009078" width="306.9863933397464" x="-3937.8947518190766" y="-2813.948208586724"/>
+              <y:Geometry height="114.99392207009078" width="306.9863933397464" x="-3985.843543545933" y="-2813.8826980526774"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="306.9863933397464" x="0.0" y="47.51258603504539">Query_(6): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -80,7 +80,7 @@
         <node id="n0::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="114.99392207009078" width="306.9863933397462" x="-3557.4909694857793" y="-2813.948208586724"/>
+              <y:Geometry height="114.99392207009078" width="306.9863933397462" x="-3605.4397612126354" y="-2813.8826980526774"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="306.9863933397462" x="0.0" y="47.51258603504539">Query_(7): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -97,7 +97,7 @@
         <node id="n0::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="137.87127546833744" width="588.6627901126906" x="-4478.74703282673" y="-3176.8968802773197"/>
+              <y:Geometry height="137.87127546833744" width="588.6627901126906" x="-4526.695824553586" y="-3176.831369743273"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="588.6627901126906" x="0.0" y="17.045012734168722">Query_(1): SELECT dt.code AS dty_code, var.code AS var_code , mc.mchimie_id AS mesure_id, vmc.vmchimie_id AS value_id  FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
@@ -114,7 +114,7 @@
         <node id="n0::n4">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="137.87127546833744" width="588.2297842473936" x="-3838.7343603934264" y="-3176.8968802773197"/>
+              <y:Geometry height="137.87127546833744" width="588.2297842473936" x="-3886.6831521202826" y="-3176.831369743273"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.2297842473936" x="0.0" y="24.029387734168722">Query_(2): SELECT dt.code AS dty_code, vmc.vmchimie_id AS value_id, vmc.valeur AS value FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var2 ON dtvu.var_id = var2.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var2.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var2.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
@@ -131,7 +131,7 @@
         <node id="n0::n5">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="166.24347782839914" width="574.9139271463678" x="-4471.220591916232" y="-2625.3916650092224"/>
+              <y:Geometry height="166.24347782839914" width="574.9139271463678" x="-4519.169383643088" y="-2625.326154475176"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="574.9139271463678" x="0.0" y="38.21548891419934">Query_(20): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
@@ -148,7 +148,7 @@
         <node id="n0::n6">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="167.7462095339838" width="589.3749352195109" x="-3839.879511365544" y="-2626.894396714807"/>
+              <y:Geometry height="167.7462095339838" width="589.3749352195109" x="-3887.8283030924003" y="-2626.8288861807605"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="589.3749352195109" x="0.0" y="38.96685476699167">Query_(21): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM public.datatype dt  INNER JOIN public.datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN public.variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN public.valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN public.mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
@@ -165,7 +165,7 @@
         <node id="n0::n7">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="167.74620953398426" width="628.087586428675" x="-4471.220591916232" y="-2407.4054562423225"/>
+              <y:Geometry height="167.74620953398426" width="628.087586428675" x="-4519.169383643088" y="-2407.339945708276"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="131.71875" modelName="custom" textColor="#000000" visible="true" width="628.087586428675" x="0.0" y="18.013729766992128">Query_(22): SELECT DISTINCT dt.code AS dty_code, vmc.mchimie_id AS mesure_id,  sc.schimie_id AS sequence_id, pla.code AS platform_code, site.code AS site_code FROM 	datatype dt INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id INNER JOIN sous_sequence_chimie_sschimie ssc	 ON mc.sschimie_id = ssc.sschimie_id INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id INNER JOIN plateforme_pla pla ON ssc.loc_id = pla.loc_id INNER JOIN public.site_glacpe_sit site ON pla.id = site.id WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
@@ -182,7 +182,7 @@
         <node id="n0::n8">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="151.3190236802784" width="490.05220758007135" x="-4478.747032826732" y="-2187.9165157698376"/>
+              <y:Geometry height="151.3190236802784" width="490.05220758007135" x="-4526.695824553588" y="-2187.851005235791"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="490.05220758007135" x="0.0" y="23.768886840139203">Query_(50): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE  LOWER(dt.name) = LOWER(?DATATYPE_SQL) and LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
@@ -199,7 +199,7 @@
         <node id="n0::n9">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="147.8378510090588" width="438.5266368633004" x="-3931.3860834896354" y="-2184.435343098618"/>
+              <y:Geometry height="147.8378510090588" width="438.5266368633004" x="-3979.3348752164916" y="-2184.3698325645714"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="117.75" modelName="custom" textColor="#000000" visible="true" width="438.5266368633004" x="0.0" y="15.043925504529398">Query_(51): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, mc.profondeurmin AS depth_min FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE  LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
@@ -216,7 +216,7 @@
         <node id="n0::n10">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="151.3190236802784" width="490.05220758007135" x="-4478.747032826732" y="-1989.4264309041669"/>
+              <y:Geometry height="151.3190236802784" width="490.05220758007135" x="-4526.695824553588" y="-1989.3609203701203"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="117.75" modelName="custom" textColor="#000000" visible="true" width="490.05220758007135" x="0.0" y="16.784511840139203">Query_(53): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, mc.profondeurmax AS depth_max FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id  WHERE  LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
@@ -233,7 +233,7 @@
         <node id="n0::n11">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="151.31902368027795" width="599.0587230151882" x="-4478.747032826732" y="-1789.6048775754603"/>
+              <y:Geometry height="151.31902368027795" width="599.0587230151882" x="-4526.695824553588" y="-1789.5393670414137"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="103.78125" modelName="custom" textColor="#000000" visible="true" width="599.0587230151882" x="0.0" y="23.768886840138975">Query_(55): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id FROM datatype dt 	 INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id 	 INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc	ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id 	 INNER JOIN sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id 	 INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
@@ -250,7 +250,7 @@
         <node id="n0::n12">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="151.31902368027818" width="588.218047070066" x="-3838.7226232160992" y="-1789.3178132491353"/>
+              <y:Geometry height="151.31902368027818" width="588.218047070066" x="-3886.6714149429554" y="-1789.2523027150887"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="117.75" modelName="custom" textColor="#000000" visible="true" width="588.218047070066" x="0.0" y="16.784511840139203">Query_(56): SELECT DISTINCT dt.code AS dty_code, sc.schimie_id AS sequence_id, date( sc.date_prelevement ) AS date FROM 	datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id 	 INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id 	 INNER JOIN valeur_mesure_chimie_vmchimie vmc	ON var.id = vmc.var_id 	 INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id 	 INNER JOIN sous_sequence_chimie_sschimie ssc ON mc.sschimie_id = ssc.sschimie_id 	 INNER JOIN sequence_chimie_schimie sc ON ssc.schimie_id = sc.schimie_id WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
@@ -267,7 +267,7 @@
         <node id="n0::n13">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="55.264150803061966" width="194.7497431495458" x="-3445.254319295579" y="-2184.435343098618"/>
+              <y:Geometry height="55.264150803061966" width="194.7497431495458" x="-3493.203111022435" y="-2184.3698325645714"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="194.7497431495458" x="0.0" y="10.663325401530983">Query_(52): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -284,7 +284,7 @@
         <node id="n0::n14">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="55.264150803061966" width="205.85231694157073" x="-3931.386083489636" y="-1989.4264309041669"/>
+              <y:Geometry height="55.264150803061966" width="205.85231694157073" x="-3979.334875216492" y="-1989.3609203701203"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="205.85231694157073" x="0.0" y="10.663325401530983">Query_(54): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -301,7 +301,7 @@
         <node id="n0::n15">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="55.264150803061966" width="205.85231694157073" x="-3931.3860834896354" y="-1893.3715580269504"/>
+              <y:Geometry height="55.264150803061966" width="205.85231694157073" x="-3979.3348752164916" y="-1893.3060474929039"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="205.85231694157073" x="-4.547473508864641E-13" y="10.663325401530983">Query_(9999): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -318,7 +318,7 @@
         <node id="n0::n16">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="130.39175713848272" width="588.662790112694" x="-4478.747032826734" y="-2991.682785267094"/>
+              <y:Geometry height="130.39175713848272" width="588.662790112694" x="-4526.69582455359" y="-2991.6172747330475"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.662790112694" x="0.0" y="20.28962856924136">Query_(3):  SELECT dt.code AS dty_code, var.code AS var_code, mc.mchimie_id AS mesure_id FROM datatype dt  INNER JOIN datatypevariableuniteglacpe dtvu ON dt.id = dtvu.dty_id  INNER JOIN variable_glacpe_varg var ON dtvu.var_id = var.id  INNER JOIN valeur_mesure_chimie_vmchimie vmc ON var.id = vmc.var_id  INNER JOIN mesure_chimie_mchimie mc ON vmc.mchimie_id = mc.mchimie_id WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
@@ -335,7 +335,7 @@
         <node id="n0::n17">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="130.39175713848272" width="588.2297842473929" x="-3838.7343603934264" y="-2991.6827852670945"/>
+              <y:Geometry height="130.39175713848272" width="588.2297842473929" x="-3886.6831521202826" y="-2991.617274733048"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.8125" modelName="custom" textColor="#000000" visible="true" width="588.2297842473929" x="0.0" y="20.28962856924136">Query_(4):  SELECT     dt.code AS dty_code,     var.code AS var_code,     var.nom AS var_name,     CASE WHEN localestring IS NULL THEN var.nom else localestring END AS var_name_en FROM     datatype dt     INNER JOIN datatypevariableuniteglacpe dtvu      ON dt.id = dtvu.dty_id     INNER JOIN variable_glacpe_varg var      ON dtvu.var_id = var.id      LEFT JOIN localisation  on defaultString =var.nom and entite='variable' and colonne='nom' and localization='en' WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
@@ -357,10 +357,10 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="779.8183291323544" width="780.7717422984024" x="-3154.166563497822" y="-3243.6006929007135"/>
+              <y:Geometry height="779.8183291323544" width="780.7717422984019" x="-3179.125448710137" y="-3762.004887149534"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="780.7717422984024" x="0.0" y="0.0">URI(s) </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="780.7717422984019" x="0.0" y="0.0">URI(s) </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
@@ -383,7 +383,7 @@
         <node id="n1::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="688.4425874606251" x="-3107.90593761886" y="-2649.866824342339"/>
+              <y:Geometry height="30.0" width="688.4425874606251" x="-3132.864822831175" y="-3168.2710185911596"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="366.173828125" x="161.13437966781248" y="6.015625">(55) ola/observation/timeInstant/{dty_code}/{sequence_id}<y:LabelModel>
@@ -400,7 +400,7 @@
         <node id="n1::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="689.1727100022623" x="-3112.2054945016375" y="-3111.503571033573"/>
+              <y:Geometry height="30.0" width="689.1727100022623" x="-3137.1643797139523" y="-3629.9077652823935"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="317.623046875" x="185.77483156363132" y="6.015625">(3) ola/observation/variable/{dty_code}/{var_code}<y:LabelModel>
@@ -417,7 +417,7 @@
         <node id="n1::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="689.1727100022623" x="-3112.2054945016375" y="-3027.508990502543"/>
+              <y:Geometry height="30.0" width="689.1727100022623" x="-3137.1643797139523" y="-3545.9131847513636"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="423.51953125" x="132.82658937613132" y="6.015625">(5) ola/measurement/variable/standardName/{dty_code}/{var_code}<y:LabelModel>
@@ -434,7 +434,7 @@
         <node id="n1::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="689.1727100022624" x="-3112.2054945016375" y="-2985.153759503881"/>
+              <y:Geometry height="30.0" width="689.1727100022624" x="-3137.1643797139523" y="-3503.5579537527015"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="442.38671875" x="123.39299562613132" y="6.015625">(6) ola/observation/variableCategory/?CATEGORY_STANDARD_NAME_URI<y:LabelModel>
@@ -451,7 +451,7 @@
         <node id="n1::n4">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="692.7421443434025" x="-3112.2054945016375" y="-2941.486906697853"/>
+              <y:Geometry height="30.0" width="692.7421443434025" x="-3137.1643797139523" y="-3459.8911009466738"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="548.283203125" x="72.22947060920114" y="6.015625">(7) ola/measurement/variableCategory/standardName/?CATEGORY_STANDARD_NAME_URI<y:LabelModel>
@@ -468,7 +468,7 @@
         <node id="n1::n5">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="689.1727100022628" x="-3112.2054945016375" y="-3194.1145707685046"/>
+              <y:Geometry height="30.0" width="689.1727100022628" x="-3137.1643797139523" y="-3712.518765017325"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="382.955078125" x="153.10881593863132" y="6.015625">(1) ola/observation/?VAR_ENTITY_URI/{dty_code}/{mesure_id}<y:LabelModel>
@@ -485,7 +485,7 @@
         <node id="n1::n6">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="689.1727100022625" x="-3112.2054945016375" y="-3154.442903028914"/>
+              <y:Geometry height="30.0" width="689.1727100022625" x="-3137.1643797139523" y="-3672.8470972777345"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="596.640625" x="46.266042501131324" y="6.015625">(2) ola/measurement/?VAR_ENTITY_URI/?VAR_CHARACTERISTIC_NAME_URI/{dty_code}/{value_id}<y:LabelModel>
@@ -502,7 +502,7 @@
         <node id="n1::n7">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="689.1727100022623" x="-3108.636060160498" y="-2869.4243770350263"/>
+              <y:Geometry height="30.0" width="689.1727100022623" x="-3133.5949453728126" y="-3387.828571283847"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="359.69921875" x="164.73674562613132" y="6.015625">(50) ola/observation/spatialEntity/{dty_code}/{mesure_id}<y:LabelModel>
@@ -519,7 +519,7 @@
         <node id="n1::n8">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="688.4425874606245" x="-3107.90593761886" y="-2824.9921476478994"/>
+              <y:Geometry height="30.0" width="688.4425874606245" x="-3132.864822831175" y="-3343.39634189672"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="432.9765625" x="127.73301248031203" y="6.015625">(51) ola/measurement/spatialEntity/depthMin/{dty_code}/{mesure_id}<y:LabelModel>
@@ -536,7 +536,7 @@
         <node id="n1::n9">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="689.1727100022623" x="-3108.636060160498" y="-2739.0234417507845"/>
+              <y:Geometry height="30.0" width="689.1727100022623" x="-3133.5949453728126" y="-3257.427635999605"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="436.4921875" x="126.34026125113132" y="6.015625">(53) ola/measurement/spatialEntity/depthMax/{dty_code}/{mesure_id}<y:LabelModel>
@@ -553,7 +553,7 @@
         <node id="n1::n10">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="688.4425874606245" x="-3107.90593761886" y="-2604.491537760284"/>
+              <y:Geometry height="30.0" width="688.4425874606245" x="-3132.864822831175" y="-3122.8957320091044"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="410.2890625" x="139.07676248031203" y="6.015625">(56) ola/measurement/timeInstant/date/{dty_code}/{sequence_id}<y:LabelModel>
@@ -570,7 +570,7 @@
         <node id="n1::n11">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="688.442587460625" x="-3107.90593761886" y="-2782.8047725771744"/>
+              <y:Geometry height="30.0" width="688.442587460625" x="-3132.864822831175" y="-3301.208966825995"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="311.166015625" x="188.63828591781248" y="6.015625">(52) ola/characteristic/depthRelativeToSurface/min<y:LabelModel>
@@ -587,7 +587,7 @@
         <node id="n1::n12">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="688.442587460625" x="-3107.90593761886" y="-2695.242110924394"/>
+              <y:Geometry height="30.0" width="688.442587460625" x="-3132.864822831175" y="-3213.646305173215"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="314.681640625" x="186.88047341781248" y="6.015625">(54) ola/characteristic/depthRelativeToSurface/max<y:LabelModel>
@@ -604,7 +604,7 @@
         <node id="n1::n13">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="689.1727100022624" x="-3112.2054945016375" y="-3066.874855910807"/>
+              <y:Geometry height="30.0" width="689.1727100022624" x="-3137.1643797139523" y="-3585.279050159628"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="398.04296875" x="145.56487062613132" y="6.015625">(4) ola/measurement/variable/localName/{dty_code}/{var_code}<y:LabelModel>
@@ -621,7 +621,7 @@
         <node id="n1::n14">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="688.4425874606245" x="-3107.90593761886" y="-2524.257309039964"/>
+              <y:Geometry height="30.0" width="688.4425874606245" x="-3132.864822831175" y="-3042.661503288785"/>
               <y:Fill color="#FF99CC" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#FFFFFF" visible="true" width="464.98046875" x="111.73105935531203" y="6.015625">(57) ola/observation/experimentalPlot/{site_code}/{platform_code}<y:LabelModel>
@@ -643,14 +643,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="801.560738884704" width="1824.7570928927466" x="-3154.166563497822" y="-2401.012393246377"/>
+              <y:Geometry height="1335.7632203400476" width="1809.6344248415774" x="-3179.125448710137" y="-2937.7222397937835"/>
               <y:Fill color="#E2DFDF" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1824.7570928927466" x="0.0" y="0.0">Variable(s)    </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1809.6344248415774" x="0.0" y="0.0">Variable(s)    </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="44" bottomF="44.46451401678269" left="54" leftF="53.53495788156761" right="44" rightF="44.14632367667059" top="21" topF="21.304252250708032"/>
+              <y:BorderInsets bottom="29" bottomF="29.30013469290725" left="34" leftF="33.50309857940283" right="35" rightF="35.25716361955983" top="21" topF="21.304252250708032"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -669,41 +669,7 @@
         <node id="n2::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1697.0758113345084" x="-3085.6316056162545" y="-2283.247203495669"/>
-              <y:Fill color="#FFFF99" transparent="false"/>
-              <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1382.751953125" x="157.1619291047541" y="6.015625">!##PATTERN_CONTEXT_1 20 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_:Ammonium Q_20 ] [ oboe-core:Observation_:Solutes Q_21 ] [ oboe-core:Observation_:Water Q_22 ] <y:LabelModel>
-                  <y:SmartNodeLabelModel distance="4.0"/>
-                </y:LabelModel>
-                <y:ModelParameter>
-                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-                </y:ModelParameter>
-              </y:NodeLabel>
-              <y:Shape type="rectangle"/>
-            </y:ShapeNode>
-          </data>
-        </node>
-        <node id="n2::n1">
-          <data key="d6">
-            <y:ShapeNode>
-              <y:Geometry height="30.0" width="1697.0758113345084" x="-3085.6316056162545" y="-2241.745965517992"/>
-              <y:Fill color="#FFFF99" transparent="false"/>
-              <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1098.923828125" x="299.0759916047541" y="6.015625">!##PATTERN_CONTEXT_2 20 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Solutes Q_21 ] [ oboe-core:Observation_Water Q_22] <y:LabelModel>
-                  <y:SmartNodeLabelModel distance="4.0"/>
-                </y:LabelModel>
-                <y:ModelParameter>
-                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-                </y:ModelParameter>
-              </y:NodeLabel>
-              <y:Shape type="rectangle"/>
-            </y:ShapeNode>
-          </data>
-        </node>
-        <node id="n2::n2">
-          <data key="d6">
-            <y:ShapeNode>
-              <y:Geometry height="30.0" width="367.25456157671124" x="-3085.631605616253" y="-2343.247203495669"/>
+              <y:Geometry height="30.0" width="367.25456157671124" x="-3130.622350130734" y="-2879.9570500430755"/>
               <y:Fill color="#00FFFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="287.822265625" x="39.71614797585562" y="6.015625">Note : Do not touch ?ENTITY &amp; ?VARIABLE<y:LabelModel>
@@ -717,44 +683,10 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n2::n3">
+        <node id="n2::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1697.0758113345084" x="-3085.6316056162545" y="-2200.2447275403147"/>
-              <y:Fill color="#FFFF99" transparent="false"/>
-              <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="855.96484375" x="420.5554837922541" y="6.015625">!##PATTERN_CONTEXT_3 20 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Water Q_22] <y:LabelModel>
-                  <y:SmartNodeLabelModel distance="4.0"/>
-                </y:LabelModel>
-                <y:ModelParameter>
-                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-                </y:ModelParameter>
-              </y:NodeLabel>
-              <y:Shape type="rectangle"/>
-            </y:ShapeNode>
-          </data>
-        </node>
-        <node id="n2::n4">
-          <data key="d6">
-            <y:ShapeNode>
-              <y:Geometry height="78.50603675422985" width="1697.075811334507" x="-3085.631605616253" y="-2102.5822183788314"/>
-              <y:Fill color="#9985E3" transparent="false"/>
-              <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="61.875" modelName="custom" textColor="#000000" visible="true" width="1697.075811334507" x="0.0" y="8.31551837711504">!!!?VARIABLE  ##PATTERN_CONTEXT_1 :Nitrogen { ?TOTO=oboe_core:TotoEntity } { ?VAR_ENTITY_URI=nitrogen } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='azote ammoniacal'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedAmmoniumNitrogenMassConcentration&gt; } { ?VAR_CHARACTERISTIC_GRAPH=:MassConcentration } { ?VAR_CHARACTERISTIC_NAME_URI=massConcentration } { ?CATEGORY_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; } &amp;&amp; ##PATTERN_PARALLEL { ?CATEGORY_STANDARD_NAME_URI=PhysicalChemistry} { ?CATEGORY_STANDARD_NAME_PATTERN=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; }! <y:LabelModel>
-                  <y:SmartNodeLabelModel distance="4.0"/>
-                </y:LabelModel>
-                <y:ModelParameter>
-                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-                </y:ModelParameter>
-              </y:NodeLabel>
-              <y:Shape type="rectangle"/>
-            </y:ShapeNode>
-          </data>
-        </node>
-        <node id="n2::n5">
-          <data key="d6">
-            <y:ShapeNode>
-              <y:Geometry height="30.0" width="1697.075811334507" x="-3085.631605616253" y="-1845.076809804823"/>
+              <y:Geometry height="30.0" width="1697.075811334507" x="-3116.8239988226264" y="-1828.3097470434307"/>
               <y:Fill color="#FFFF99" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="953.365234375" x="371.85528847975365" y="6.015625">##META_PATTERN_CONTEXT 20 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_COLUMN_2 Q_20_21_22 ] <y:LabelModel>
@@ -768,10 +700,10 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n2::n6">
+        <node id="n2::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1697.075811334507" x="-3085.631605616253" y="-1791.2495074687542"/>
+              <y:Geometry height="30.0" width="1697.075811334507" x="-3116.8239988226264" y="-1776.5374689721518"/>
               <y:Fill color="#00FF00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1686.830078125" x="5.1228666047536535" y="6.015625">##META_PATTERN_PARALLEL Observation(6) ofEntity :VariableCategory ; hasMeasurement  Measurement(7) . Measurement(7)  usesStandard :Anaee-franceVariableCategoryNamingStandard ; ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:LabelModel>
@@ -785,13 +717,13 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n2::n7">
+        <node id="n2::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="78.50603675422985" width="1697.075811334507" x="-3085.631605616253" y="-1737.4222051326856"/>
+              <y:Geometry height="78.50603675422985" width="1697.075811334507" x="-3116.8239988226264" y="-1724.765190900873"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="1697.075811334507" x="0.0" y="15.29989337711504">?META_VARIABLE  ##META_PATTERN_CONTEXT :COLUMN_3 { ?TOTO=oboe_core:TotoEntity } { ?VAR_ENTITY_URI=COLUMN_3 } { ?UNIT_STANDARD_NAME_GRAPH = COLUMN_8_9 } {  ?DATATYPE_SQL='COLUMN_11' } { ?VARIABLE_SQL='COLUMN_10'  } { ?VARIABLE_STANDARD_NAME_GRAPH=:COLUMN_0 } { ?VAR_CHARACTERISTIC_GRAPH=:COLUMN_5 } { ?VAR_CHARACTERISTIC_NAME_URI=COLUMN_5 } { ?CATEGORY_STANDARD_NAME_GRAPH=:COLUMN_1 } &amp;&amp; ##META_PATTERN_PARALLEL { ?CATEGORY_STANDARD_NAME_URI=COLUMN_1} { ?CATEGORY_STANDARD_NAME_PATTERN=:COLUMN_1 } <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="1697.075811334507" x="0.0" y="15.299893377114813">?META_VARIABLE  ##META_PATTERN_CONTEXT :COLUMN_3 { ?TOTO=oboe_core:TotoEntity } { ?VAR_ENTITY_URI=COLUMN_3 } { ?UNIT_STANDARD_NAME_GRAPH = COLUMN_8_9 } {  ?DATATYPE_SQL='COLUMN_11' } { ?VARIABLE_SQL='COLUMN_10'  } { ?VARIABLE_STANDARD_NAME_GRAPH=:COLUMN_0 } { ?VAR_CHARACTERISTIC_GRAPH=:COLUMN_5 } { ?VAR_CHARACTERISTIC_NAME_URI=COLUMN_5 } { ?CATEGORY_STANDARD_NAME_GRAPH=:COLUMN_1 } &amp;&amp; ##META_PATTERN_PARALLEL { ?CATEGORY_STANDARD_NAME_URI=COLUMN_1} { ?CATEGORY_STANDARD_NAME_PATTERN=:COLUMN_1 } <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -802,13 +734,81 @@
             </y:ShapeNode>
           </data>
         </node>
+        <node id="n2::n4">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="30.0" width="863.400984225113" x="-3116.8239988226264" y="-1888.3097470434307"/>
+              <y:Fill color="#00FFFF" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="857.388671875" x="3.006156175056276" y="6.015625">Meta Pattern ( used by CSV files ) : Do not touch ##META_PATTERN_CONTEXT ##META_PATTERN_PARALLEL ?META_VARIABLE<y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n2::n5">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="30.0" width="1710.8741626426147" x="-3130.622350130734" y="-2823.143982122442"/>
+              <y:Fill color="#FFFF99" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1365.8125" x="172.53083132130723" y="6.015625">##PATTERN_CONTEXT_1 20 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Ammonium Q_20 ] [ oboe-core:Observation_Solutes Q_21 ] [ oboe-core:Observation_Water Q_22 ] <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n2::n6">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="30.0" width="1710.8741626426147" x="-3130.622350130734" y="-2772.393363133604"/>
+              <y:Fill color="#FFFF99" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1094.11328125" x="308.38044069630723" y="6.015625">##PATTERN_CONTEXT_2 20 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Solutes Q_21 ] [ oboe-core:Observation_Water Q_22] <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n2::n7">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="70.99424673904514" width="1710.8741626426138" x="-3130.622350130733" y="-2253.3346405982156"/>
+              <y:Fill color="#9985E3" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="1710.8741626426138" x="0.0" y="11.543998369522342">?VARIABLE :Water { ?VAR_ENTITY_URI=ph } { ?UNIT_STANDARD_NAME_GRAPH=:pHUnit} {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='ph'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#WaterPH&gt;} { ?VAR_CHARACTERISTIC_GRAPH=:pH }  { ?VAR_CHARACTERISTIC_NAME_URI=pH } { ?CATEGORY_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; }  &amp;&amp; ##PATTERN_PARALLEL { ?CATEGORY_STANDARD_NAME_URI=PhysicalChemistry} { ?CATEGORY_STANDARD_NAME_PATTERN=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; } <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
         <node id="n2::n8">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1697.0758113345084" x="-3085.6316056162545" y="-2151.413472959573"/>
-              <y:Fill color="#00FF00" transparent="false"/>
+              <y:Geometry height="30.0" width="1710.8741626426147" x="-3130.622350130734" y="-2721.642744144765"/>
+              <y:Fill color="#FFFF99" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1652.166015625" x="22.45489785475411" y="6.015625">!##PATTERN_PARALLEL Observation(6) ofEntity :VariableCategory ; hasMeasurement  Measurement(7) . Measurement(7)  usesStandard :Anaee-franceVariableCategoryNamingStandard ; ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="851.154296875" x="429.85993288380723" y="6.015625">##PATTERN_CONTEXT_3 20 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Water Q_22] <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -822,10 +822,95 @@
         <node id="n2::n9">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="863.400984225113" x="-3085.631605616253" y="-1905.076809804823"/>
-              <y:Fill color="#00FFFF" transparent="false"/>
+              <y:Geometry height="30.0" width="1710.8741626426147" x="-3130.622350130734" y="-2645.3787923717346"/>
+              <y:Fill color="#00FF00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="857.388671875" x="3.006156175056276" y="6.015625">Meta Pattern ( used by CSV files ) : Do not touch ##META_PATTERN_CONTEXT ##META_PATTERN_PARALLEL ?META_VARIABLE<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1647.35546875" x="31.759346946307232" y="6.015625">##PATTERN_PARALLEL Observation(6) ofEntity :VariableCategory ; hasMeasurement  Measurement(7) . Measurement(7)  usesStandard :Anaee-franceVariableCategoryNamingStandard ; ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n2::n10">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="89.53926312099429" width="1710.8741626426138" x="-3130.6223501307336" y="-2073.7251016256682"/>
+              <y:Fill color="#9985E3" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="1710.8741626426138" x="0.0" y="20.816506560497146">?VARIABLE  ##PATTERN_CONTEXT_2 :Sulphates { ?VAR_ENTITY_URI=sulfates } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='sulfates'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedSulphatesMassConcentration&gt;} { ?VAR_CHARACTERISTIC_GRAPH=:MassConcentration } { ?VAR_CHARACTERISTIC_NAME_URI=massConcentration } { ?CATEGORY_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; }  &amp;&amp; ##PATTERN_PARALLEL { ?CATEGORY_STANDARD_NAME_URI=PhysicalChemistry} { ?CATEGORY_STANDARD_NAME_PATTERN=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; } <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n2::n11">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="76.85056770176607" width="1710.8741626426138" x="-3130.6223501307336" y="-2166.4580315933026"/>
+              <y:Fill color="#9985E3" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="1710.8741626426138" x="0.0" y="14.472158850882806">?VARIABLE  ##PATTERN_CONTEXT_2 :Potassium { ?VAR_ENTITY_URI=potassium } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='potassium'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedPotassiumMassConcentration&gt;} { ?VAR_CHARACTERISTIC_GRAPH=:MassConcentration }  { ?VAR_CHARACTERISTIC_NAME_URI=massConcentration } { ?CATEGORY_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; }  &amp;&amp; ##PATTERN_PARALLEL { ?CATEGORY_STANDARD_NAME_URI=PhysicalChemistry} { ?CATEGORY_STANDARD_NAME_PATTERN=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; } <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n2::n12">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="69.59739352809402" width="1710.8741626426138" x="-3130.6223501307336" y="-2344.5910851160634"/>
+              <y:Fill color="#9985E3" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="1710.8741626426138" x="0.0" y="10.845571764046781">?VARIABLE  ##PATTERN_CONTEXT_2 :Chloride { ?VAR_ENTITY_URI=chloride } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='chlorures'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedChlorideMassConcentration&gt;} { ?VAR_CHARACTERISTIC_GRAPH=:MassConcentration } { ?VAR_CHARACTERISTIC_NAME_URI=massConcentration } { ?CATEGORY_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; }  &amp;&amp; ##PATTERN_PARALLEL { ?CATEGORY_STANDARD_NAME_URI=PhysicalChemistry} { ?CATEGORY_STANDARD_NAME_PATTERN=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; } <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n2::n13">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="78.50603675422985" width="1710.8741626426138" x="-3130.622350130733" y="-2444.756172860046"/>
+              <y:Fill color="#9985E3" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="1710.8741626426138" x="0.0" y="15.29989337711504">?VARIABLE ##PATTERN_CONTEXT_3 :Calcium { ?VAR_ENTITY_URI=calcium } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='calcium'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#CalciumMassConcentration&gt;} { ?VAR_CHARACTERISTIC_GRAPH=:MassConcentration }  { ?VAR_CHARACTERISTIC_NAME_URI=massConcentration } { ?CATEGORY_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; }  &amp;&amp; ##PATTERN_PARALLEL { ?CATEGORY_STANDARD_NAME_URI=PhysicalChemistry} { ?CATEGORY_STANDARD_NAME_PATTERN=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; } <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n2::n14">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="78.50603675422985" width="1710.8741626426133" x="-3130.6223501307327" y="-2538.457308263578"/>
+              <y:Fill color="#9985E3" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="61.875" modelName="custom" textColor="#000000" visible="true" width="1710.8741626426133" x="0.0" y="8.31551837711504">?VARIABLE  ##PATTERN_CONTEXT_1 :Nitrogen { ?VAR_ENTITY_URI=nitrogen } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='azote ammoniacal'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedAmmoniumNitrogenMassConcentration&gt; } { ?VAR_CHARACTERISTIC_GRAPH=:MassConcentration } { ?VAR_CHARACTERISTIC_NAME_URI=massConcentration } { ?CATEGORY_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; } &amp;&amp; ##PATTERN_PARALLEL { ?CATEGORY_STANDARD_NAME_URI=PhysicalChemistry} { ?CATEGORY_STANDARD_NAME_PATTERN=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; } <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
