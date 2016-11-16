@@ -299,6 +299,7 @@ public final class Node implements Serializable  {
         if ( entity == null                 || 
              entity.startsWith("?")         ||
              entity.startsWith("##PATTERN") ||
+             entity.startsWith("<")         ||
              entity.trim().equals ("a") 
            )  
            
