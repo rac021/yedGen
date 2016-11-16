@@ -740,7 +740,7 @@
               <y:Geometry height="30.0" width="863.400984225113" x="-3116.8239988226264" y="-1888.3097470434307"/>
               <y:Fill color="#00FFFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="857.388671875" x="3.006156175056276" y="6.015625">Meta Pattern ( used by CSV files ) : Do not touch ##META_PATTERN_CONTEXT ##META_PATTERN_PARALLEL ?META_VARIABLE<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="857.388671875" x="3.0061561750567307" y="6.015625">Meta Pattern ( used by CSV files ) : Do not touch ##META_PATTERN_CONTEXT ##META_PATTERN_PARALLEL ?META_VARIABLE<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -876,7 +876,7 @@
               <y:Geometry height="69.59739352809402" width="1710.8741626426138" x="-3130.6223501307336" y="-2344.5910851160634"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="1710.8741626426138" x="0.0" y="10.845571764046781">?VARIABLE  ##PATTERN_CONTEXT_2 :Chloride { ?VAR_ENTITY_URI=chloride } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='chlorures'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedChlorideMassConcentration&gt;} { ?VAR_CHARACTERISTIC_GRAPH=:MassConcentration } { ?VAR_CHARACTERISTIC_NAME_URI=massConcentration } { ?CATEGORY_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; }  &amp;&amp; ##PATTERN_PARALLEL { ?CATEGORY_STANDARD_NAME_URI=PhysicalChemistry} { ?CATEGORY_STANDARD_NAME_PATTERN=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; } <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="1710.8741626426138" x="0.0" y="10.845571764047236">?VARIABLE  ##PATTERN_CONTEXT_2 :Chloride { ?VAR_ENTITY_URI=chloride } { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } {  ?DATATYPE_SQL='physico chimie' } { ?VARIABLE_SQL='chlorures'  } { ?VARIABLE_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#DissolvedChlorideMassConcentration&gt;} { ?VAR_CHARACTERISTIC_GRAPH=:MassConcentration } { ?VAR_CHARACTERISTIC_NAME_URI=massConcentration } { ?CATEGORY_STANDARD_NAME_GRAPH=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; }  &amp;&amp; ##PATTERN_PARALLEL { ?CATEGORY_STANDARD_NAME_URI=PhysicalChemistry} { ?CATEGORY_STANDARD_NAME_PATTERN=&lt;http://www.anaee-france.fr/ontology/anaee-france_ontology#PhysicalChemistry&gt; } <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1337,7 +1337,7 @@
           <y:Geometry height="36.0" width="167.49816513761527" x="-2874.8082791919683" y="-1039.0270108879674"/>
           <y:Fill color="#F6FF00CC" transparent="false"/>
           <y:BorderStyle color="#CC9900" type="line" width="2.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="63.501953125" x="51.99810600630781" y="10.1796875">?TOTO(52)<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#000000" visible="true" width="168.1162109375" x="-0.30902289994219245" y="10.1796875">:DepthRelativeToSurface(52)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
