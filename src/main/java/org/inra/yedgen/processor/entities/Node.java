@@ -355,10 +355,10 @@ public final class Node implements Serializable  {
       return ObdaProperties.MAPPING_COLLECTION_PATTERN
                            .replace("?id", getKeyByURI( "(" + String.valueOf(code) + ")_" + uri ))
                            .replace("?target", target )
-                           .replace("?source", query )  + "\n"   ;
+                           .replace( "?source", query == null ? "null" : query  )   +  "\n"      ;
     }
     
-    private String getKeyByURI(String target )          {
+    private String getKeyByURI(String target )            {
 
         return StringUtils.removeEnd (
                 target.replaceAll(Pattern.quote("/{"), "_")
