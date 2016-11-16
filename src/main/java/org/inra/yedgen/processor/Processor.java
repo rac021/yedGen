@@ -286,15 +286,16 @@ public class Processor {
         if( includingGraphVariables && csvFile != null ) {
             process = processFull( outputFile, csvFile )  ;
         }
-        else if( !includingGraphVariables && csvFile != null ) {
+        else if ( ! includingGraphVariables && 
+                    csvFile != null )                      {
             process = processOnlyCSV( outputFile, csvFile) ;
         }
         else  {
-            process = processOnlyGraphVariables( csvFile ) ;
+            process = processOnlyGraphVariables( outputFile ) ;
         }
         
         if( ! process ) {
-            processOnlyGraphWithoutVariables( outputFile ) ;
+            processOnlyGraphWithoutVariables( outputFile )    ;
         }
     }
 
