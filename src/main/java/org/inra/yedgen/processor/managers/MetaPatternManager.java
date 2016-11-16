@@ -35,27 +35,6 @@ public class MetaPatternManager {
                                String metaPatternContext  , 
                                String metaPatternParallel ) {
         
-        if( metaPatternVariable == null || metaPatternVariable.isEmpty()) {
-           printMessageMetaPatternError("metaPatternVariable") ;
-        }        
-        if( metaPatternContext == null || metaPatternContext.isEmpty()) {
-           printMessageMetaPatternError("metaPatternContext") ;
-        }        
-        if( metaPatternParallel == null || metaPatternParallel.isEmpty()) {
-           printMessageMetaPatternError("metaPatternParallel") ;
-        }
-                 
-        if( metaPatternVariable != null && 
-            !metaPatternVariable.contains( META_PATTERN_CONTEXT ) ) {
-           printMessageMetaPatternErrorMustContains( META_VERIABLE, META_PATTERN_CONTEXT ) ;
-        }
-        
-        if(  metaPatternVariable != null && 
-             metaPatternParallel != null && 
-            !metaPatternVariable.contains( META_PATTERN_CONTEXT )) {
-           printMessageMetaPatternErrorMustContains( META_VERIABLE, META_PATTERN_PARALLEL) ;
-        }
-        
         this.metaPatternHash     = metaPatternHash     ;
         this.metaPatternVariable = metaPatternVariable ;
         this.metaPatternContext  = metaPatternContext  ;
@@ -80,6 +59,8 @@ public class MetaPatternManager {
     
     public String generatePatternVariable ( String csvLine ) {
      
+        checkMetaPatternVariable()                    ; 
+        
         if( metaPatternVariable == null ) return null ;
         
         String variable = metaPatternVariable ;
@@ -89,15 +70,17 @@ public class MetaPatternManager {
 
         while (m.find()) {
                    
-          String params = m.group().replace(" + ", "").trim() ;
-          String[] nums  = params.split("_");
+          String params    = m.group()
+                              .replace(" + ", "")
+                              .trim()           ;
+          String[] nums    = params.split("_")  ;
             
           List<String> tmp = new ArrayList<>();
             
           for( int i = 1 ; i < nums.length ; i ++ ) {
               
-             int num = Integer.parseInt(nums[i])       ;
-             tmp.add(csvLine.split(SEPARATOR)[num])       ;
+             int num = Integer.parseInt(nums[i])    ;
+             tmp.add(csvLine.split(SEPARATOR)[num]) ;
           }
 
             variable = variable.replaceAll(params, String.join(":",tmp)) ;
@@ -109,6 +92,8 @@ public class MetaPatternManager {
 
         
     public String generatePatternContext ( String csvLine ) {
+        
+        checkMetaPatternContext()                    ;
         
         if( metaPatternContext == null ) return null ;
         
@@ -157,7 +142,7 @@ public class MetaPatternManager {
 
     
     public String generatePatternParallel ( String csvLine ) {
-    
+        checkMetaPatternParallel() ;
         return metaPatternParallel ;
     }
 
@@ -179,4 +164,37 @@ public class MetaPatternManager {
     }
 
 
+    private void checkMetaPatternVariable() {
+        
+      if( metaPatternVariable == null || metaPatternVariable.isEmpty()) {
+         printMessageMetaPatternError("metaPatternVariable") ;
+      }       
+      if( metaPatternVariable != null && 
+          !metaPatternVariable.contains( META_PATTERN_CONTEXT ) ) {
+         printMessageMetaPatternErrorMustContains( META_VERIABLE, META_PATTERN_CONTEXT ) ;
+      }
+        
+      if(  metaPatternVariable != null && 
+           metaPatternParallel != null && 
+          !metaPatternVariable.contains( META_PATTERN_CONTEXT )) {
+         printMessageMetaPatternErrorMustContains( META_VERIABLE, META_PATTERN_PARALLEL) ;
+      }
+    
+    }
+    
+    private void checkMetaPatternContext() {
+
+      if( metaPatternContext == null || metaPatternContext.isEmpty()) {
+         printMessageMetaPatternError("metaPatternContext") ;
+      }        
+         
+    }
+    
+    private void checkMetaPatternParallel() {
+               
+      if( metaPatternParallel == null || metaPatternParallel.isEmpty()) {
+         printMessageMetaPatternError("metaPatternParallel") ;
+      }
+    }
+        
 }
