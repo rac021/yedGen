@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.inra.yedgen.graph.utils.Utils;
-import org.inra.yedgen.graph.entities.Edge;
 import org.inra.yedgen.processor.io.Writer;
+import org.inra.yedgen.graph.entities.Edge;
 import org.inra.yedgen.processor.io.ObdaHeader;
 import org.inra.yedgen.processor.entities.Node;
 import org.inra.yedgen.properties.ObdaProperties;
@@ -21,6 +21,7 @@ import org.inra.yedgen.processor.managers.ManagerUri;
 import org.inra.yedgen.graph.managers.ManagerConcept;
 import org.inra.yedgen.graph.managers.GraphExtractor;
 import org.inra.yedgen.processor.managers.ManagerNode;
+import org.inra.yedgen.processor.errors.MessageErrors;
 import org.inra.yedgen.processor.factories.FactoryNode;
 import org.inra.yedgen.processor.managers.ManagerQuery;
 import org.inra.yedgen.processor.managers.ManagerVariable;
@@ -28,7 +29,6 @@ import org.inra.yedgen.processor.managers.MetaPatternManager;
 import org.inra.yedgen.processor.managers.ManagerPatternContext;
 import org.inra.yedgen.processor.managers.ManagerPatternParallel;
 import static org.inra.yedgen.graph.managers.GraphExtractor.PREFIX_PREDICAT;
-import org.inra.yedgen.processor.errors.MessageErrors;
 
 /**
  *
@@ -112,16 +112,19 @@ public class Processor {
     
     }
         
-    public void processFull ( String outputFile, String csvFile )  {
+    public boolean processFull ( String outputFile, String csvFile )  {
         
-      processOnlyCSV(outputFile, csvFile)     ;
+        boolean processCSV       = processOnlyCSV(outputFile, csvFile)     ;
         
-      processOnlyGraphVariables( outputFile ) ;
+        boolean processVariables = processOnlyGraphVariables( outputFile ) ;
+        
+        return processVariables && processCSV ;
+      
     }
 
-    public void processOnlyGraphVariables ( String outputFile )  {
+    public boolean processOnlyGraphVariables ( String outputFile )        {
       
-      MessageErrors.printMessageStartProcessVariableGraphGeneration() ;
+      MessageErrors.printMessageStartProcessVariableGraphGeneration()     ;
       
       for( Variable variable : managerVariable.getVariables()) {
      
@@ -152,13 +155,16 @@ public class Processor {
                                                              outFile                  ) ;
 
          } catch (IOException ex) {
-                Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex) ;
           }
       }
+      
+      return managerVariable.getVariables().size() > 0  ;
+      
    }
     
-    public void processOnlyCSV ( String outputFile , String csvFile ) {
-        
+    public boolean processOnlyCSV ( String outputFile , String csvFile ) {
+         
          MessageErrors.printMessageStartProcessCsvVariableGeneration();
          
          String pattContext  = metaPatternManager.getMetaPatternContext()  ;
@@ -167,15 +173,15 @@ public class Processor {
          
          if( pattContext  == null   ||
              pattVariable == null   ||
-             pattParallel == null    )     {
+             pattParallel == null    )                    {
                      
              MessageErrors.printMessageMetaPatternsNull() ;
-            return ;
+             return false                                 ;
          }
   
         try {
             
-            Files.lines ( Paths.get(csvFile)).skip(1).forEach (
+            Files.lines ( Paths.get(csvFile) ).skip(1).forEach (
                     
                   (String line) -> {
                      
@@ -211,19 +217,63 @@ public class Processor {
                        
                        MessageErrors.printMessageInfoGeneratedVariable( variable.getVariableName() ,
                                                                         outFile                  ) ;
- 
+                       
                      } catch (IOException ex) {
-                          Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex);
+                          Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex)  ;
                      }
                   }
             ) ;
             
         } catch (IOException ex) {
-            Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex)  ;
         }
-          
+        
+        try {
+            return Files.lines( Paths.get(csvFile) ).skip(1).count() > 0 ;
+        } catch ( IOException ex ) {
+            Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex)  ;
+        }
+         
+        return false ;
     }
 
+    
+    public boolean processOnlyGraphWithoutVariables ( String outputFile ) {
+      
+         Set<Node> all = managerNode.getAll()                             ;
+      
+         List<String> outPut    = new ArrayList<>()                       ;
+                      
+         // Prepare Output Header 
+         outPut.addAll(obdaHeader.getHeaderOut())                         ; 
+                      
+         all.stream().forEach( node -> outPut.add( node.outputObda()) )   ;
+         
+         outPut.add( ObdaProperties.MAPPING_COLLECTION_END )              ;
+                
+         try {
+              
+            String _fileName = outputFile.substring(0, outputFile.lastIndexOf('.')) ;
+            String extension = outputFile.substring(outputFile.lastIndexOf('.'))    ;
+             
+            String outFile   = _fileName + "_Graph_"                             + 
+                               System.currentTimeMillis()                        +
+                               extension                                         ;
+              
+            Writer.checkFile( outFile )           ;
+            Writer.writeTextFile(outPut, outFile) ;
+            
+            MessageErrors.printMessageInfoGeneratedVariable( "Unknown Variable"   ,
+                                                             outFile            ) ;
+
+         } catch (IOException ex) {
+                Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex) ;
+          }
+     
+      return all.size() > 0 ;
+      
+    }
+    
     public void process ( String  outputFile              , 
                           String  csvFile                 , 
                           boolean includingGraphVariables ,
@@ -231,14 +281,20 @@ public class Processor {
       
         this.verbose = verbose  ;
         
+        boolean process = false ; 
+        
         if( includingGraphVariables && csvFile != null ) {
-            processFull( outputFile, csvFile )  ;
+            process = processFull( outputFile, csvFile )  ;
         }
         else if( !includingGraphVariables && csvFile != null ) {
-          processOnlyCSV(outputFile, csvFile) ;
+            process = processOnlyCSV( outputFile, csvFile) ;
         }
         else  {
-            processOnlyGraphVariables(csvFile ) ;
+            process = processOnlyGraphVariables( csvFile ) ;
+        }
+        
+        if( ! process ) {
+            processOnlyGraphWithoutVariables( outputFile ) ;
         }
     }
 
