@@ -55,8 +55,13 @@ public class ManagerUri {
      
   public String getUriByHashAndCode( int hash , int codeUri , String label ) {
         
-      if(codeUri == -1 ) return label ;
-      return getUri( hash, codeUri)   ;
- }
+     if(codeUri == -1 ) return label ;
+     
+     if(label.startsWith("(") && label.endsWith(")")) {
+        return getUri( null, codeUri) ;
+     }
+     
+     return getUri( hash, codeUri)   ;
+  }
   
 }
