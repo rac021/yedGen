@@ -339,11 +339,17 @@ public final class Node implements Serializable  {
     }
     
 
-    public void applyKeyValues ( Map<String, String > values ) {
+    public void applyKeyValues ( Map<String, String > values )                   {
     
+        String patternVariable = values.get(ManagerVariable.PATTERN_VARIABLE)    ;
+        values.remove(ManagerVariable.PATTERN_VARIABLE)                          ;
+        
         values.entrySet()
               .stream()
               .forEach( entry -> applyKeyValue(entry.getKey(),entry.getValue())) ;
+        
+        if ( patternVariable != null )
+        applyKeyValue( ManagerVariable.PATTERN_VARIABLE, patternVariable )       ;
     }
 
     public void addToCode( int number ) {
