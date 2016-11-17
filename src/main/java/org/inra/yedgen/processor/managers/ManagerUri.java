@@ -53,15 +53,15 @@ public class ManagerUri {
          .orElse(null) ;
   }
      
-  public String getUriByHashAndCode( int hash , int codeUri , String label ) {
+  public String getUriByHashAndCode( Integer hash , Integer codeUri , String label ) {
         
-     if(codeUri == -1 ) return label ;
+     if ( codeUri == -1 ) return label ;
      
-     if(label.startsWith("(") && label.endsWith(")")) {
-        return getUri( null, codeUri) ;
+     if ( label.startsWith("(") && label.endsWith(")") ) {
+        return getUri( null, codeUri ) ;
      }
      
-     return getUri( hash, codeUri)   ;
+     return getUri( hash, codeUri)     ;
   }
   
 }
