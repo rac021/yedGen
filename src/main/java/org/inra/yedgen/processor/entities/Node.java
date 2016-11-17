@@ -1,19 +1,20 @@
 
 package org.inra.yedgen.processor.entities;
 
-import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
+import java.util.Objects;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map.Entry;
-import java.util.Objects;
+import java.io.Serializable;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import static java.util.stream.Collectors.joining;
 import org.apache.commons.lang.StringUtils;
 import org.inra.yedgen.properties.ObdaProperties;
+import static java.util.stream.Collectors.joining;
+import org.inra.yedgen.processor.managers.ManagerVariable;
 
 /**
  *
