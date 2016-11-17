@@ -227,15 +227,15 @@ public class ManagerVariable {
                          .flatMap( set -> set.stream())
                          .map( s -> s.remove(PATTERN_PARALLEL))
                          .count() ;
-             
-      // How ?VARIABLE will be updated after applying KeyValues method 
-      variable.getKeyValues().put( PATTERN_VARIABLE, variable.getVariableName()) ;
       
       managerPatternParallel.applyKeyValues( new HashSet<>(generatedGraphNodes) , 
                                                  variable.getKeyValues()  )     ;
 
+      // How ?VARIABLE will be updated after applying KeyValues method 
+      variable.getKeyValues().put( PATTERN_VARIABLE, variable.getVariableName()) ;
+        
       // Restoring original nodes for next process
-      managerNode.restoreOriginalNodes() ;
+      managerNode.restoreOriginalNodes()  ;
       
       return  generatedGraphNodes         ;
       
