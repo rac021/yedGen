@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 import org.apache.commons.lang.StringUtils;
 import org.inra.yedgen.properties.ObdaProperties;
 import static java.util.stream.Collectors.joining;
-import org.inra.yedgen.processor.managers.ManagerVariable;
 
 /**
  *
@@ -342,15 +341,9 @@ public final class Node implements Serializable  {
 
     public void applyKeyValues ( Map<String, String > values )                   {
     
-        String patternVariable = values.get(ManagerVariable.PATTERN_VARIABLE)    ;
-        values.remove(ManagerVariable.PATTERN_VARIABLE)                          ;
-        
-        values.entrySet()
+       values.entrySet()
               .stream()
               .forEach( entry -> applyKeyValue(entry.getKey(),entry.getValue())) ;
-        
-        if ( patternVariable != null )
-        applyKeyValue( ManagerVariable.PATTERN_VARIABLE, patternVariable )       ;
     }
 
     public void addToCode( int number ) {
