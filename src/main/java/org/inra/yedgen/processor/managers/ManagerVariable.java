@@ -19,15 +19,15 @@ import org.inra.yedgen.processor.errors.MessageErrors;
  */
 public class ManagerVariable {
     
-    private final String PATTERN_CONTEXT  = "##PATTERN_CONTEXT"  ;
-    private final String PATTERN_PARALLEL = "##PATTERN_PARALLEL" ;
-    private final String PATTERN_VARIABLE = "?VARIABLE"          ;
+    public static final String PATTERN_CONTEXT  = "##PATTERN_CONTEXT"  ;
+    public static final String PATTERN_PARALLEL = "##PATTERN_PARALLEL" ;
+    public static final String PATTERN_VARIABLE = "?VARIABLE"          ;
 
-    private final ManagerPatternContext  managerPatternContext   ;
-    private final ManagerPatternParallel managerPatternParallel  ;
-    private final ManagerNode            managerNode             ;
+    private final ManagerPatternContext  managerPatternContext         ;
+    private final ManagerPatternParallel managerPatternParallel        ;
+    private final ManagerNode            managerNode                   ;
     
-    private final Set<Variable>          variables               ;
+    private final Set<Variable>          variables                     ;
     
     
     public ManagerVariable( Map< Integer, Map< String, String>> mapVariable ,
