@@ -1,14 +1,14 @@
-Standard AnaEE	Categorie(s) AnaEE	Contexte(s)	Entité	source standard caractéristique	Caractéristique	Protocol	Qualificatifs (flexible)	source standard unité	Unité (flexible)	nom (fr) dans bd	nom (fr) type de donnée dans la bd		
-DissolvedAmmoniumNitrogenMassConcentration	PhysicalChemistry	Water, Solutes, Ammonium	Nitrogen		MassConcentration			oboe-standard	MilligramPerLiter	Azote ammoniacal	physico chimie	ola	
-CalciumMassConcentration	PhysicalChemistry	Water	Calcium		MassConcentration			oboe-standard	MilligramPerLiter	Calcium	physico chimie	ola	
-DissolvedChlorideMassConcentration	PhysicalChemistry	Water, Solutes	Chloride		MassConcentration			oboe-standard	MilligramPerLiter	Chlorures	physico chimie	ola	
-WaterPH	PhysicalChemistry		Water		pH				pHUnit	pH	physico chimie	ola	
-DissolvedPotassiumMassConcentration	PhysicalChemistry	Water, Solutes	Potassium		MassConcentration			oboe-standard	MilligramPerLiter	Potassium	physico chimie	ola	
-DissolvedSulphatesMassConcentration	PhysicalChemistry	Water, Solutes	Sulphates		MassConcentration			oboe-standard	MilligramPerLiter	Sulfates	physico chimie	ola	
-DissolvedNitriteMassConcentration	PhysicalChemistry	Water, Solutes	Nitrite		MassConcentration			oboe-standard	MilligramPerLiter	Nitrite nitrogen	physico chimie	ola	
-DissolvedNitrateMassConcentration	PhysicalChemistry	Water, Solutes	Nitrate		MassConcentration			oboe-standard	MilligramPerLiter	Nitrate nitrogen	physico chimie	ola	
-DissolvedMagnesiumMassConcentration	PhysicalChemistry	Water, Solutes	Magnesium		MassConcentration			oboe-standard	MilligramPerLiter	Magnesium	physico chimie	ola	
-WaterSuspendedOrganicMatterMassConcentration	PhysicalChemistry	Water	Suspended Organic Matter		MassConcentration			oboe-standard	MilligramPerLiter	Organic Suspended Matter	physico chimie	ola	
-DissolvedOxygenMassConcentration	PhysicalChemistry	Water, Solutes	Oxygen		MassConcentration			oboe-standard	MilligramPerLiter	Dissolved Oxygen	physico chimie	ola	
-DissolvedReactiveSilicaMassConcentration	PhysicalChemistry	Water, Solutes	Reactive Silica		MassConcentration			oboe-standard	MilligramPerLiter	Reactive Silica	physico chimie	ola	
-DissolvedSodiumMassConcentration	PhysicalChemistry	Water, Solutes	Sodium		MassConcentration			oboe-standard	MilligramPerLiter	Sodium	physico chimie	ola	
+Standard AnaEE	Categorie(s) AnaEE	Contexte(s)	Entité	source standard caractéristique	Caractéristique	Protocol	Qualificatifs (flexible)	source standard unité	Unité (flexible)	nom (fr) dans bd	nom (fr) type de donnée dans la bd	
+DissolvedAmmoniumNitrogenMassConcentration	PhysicalChemistry	Water, Solutes, Ammonium	Nitrogen		MassConcentration			oboe-standard	MilligramPerLiter	Azote ammoniacal	physico chimie	ola
+CalciumMassConcentration	PhysicalChemistry	Water	Calcium		MassConcentration			oboe-standard	MilligramPerLiter	Calcium	physico chimie	ola
+DissolvedChlorideMassConcentration	PhysicalChemistry	Water, Solutes	Chloride		MassConcentration			oboe-standard	MilligramPerLiter	Chlorures	physico chimie	ola
+WaterPH	PhysicalChemistry		Water		pH				pHUnit	pH	physico chimie	ola
+DissolvedPotassiumMassConcentration	PhysicalChemistry	Water, Solutes	Potassium		MassConcentration			oboe-standard	MilligramPerLiter	Potassium	physico chimie	ola
+DissolvedSulphatesMassConcentration	PhysicalChemistry	Water, Solutes	Sulphates		MassConcentration			oboe-standard	MilligramPerLiter	Sulfates	physico chimie	ola
+DissolvedNitriteMassConcentration	PhysicalChemistry	Water, Solutes	Nitrite		MassConcentration			oboe-standard	MilligramPerLiter	Nitrite nitrogen	physico chimie	ola
+DissolvedNitrateMassConcentration	PhysicalChemistry	Water, Solutes	Nitrate		MassConcentration			oboe-standard	MilligramPerLiter	Nitrate nitrogen	physico chimie	ola
+DissolvedMagnesiumMassConcentration	PhysicalChemistry	Water, Solutes	Magnesium		MassConcentration			oboe-standard	MilligramPerLiter	Magnesium	physico chimie	ola
+WaterSuspendedOrganicMatterMassConcentration	PhysicalChemistry	Water	SuspendedOrganicMatter		MassConcentration			oboe-standard	MilligramPerLiter	Organic Suspended Matter	physico chimie	ola
+DissolvedOxygenMassConcentration	PhysicalChemistry	Water, Solutes	Oxygen		MassConcentration			oboe-standard	MilligramPerLiter	Dissolved Oxygen	physico chimie	ola
+DissolvedReactiveSilicaMassConcentration	PhysicalChemistry	Water, Solutes	ReactiveSilica		MassConcentration			oboe-standard	MilligramPerLiter	Reactive Silica	physico chimie	ola
+DissolvedSodiumMassConcentration	PhysicalChemistry	Water, Solutes	Sodium		MassConcentration			oboe-standard	MilligramPerLiter	Sodium	physico chimie	ola
