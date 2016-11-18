@@ -95,18 +95,17 @@ public class ManagerVariable {
            
            patternContextId  = stringValue.split(" ")[0].trim()          ;
            variableName      = stringValue.split(" ")[1].trim()          ;
-           keyValuesVariable = stringValue.split(Pattern.quote("&&"))[0] 
-                                                        .split(variableName)[1] ;
        }
                    
        else {
            
            patternContextId  = null ;
-           variableName      = stringValue.split(" ")[0].trim()                      ;
-           keyValuesVariable = stringValue.split(Pattern.quote("&&"))[0] 
-                                                        .split(variableName , 2 )[1] ;
+           variableName      = stringValue.split(" ")[0].trim()          ;
        }
-                   
+          
+       keyValuesVariable = stringValue.split(Pattern.quote("&&"))[0] 
+                                                    .split(variableName, 2 )[1] ;
+       
        Matcher m = p.matcher(keyValuesVariable ) ;
            
        Map<String, String> mapKeyValuesVariable = new HashMap<>() ;
