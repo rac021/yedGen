@@ -2,7 +2,6 @@ Standard AnaEE	Categorie(s) AnaEE	Contexte(s)	Entité	source standard caractéri
 DissolvedAmmoniumNitrogenMassConcentration	PhysicalChemistry	Water, Solutes, Ammonium	Nitrogen		MassConcentration			oboe-standard	MilligramPerLiter	Azote ammoniacal	physico chimie	ola
 CalciumMassConcentration	PhysicalChemistry	Water	Calcium		MassConcentration			oboe-standard	MilligramPerLiter	Calcium	physico chimie	ola
 DissolvedChlorideMassConcentration	PhysicalChemistry	Water, Solutes	Chloride		MassConcentration			oboe-standard	MilligramPerLiter	Chlorures	physico chimie	ola
-WaterPH	PhysicalChemistry		Water		pH				pHUnit	pH	physico chimie	ola
 DissolvedPotassiumMassConcentration	PhysicalChemistry	Water, Solutes	Potassium		MassConcentration			oboe-standard	MilligramPerLiter	Potassium	physico chimie	ola
 DissolvedSulphatesMassConcentration	PhysicalChemistry	Water, Solutes	Sulphates		MassConcentration			oboe-standard	MilligramPerLiter	Sulfates	physico chimie	ola
 DissolvedNitriteMassConcentration	PhysicalChemistry	Water, Solutes	Nitrite		MassConcentration			oboe-standard	MilligramPerLiter	Nitrite nitrogen	physico chimie	ola
