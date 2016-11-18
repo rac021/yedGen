@@ -294,8 +294,6 @@ public class ManagerVariable {
               .forEach( node -> node.applyKeyValues( values )) ;
     }
 
-    
-
 /*
     public List<Node> homogenize ( Node parentContextNode ,
                                    Node patternNode       ,
