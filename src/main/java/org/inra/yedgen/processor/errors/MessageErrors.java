@@ -82,8 +82,8 @@ public class MessageErrors {
     
      public static void printErrorMatcher(String variableName, String subLine ) {
         
-        System.out.println(" Error Matcher // Variable [ " + variableName    + 
-                             "] doesn't contains Matcher for : " + subLine ) ; 
+        System.out.println(" Error Matcher // Variable [ " + variableName   + 
+                           " ] doesn't contains Matcher for : " + subLine ) ; 
     }
      
 }
