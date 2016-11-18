@@ -1,13 +1,14 @@
 
 package org.inra.yedgen.processor.entities;
 
-import java.util.Map;
 import java.util.Set;
-import java.util.Objects;
+import java.util.Map;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Iterator;
 import java.util.Map.Entry;
+import java.util.Comparator;
 import java.io.Serializable;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -341,8 +342,14 @@ public final class Node implements Serializable  {
 
     public void applyKeyValues ( Map<String, String > values )                   {
     
-       values.entrySet()
+       // Comparator< Entry<String,String> > comp1 = 
+       // (a, b) -> Integer.compare(a.getKey().length(), b.getKey().length()) ;
+      
+        Comparator< Entry<String,String> > comp = Comparator.comparing( e -> e.getKey().length()) ;
+         
+        values.entrySet()
               .stream()
+              .sorted(comp.reversed())
               .forEach( entry -> applyKeyValue(entry.getKey(),entry.getValue())) ;
     }
 
