@@ -20,9 +20,9 @@ public class CsvProperties {
     
     private ScriptsEngine scriptsEngine ;
     
-     List<String> getPropety( String column ) {
-       return config.getList(column ) ;
-     }
+    List<String> getPropety( String column ) {
+      return config.getList( column ) ;
+    }
 
     public CsvProperties( String csvFile, String jsFile  ) {
         
@@ -34,5 +34,17 @@ public class CsvProperties {
                                           .log( Level.SEVERE, null, ex ) ;
         }
     }
-     
+
+    public String processString ( List<String> functions , String line ) {
+        
+      String tmpLine = line ;
+        
+      for ( String function : functions ) {
+        
+         tmpLine = scriptsEngine.evaluate(function, tmpLine ) ;
+      }
+        
+        return tmpLine ;
+    }
+
 }
