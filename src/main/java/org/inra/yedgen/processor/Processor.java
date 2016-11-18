@@ -2,6 +2,7 @@
 package org.inra.yedgen.processor ;
 
 import java.util.Set;
+import java.util.Map;
 import java.util.List;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -134,9 +135,10 @@ public class Processor {
                       
          // Prepare Output Header 
          outPut.addAll(obdaHeader.getHeaderOut())                         ; 
-                      
-         graph.stream().forEach( node -> outPut.add( node.outputObda()) ) ;
-         
+          
+         graph.stream().forEach( node -> { outPut.add( node.outputObda())        ; 
+                                           checkMatchers( variable , node ) ; }) ;
+          
          outPut.add(ObdaProperties.MAPPING_COLLECTION_END) ;
                 
          try {
@@ -194,14 +196,15 @@ public class Processor {
                      String patternContext   = metaPatternManager.generatePatternContext(line)  ;
                      String patternVariable  = metaPatternManager.generatePatternVariable(line) ;
                      
-                     Variable variable       = managerVariable.transformToVariable( patternVariable ,
+                     Variable variable       = managerVariable.transformToVariable( patternVariable   ,
                                                                                     patternContext  ) ;
                         
                      Set<Node> nodes         = managerVariable.process( variable )    ;
                         
-                     nodes.stream().forEach( node -> outPut.add( node.outputObda())) ;
+                     nodes.stream().forEach( node -> { outPut.add( node.outputObda())        ; 
+                                                       checkMatchers( variable , node ) ; }) ;
                         
-                     outPut.add(ObdaProperties.MAPPING_COLLECTION_END ) ;
+                     outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
                                            
                      try {
               
@@ -297,6 +300,20 @@ public class Processor {
         if( ! process ) {
             processOnlyGraphWithoutVariables( outputFile )    ;
         }
+    }
+
+    
+     private void checkMatchers( Variable variable, Node node ) {
+   
+        String outLine                = node.outputObda()       ;
+        Map<String, String> keyValues = variable.getKeyValues() ;
+        
+        keyValues.entrySet()
+                 .stream()
+                 .forEach( entry -> { if( outLine.contains(entry.getKey())) 
+                                       MessageErrors.printErrorMatcher( variable.getVariableName() , 
+                                                                        entry.getKey() ) ;})       ; 
+        
     }
 
 }
