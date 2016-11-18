@@ -74,11 +74,16 @@ public class MessageErrors {
        System.err.println("")   ;
     }
     
-    public static void printErrorNumQueryNotFound( Integer numQuery) {
+    public static void printErrorNumQueryNotFound( Integer numQuery ) {
        System.out.println("")   ;
        System.out.println(" NumQuery [ "+numQuery+" ] not found in numUris Map !! " ) ;
        System.out.println("")   ;
     }
     
+    public static void printErrorMatcher( String variableName, String key ) {
+        
+       System.out.println(" Error Matcher // Variable [ " + variableName + 
+                            "] doesn't contains Matcher for : " + key )  ; 
+    }
      
 }
