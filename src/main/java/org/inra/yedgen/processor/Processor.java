@@ -136,8 +136,9 @@ public class Processor {
          // Prepare Output Header 
          outPut.addAll(obdaHeader.getHeaderOut())                         ; 
           
-         graph.stream().forEach( node -> { outPut.add( node.outputObda())        ; 
-                                           checkMatchers( variable , node ) ; }) ;
+         graph.stream().forEach( node -> { outPut.add( node.outputObda())            ; 
+                                           checkMatchers( variable.getVariableName() , 
+                                                          node.outputObda() ) ; })   ;
           
          outPut.add(ObdaProperties.MAPPING_COLLECTION_END) ;
                 
@@ -201,8 +202,9 @@ public class Processor {
                         
                      Set<Node> nodes         = managerVariable.process( variable )    ;
                         
-                     nodes.stream().forEach( node -> { outPut.add( node.outputObda())        ; 
-                                                       checkMatchers( variable , node ) ; }) ;
+                     nodes.stream().forEach( node -> { outPut.add( node.outputObda())            ; 
+                                                       checkMatchers( variable.getVariableName() , 
+                                                                       node.outputObda() ) ; })  ;
                         
                      outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
                                            
@@ -303,17 +305,14 @@ public class Processor {
     }
 
     
-     private void checkMatchers( Variable variable, Node node ) {
+    private void checkMatchers( String variableName , String outLine ) {
    
-        String outLine                = node.outputObda()       ;
-        Map<String, String> keyValues = variable.getKeyValues() ;
+        String[] patts = outLine.split(" ") ; 
         
-        keyValues.entrySet()
-                 .stream()
-                 .forEach( entry -> { if( outLine.contains(entry.getKey())) 
-                                       MessageErrors.printErrorMatcher( variable.getVariableName() , 
-                                                                        entry.getKey() ) ;})       ; 
-        
+        for ( String patt : patts ) {
+           if ( patt.contains("?") )
+           MessageErrors.printErrorMatcher( variableName , patt ) ; 
+        }
     }
 
 }
