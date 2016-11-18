@@ -1,5 +1,4 @@
 
-
 package org.inra.yedgen.processor.managers;
 
 import java.util.List;
@@ -8,9 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import static org.inra.yedgen.processor.errors.MessageErrors.printMessageMetaPatternError;
-import static org.inra.yedgen.processor.errors.MessageErrors.printMessageMetaPatternErrorMustContains;
-
+import org.inra.yedgen.properties.CsvProperties;
+import static org.inra.yedgen.processor.errors.MessageErrors.* ;
 /**
  *
  * @author ryahiaoui
@@ -22,7 +20,9 @@ public class MetaPatternManager {
     private final String  metaPatternContext   ;
     private final String  metaPatternParallel  ;
     
-    private final String SEPARATOR  = "\t"    ;
+    private final CsvProperties  csvProperties ;
+    
+    private final String SEPARATOR  = "\t"     ;
     
     private static final String  META_PATTERN_CONTEXT     = "##META_PATTERN_CONTEXT"  ;
     private static final String  META_PATTERN_PARALLEL    = "##META_PATTERN_PARALLEL" ;
@@ -30,22 +30,24 @@ public class MetaPatternManager {
     private static final String  MATCHER_PATTERN_CONTEXT  = "##PATTERN_CONTEXT"       ;
     private static final String  MATCHER_PATTERN_PARALLEL = "##PATTERN_PARALLEL"      ;
     
-    public MetaPatternManager( Integer metaPatternHash    ,
-                               String metaPatternVariable ,
-                               String metaPatternContext  , 
-                               String metaPatternParallel ) {
+    public MetaPatternManager( Integer metaPatternHash     ,
+                               String metaPatternVariable  ,
+                               String metaPatternContext   , 
+                               String metaPatternParallel  ,
+                               CsvProperties csvProperties ) {
         
         this.metaPatternHash     = metaPatternHash     ;
         this.metaPatternVariable = metaPatternVariable ;
         this.metaPatternContext  = metaPatternContext  ;
         this.metaPatternParallel = metaPatternParallel ;
+        this.csvProperties       = csvProperties       ;
     }
 
     public String getMetaPatternVariable() {
         return metaPatternVariable ;
     }
 
-    public String getMetaPatternContext() {
+    public String getMetaPatternContext()  {
         return metaPatternContext ;
     }
 
@@ -53,8 +55,8 @@ public class MetaPatternManager {
         return metaPatternParallel ;
     }
 
-    public Integer getMetaPatternHash() {
-        return metaPatternHash;
+    public Integer getMetaPatternHash()    {
+        return metaPatternHash ;
     }
     
     public String generatePatternVariable ( String csvLine ) {
