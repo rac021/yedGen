@@ -80,10 +80,10 @@ public class MessageErrors {
        System.out.println("")   ;
     }
     
-    public static void printErrorMatcher( String variableName, String key ) {
+     public static void printErrorMatcher(String variableName, String subLine ) {
         
-       System.out.println(" Error Matcher // Variable [ " + variableName + 
-                            "] doesn't contains Matcher for : " + key )  ; 
+        System.out.println(" Error Matcher // Variable [ " + variableName    + 
+                             "] doesn't contains Matcher for : " + subLine ) ; 
     }
      
 }
