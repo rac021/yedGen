@@ -229,17 +229,10 @@ public class ManagerVariable {
                          .count() ;
 
       // How ?VARIABLE will be updated after applying KeyValues method 
-      // variable.getKeyValues().put( PATTERN_VARIABLE, variable.getVariableName()) ;
+      variable.getKeyValues().put( PATTERN_VARIABLE, variable.getVariableName()) ;
         
       managerPatternParallel.applyKeyValues( new HashSet<>(generatedGraphNodes)  , 
                                                  variable.getKeyValues()  )      ;
-        
-      Map map = new HashMap <String, String>() {{ put ( PATTERN_VARIABLE,
-                                                        variable.getVariableName()) ; 
-                                                }}                                  ;
-      
-      managerPatternParallel.applyKeyValues( new HashSet<>(generatedGraphNodes) , 
-                                             map                           )    ;
         
       // Restoring original nodes for next process
       managerNode.restoreOriginalNodes()  ;
