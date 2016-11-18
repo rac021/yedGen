@@ -168,7 +168,7 @@ public class Processor {
     
     public boolean processOnlyCSV ( String outputFile , String csvFile ) {
          
-         MessageErrors.printMessageStartProcessCsvVariableGeneration();
+         MessageErrors.printMessageStartProcessCsvVariableGeneration()     ;
          
          String pattContext  = metaPatternManager.getMetaPatternContext()  ;
          String pattVariable = metaPatternManager.getMetaPatternVariable() ;
@@ -184,6 +184,9 @@ public class Processor {
   
         try {
             
+            CsvProperties csvProperties = new CsvProperties("../ola.properties", 
+                                                             "../ola.js") ;
+            
             Files.lines ( Paths.get(csvFile) ).skip(1).forEach (
                     
                   (String line) -> {
@@ -194,6 +197,7 @@ public class Processor {
                       outPut.addAll(obdaHeader.getHeaderOut()) ; 
                      
                      // Treat Variable
+                     //String nLine = csvProperties.process( line )                             ;
                      String patternContext   = metaPatternManager.generatePatternContext(line)  ;
                      String patternVariable  = metaPatternManager.generatePatternVariable(line) ;
                      
