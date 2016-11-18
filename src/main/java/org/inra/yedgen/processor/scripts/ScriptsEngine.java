@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package org.inra.yedgen.processor.scripts;
 
 import java.io.FileReader;
@@ -14,33 +18,33 @@ import javax.script.ScriptEngineManager;
  */
 public class ScriptsEngine {
     
-    private final ScriptEngine engine ;
-    
-    public static String jsFile = "../data/csv-files/ola-scripts.js" ;
+    private ScriptEngine engine  = null                               ;
+    private String       jsFile  = "../data/csv-files/ola-scripts.js" ;
     
     public String evaluate( String methode, String line )  {
         
       try {
-          
-          ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn") ;
+           Invocable invocable = (Invocable) engine                         ;
+           Object  result      = invocable.invokeFunction( methode , line ) ;
+           return result.toString()                                         ;
             
-          engine.eval(new FileReader(jsFile))      ;
-      
-          Invocable invocable = (Invocable) engine ;
+       } catch ( Exception ex ) {
+           Logger.getLogger(ScriptsEngine.class.getName())
+                                         .log(Level.SEVERE, null, ex ) ;
+           return null ;
+         }
+    }
 
-          Object  result = invocable.invokeFunction(methode , line) ;
-           
-          return result.toString() ;
+    public ScriptsEngine( String jsFile ) {
+        
+      try {
+            this.engine = new ScriptEngineManager().getEngineByName("nashorn")     ;
+            this.jsFile = ( jsFile != null && ! jsFile.isEmpty() ) ? jsFile : null ;
+            this.engine.eval(new FileReader(jsFile))                               ;
             
-        } catch ( Exception ex) {
-            Logger.getLogger(ScriptsEngine.class.getName()).log(Level.SEVERE, null, ex);
-            return null ;
+      }  catch ( Exception ex ) {
+         Logger.getLogger(ScriptsEngine.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public ScriptsEngine() {
-        
-       this.engine = new ScriptEngineManager().getEngineByName("nashorn");        
-    }
-      
+    
 }
