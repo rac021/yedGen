@@ -54,8 +54,8 @@ public class CsvProperties {
          
            if ( prFile != null && ! prFile.isEmpty() )  {
            
-               System.out.println (" -> Loading properties File : " 
-                                                 + prFile )          ;
+               System.out.println ( " -> Loading properties File : " + 
+                                                   prFile )          ;
                this.config = new PropertiesConfiguration( prFile )   ;
            }
          
