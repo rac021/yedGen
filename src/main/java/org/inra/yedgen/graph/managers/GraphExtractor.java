@@ -605,13 +605,11 @@ public class GraphExtractor {
                 if ( ! processed ) processed = true ;
             }
         }
-        
-//        if( processed ) {
-//            genNodes() ;
-//        }
+      
         if( ! processed ) {
             System.out.println ( " No File with extension '" + extensionFile + "' found !! " ) ;
-            System.out.println ( "                                                        " )  ;
+            System.out.println ( "                                                         " ) ;
+            System.exit ( 0 )                                                                  ; 
         }
     }
 
