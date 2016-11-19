@@ -9,8 +9,8 @@ String.prototype.capitalizeFirstLetter = function()     {
     return this.charAt(0).toUpperCase() + this.slice(1) ;
 }
 
-// Concat varargs with var linker = ":"
-function columnColumnLinker() {
+// Concat varargs with linker = ":"
+function colonLinker() {
   var linker = ":" ;
   var args = Array.prototype.slice.call(arguments) ;
   return args.join(linker) ;
