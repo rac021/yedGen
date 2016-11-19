@@ -47,20 +47,22 @@ public class CsvProperties {
        return tmpLine ;
     }
     
-    public CsvProperties( String prFile, String jsFile  ) {
+    public CsvProperties( String prFile, String jsFile  )            {
         
      try {
+           this.scriptsEngine = new ScriptsEngine ( jsFile )         ;
          
-           this.scriptsEngine = new ScriptsEngine( jsFile )          ;
-         
-           System.out.println (" -> Loading properties File : " 
+           if ( prFile != null && ! prFile.isEmpty() ) {
+           
+               System.out.println (" -> Loading properties File : " 
                                                  + prFile )          ;
-         
-           this.config        = new PropertiesConfiguration(prFile)  ;
+               this.config = new PropertiesConfiguration( prFile )   ;
+           }
          
         } catch (ConfigurationException ex) {
-            Logger.getLogger( CsvProperties.class.getName() )
-                                          .log( Level.SEVERE, null, ex ) ;
+             Logger.getLogger( CsvProperties.class.getName() )
+                                      .log( Level.SEVERE, null, ex ) ;
         }
     }
+    
 }
