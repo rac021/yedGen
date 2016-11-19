@@ -68,7 +68,8 @@ public class Main {
         Processor processor = new Processor( directory             ,
                                              ext                   ,
                                              toAbsolutePath(prf)   ,
-                                             toAbsolutePath(js)  ) ;
+                                             toAbsolutePath(js)  
+                                           )                       ;
         
         processor.process( outFile, csv , includingGraphVariables, verbose ) ;
         
