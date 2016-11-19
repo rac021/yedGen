@@ -61,17 +61,19 @@ public class Main {
        return ;
     }
         
-    if(ext.length() == 0 ) ext = ".graphml"                      ;
+    if(ext.length() == 0 ) ext = ".graphml"                    ;
         
-      long startTime = System.currentTimeMillis()                ;  
+      long startTime = System.currentTimeMillis()              ;  
         
-      Processor processor = new Processor( directory             ,
-                                           ext                   ,
-                                           toAbsolutePath(prf)   ,
-                                           toAbsolutePath(js)  
-                                          )                      ;
+      Processor processor = new Processor ( directory          ,
+                                            ext                ,
+                                            prf                ,
+                                            js   )             ;
         
-      processor.process( outFile, csv , includingGraphVariables, verbose ) ;
+      processor.process ( outFile                  , 
+                          csv                      , 
+                          includingGraphVariables  , 
+                          verbose )  ;
         
       long executionTime = System.currentTimeMillis() - startTime ;
         
@@ -81,18 +83,4 @@ public class Main {
       System.out.println(" ")                                     ;
     }
  
- 
-    private static String toAbsolutePath( String relativePath )        {
-     
-      if( relativePath == null || relativePath.isEmpty() ) return null ;
-      Path path = Paths.get(relativePath)                              ;
-     
-      System.out.println("------------------------------------------");
-      System.out.println("relativePath -> "+relativePath);
-      System.out.println("path.toAbsolutePath().toString() = " + path.toAbsolutePath().toString().replaceAll("/../", "/"));
-      System.out.println("------------------------------------------");
-    
-     return path.toAbsolutePath().toString().replaceAll("/../", "/")  ;
- 
-    }
 }
