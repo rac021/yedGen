@@ -1,6 +1,7 @@
 package entypoint;
 
-
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import org.inra.yedgen.processor.Processor;
 
 /**
@@ -64,10 +65,10 @@ public class Main {
         
         long startTime = System.currentTimeMillis()           ;  
         
-        Processor processor = new Processor( directory        , 
-                                             ext              ,
-                                             prf              ,
-                                             js )             ;
+        Processor processor = new Processor( directory             ,
+                                             ext                   ,
+                                             toAbsolutePath(prf)   ,
+                                             toAbsolutePath(js)  ) ;
         
         processor.process( outFile, csv , includingGraphVariables, verbose ) ;
         
@@ -77,5 +78,13 @@ public class Main {
                                       executionTime / 1000 + " s" ) ; 
         
         System.out.println(" ")                                     ;
+    }
+ 
+    private static String toAbsolutePath( String relativePath ) {
+        
+        if( relativePath == null || relativePath.isEmpty() ) return null ;
+        
+        Path path = Paths.get(relativePath)     ;
+        return path.toAbsolutePath().toString() ;
     }
 }
