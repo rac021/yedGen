@@ -83,8 +83,16 @@ public class Main {
  
  
     private static String toAbsolutePath( String relativePath )        {
+     
       if( relativePath == null || relativePath.isEmpty() ) return null ;
       Path path = Paths.get(relativePath)                              ;
-      return path.toAbsolutePath().toString().replaceAll("/../", "/")  ;
+     
+      System.out.println("------------------------------------------");
+      System.out.println("relativePath -> "+relativePath);
+      System.out.println("path.toAbsolutePath().toString() = " + path.toAbsolutePath().toString().replaceAll("/../", "/"));
+      System.out.println("------------------------------------------");
+    
+     return path.toAbsolutePath().toString().replaceAll("/../", "/")  ;
+ 
     }
 }
