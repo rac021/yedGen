@@ -4,10 +4,20 @@ CalciumMassConcentration	PhysicalChemistry	Water	Calcium		MassConcentration			ob
 DissolvedChlorideMassConcentration	PhysicalChemistry	Water, Solutes	Chloride		MassConcentration			oboe-standard	MilligramPerLiter	Chlorures	physico chimie	ola
 DissolvedPotassiumMassConcentration	PhysicalChemistry	Water, Solutes	Potassium		MassConcentration			oboe-standard	MilligramPerLiter	Potassium	physico chimie	ola
 DissolvedSulphatesMassConcentration	PhysicalChemistry	Water, Solutes	Sulphates		MassConcentration			oboe-standard	MilligramPerLiter	Sulfates	physico chimie	ola
-DissolvedNitriteMassConcentration	PhysicalChemistry	Water, Solutes	Nitrite		MassConcentration			oboe-standard	MilligramPerLiter	Nitrite nitrogen	physico chimie	ola
-DissolvedNitrateMassConcentration	PhysicalChemistry	Water, Solutes	Nitrate		MassConcentration			oboe-standard	MilligramPerLiter	Nitrate nitrogen	physico chimie	ola
-DissolvedMagnesiumMassConcentration	PhysicalChemistry	Water, Solutes	Magnesium		MassConcentration			oboe-standard	MilligramPerLiter	Magnesium	physico chimie	ola
-WaterSuspendedOrganicMatterMassConcentration	PhysicalChemistry	Water	SuspendedOrganicMatter		MassConcentration			oboe-standard	MilligramPerLiter	Organic Suspended Matter	physico chimie	ola
-DissolvedOxygenMassConcentration	PhysicalChemistry	Water, Solutes	Oxygen		MassConcentration			oboe-standard	MilligramPerLiter	Dissolved Oxygen	physico chimie	ola
-DissolvedReactiveSilicaMassConcentration	PhysicalChemistry	Water, Solutes	ReactiveSilica		MassConcentration			oboe-standard	MilligramPerLiter	Reactive Silica	physico chimie	ola
-DissolvedSodiumMassConcentration	PhysicalChemistry	Water, Solutes	Sodium		MassConcentration			oboe-standard	MilligramPerLiter	Sodium	physico chimie	ola
+Dissolved Nitrite Mass Concentration	PhysicalChemistry	Water, Solutes	Nitrite		MassConcentration			oboe-standard	MilligramPerLiter	Nitrite nitrogen	physico chimie	ola
+Dissolved Nitrate Mass Concentration	PhysicalChemistry	Water, Solutes	Nitrate		MassConcentration			oboe-standard	MilligramPerLiter	Nitrate nitrogen	physico chimie	ola
+Particulate Organic Nitrogen Mass Concentration	PhysicalChemistry	Water, Particle	Organic Nitrogen		MassConcentration			oboe-standard	MilligramPerLiter	Particulate organic nitrogen	physico chimie	ola
+Total nitrogen Mass Concentration	PhysicalChemistry	Water	Nitrogen		MassConcentration			oboe-standard	MilligramPerLiter	Total nitrogen	physico chimie	ola
+Dissolved organic carbon Mass Concentration	PhysicalChemistry	Water, Solutes	Organic Carbon		MassConcentration			oboe-standard	MilligramPerLiter	Dissolved organic carbon	physico chimie	ola
+Particulate organic carbon Mass Concentration	PhysicalChemistry	Water, Particle	Organic Carbon		MassConcentration			oboe-standard	MilligramPerLiter	Particulate Organic Carbon	physico chimie	ola
+Total Organic Carbon Mass Concentration	PhysicalChemistry	Water	Total Organic Carbon		MassConcentration			oboe-standard	MilligramPerLiter	Total organic carbon	physico chimie	ola
+Dissolved Magnesium Mass Concentration	PhysicalChemistry	Water, Solutes	Magnesium		MassConcentration			oboe-standard	MilligramPerLiter	Magnesium	physico chimie	ola
+Water suspended matter Mass Concentration	PhysicalChemistry	Water	Suspended Matter		MassConcentration			oboe-standard	MilligramPerLiter	Suspended Matter	physico chimie	ola
+Water Suspended Organic  Matter Mass Concentration	PhysicalChemistry	Water	Suspended Organic Matter		MassConcentration			oboe-standard	MilligramPerLiter	Organic Suspended Matter	physico chimie	ola
+Dissolved Oxygen Mass Concentration	PhysicalChemistry	Water, Solutes	Oxygen		MassConcentration			oboe-standard	MilligramPerLiter	Dissolved Oxygen	physico chimie	ola
+Particulate Phosphorus Mass Concentration	PhysicalChemistry	Water, Particle	Phosphorus		MassConcentration			oboe-standard	MilligramPerLiter	Particulate Phosphorus	physico chimie	ola
+Total Phosporus Mass Concentration	PhysicalChemistry	Water	Total Phosphorus		MassConcentration			oboe-standard	MilligramPerLiter	Total phosphorus	physico chimie	ola
+Filtered Water Total Phosphorus Mass Concentration	PhysicalChemistry	Water, Filtered water	Total Phosphorus		MassConcentration			oboe-standard	MilligramPerLiter	Total filtered phosphorus	physico chimie	ola
+Dissolved Reactive Silica Mass Concentration	PhysicalChemistry	Water, Solutes	Reactive Silica		MassConcentration			oboe-standard	MilligramPerLiter	Reactive Silica	physico chimie	ola
+Dissolved Sodium Mass Concentration	PhysicalChemistry	Water, Solutes	Sodium		MassConcentration			oboe-standard	MilligramPerLiter	Sodium	physico chimie	ola
+Total alkali Mass Concentration	PhysicalChemistry	Water	Total Alkali		MassConcentration			oboe-standard	MilligramPerLiter	Total alkali	physico chimie	ola
