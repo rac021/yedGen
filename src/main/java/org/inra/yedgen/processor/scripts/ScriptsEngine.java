@@ -38,6 +38,7 @@ public class ScriptsEngine {
             this.engine = new ScriptEngineManager().getEngineByName("nashorn")  ;
             this.jsFile = ( jsFile != null && ! jsFile.isEmpty() ) ? 
                                                 jsFile : null                   ;
+            if ( jsFile != null )
             this.engine.eval(new FileReader(jsFile))                            ;
             
       }  catch ( Exception ex ) {
