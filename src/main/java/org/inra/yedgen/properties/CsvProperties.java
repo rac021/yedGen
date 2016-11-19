@@ -28,7 +28,7 @@ public class CsvProperties {
            return processString( functions, words )      ;
        }
         
-       return String.join( " ", words ) ;
+       return String.join( ":", words ) ;
     }
     
     private List<String> getFunctions( String column ) {
