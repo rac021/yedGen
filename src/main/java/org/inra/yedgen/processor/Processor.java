@@ -175,7 +175,7 @@ public class Processor {
       
    }
     
-    public boolean processOnlyCSV ( String outputFile , String csvFile ) {
+    public boolean processOnlyCSV ( String outputFile , String csvFile )   {
          
          MessageErrors.printMessageStartProcessCsvVariableGeneration()     ;
          
@@ -193,53 +193,50 @@ public class Processor {
   
         try {
             
-            CsvProperties csvProperties = new CsvProperties("../ola.properties", 
-                                                             "../ola.js") ;
-            
             Files.lines ( Paths.get(csvFile) ).skip(1).forEach (
                     
-                  (String line) -> {
+              (String line) -> {
                      
-                      List<String> outPut    = new ArrayList<>() ;
-                      
-                      // Prepare Output Header 
-                      outPut.addAll(obdaHeader.getHeaderOut()) ; 
-                     
-                     // Treat Variable
-                     //String nLine = csvProperties.process( line )                             ;
-                     String patternContext   = metaPatternManager.generatePatternContext(line)  ;
-                     String patternVariable  = metaPatternManager.generatePatternVariable(line) ;
-                     
-                     Variable variable       = managerVariable.transformToVariable( patternVariable   ,
-                                                                                    patternContext  ) ;
+                  List<String> outPut    = new ArrayList<>() ;
+                  
+                  // Prepare Output Header 
+                  outPut.addAll(obdaHeader.getHeaderOut()) ; 
+                 
+                 // Treat Variable
+                 //String nLine = csvProperties.process( line )                             ;
+                 String patternContext   = metaPatternManager.generatePatternContext(line)  ;
+                 String patternVariable  = metaPatternManager.generatePatternVariable(line) ;
+                    
+                 Variable variable       = managerVariable.transformToVariable( patternVariable   ,
+                                                                                patternContext  ) ;
                         
-                     Set<Node> nodes         = managerVariable.process( variable )    ;
+                 Set<Node> nodes         = managerVariable.process( variable )    ;
                         
-                     nodes.stream().forEach( node -> { outPut.add( node.outputObda())            ; 
-                                                       checkMatchers( variable.getVariableName() , 
-                                                                       node.outputObda() ) ; })  ;
+                 nodes.stream().forEach( node -> { outPut.add( node.outputObda())            ; 
+                                                   checkMatchers( variable.getVariableName() , 
+                                                                   node.outputObda() ) ; })  ;
                         
-                     outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
+                 outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
                                            
-                     try {
+                 try {
               
-                       String _fileName = outputFile.substring(0, outputFile.lastIndexOf('.')) ;
-                       String extension = outputFile.substring(outputFile.lastIndexOf('.'))    ;
+                   String _fileName = outputFile.substring(0, outputFile.lastIndexOf('.')) ;
+                   String extension = outputFile.substring(outputFile.lastIndexOf('.'))    ;
 
-                       String outFile = _fileName + "_CSV_"                               + 
-                                        variable.getVariableName().replaceFirst(":", "")  + 
-                                        extension                                         ;
+                   String outFile = _fileName + "_CSV_"                               + 
+                                    variable.getVariableName().replaceFirst(":", "")  + 
+                                    extension                                         ;
                        
-                       Writer.checkFile( outFile )           ;
-                       Writer.writeTextFile(outPut, outFile) ;
+                   Writer.checkFile( outFile )           ;
+                   Writer.writeTextFile(outPut, outFile) ;
                        
-                       MessageErrors.printMessageInfoGeneratedVariable( variable.getVariableName() ,
-                                                                        outFile                  ) ;
+                   MessageErrors.printMessageInfoGeneratedVariable( variable.getVariableName() ,
+                                                                    outFile                  ) ;
                        
-                     } catch (IOException ex) {
-                          Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex)  ;
-                     }
-                  }
+                 } catch (IOException ex) {
+                      Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex)  ;
+                 }
+              }
             ) ;
             
         } catch (IOException ex) {
