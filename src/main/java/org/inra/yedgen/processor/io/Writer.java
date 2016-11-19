@@ -31,8 +31,8 @@ public class Writer {
     public static void checkFile(String path ) throws IOException {
        
        String directory = path.substring(0 , path.lastIndexOf("/"));
-       Path pat = Paths.get(path);
-       boolean exists = Files.exists(pat, new LinkOption[]{ LinkOption.NOFOLLOW_LINKS});
+       
+       boolean exists = existFile ( path ) ;
        
        if(!exists) {
           checkDirectory(directory) ;
@@ -44,6 +44,14 @@ public class Writer {
        createFile(path);
     }
 
+    public static boolean existFile( String path ) {
+      
+     if( path == null ) return false ;
+     Path pat = Paths.get( path )    ;
+     return Files.exists( pat, new LinkOption[]{ LinkOption.NOFOLLOW_LINKS}) ;
+        
+    }
+    
     private static void checkDirectory( String directory ) throws IOException {
       
      Path path = Paths.get(directory);
