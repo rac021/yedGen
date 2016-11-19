@@ -50,8 +50,14 @@ public class CsvProperties {
     public CsvProperties( String prFile, String jsFile  ) {
         
      try {
+         
            this.scriptsEngine = new ScriptsEngine( jsFile )          ;
+         
+           System.out.println (" -> Loading properties File : " 
+                                                 + prFile )          ;
+         
            this.config        = new PropertiesConfiguration(prFile)  ;
+         
         } catch (ConfigurationException ex) {
             Logger.getLogger( CsvProperties.class.getName() )
                                           .log( Level.SEVERE, null, ex ) ;
