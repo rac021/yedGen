@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import org.inra.yedgen.processor.io.Writer;
 
 /**
  *
@@ -14,10 +15,11 @@ import javax.script.ScriptEngineManager;
  */
 public class ScriptsEngine {
     
-    private ScriptEngine engine  = null                               ;
-    private String       jsFile  = "../data/csv-files/ola-scripts.js" ;
+    private ScriptEngine engine  = null ;
     
-    public String evaluate( String methode, String ... words )                  {
+    public String evaluate( String methode, String ... words )   {
+       
+      if( engine == null ) return String.join ( " ", words )     ;
         
       try {
            Invocable invocable = (Invocable) engine                             ;
@@ -28,24 +30,26 @@ public class ScriptsEngine {
        } catch ( Exception ex ) {
            Logger.getLogger(ScriptsEngine.class.getName())
                                                .log(Level.SEVERE, null, ex)     ;
-           return String.join( " ", words )                                     ;
+           return String.join ( " ", words )                                    ;
          }
     }
 
-    public ScriptsEngine ( String jsFile )                                      {
+    public ScriptsEngine ( String jsFile )     {
         
       try {
-            this.engine = new ScriptEngineManager().getEngineByName("nashorn")  ;
-            this.jsFile = ( jsFile != null && ! jsFile.isEmpty() ) ? 
-                                                jsFile : null                   ;
-            if ( jsFile != null )  {
-               System.out.println (" -> Loading js File : " + jsFile )          ;
-               this.engine.eval(new FileReader(jsFile))                         ;
+            if ( Writer.existFile(jsFile) )  {
+                 this.engine = new ScriptEngineManager().getEngineByName("nashorn") ;
+                 this.engine.eval( new FileReader(jsFile) )                         ;
+                 System.out.println (" -> Loading js File : " + jsFile )            ;
+            }   
+            else {
+                  System.out.println (" -> Error Loading : js File [ " + jsFile     + 
+                                         " ] doesn't exists " )                     ;
             }
             
       }  catch ( Exception ex ) {
          Logger.getLogger(ScriptsEngine.class.getName())
-                                             .log(Level.SEVERE, null, ex)       ;
+                                             .log(Level.SEVERE, null, ex)           ;
         }
     }
 }
