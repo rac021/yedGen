@@ -14,6 +14,8 @@ public class Main {
         
         String directory = null , outFile = null , ext = null , csv = null ;
         
+        String prf = null , js = null                                      ;
+        
         boolean includingGraphVariables = false ,  verbose = false ;
        
         int     nbParams                = 0     ;
@@ -30,6 +32,10 @@ public class Main {
                 case "-ext" :  ext       = args[i+1] ; nbParams += 2 ;
                                 break ;            
                 case "-csv" :  csv       = args[i+1] ; nbParams += 2 ;
+                                break ;    
+                case "-prf" :  prf       = args[i+1] ; nbParams += 2 ;
+                                break ;            
+                case "-js" :  js         = args[i+1] ; nbParams += 2 ;
                                 break ;            
                 case "-ig" :   includingGraphVariables = true ; 
                                 nbParams += 1 ;
@@ -54,11 +60,14 @@ public class Main {
             return ;
         }
         
-        if(ext.length() == 0 ) ext = ".graphml"                     ;
+        if(ext.length() == 0 ) ext = ".graphml"               ;
         
-        long startTime = System.currentTimeMillis()                 ;  
+        long startTime = System.currentTimeMillis()           ;  
         
-        Processor processor = new Processor( directory, ext )       ;
+        Processor processor = new Processor( directory        , 
+                                             ext              ,
+                                             prf              ,
+                                             js )             ;
         
         processor.process( outFile, csv , includingGraphVariables, verbose ) ;
         
