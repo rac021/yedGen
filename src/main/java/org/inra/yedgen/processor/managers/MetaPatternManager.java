@@ -87,7 +87,7 @@ public class MetaPatternManager {
             
           String resScript = csvProperties.process( params , 
                                                     tmp.toArray(new String[tmp.size()]) ) ;
-          Variable = variable.replaceAll ( params, resScript ) ;
+          variable = variable.replaceAll ( params, resScript ) ;
 
         }
 
