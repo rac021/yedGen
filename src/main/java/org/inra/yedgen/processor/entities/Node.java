@@ -53,7 +53,7 @@ public final class Node implements Serializable  {
         this.id            = id            ;
         this.code          = code          ;
         this.label         = label         ;
-        this.query         = query         ;
+        this.query         = cleanQ(query) ;
         this.queryObject   = queryObject   ;
         this.uri           = validatePrefix( defaultPrefix, uri ) ;
         
@@ -379,4 +379,10 @@ public final class Node implements Serializable  {
        
    }
    
+   private String cleanQ ( String query ) {
+     return query == null ? null : 
+                     query.replaceAll("\n", " ")
+                          .replaceAll(" +", " ") ;
+    
+   }
 }
