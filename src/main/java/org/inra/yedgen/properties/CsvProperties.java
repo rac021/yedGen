@@ -20,26 +20,31 @@ public class CsvProperties {
     
     private ScriptsEngine scriptsEngine ;
     
-    public String process ( String column, String line ) {
+    public String process ( String key , String ... words )  {
         
-        List<String> propety = getPropety(column) ;
-        return processString(propety, line ) ;
+       List<String> functions = getFunctions(key)        ;
+        
+       if ( functions != null && ! functions.isEmpty() ) {
+           return processString( functions, words )      ;
+       }
+        
+       return String.join( " ", words ) ;
     }
     
-    private List<String> getPropety( String column ) {
+    private List<String> getFunctions( String column ) {
        return config.getList(column ) ;
     }
+    
+    private String processString ( List<String> functions , String ... words ) {
+        
+       String tmpLine = scriptsEngine.evaluate(functions.get(0), words ) ;
+       functions.remove(0)                                               ;
 
-    private String processString ( List<String> functions , String line ) {
+       for ( String function : functions ) {
+         tmpLine = scriptsEngine.evaluate ( function, tmpLine ) ;
+       }
         
-        String tmpLine = line ;
-        
-        for ( String function : functions ) {
-        
-            tmpLine = scriptsEngine.evaluate(function, tmpLine ) ;
-        }
-        
-        return tmpLine ;
+       return tmpLine ;
     }
     
     public CsvProperties( String csvFile, String jsFile  ) {
@@ -48,7 +53,7 @@ public class CsvProperties {
            this.scriptsEngine = new ScriptsEngine( jsFile )          ;
            this.config        = new PropertiesConfiguration(csvFile) ;
         } catch (ConfigurationException ex) {
-           Logger.getLogger( CsvProperties.class.getName() )
+            Logger.getLogger( CsvProperties.class.getName() )
                                           .log( Level.SEVERE, null, ex ) ;
         }
     }
