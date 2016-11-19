@@ -84,8 +84,11 @@ public class MetaPatternManager {
              int num = Integer.parseInt(nums[i])    ;
              tmp.add(csvLine.split(SEPARATOR)[num]) ;
           }
+            
+          String resScript = csvProperties.process( params , 
+                                                    tmp.toArray(new String[tmp.size()]) ) ;
+          Variable = variable.replaceAll ( params, resScript ) ;
 
-            variable = variable.replaceAll(params, String.join(":",tmp)) ;
         }
 
         return variable.replace(META_PATTERN_CONTEXT, MATCHER_PATTERN_CONTEXT  )
