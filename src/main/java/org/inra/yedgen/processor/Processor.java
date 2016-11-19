@@ -15,6 +15,7 @@ import org.inra.yedgen.processor.io.Writer;
 import org.inra.yedgen.graph.entities.Edge;
 import org.inra.yedgen.processor.io.ObdaHeader;
 import org.inra.yedgen.processor.entities.Node;
+import org.inra.yedgen.properties.CsvProperties;
 import org.inra.yedgen.properties.ObdaProperties;
 import org.inra.yedgen.graph.managers.ManagerEdge;
 import org.inra.yedgen.processor.entities.Variable;
@@ -45,10 +46,15 @@ public class Processor {
     private final ManagerNode            managerNode             ;
     private final ObdaHeader             obdaHeader              ;
     
+    private final CsvProperties          csvProperties           ;
+    
     private boolean                      verbose                 ;
     
     
-    public Processor( String directory , String extensionFile ) throws Exception  {
+    public Processor( String directory     , 
+                      String extensionFile ,
+                      String propertieFile ,
+                      String jsFile        ) throws Exception                {
    
       this.graphExtractor  =  new GraphExtractor ()                          ;
       graphExtractor.genGraphPopulatingManagers( directory , extensionFile ) ;
@@ -72,10 +78,13 @@ public class Processor {
                                                                 managerQuery     , 
                                                                 factoryNode  )   ;
       
+      this.csvProperties =        new CsvProperties( propertieFile, jsFile )     ;
+        
       this.metaPatternManager     = new  MetaPatternManager( graphExtractor.getMetaPatternHash()     ,
                                                              graphExtractor.getMetaPatternVariable() , 
                                                              graphExtractor.getMetaPatternContext()  , 
-                                                             graphExtractor.getMetaPatternParallel() ) ;
+                                                             graphExtractor.getMetaPatternParallel() ,
+                                                             csvProperties                         ) ;
       
       this.managerPatternParallel = new ManagerPatternParallel ( graphExtractor.getMapPatternParallels() , 
                                                                  managerUri     , 
