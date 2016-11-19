@@ -4,10 +4,12 @@ package org.inra.yedgen.properties;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.inra.yedgen.processor.io.Writer;
 import org.apache.commons.configuration.Configuration;
 import org.inra.yedgen.processor.scripts.ScriptsEngine;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
+
 
 /**
  *
@@ -15,10 +17,9 @@ import org.apache.commons.configuration.PropertiesConfiguration;
  */
 public class CsvProperties {
     
-    private Configuration config  = null                               ;
-    private String        prFile = "../data/csv-files/ola-properties"  ;
-    
-    private ScriptsEngine scriptsEngine ;
+    private Configuration config        = null ;
+   
+    private ScriptsEngine scriptsEngine = null ;
     
     public String process ( String key , String ... words )  {
         
@@ -28,14 +29,17 @@ public class CsvProperties {
            return processString( functions, words )      ;
        }
         
-       return String.join( ":", words ) ;
+       return String.join ( ":", words ) ;
     }
     
     private List<String> getFunctions( String column ) {
-       return config.getList(column ) ;
+       return config == null ? null   :
+              config.getList(column ) ;
     }
     
     private String processString ( List<String> functions , String ... words ) {
+       
+       if(scriptsEngine == null ) return String.join ( " ", words )      ;
         
        String tmpLine = scriptsEngine.evaluate(functions.get(0), words ) ;
        functions.remove(0)                                               ;
@@ -50,14 +54,25 @@ public class CsvProperties {
     public CsvProperties( String prFile, String jsFile  )    {
         
      try {
-           this.scriptsEngine = new ScriptsEngine ( jsFile ) ;
+            if ( Writer.existFile( jsFile ) )  {
+               this.scriptsEngine = new ScriptsEngine ( jsFile )       ;
+               System.out.println (" -> Loading js File : " + jsFile ) ;
+            }   
+            else if ( jsFile != null )  {
+                System.out.println (" -> Error Loading : js File [ " + 
+                                     jsFile + " ] doesn't exists " ) ;
+            }
          
-           if ( prFile != null && ! prFile.isEmpty() )  {
+           if ( Writer.existFile( prFile ) )  {
            
+               this.config = new PropertiesConfiguration( prFile )   ;
                System.out.println ( " -> Loading properties File : " + 
                                                    prFile )          ;
-               this.config = new PropertiesConfiguration( prFile )   ;
            }
+            else if ( prFile != null ) {
+               System.out.println (" -> Error Loading : properties File [ " 
+                                     + prFile + " ] doesn't exists " )    ;
+            }
          
         } catch (ConfigurationException ex) {
              Logger.getLogger( CsvProperties.class.getName() )
