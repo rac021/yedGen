@@ -16,7 +16,7 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 public class CsvProperties {
     
     private Configuration config  = null                               ;
-    private String        csvFile = "../data/csv-files/ola-properties" ;
+    private String        prFile = "../data/csv-files/ola-properties"  ;
     
     private ScriptsEngine scriptsEngine ;
     
@@ -47,11 +47,11 @@ public class CsvProperties {
        return tmpLine ;
     }
     
-    public CsvProperties( String csvFile, String jsFile  ) {
+    public CsvProperties( String prFile, String jsFile  ) {
         
      try {
            this.scriptsEngine = new ScriptsEngine( jsFile )          ;
-           this.config        = new PropertiesConfiguration(csvFile) ;
+           this.config        = new PropertiesConfiguration(prFile)  ;
         } catch (ConfigurationException ex) {
             Logger.getLogger( CsvProperties.class.getName() )
                                           .log( Level.SEVERE, null, ex ) ;
