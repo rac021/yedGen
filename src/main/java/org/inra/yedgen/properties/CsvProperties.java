@@ -59,19 +59,19 @@ public class CsvProperties {
                System.out.println (" -> Loading js File : " + jsFile ) ;
             }   
             else if ( jsFile != null )  {
-                System.out.println (" -> Error Loading : js File [ " + 
-                                     jsFile + " ] doesn't exists " ) ;
+                System.out.println (" -> Error Loading : js File [ "   + 
+                                     jsFile + " ] doesn't exist " )    ;
             }
          
            if ( Writer.existFile( prFile ) )  {
            
-               this.config = new PropertiesConfiguration( prFile )   ;
-               System.out.println ( " -> Loading properties File : " + 
-                                                   prFile )          ;
+               this.config = new PropertiesConfiguration( prFile )     ;
+               System.out.println ( " -> Loading properties File : "   + 
+                                                   prFile )            ;
            }
             else if ( prFile != null ) {
                System.out.println (" -> Error Loading : properties File [ " 
-                                     + prFile + " ] doesn't exists " )    ;
+                                     + prFile + " ] doesn't exist " )     ;
             }
          
         } catch (ConfigurationException ex) {
