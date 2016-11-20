@@ -7,7 +7,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
-import org.inra.yedgen.processor.io.Writer;
 
 /**
  *
@@ -37,19 +36,14 @@ public class ScriptsEngine {
     public ScriptsEngine ( String jsFile )     {
         
       try {
-            if ( Writer.existFile(jsFile) )  {
-                 this.engine = new ScriptEngineManager().getEngineByName("nashorn") ;
-                 this.engine.eval( new FileReader(jsFile) )                         ;
-                 System.out.println (" -> Loading js File : " + jsFile )            ;
-            }   
-            else {
-                  System.out.println (" -> Error Loading : js File [ " + jsFile     + 
-                                         " ] doesn't exists " )                     ;
-            }
+            this.engine = new ScriptEngineManager().getEngineByName("nashorn") ;
+            this.engine.eval( new FileReader(jsFile) )                         ;
             
       }  catch ( Exception ex ) {
          Logger.getLogger(ScriptsEngine.class.getName())
-                                             .log(Level.SEVERE, null, ex)           ;
+                                             .log(Level.SEVERE, null, ex)      ;
         }
     }
+    
 }
+
