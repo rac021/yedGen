@@ -7,7 +7,6 @@ package org.inra.yedgen.processor.errors;
  */
 public class MessageErrors {
     
-    
      public static void printMessageErrorContext(String id_pattern) {
         System.err.println("")   ;
         System.err.println(" Error // No Pattern context found with ID : " + id_pattern ) ;
@@ -53,27 +52,27 @@ public class MessageErrors {
      }
 
     public static void printMessageStartProcessVariableGraphGeneration() {
-       System.err.println("")   ;
-       System.err.println(" ************************** ") ;
-       System.err.println(" Process Graph Variables .. ") ;
-       System.err.println(" **************************** ") ;
-       System.err.println("")   ;
+       System.err.println("                             " ) ;
+       System.err.println(" --------------------------- " ) ;
+       System.err.println(" Process Graph Variables ... " ) ;
+       System.err.println(" --------------------------- " ) ;
+       System.err.println("                             " ) ;
      }
     
     public static void printMessageStartProcessCsvVariableGeneration( String path ) {
-       System.err.println("")   ;
-       System.err.println(" ************************ ") ;
-       System.err.println(" Process CSV Variables .. ") ;
-       System.err.println(" Path : " +  path          ) ;
-       System.err.println(" ************************ ") ;
-       System.err.println("")   ;
+       System.err.println("                          " ) ;
+       System.err.println(" ------------------------ " ) ;
+       System.err.println(" Process CSV Variables .. " ) ;
+       System.err.println(" Path : " +  path           ) ;
+       System.err.println(" ------------------------ " ) ;
+       System.err.println("                          " ) ;
      }
 
     public static void printMessageInfoGeneratedVariable( String variableName, String fileName ) {
-       System.err.println("")   ;
-       System.err.println(" Info // Variable : " + variableName + " Generated in Obda file -->  "
-                                                 + fileName )                                   ;
-       System.err.println("")   ;
+       System.err.println( "                                                                 " ) ;
+       System.err.println( " Info // Variable : " + variableName + " Generated in Obda file -->  "
+                                                 + fileName )                                    ;
+       System.err.println( "                                                                 " ) ;
     }
     
     public static void printErrorNumQueryNotFound( Integer numQuery ) {
@@ -117,6 +116,16 @@ public class MessageErrors {
     }
     
     public static void printSeparator() {
-        System.out.println("------------------------------------------------------------") ;
+        System.out.println( " ------------------------------------------------------------ " ) ;
+    }
+    
+    public static void printExtractionError() {
+       System.err.println(" ") ;
+       System.err.println(" Oops something went wrong during Extraction !! ") ;
+       System.err.println(" ") ;
+    }
+    
+    public static void printNotFoundLabelError()   {
+      System.out.println( " Label not Found !! " ) ;
     }
 }
