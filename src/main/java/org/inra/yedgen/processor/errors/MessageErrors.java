@@ -70,7 +70,8 @@ public class MessageErrors {
 
     public static void printMessageInfoGeneratedVariable( String variableName, String fileName ) {
        System.err.println("")   ;
-       System.err.println(" Info // Variable : " + variableName + " Generated in Obda file -->  " + fileName ) ;
+       System.err.println(" Info // Variable : " + variableName + " Generated in Obda file -->  "
+                                                 + fileName )                                   ;
        System.err.println("")   ;
     }
     
@@ -80,10 +81,14 @@ public class MessageErrors {
        System.out.println("")   ;
     }
     
-     public static void printErrorMatcher(String variableName, String subLine ) {
+    public static void printErrorMatcher(String variableName, String subLine ) {
         
-        System.out.println(" Error Matcher // Variable [ " + variableName   + 
-                           " ] doesn't contains Matcher for : " + subLine ) ; 
+       System.out.println(" Error Matcher // Variable [ " + variableName   + 
+                          " ] doesn't contains Matcher for : " + subLine ) ; 
     }
-     
+    
+     public static void printMessageErrorCSV( String csvFile ) {
+        System.out.println (" -> Error CSV File not found at path : " + csvFile ) ;
+    }
+    
 }
