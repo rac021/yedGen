@@ -314,7 +314,6 @@ public class Processor {
             processOnlyGraphWithoutVariables( outputFile )    ;
         }
     }
-
     
     private void checkMatchers( String variableName , String outLine ) {
    
