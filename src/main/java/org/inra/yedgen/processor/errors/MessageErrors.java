@@ -60,10 +60,11 @@ public class MessageErrors {
        System.err.println("")   ;
      }
     
-    public static void printMessageStartProcessCsvVariableGeneration() {
+    public static void printMessageStartProcessCsvVariableGeneration( String path ) {
        System.err.println("")   ;
        System.err.println(" ************************ ") ;
        System.err.println(" Process CSV Variables .. ") ;
+       System.err.println(" Path : " +  path          ) ;
        System.err.println(" ************************ ") ;
        System.err.println("")   ;
      }
