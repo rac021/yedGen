@@ -105,7 +105,7 @@
               <y:Geometry height="215.09918622990563" width="594.5127659912757" x="-4548.139677006934" y="-3377.998096937079"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="187.59375" modelName="custom" textColor="#000000" visible="true" width="594.5127659912757" x="0.0" y="13.75271811495304">Query_(1): SELECT dt.code AS dty_code, var.code AS var_code , 
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="187.59375" modelName="custom" textColor="#000000" visible="true" width="594.5127659912757" x="0.0" y="13.752718114952586">Query_(1): SELECT dt.code AS dty_code, var.code AS var_code , 
                             mc.mchimie_id AS mesure_id, vmc.vmchimie_id AS value_id  
                FROM public.datatype dt  
                INNER JOIN public.datatypevariableuniteglacpe dtvu 
@@ -951,7 +951,7 @@ ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:Lab
               <y:Geometry height="269.84329757366254" width="571.8214569643476" x="-3130.622350130734" y="-2268.0188307507224"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="215.53125" modelName="custom" textColor="#000000" visible="true" width="571.8214569643476" x="0.0" y="27.156023786831156">?VARIABLE :Water 
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="215.53125" modelName="custom" textColor="#000000" visible="true" width="571.8214569643476" x="0.0" y="27.156023786831156">!! ?VARIABLE :Water 
 
  { ?VAR_ENTITY_URI=ph } 
  { ?UNIT_STANDARD_NAME_GRAPH=:pHUnit} 
@@ -1053,7 +1053,7 @@ ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:Lab
  { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } 
  { ?DATATYPE_SQL='physico chimie' } 
  { ?VARIABLE_SQL='potassium'  } 
- { ?VARIABLE_STANDARD_NAME_GRAPH=:DissolvedPotassiumMassConcentration&gt;} 
+ { ?VARIABLE_STANDARD_NAME_GRAPH=:DissolvedPotassiumMassConcentration } 
  { ?VAR_CHARACTERISTIC_GRAPH=:MassConcentration }  
  { ?VAR_CHARACTERISTIC_NAME_URI=massConcentration } 
  { ?CATEGORY_STANDARD_NAME_GRAPH=:PhysicalChemistry }  
