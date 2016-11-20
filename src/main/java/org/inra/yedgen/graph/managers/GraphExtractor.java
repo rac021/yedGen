@@ -1,5 +1,4 @@
 
-
 package org.inra.yedgen.graph.managers;
 
 import org.json.XML;
@@ -21,6 +20,7 @@ import org.inra.yedgen.graph.utils.Utils;
 import org.inra.yedgen.graph.entities.Edge;
 import org.inra.yedgen.processor.entities.Node;
 import static java.util.stream.Collectors.toList;
+import org.inra.yedgen.processor.errors.MessageErrors;
 
 /**
  *
@@ -595,22 +595,32 @@ public class GraphExtractor {
     public void genGraphPopulatingManagers( String directory     ,
                                             String extensionFile ) throws Exception {
 
+        MessageErrors.printMessageExtractGraph( directory ) ;
+        
         boolean processed = false  ;
 
         List<Path> files = Files.list(new File(directory).toPath()).collect(toList()) ;
 
         for(Path path : files ) {
+         
             if(path.toString().endsWith(extensionFile )) {
-                process(path.toString() )           ;
-                if ( ! processed ) processed = true ;
+             
+                MessageErrors.printMessageProcessingGraphFile( path.toAbsolutePath()
+                                                                   .toString())    ;
+             
+                process(path.toString() )                          ;
+                if ( ! processed ) processed = true                ;
             }
         }
       
-        if( ! processed ) {
-            System.out.println ( " No File with extension '" + extensionFile + "' found !! " ) ;
-            System.out.println ( "                                                         " ) ;
-            System.exit ( 0 )                                                                  ; 
+        if ( ! processed ) {
+         
+            MessageErrors.printMessageFilesNotFoundExtentsion( directory, 
+                                                               extensionFile ) ;
+            System.exit ( 0 )                                                  ; 
         }
+     
+        MessageErrors.printSeparator();
     }
 
     public Map<Integer, Map<Integer, String>> getMapUris() {
