@@ -178,7 +178,12 @@ public class Processor {
    public boolean processOnlyCSV ( String outputFile , String csvFile )   {
          
      MessageErrors.printMessageStartProcessCsvVariableGeneration( csvFile ) ;
-         
+     
+     if( ! Writer.existFile ( csvFile ) )  {
+        MessageErrors.printMessageErrorCSV ( csvFile) ;
+        return false ;
+     }
+       
      String pattContext  = metaPatternManager.getMetaPatternContext()  ;
      String pattVariable = metaPatternManager.getMetaPatternVariable() ;
      String pattParallel = metaPatternManager.getMetaPatternParallel() ;
