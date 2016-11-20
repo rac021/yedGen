@@ -502,9 +502,7 @@ public class GraphExtractor {
                     
                 }
                 else {
-                    System.err.println(" ") ;
-                    System.err.println(" Oops something went wrong !! ")       ;
-                    System.err.println(" ") ;
+                    MessageErrors.printExtractionError() ;
                 }
             }
             
@@ -549,7 +547,7 @@ public class GraphExtractor {
                     }
                 }
                 else {
-                    System.out.println("Label not Found !!") ;
+                    MessageErrors.printNotFoundLabelError()    ;
                 }
 
                 String id    = jsonObject.getString("id")      ;
@@ -564,9 +562,7 @@ public class GraphExtractor {
 
             }
             else {
-                System.err.println(" ")          ;
-                System.err.println(" Oups !! " ) ;
-                System.err.println(" ")          ;
+                MessageErrors.printExtractionError() ;
             }
         }
     }
