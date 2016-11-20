@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.inra.yedgen.processor.io.Writer;
+import org.inra.yedgen.processor.errors.MessageErrors;
 import org.apache.commons.configuration.Configuration;
 import org.inra.yedgen.processor.scripts.ScriptsEngine;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
-
 
 /**
  *
@@ -52,32 +52,32 @@ public class CsvProperties {
     }
     
     public CsvProperties( String prFile, String jsFile  )    {
-        
+     
+     String typeJs         = "js File "         ;
+     String typeProperties = "properties File"  ;
+     
      try {
-            if ( Writer.existFile( jsFile ) )  {
-               this.scriptsEngine = new ScriptsEngine ( jsFile )       ;
-               System.out.println (" -> Loading js File : " + jsFile ) ;
-            }   
-            else if ( jsFile != null )  {
-                System.out.println (" -> Error Loading : js File [ "   + 
-                                     jsFile + " ] doesn't exist " )    ;
-            }
+          if ( Writer.existFile( jsFile ) )  {
+             this.scriptsEngine = new ScriptsEngine ( jsFile )  ;
+             MessageErrors.printLoadingFile( typeJs , jsFile )  ;
+          }   
+          else if ( jsFile != null )  {
+             MessageErrors.printErrorLoadingFile( typeJs , jsFile) ;
+          }
          
-           if ( Writer.existFile( prFile ) )  {
-           
-               this.config = new PropertiesConfiguration( prFile )     ;
-               System.out.println ( " -> Loading properties File : "   + 
-                                                   prFile )            ;
-           }
-            else if ( prFile != null ) {
-               System.out.println (" -> Error Loading : properties File [ " 
-                                     + prFile + " ] doesn't exist " )     ;
-            }
+         if ( Writer.existFile( prFile ) )  {
          
-        } catch (ConfigurationException ex) {
-             Logger.getLogger( CsvProperties.class.getName() )
-                                      .log( Level.SEVERE, null, ex ) ;
-        }
+             this.config = new PropertiesConfiguration( prFile )       ;
+             MessageErrors.printLoadingFile( typeProperties , prFile ) ;
+         }
+          else if ( prFile != null ) {
+            MessageErrors.printErrorLoadingFile( typeProperties , prFile ) ;
+          }
+       
+      } catch (ConfigurationException ex) {
+           Logger.getLogger( CsvProperties.class.getName() )
+                                    .log( Level.SEVERE, null, ex ) ;
+      }
     }
     
 }
