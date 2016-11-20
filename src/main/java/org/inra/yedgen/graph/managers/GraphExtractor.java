@@ -44,23 +44,10 @@ public class GraphExtractor {
     
     private Integer metaPatternHash                                        ;
     
-    private final Map<String,  String>  SourceDeclaration =  new  HashMap<>()   ;
-    //private final Map<String,  String>  meta_paterns      =  new  HashMap<>()   ;
-//    private final List<String>          VARIABLES         =  new  ArrayList<>() ;
-    private final Map<String , String>  prefixs             =  new  HashMap<>()   ;
+    private final Map<String,  String>  SourceDeclaration =  new  HashMap<>()    ;
+    private final Map<String , String>  prefixs           =  new  HashMap<>()    ;
 
-    public static String  PREFIX_PREDICAT          =  "oboe-coreX"              ;
-    
-    private static final String  PREFIXDECLARATION = "[PrefixDeclaration]"      ;
-    private static final String  PREF              =  "?pref		?uri"   ;
-
-    private static final String MAPPING_COLLECTION_BEGIN   = "[MappingDeclaration] @collection [[" ;
-
-    private static final String MAPPING_COLLECTION_PATTERN =  "mappingId	?id\n"      +
-                                                              "target		?target\n"  +
-                                                              "source		?source"    ;
-
-    private static final String MAPPING_COLLECTION_END     = "]]" ;
+    public static String  PREFIX_PREDICAT          =  "oboe-coreX"               ;
 
     private static final String  MATCHER_VARIABLE         = "?VARIABLE"          ;
     private static final String  MATCHER_PATTERN_CONTEXT  = "##PATTERN_CONTEXT"  ;
