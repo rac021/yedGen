@@ -88,8 +88,35 @@ public class MessageErrors {
                           " ] doesn't contains Matcher for : " + subLine ) ; 
     }
     
-     public static void printMessageErrorCSV( String csvFile ) {
-        System.out.println (" -> Error CSV File not found at path : " + csvFile ) ;
+    public static void printMessageErrorCSV( String csvFile ) {
+      System.out.println (" -> Error CSV File not found at path : " + csvFile ) ;
     }
     
+    public static void printMessageExtractGraph( String directory ) {
+      System.out.println("------------------------------------------------------------") ;
+      System.out.println(" Extracting Graph from Directory  : " + directory + "  ... " ) ;
+    }
+    
+    public static void printMessageProcessingGraphFile( String path ) {
+       System.out.println(" Processing Graph file            : " +path + " ... "      ) ;
+    }
+    
+    public static void printMessageFilesNotFoundExtentsion( String directory , String extension ) {
+      System.out.println ( " No File with extension [' " + extension + "' ]  found " +
+                           " in the Directory  : " + directory ) ;
+      System.out.println ( "                                                     " ) ;  
+    }
+    
+    public static void printLoadingFile(String type , String name) {
+      System.out.println (" -> Loading "+ type + " : " + name ) ;
+    }
+    
+    public static void printErrorLoadingFile(String type , String name) {
+      System.out.println (" -> Error Loading : " + type + " [ "   + 
+                                     name + " ] doesn't exist " )    ;
+    }
+    
+    public static void printSeparator() {
+        System.out.println("------------------------------------------------------------") ;
+    }
 }
