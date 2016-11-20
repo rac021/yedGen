@@ -68,7 +68,7 @@
         <node id="n0::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="84.75556877696363" width="289.9161572124435" x="-3908.12700457363" y="-2921.1281957213146"/>
+              <y:Geometry height="84.75556877696363" width="289.9161572124435" x="-3908.12700457363" y="-2906.7780992079447"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="289.9161572124435" x="0.0" y="32.393409388481814">Query_(6): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -85,7 +85,7 @@
         <node id="n0::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="84.75556877696363" width="281.2433909076469" x="-3601.140611233884" y="-2921.1281957213146"/>
+              <y:Geometry height="84.75556877696363" width="281.2433909076469" x="-3601.140611233884" y="-2906.7780992079447"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="281.2433909076469" x="0.0" y="32.393409388481814">Query_(7): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -102,10 +102,10 @@
         <node id="n0::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="215.09918622990563" width="588.6627901126906" x="-4548.139677006934" y="-3377.9980969370795"/>
+              <y:Geometry height="215.09918622990563" width="594.5127659912757" x="-4548.139677006934" y="-3377.998096937079"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="187.59375" modelName="custom" textColor="#000000" visible="true" width="588.6627901126906" x="0.0" y="13.752718114952586">Query_(1): SELECT dt.code AS dty_code, var.code AS var_code , 
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="187.59375" modelName="custom" textColor="#000000" visible="true" width="594.5127659912757" x="0.0" y="13.75271811495304">Query_(1): SELECT dt.code AS dty_code, var.code AS var_code , 
                             mc.mchimie_id AS mesure_id, vmc.vmchimie_id AS value_id  
                FROM public.datatype dt  
                INNER JOIN public.datatypevariableuniteglacpe dtvu 
@@ -162,7 +162,7 @@
               <y:Geometry height="199.52562741219708" width="599.0587230151887" x="-4552.685634030847" y="-2789.204767165941"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="173.625" modelName="custom" textColor="#000000" visible="true" width="599.0587230151887" x="0.0" y="12.950313706098768">Query_(2000): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id 
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="173.625" modelName="custom" textColor="#000000" visible="true" width="599.0587230151887" x="0.0" y="12.950313706098314">Query_(2000): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id 
                         FROM public.datatype dt  
                         INNER JOIN public.datatypevariableuniteglacpe dtvu 
                                    ON dt.id = dtvu.dty_id  
@@ -187,7 +187,7 @@
         <node id="n0::n6">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="199.52562741219708" width="589.3749352195109" x="-3909.2721555457483" y="-2818.4771542206736"/>
+              <y:Geometry height="199.52562741219708" width="589.3749352195109" x="-3909.2721555457483" y="-2789.204767165941"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="173.625" modelName="custom" textColor="#000000" visible="true" width="589.3749352195109" x="0.0" y="12.950313706098314">Query_(2001): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id 
@@ -252,10 +252,10 @@
         <node id="n0::n8">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="247.90069431174197" width="588.218047070066" x="-3909.2721555457483" y="-2578.56702714906"/>
+              <y:Geometry height="276.0669495091324" width="588.218047070066" x="-3909.2721555457483" y="-2566.680310277854"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="187.59375" modelName="custom" textColor="#000000" visible="true" width="588.218047070066" x="0.0" y="30.153472155870986">Query_(50): SELECT DISTINCT dt.code AS dty_code,  
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="187.59375" modelName="custom" textColor="#000000" visible="true" width="588.218047070066" x="0.0" y="44.236599754566214">Query_(50): SELECT DISTINCT dt.code AS dty_code,  
                                  mc.mchimie_id AS mesure_id 
                     FROM datatype dt  
                     INNER JOIN datatypevariableuniteglacpe dtvu 
@@ -284,7 +284,7 @@
               <y:Geometry height="247.90069431174243" width="599.0587230151884" x="-4552.685634030847" y="-2219.578441222231"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="173.625" modelName="custom" textColor="#000000" visible="true" width="599.0587230151884" x="0.0" y="37.13784715587144">Query_(51): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, 
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="173.625" modelName="custom" textColor="#000000" visible="true" width="599.0587230151884" x="0.0" y="37.137847155870986">Query_(51): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, 
                                 mc.profondeurmin AS depth_min FROM datatype dt 
                                 INNER JOIN datatypevariableuniteglacpe dtvu 
                                            ON dt.id = dtvu.dty_id  
@@ -309,7 +309,7 @@
         <node id="n0::n10">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="218.77917661695892" width="584.3576557031433" x="-3905.4117641788253" y="-2205.0176823748398"/>
+              <y:Geometry height="218.77917661695892" width="584.3576557031433" x="-3905.4117641788253" y="-2190.4569235274475"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="187.59375" modelName="custom" textColor="#000000" visible="true" width="584.3576557031433" x="0.0" y="15.592713308479688">Query_(53): SELECT DISTINCT dt.code AS dty_code, mc.mchimie_id AS mesure_id, 
@@ -403,7 +403,7 @@
         <node id="n0::n13">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="47.70456247978018" width="296.8041855138499" x="-3928.5511935148934" y="-2290.2818331779017"/>
+              <y:Geometry height="47.70456247978018" width="296.8041855138499" x="-3928.5511935148934" y="-2265.2474269071154"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="296.8041855138499" x="0.0" y="13.86790623989009">Query_(52): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -420,7 +420,7 @@
         <node id="n0::n14">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="47.70456247978018" width="296.8041855138499" x="-3616.7014058400873" y="-2290.2818331779017"/>
+              <y:Geometry height="47.70456247978018" width="296.8041855138499" x="-3616.7014058400873" y="-2265.2474269071154"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.96875" modelName="custom" textColor="#000000" visible="true" width="296.8041855138499" x="0.0" y="13.86790623989009">Query_(54): SELECT id from (values ('1')) s(id) ;<y:LabelModel>
@@ -917,7 +917,7 @@ ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:Lab
               <y:Geometry height="30.0" width="1710.8741626426147" x="-3130.622350130734" y="-2813.8826980526774"/>
               <y:Fill color="#FFFF99" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1365.8125" x="172.53083132130723" y="6.015625">##PATTERN_CONTEXT_1 20 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Ammonium Q_20 ] [ oboe-core:Observation_Solutes Q_21 ] [ oboe-core:Observation_Water Q_22 ] <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1426.890625" x="141.99176882130723" y="6.015625">##PATTERN_CONTEXT_1 2000 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Ammonium Q_2000 ] [ oboe-core:Observation_Solutes Q_2001 ] [ oboe-core:Observation_Water Q_2002 ] <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -934,7 +934,7 @@ ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:Lab
               <y:Geometry height="30.0" width="1710.8741626426147" x="-3130.622350130734" y="-2763.1320790638392"/>
               <y:Fill color="#FFFF99" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1094.11328125" x="308.38044069630723" y="6.015625">##PATTERN_CONTEXT_2 20 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Solutes Q_21 ] [ oboe-core:Observation_Water Q_22] <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1143.736328125" x="283.56891725880723" y="6.015625">##PATTERN_CONTEXT_2 2000 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Solutes Q_2001 ] [ oboe-core:Observation_Water Q_2002 ] <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -982,7 +982,7 @@ ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:Lab
               <y:Geometry height="30.0" width="1710.8741626426147" x="-3130.622350130734" y="-2712.381460075"/>
               <y:Fill color="#FFFF99" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="851.154296875" x="429.85993288380723" y="6.015625">##PATTERN_CONTEXT_3 20 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Water Q_22] <y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="885.5078125" x="412.68317507130723" y="6.015625">##PATTERN_CONTEXT_3 2000 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_Water Q_2002 ] <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
