@@ -21,7 +21,7 @@ public class Main {
                                              .getLocation()
                                              .getPath())
                                              .getParent() ;
-     System.setProperty("log", directory + "logs/yedGen/logs.log") ;
+     System.setProperty("log", directory + "/logs/yedGen/logs.log") ;
     }
   
   }
