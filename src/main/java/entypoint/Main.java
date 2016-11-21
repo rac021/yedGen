@@ -16,12 +16,12 @@ public class Main {
  static {
     String property =         System.getProperty("log") ;
     if (   property == null ) {
-      String directory = new File ( Main.class.getProtectionDomain()
-                                              .getCodeSource()
-                                              .getLocation()
-                                              .getPath())
-                                              .getParent() ;
-      System.setProperty("log", directory + "logs/yedGen.log")      ;
+     String directory = new File ( Main.class.getProtectionDomain()
+                                             .getCodeSource()
+                                             .getLocation()
+                                             .getPath())
+                                             .getParent() ;
+     System.setProperty("log", directory + "logs/yedGen/logs.log") ;
     }
   
   }
