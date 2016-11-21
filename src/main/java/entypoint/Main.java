@@ -12,6 +12,19 @@ import org.inra.yedgen.processor.Processor;
  
 public class Main {
     
+ static {
+    String property =         System.getProperty("log") ;
+    if (   property == null ) {
+      String directory = new File ( Main.class.getProtectionDomain()
+                                              .getCodeSource()
+                                              .getLocation()
+                                              .getPath())
+                                              .getParent() ;
+      System.setProperty("log", directory + "/logs")       ;
+    }
+  
+  }
+ 
   public static void main (String[] args) throws Exception    {
         
     String directory = null , outFile = null , ext = null , csv = null ;
