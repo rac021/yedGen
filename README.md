@@ -11,7 +11,7 @@
    - `-d   : Directory where graphml files are located `
    - `-out : Path of output mapping obda file `
    - `-ext : extension of files involved in the process `
-   - `-csv : Path od the CSV file ( containing variables )`
+   - `-csv : Path of the CSV file ( containing variables )`
    - `-ig  : include listed variables in graphml files`
    - `-v   :  enable verbose mode // not implemented yet`   
    
