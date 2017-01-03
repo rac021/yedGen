@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import org.inra.yedgen.processor.entities.Node;
-import org.inra.yedgen.processor.errors.MessageErrors;
+import org.inra.yedgen.processor.errors.Messages;
 import org.inra.yedgen.processor.factories.FactoryNode;
 
 /**
@@ -71,7 +71,7 @@ public class ManagerPatternParallel {
             hash = findParallelPatternByID ( id_pattern ) ;
    
             if( hash == null ) {
-                MessageErrors.printMessageErrorParallel( id_pattern ) ;
+                Messages.printMessageErrorParallel( id_pattern ) ;
                 return nodes ;
             }
             
@@ -79,7 +79,7 @@ public class ManagerPatternParallel {
         }
         
         if( pattern == null ) {
-             MessageErrors.printMessageErrorParallel(id_pattern) ;
+             Messages.printMessageErrorParallel(id_pattern) ;
              return nodes ;
         }
          

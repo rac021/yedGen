@@ -5,7 +5,7 @@ package org.inra.yedgen.processor.errors;
  *
  * @author ryahiaoui
  */
-public class MessageErrors {
+public class Messages {
     
      public static void printMessageErrorContext(String id_pattern) {
         System.err.println("")   ;

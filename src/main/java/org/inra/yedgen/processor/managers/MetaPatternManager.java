@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.inra.yedgen.properties.CsvProperties;
-import static org.inra.yedgen.processor.errors.MessageErrors.* ;
+import static org.inra.yedgen.processor.errors.Messages.* ;
 /**
  *
  * @author ryahiaoui
@@ -77,7 +77,7 @@ public class MetaPatternManager {
                               .trim()           ;
           String[] nums    = params.split("_")  ;
             
-          List<String> tmp = new ArrayList<>();
+          List<String> tmp = new ArrayList<>()  ;
             
           for( int i = 1 ; i < nums.length ; i ++ ) {
               
@@ -110,12 +110,12 @@ public class MetaPatternManager {
         
         int variablesColumnNum = Integer.parseInt( matcher.split(" ")[0].split("_COLUMN_")[1]) ;
         
-        String nums            = matcher.split("Q_")[1] ;
-        int startQueryNum      = Integer.parseInt(nums.split("_")[0])         ;
-        int middleQueryNum     = Integer.parseInt(nums.split("_")[1])         ;
-        int endQueryNum        = Integer.parseInt(nums.split("_")[2])         ;
+        String nums            = matcher.split("Q_")[1]               ;
+        int    startQueryNum   = Integer.parseInt(nums.split("_")[0]) ;
+        int    middleQueryNum  = Integer.parseInt(nums.split("_")[1]) ;
+        int    endQueryNum     = Integer.parseInt(nums.split("_")[2]) ;
         
-        int loop                  = startQueryNum ;
+        int loop               = startQueryNum                        ;
         
         if(csvLine.split(SEPARATOR)[variablesColumnNum].trim().length() == 0 ) return null ;
         

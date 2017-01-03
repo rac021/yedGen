@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import org.inra.yedgen.processor.entities.Node;
 import org.inra.yedgen.graph.managers.GraphExtractor;
-import org.inra.yedgen.processor.errors.MessageErrors;
+import org.inra.yedgen.processor.errors.Messages;
 import org.inra.yedgen.processor.factories.FactoryNode;
 
 /**
@@ -62,7 +62,7 @@ public class ManagerPatternContext {
         }
         else if ( PATTERNS_CONTEXT.get(hash) == null ) {
 
-             MessageErrors.printMessageErrorContext(id_pattern) ;
+             Messages.printMessageErrorContext(id_pattern) ;
              return nodes                                       ;
         }
         else {
@@ -71,7 +71,7 @@ public class ManagerPatternContext {
         
         
         if( pattern == null ) {
-            MessageErrors.printMessageErrorContext(id_pattern) ;
+            Messages.printMessageErrorContext(id_pattern) ;
             return nodes                                       ;
         }
          
@@ -107,7 +107,7 @@ public class ManagerPatternContext {
             String queryForSubject =  managerQuery.getQuery( hash, numQuery ) ; 
             
             if( queryForSubject == null ) {
-               MessageErrors.printErrorNumQueryNotFound( numQuery );
+               Messages.printErrorNumQueryNotFound( numQuery );
             }
             
             String uriSubject = URI_PATTERN.replace(MATCHER_ENTITY , cleanName(entityName) ) ;

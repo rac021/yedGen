@@ -23,7 +23,7 @@ import org.inra.yedgen.processor.managers.ManagerUri;
 import org.inra.yedgen.graph.managers.ManagerConcept;
 import org.inra.yedgen.graph.managers.GraphExtractor;
 import org.inra.yedgen.processor.managers.ManagerNode;
-import org.inra.yedgen.processor.errors.MessageErrors;
+import org.inra.yedgen.processor.errors.Messages;
 import org.inra.yedgen.processor.factories.FactoryNode;
 import org.inra.yedgen.processor.managers.ManagerQuery;
 import org.inra.yedgen.processor.managers.ManagerVariable;
@@ -134,7 +134,7 @@ public class Processor {
 
     public boolean processOnlyGraphVariables ( String outputFile )        {
       
-      MessageErrors.printMessageStartProcessVariableGraphGeneration()     ;
+      Messages.printMessageStartProcessVariableGraphGeneration()     ;
       
       for( Variable variable : managerVariable.getVariables()) {
      
@@ -163,7 +163,7 @@ public class Processor {
             Writer.checkFile( outFile )           ;
             Writer.writeTextFile(outPut, outFile) ;
             
-            MessageErrors.printMessageInfoGeneratedVariable( variable.getVariableName() ,
+            Messages.printMessageInfoGeneratedVariable( variable.getVariableName() ,
                                                              outFile                  ) ;
 
          } catch (IOException ex) {
@@ -177,10 +177,10 @@ public class Processor {
     
    public boolean processOnlyCSV ( String outputFile , String csvFile )     {
          
-     MessageErrors.printMessageStartProcessCsvVariableGeneration( csvFile ) ;
+     Messages.printMessageStartProcessCsvVariableGeneration( csvFile ) ;
      
      if( ! Writer.existFile ( csvFile ) )  {
-        MessageErrors.printMessageErrorCSV ( csvFile) ;
+        Messages.printMessageErrorCSV ( csvFile) ;
         return true ;
      }
        
@@ -192,15 +192,13 @@ public class Processor {
           pattVariable == null   ||
           pattParallel == null    )                   {
                      
-         MessageErrors.printMessageMetaPatternsNull() ;
+         Messages.printMessageMetaPatternsNull() ;
          return false                                 ;
      }
   
      try {
             
-         Files.lines ( Paths.get(csvFile) ).skip(1).forEach (
-                    
-           (String line) -> {
+         Files.lines ( Paths.get(csvFile) ).skip(1).forEach ((String line) -> {
                      
                List<String> outPut    = new ArrayList<>() ;
                  
@@ -235,7 +233,7 @@ public class Processor {
                 Writer.checkFile( outFile )           ;
                 Writer.writeTextFile(outPut, outFile) ;
                        
-                MessageErrors.printMessageInfoGeneratedVariable( variable.getVariableName() ,
+                Messages.printMessageInfoGeneratedVariable( variable.getVariableName() ,
                                                                  outFile                  ) ;
                        
               } catch (IOException ex) {
@@ -284,7 +282,7 @@ public class Processor {
             Writer.checkFile( outFile )           ;
             Writer.writeTextFile(outPut, outFile) ;
             
-            MessageErrors.printMessageInfoGeneratedVariable( "Undefined Variable" ,
+            Messages.printMessageInfoGeneratedVariable( "Undefined Variable" ,
                                                              outFile            ) ;
 
          } catch (IOException ex) {
@@ -326,7 +324,7 @@ public class Processor {
         
         for ( String patt : patts ) {
            if ( patt.contains("?") )
-           MessageErrors.printErrorMatcher( variableName , patt ) ; 
+           Messages.printErrorMatcher( variableName , patt ) ; 
         }
     }
 

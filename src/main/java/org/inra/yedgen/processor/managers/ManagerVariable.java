@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 import org.inra.yedgen.processor.entities.Node;
 import org.inra.yedgen.processor.entities.PatternParallel;
 import org.inra.yedgen.processor.entities.Variable;
-import org.inra.yedgen.processor.errors.MessageErrors;
+import org.inra.yedgen.processor.errors.Messages;
 
 /**
  *
@@ -172,7 +172,7 @@ public class ManagerVariable {
             patternContextId  != null 
             && patternContext == null  )
             
-        MessageErrors.printMessageErrorContext( patternContextId , variableName ) ;
+        Messages.printMessageErrorContext( patternContextId , variableName ) ;
         
        return new Variable( hash                    , 
                             id                      ,  

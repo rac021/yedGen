@@ -20,7 +20,7 @@ import org.inra.yedgen.graph.utils.Utils;
 import org.inra.yedgen.graph.entities.Edge;
 import org.inra.yedgen.processor.entities.Node;
 import static java.util.stream.Collectors.toList;
-import org.inra.yedgen.processor.errors.MessageErrors;
+import org.inra.yedgen.processor.errors.Messages;
 
 /**
  *
@@ -502,7 +502,7 @@ public class GraphExtractor {
                     
                 }
                 else {
-                    MessageErrors.printExtractionError() ;
+                    Messages.printExtractionError() ;
                 }
             }
             
@@ -547,7 +547,7 @@ public class GraphExtractor {
                     }
                 }
                 else {
-                    MessageErrors.printNotFoundLabelError()    ;
+                    Messages.printNotFoundLabelError()    ;
                 }
 
                 String id    = jsonObject.getString("id")      ;
@@ -562,7 +562,7 @@ public class GraphExtractor {
 
             }
             else {
-                MessageErrors.printExtractionError() ;
+                Messages.printExtractionError() ;
             }
         }
     }
@@ -578,7 +578,7 @@ public class GraphExtractor {
     public void genGraphPopulatingManagers( String directory     ,
                                             String extensionFile ) throws Exception {
 
-        MessageErrors.printMessageExtractGraph( directory ) ;
+        Messages.printMessageExtractGraph( directory ) ;
         
         boolean processed = false  ;
 
@@ -588,7 +588,7 @@ public class GraphExtractor {
          
             if(path.toString().endsWith(extensionFile )) {
              
-                MessageErrors.printMessageProcessingGraphFile( path.toAbsolutePath()
+                Messages.printMessageProcessingGraphFile( path.toAbsolutePath()
                                                                    .toString())    ;
              
                 process(path.toString() )                          ;
@@ -598,12 +598,12 @@ public class GraphExtractor {
       
         if ( ! processed ) {
          
-            MessageErrors.printMessageFilesNotFoundExtentsion( directory, 
+            Messages.printMessageFilesNotFoundExtentsion( directory, 
                                                                extensionFile ) ;
             System.exit ( 0 )                                                  ; 
         }
      
-        MessageErrors.printSeparator();
+        Messages.printSeparator();
     }
 
     public Map<Integer, Map<Integer, String>> getMapUris() {

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.inra.yedgen.processor.io.Writer;
-import org.inra.yedgen.processor.errors.MessageErrors;
+import org.inra.yedgen.processor.errors.Messages;
 import org.apache.commons.configuration.Configuration;
 import org.inra.yedgen.processor.scripts.ScriptsEngine;
 import org.apache.commons.configuration.ConfigurationException;
@@ -59,19 +59,19 @@ public class CsvProperties {
      try {
           if ( Writer.existFile( jsFile ) )  {
              this.scriptsEngine = new ScriptsEngine ( jsFile )  ;
-             MessageErrors.printLoadingFile( typeJs , jsFile )  ;
+             Messages.printLoadingFile( typeJs , jsFile )  ;
           }   
           else if ( jsFile != null )  {
-             MessageErrors.printErrorLoadingFile( typeJs , jsFile) ;
+             Messages.printErrorLoadingFile( typeJs , jsFile) ;
           }
          
          if ( Writer.existFile( prFile ) )  {
          
              this.config = new PropertiesConfiguration( prFile )       ;
-             MessageErrors.printLoadingFile( typeProperties , prFile ) ;
+             Messages.printLoadingFile( typeProperties , prFile ) ;
          }
           else if ( prFile != null ) {
-            MessageErrors.printErrorLoadingFile( typeProperties , prFile ) ;
+            Messages.printErrorLoadingFile( typeProperties , prFile ) ;
           }
        
       } catch (ConfigurationException ex) {
