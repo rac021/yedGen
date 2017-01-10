@@ -186,17 +186,15 @@ public class Processor {
         Messages.printMessageErrorCSV ( csvFile) ;
         return true ;
      }
-       
-     String pattContext  = metaPatternManager.getMetaPatternContext()  ;
-     String pattVariable = metaPatternManager.getMetaPatternVariable() ;
-     String pattParallel = metaPatternManager.getMetaPatternParallel() ;
-         
-     if( pattContext  == null   ||
-          pattVariable == null  ||
-          pattParallel == null   )                   {
+      
+     /* Check and skip if patterns are null */ 
+     
+     if( metaPatternManager.getMetaPatternContext()  == null   ||
+         metaPatternManager.getMetaPatternVariable() == null   ||
+         metaPatternManager.getMetaPatternParallel() == null   )  {
                      
-         Messages.printMessageMetaPatternsNull() ;
-         return false                                 ;
+           Messages.printMessageMetaPatternsNull() ;
+           return false                            ;
      }
   
      try {
