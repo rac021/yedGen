@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import org.apache.commons.lang.StringUtils;
 import org.inra.yedgen.properties.ObdaProperties;
 import static java.util.stream.Collectors.joining;
+import org.inra.yedgen.processor.managers.ManagerVariable;
 
 /**
  *
@@ -29,7 +30,7 @@ public final class Node implements Serializable  {
     private       String  type          ;
     private final String  label         ;
     private       String  query         ;
-    private       String  uriObject     ;
+    private final String  uriObject     ;
     private       String  queryObject   ;
     private       String  predicat      ;
     private final String  defaultPrefix ; 
@@ -189,7 +190,7 @@ public final class Node implements Serializable  {
             return false;
         }
         final Node other = (Node) obj;
-        if (this.hash != other.hash) {
+        if (!Objects.equals(this.hash, other.hash)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
@@ -274,6 +275,20 @@ public final class Node implements Serializable  {
       this.addPredicatWithObjects(patternContextValues ) ;
     
     }
+    
+    
+    public void removeEmptyOptionalEntry( String value ) {
+
+        predicatsValues.entrySet()
+                       .stream()
+                       .filter( entry -> entry.getValue().contains(value) )
+                       .map (   entry -> { entry.getValue().remove(value) ; return entry ; } )
+                       .map (   entry -> { return entry.getKey() ; } )
+                       .count() ;
+                
+        predicatsValues.values().removeIf( set ->  set.isEmpty() ) ;
+      
+    }
 
     public void updatePatternValue( String pattern, String uri ) {
 
@@ -315,6 +330,13 @@ public final class Node implements Serializable  {
    
     public void applyKeyValue ( String pattern , String value ) {
         
+        if( value  == null     ||
+            value.isEmpty()    || 
+            value.equals(":") ) {
+            
+            value = ManagerVariable.OPTIONAL_NODE ;
+        }
+        
         for (Iterator< Set<String> > iterator = this.predicatsValues.values().iterator(); iterator.hasNext();) {
              
             Set<String> set = iterator.next() ;
@@ -331,11 +353,11 @@ public final class Node implements Serializable  {
             
         }
         
-        uri         =  uri         != null ? uri.replace( pattern, value )         : uri         ;
-        type        =  type        != null ? type.replace( pattern, value )        : type        ;
-        query       =  query       != null ? query.replace( pattern, value )       : query       ;
-        predicat    =  predicat    != null ? predicat.replace( pattern, value )    : predicat    ;
-        queryObject =  queryObject != null ? queryObject.replace( pattern, value ) : queryObject ;
+        uri         =  uri         != null ? uri.replace( pattern, cleanValue(value) ) : uri         ;
+        type        =  type        != null ? type.replace( pattern, value )            : type        ;
+        query       =  query       != null ? query.replace( pattern, value )           : query       ;
+        predicat    =  predicat    != null ? predicat.replace( pattern, value )        : predicat    ;
+        queryObject =  queryObject != null ? queryObject.replace( pattern, value )     : queryObject ;
         
     }
     
@@ -384,5 +406,12 @@ public final class Node implements Serializable  {
                      query.replaceAll("\n", " ")
                           .replaceAll(" +", " ") ;
     
+   }
+   
+   public static String cleanValue( String value ) {
+       return value.replace(":" , "")
+                   .replace("'" , "")
+                   .replace("\"", "")
+                   .replaceAll(" +" , "") ;
    }
 }

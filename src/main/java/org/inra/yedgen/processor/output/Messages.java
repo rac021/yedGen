@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.processor.errors;
+package org.inra.yedgen.processor.output;
 
 /**
  *
@@ -127,5 +127,13 @@ public class Messages {
     
     public static void printNotFoundLabelError()   {
       System.out.println( " Label not Found !! " ) ;
+    }
+    
+    public static void printMessage( String message ) {
+      System.out.println( " \n " + message + " \n " ) ;
+    }
+    
+    public static void printMessageError( String message ) {
+      System.out.println( " \n " + message + " \n " ) ;
     }
 }

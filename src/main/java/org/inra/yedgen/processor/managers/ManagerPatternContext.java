@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import org.inra.yedgen.processor.entities.Node;
 import org.inra.yedgen.graph.managers.GraphExtractor;
-import org.inra.yedgen.processor.errors.Messages;
+import org.inra.yedgen.processor.output.Messages;
 import org.inra.yedgen.processor.factories.FactoryNode;
 
 /**
@@ -249,9 +249,9 @@ public class ManagerPatternContext {
         this.PATTERNS_CONTEXT = PATTERNS_CONTEXT ;
     }
 
-    public List<Node> linkNodes ( Node parentContextNode , 
-                                          Node patternNode       , 
-                                          String pattern         , 
+    public List<Node> linkNodes ( Node parentContextNode    , 
+                                          Node patternNode  , 
+                                          String pattern    , 
                                           List<Node> patternContextNodes ) {
         
         if(patternContextNodes.isEmpty() ) {

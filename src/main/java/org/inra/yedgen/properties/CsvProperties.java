@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.inra.yedgen.processor.io.Writer;
-import org.inra.yedgen.processor.errors.Messages;
+import org.inra.yedgen.processor.output.Messages;
 import org.apache.commons.configuration.Configuration;
 import org.inra.yedgen.processor.scripts.ScriptsEngine;
 import org.apache.commons.configuration.ConfigurationException;
@@ -17,12 +17,13 @@ import org.apache.commons.configuration.PropertiesConfiguration;
  */
 public class CsvProperties {
     
-    private Configuration config        = null ;
-   
+    private Configuration config        = null ;   
     private ScriptsEngine scriptsEngine = null ;
-    
-    public String process ( String key , String ... words )  {
         
+    public String process ( String key , String ... words )  {
+      
+       if (words.length == 0 ) return ""                 ;
+       
        List<String> functions = getFunctions(key)        ;
         
        if ( functions != null && ! functions.isEmpty() ) {
@@ -37,8 +38,8 @@ public class CsvProperties {
               config.getList(column ) ;
     }
     
-    private String processString ( List<String> functions , String ... words ) {
-       
+    private String processString ( List<String> functions , String ... words ) {       
+      
        if(scriptsEngine == null ) return String.join ( " ", words )      ;
         
        String tmpLine = scriptsEngine.evaluate(functions.get(0), words ) ;
@@ -58,26 +59,36 @@ public class CsvProperties {
      
      try {
           if ( Writer.existFile( jsFile ) )  {
-             this.scriptsEngine = new ScriptsEngine ( jsFile )  ;
-             Messages.printLoadingFile( typeJs , jsFile )  ;
+               this.scriptsEngine = new ScriptsEngine ( jsFile ) ;
+               Messages.printLoadingFile( typeJs , jsFile )      ;
           }   
           else if ( jsFile != null )  {
-             Messages.printErrorLoadingFile( typeJs , jsFile) ;
+               Messages.printErrorLoadingFile( typeJs , jsFile)  ;
           }
          
          if ( Writer.existFile( prFile ) )  {
-         
-             this.config = new PropertiesConfiguration( prFile )       ;
-             Messages.printLoadingFile( typeProperties , prFile ) ;
+               this.config = new PropertiesConfiguration( prFile )  ;
+               Messages.printLoadingFile( typeProperties , prFile ) ;
          }
           else if ( prFile != null ) {
-            Messages.printErrorLoadingFile( typeProperties , prFile ) ;
+             Messages.printErrorLoadingFile( typeProperties , prFile ) ;
           }
        
       } catch (ConfigurationException ex) {
-           Logger.getLogger( CsvProperties.class.getName() )
-                                    .log( Level.SEVERE, null, ex ) ;
+            Logger.getLogger( CsvProperties.class.getName() )
+                                           .log( Level.SEVERE, null, ex ) ;
       }
+     
     }
+
+    public Configuration getConfig() {
+        return config;
+    }
+
+    public ScriptsEngine getScriptsEngine() {
+        return scriptsEngine;
+    }
+    
+    
     
 }

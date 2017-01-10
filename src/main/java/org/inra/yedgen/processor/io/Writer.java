@@ -16,6 +16,28 @@ import java.util.List;
  * @author ryahiaoui
  */
 public class Writer {
+
+    public static String getFolder(String outputFile ) {
+       Path path = Paths.get(outputFile)  ;
+       return path.getParent().toString() ;
+    }
+
+    public static String getfileName(String outputFile) {
+         Path path = Paths.get(outputFile)    ;
+         return path.getFileName().toString() ;
+    }
+    
+      
+    public static String getFileExtension( String fileName ) {      
+        if(fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0 )
+        return fileName.substring(fileName.lastIndexOf(".") ) ;
+        else return "";
+    }
+     
+    public static String getFileWithoutExtension( String fileName ) {      
+         return fileName.replaceFirst("[.][^.]+$", "") ;
+    }
+     
     
       
     public List<String> readTextFile(String fileName) throws IOException {

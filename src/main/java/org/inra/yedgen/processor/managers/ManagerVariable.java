@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 import org.inra.yedgen.processor.entities.Node;
 import org.inra.yedgen.processor.entities.PatternParallel;
 import org.inra.yedgen.processor.entities.Variable;
-import org.inra.yedgen.processor.errors.Messages;
+import org.inra.yedgen.processor.output.Messages;
 
 /**
  *
@@ -22,7 +22,11 @@ public class ManagerVariable {
     public static final String PATTERN_CONTEXT  = "##PATTERN_CONTEXT"  ;
     public static final String PATTERN_PARALLEL = "##PATTERN_PARALLEL" ;
     public static final String PATTERN_VARIABLE = "?VARIABLE"          ;
+    
+    public static final String INTRA_COLUMN_SPLITTER  = ","            ;
 
+    public static final String OPTIONAL_NODE          = "##NULL##"     ;
+    
     private final ManagerPatternContext  managerPatternContext         ;
     private final ManagerPatternParallel managerPatternParallel        ;
     private final ManagerNode            managerNode                   ;
@@ -117,8 +121,13 @@ public class ManagerVariable {
                                    .replace("}","").trim()
                                    .replaceAll(" +", " ") ;
                    
-           String key   = param.split("=")[0].trim() ;
-           String value = param.split("=")[1].trim() ;
+            String key   = param.split("=")[0].trim() ;
+            String value = null                       ;
+            
+           if(param.split("=").length > 1 ) {
+                   value = param.split("=")[1].trim() ;
+           }
+           
            mapKeyValuesVariable.put(key, value)      ;
            
        }
@@ -194,29 +203,47 @@ public class ManagerVariable {
       Set<Node> generatedGraphNodes = generateGraphIncludingContext( PATTERN_CONTEXT                 , 
                                                                      variable.getPatternContext()  ) ;
       int nbPatternParallel = 0 ;
-      
+           
       for ( PatternParallel patternParallel : variable.getPatternParallel() ) {
-          
-        List<Node> generatePatternParallel = managerPatternParallel.
-                                             genereatePatternParallel ( variable.getHash()        , 
-                                                                        patternParallel.getId() ) ;
-        if( nbPatternParallel != 0 ) {
-            int updateCode = nbPatternParallel ;
-            generatePatternParallel.stream().forEach( node -> node.addToCode( updateCode ) ) ;
+        
+        Map<String, String> keyValues = patternParallel.getKeyValues() ;
+        
+        String deepest = keyValues.values()
+                                  .stream()
+                                  .max( ( s1, s2 ) -> s1.split(",").length >
+                                          s2.split(",").length ? 1 : -1 )
+                                  .orElse("") ;
+        
+        int repeat = deepest.split(ManagerVariable.INTRA_COLUMN_SPLITTER).length ;
+        
+        for ( int parallelIndex = 0 ; parallelIndex < repeat ; parallelIndex++ ) {
+                
+            List<Node> generatePatternParallel = managerPatternParallel.
+                                                 genereatePatternParallel ( variable.getHash()        ,
+                                                                            patternParallel.getId() ) ;
+            if( nbPatternParallel != 0 )  {
+                int updateCode = nbPatternParallel ;
+                generatePatternParallel.stream()
+                                       .forEach( node -> node.addToCode( updateCode ) ) ;
+            }
+
+            if( ! generatePatternParallel.isEmpty() ) {
+
+                managerPatternParallel.applyKeyValuesAtIndex(new HashSet<>(generatePatternParallel) , 
+                                                       patternParallel.getKeyValues()         ,
+                                                       parallelIndex ,
+                                                       ManagerVariable.INTRA_COLUMN_SPLITTER ) ;
+
+                StickPatternParallelNodes( managerNode.find( node -> node.hasPredicateWithValue ( PATTERN_PARALLEL )) , 
+                                           generatePatternParallel.get(0)) ;
+
+                generatedGraphNodes.addAll(generatePatternParallel) ;
+
+                nbPatternParallel += generatePatternParallel.size() ;
+            }
+            
         }
-        
-        if( ! generatePatternParallel.isEmpty() ) {
-         
-            managerPatternParallel.applyKeyValues( new HashSet<>(generatePatternParallel) , 
-                                                   patternParallel.getKeyValues() )       ;
-        
-            StickPatternParallelNodes( managerNode.find( node -> node.hasPredicateWithValue ( PATTERN_PARALLEL )) , 
-                                       generatePatternParallel.get(0)) ;
-        
-            generatedGraphNodes.addAll(generatePatternParallel) ;
-        
-            nbPatternParallel += generatePatternParallel.size() ;
-        }
+    
  
       }
       
@@ -232,7 +259,10 @@ public class ManagerVariable {
         
       managerPatternParallel.applyKeyValues( new HashSet<>(generatedGraphNodes)  , 
                                                  variable.getKeyValues()  )      ;
-        
+      
+      // RAC021
+      managerNode.removeEmptyOptionalEntries( OPTIONAL_NODE ) ;
+      
       // Restoring original nodes for next process
       managerNode.restoreOriginalNodes()  ;
       

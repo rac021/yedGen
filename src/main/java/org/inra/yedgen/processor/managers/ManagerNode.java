@@ -117,6 +117,14 @@ public class ManagerNode {
       return copy ;
    }
 */
+
+    void removeEmptyOptionalEntries(String oprionnalValue ) {
+       
+        nodes.entrySet()
+             .stream()
+             .flatMap( m -> m.getValue().values().stream())
+             .forEach(node -> node.removeEmptyOptionalEntry( oprionnalValue )) ;
+    }
   
    
 }

@@ -22,7 +22,7 @@ public class ManagerQuery {
    public void registerQuery (Integer hash, Integer code, String query ) {
    
        if(queries.containsKey(hash)) {
-           queries.get(hash).put( code, query ) ;
+          queries.get(hash).put( code, query ) ;
        }
        else {
            Map<Integer, String > queryMap = new HashMap<>() ;

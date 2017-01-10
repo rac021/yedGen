@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import org.inra.yedgen.processor.managers.ManagerVariable;
 
 /**
  *
@@ -16,15 +17,17 @@ public class ScriptsEngine {
     
     private ScriptEngine engine  = null ;
     
-    public String evaluate( String methode, String ... words )   {
+    public String evaluate( String method, String ... words )   {
        
       if( engine == null ) return String.join ( " ", words )     ;
         
       try {
-           Invocable invocable = (Invocable) engine                             ;
-           Object  result      = invocable.invokeFunction (  methode , 
-                                                             (Object[]) words ) ;
-           return result.toString()                                             ;
+           Invocable invocable = (Invocable) engine                 ;
+           Object  result      = invocable.invokeFunction (method , 
+                                                            // (Object[]) words ) ;
+                                                             String.join ( " ", words ) , 
+                                                             ManagerVariable.INTRA_COLUMN_SPLITTER ) ;
+           return result.toString() ;
             
        } catch ( Exception ex ) {
            Logger.getLogger(ScriptsEngine.class.getName())

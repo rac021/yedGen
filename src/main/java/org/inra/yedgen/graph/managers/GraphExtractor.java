@@ -20,7 +20,7 @@ import org.inra.yedgen.graph.utils.Utils;
 import org.inra.yedgen.graph.entities.Edge;
 import org.inra.yedgen.processor.entities.Node;
 import static java.util.stream.Collectors.toList;
-import org.inra.yedgen.processor.errors.Messages;
+import org.inra.yedgen.processor.output.Messages;
 
 /**
  *
@@ -148,7 +148,8 @@ public class GraphExtractor {
 
                                         Utils.putInMap( mapQueries, hash, code , label.split( Pattern
                                                                                 .quote(": "))[1]
-                                                                                .trim() ) ;
+                                                                                .trim()
+                                                                                .replaceAll("--.*\\n", "")) ;
                                     }
                                     
                                     else if (label.toLowerCase()
@@ -236,7 +237,8 @@ public class GraphExtractor {
                                                          hash , 
                                                          code , 
                                                          label.split( Pattern.quote(": "))[1]
-                                                              .trim()) ;
+                                                              .trim()
+                                                              .replaceAll("--.*\\n", "")) ;
                                     }
                                     
                                     else
@@ -385,7 +387,8 @@ public class GraphExtractor {
                                                 code , 
                                                 label.split( Pattern
                                                      .quote(": "))[1]
-                                                     .trim()) ;
+                                                     .trim()
+                                                     .replaceAll("--.*\\n", "")) ;
                                  
                             }
                             else

@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import org.inra.yedgen.processor.entities.Node;
-import org.inra.yedgen.processor.errors.Messages;
+import org.inra.yedgen.processor.output.Messages;
 import org.inra.yedgen.processor.factories.FactoryNode;
 
 /**
@@ -171,14 +172,30 @@ public class ManagerPatternParallel {
     }
    
      
-  public void applyKeyValue ( Set<Node> nodes , String key , String value ) {
+    public void applyKeyValue ( Set<Node> nodes , String key , String value ) {
       nodes.stream()
            .forEach( node -> node.applyKeyValue( key, value )) ;
     }
     
-  public void applyKeyValues ( Set<Node> nodes , Map<String, String > values ) {
+    public void applyKeyValues ( Set<Node> nodes , Map<String, String > values ) {
         nodes.stream()
              .forEach( node -> node.applyKeyValues( values )) ;
     }
     
+  
+    public void applyKeyValuesAtIndex ( Set<Node> nodes             ,
+                                        Map<String, String > values ,
+                                        int index , 
+                                        String splitter )    {
+       
+        Map<String, String> valuesIndexI = values.entrySet()
+                                                 .stream()
+                                                 .collect(Collectors.toMap( Map.Entry::getKey ,
+                                                                            e -> e.getValue().contains(",") ? 
+                                                                                    e.getValue().split(",")[index].trim() : 
+                                                                                    e.getValue().trim() ) )               ;
+       nodes.stream()
+            .forEach( node -> node.applyKeyValues( valuesIndexI )) ;
+    }
+   
 }

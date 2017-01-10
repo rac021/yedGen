@@ -11,15 +11,20 @@ import org.inra.yedgen.processor.Processor;
  
 public class Main {
     
- static {
-    String property =         System.getProperty("log") ;
-    if (   property == null ) {
-     String directory = new File ( Main.class.getProtectionDomain()
-                                             .getCodeSource()
-                                             .getLocation()
-                                             .getPath())
-                                             .getParent() ;
-     System.setProperty("log", directory + "/logs/yedGen/logs.log") ;
+  static {
+     
+    String property =  System.getProperty("log") ;
+    
+    if ( property == null ) {
+
+        String directory = new File ( Main.class.getProtectionDomain()
+                                                .getCodeSource()
+                                                .getLocation()
+                                                .getPath())
+                                                .getParent() ;
+
+        System.setProperty("log", directory + "/logs/yedGen/logs.log") ;
+
     }
   
   }
@@ -67,13 +72,14 @@ public class Main {
        return ;
     }
         
-    if(directory.isEmpty() || outFile.isEmpty()) {
+    if( directory == null || directory.isEmpty() || 
+        outFile   == null || outFile.isEmpty())   {
             
-       System.out.println (" directory or outFile is Empty " ) ;
-       return ;
+        System.out.println (" directory or outFile is Empty " ) ;
+        return ;
     }
         
-    if(ext.length() == 0 ) ext = ".graphml"                    ;
+    if(ext == null || ext.length() == 0 ) ext = ".graphml"     ;
         
       long startTime = System.currentTimeMillis()              ;  
         
