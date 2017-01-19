@@ -1,20 +1,20 @@
 
 package org.inra.yedgen.processor.managers;
 
-import java.util.Set;
-import java.util.Map;
-import java.util.List;
-import java.util.UUID;
-import java.util.Locale;
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import org.inra.yedgen.processor.entities.Node;
-import org.inra.yedgen.graph.managers.GraphExtractor;
-import org.inra.yedgen.processor.output.Messages;
-import org.inra.yedgen.processor.factories.FactoryNode;
+import java.util.Set ;
+import java.util.Map ;
+import java.util.List ;
+import java.util.UUID ;
+import java.util.Locale ;
+import java.util.HashMap ;
+import java.util.ArrayList ;
+import java.util.Collections ;
+import java.util.regex.Pattern ;
+import java.util.regex.Matcher ;
+import org.inra.yedgen.processor.entities.Node ;
+import org.inra.yedgen.processor.output.Messages ;
+import org.inra.yedgen.graph.managers.GraphExtractor ;
+import org.inra.yedgen.processor.factories.FactoryNode ;
 
 /**
  *

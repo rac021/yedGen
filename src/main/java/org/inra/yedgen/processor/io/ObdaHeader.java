@@ -1,11 +1,11 @@
 
 package org.inra.yedgen.processor.io;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import org.inra.yedgen.graph.managers.GraphExtractor;
-import org.inra.yedgen.properties.ObdaProperties;
+import java.util.List ;
+import java.util.Map ;
+import java.util.ArrayList ;
+import org.inra.yedgen.graph.managers.GraphExtractor ;
+import org.inra.yedgen.properties.ObdaProperties ;
 
 /**
  *
@@ -25,7 +25,7 @@ public class ObdaHeader {
           String key   = entrySet.getKey()      ;
           String uri   = entrySet.getValue()    ;
           headerOut.add(ObdaProperties.PREF.replace("?pref", key)
-                                           .replace("?uri", uri))  ;
+                                           .replace("?uri", uri)) ;
      }
                       
      headerOut.add("");

@@ -1,14 +1,14 @@
 
 package org.inra.yedgen.processor.managers;
 
-import java.io.Serializable;
-import java.util.Map;
-import java.util.Set;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.function.Predicate;
-import org.apache.commons.lang.SerializationUtils;
-import org.inra.yedgen.processor.entities.Node;
+import java.util.Map ;
+import java.util.Set ;
+import java.util.HashMap ;
+import java.util.HashSet ;
+import java.io.Serializable ;
+import java.util.function.Predicate ;
+import org.inra.yedgen.processor.entities.Node ;
+import org.apache.commons.lang.SerializationUtils ;
 
 /**
  *
@@ -107,6 +107,15 @@ public class ManagerNode {
       return nodes ;
   }
 
+  void removeEmptyOptionalEntries(String oprionnalValue ) {
+       
+      nodes.entrySet()
+           .stream()
+           .flatMap( m -> m.getValue().values().stream())
+           .forEach(node -> node.removeEmptyOptionalEntry( oprionnalValue )) ;
+  }
+
+
  /*
     public static <K1, K2, V> Map<K1, Map<K2, V>> genericDeepCopy( Map<K1, Map<K2, V>> original) {
       Objects.requireNonNull(original) ;
@@ -117,14 +126,6 @@ public class ManagerNode {
       return copy ;
    }
 */
-
-    void removeEmptyOptionalEntries(String oprionnalValue ) {
-       
-        nodes.entrySet()
-             .stream()
-             .flatMap( m -> m.getValue().values().stream())
-             .forEach(node -> node.removeEmptyOptionalEntry( oprionnalValue )) ;
-    }
   
    
 }

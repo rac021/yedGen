@@ -1,17 +1,17 @@
 
 package org.inra.yedgen.processor.managers;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Map;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.inra.yedgen.processor.entities.Node;
-import org.inra.yedgen.processor.entities.PatternParallel;
-import org.inra.yedgen.processor.entities.Variable;
-import org.inra.yedgen.processor.output.Messages;
+import java.util.Set ;
+import java.util.Map ;
+import java.util.List ;
+import java.util.HashMap ;
+import java.util.HashSet ;
+import java.util.regex.Matcher ;
+import java.util.regex.Pattern ;
+import org.inra.yedgen.processor.entities.Node ;
+import org.inra.yedgen.processor.output.Messages ;
+import org.inra.yedgen.processor.entities.Variable ;
+import org.inra.yedgen.processor.entities.PatternParallel ;
 
 /**
  *
@@ -66,10 +66,10 @@ public class ManagerVariable {
         if( stringValue.split(" ")[0].trim().startsWith(PATTERN_CONTEXT)) {
              patternContextId  = stringValue.split(" ")[0].trim()         ;
        }
-        return transformToVariable ( hash , id ,
+        return transformToVariable ( hash , id   ,
                                      stringValue , 
                                      managerPatternContext.
-                                             findContextPatternByID( patternContextId )) ;
+                                     findContextPatternByID( patternContextId )) ;
    }
   
    public Variable transformToVariable ( String stringValue ) {
@@ -128,7 +128,7 @@ public class ManagerVariable {
                    value = param.split("=")[1].trim() ;
            }
            
-           mapKeyValuesVariable.put(key, value)      ;
+           mapKeyValuesVariable.put(key, value)       ;
            
        }
            
@@ -241,10 +241,7 @@ public class ManagerVariable {
 
                 nbPatternParallel += generatePatternParallel.size() ;
             }
-            
         }
-    
- 
       }
       
       // Remove Pattern Parallel Node
@@ -323,30 +320,5 @@ public class ManagerVariable {
          nodes.stream()
               .forEach( node -> node.applyKeyValues( values )) ;
     }
-
-/*
-    public List<Node> homogenize ( Node parentContextNode ,
-                                   Node patternNode       ,
-                                   String pattern         ,
-                                   List<Node> patternContextNodes ) {
-        
-        if(patternContextNodes.isEmpty() ) {
-            Map<String, Set<String>> patternContextValues = patternNode.getPredicatsValuesIgnoringType() ;
-            parentContextNode.updatePatternValues( pattern, patternContextValues )                       ;
-        }
-
-        else {
-            String firstUri = patternContextNodes.get(0).getUri()     ;
-            parentContextNode.updatePatternValue( pattern, firstUri ) ;
-            
-            Node LastNode = patternContextNodes.get(patternContextNodes.size() - 1 )                     ;
-            Map<String, Set<String>> patternContextValues = patternNode.getPredicatsValuesIgnoringType() ;
-            LastNode.addPredicatWithObjects(patternContextValues)                                        ;
-        }
-       
-        return patternContextNodes ;
-    }
-
-*/
 
  }

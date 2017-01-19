@@ -2,8 +2,8 @@
 
 package org.inra.yedgen.processor.managers;
 
-import java.util.Map;
-import java.util.HashMap;
+import java.util.Map ;
+import java.util.HashMap ; 
 
 /**
  *
@@ -58,7 +58,7 @@ public class ManagerUri {
      if ( codeUri == -1 ) return label ;
      
      if ( label.startsWith("(") && label.endsWith(")") ) {
-        return getUri( null, codeUri ) ;
+          return getUri( null, codeUri ) ;
      }
      
      return getUri( hash, codeUri)     ;

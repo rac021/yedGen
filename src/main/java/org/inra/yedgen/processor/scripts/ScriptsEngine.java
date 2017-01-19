@@ -22,7 +22,7 @@ public class ScriptsEngine {
       if( engine == null ) return String.join ( " ", words )     ;
         
       try {
-           Invocable invocable = (Invocable) engine                 ;
+           Invocable invocable = (Invocable) engine              ;
            Object  result      = invocable.invokeFunction (  method , 
                                                              String.join ( ManagerVariable.INTRA_COLUMN_SPLITTER, words ) , 
                                                              ManagerVariable.INTRA_COLUMN_SPLITTER ) ;
@@ -48,4 +48,3 @@ public class ScriptsEngine {
     }
     
 }
-

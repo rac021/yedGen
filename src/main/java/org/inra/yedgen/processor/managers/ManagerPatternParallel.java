@@ -1,16 +1,16 @@
 
 package org.inra.yedgen.processor.managers;
 
-import java.util.Set;
-import java.util.Map;
-import java.util.List;
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import org.inra.yedgen.processor.entities.Node;
-import org.inra.yedgen.processor.output.Messages;
-import org.inra.yedgen.processor.factories.FactoryNode;
+import java.util.Set ;
+import java.util.Map ;
+import java.util.List ;
+import java.util.HashMap ;
+import java.util.ArrayList ;
+import java.util.regex.Pattern ;
+import java.util.stream.Collectors ;
+import org.inra.yedgen.processor.entities.Node ;
+import org.inra.yedgen.processor.output.Messages ;
+import org.inra.yedgen.processor.factories.FactoryNode ;
 
 /**
  *
@@ -118,29 +118,6 @@ public class ManagerPatternParallel {
 
     }
 
-//    public List<Node> homogenize ( Node parentContextNode , 
-//                                   Node patternNode       , 
-//                                   String pattern         ,
-//                                   List<Node> patternContextNodes )  {
-//        
-//        if(patternContextNodes.isEmpty() ) {
-//            Map<String, Set<String>> patternContextValues = patternNode.getPredicatsValuesIgnoringType() ;
-//            parentContextNode.updatePatternValues( pattern, patternContextValues ) ;
-//        }
-//
-//        else {
-//            String firstUri = patternContextNodes.get(0).getUri()     ;
-//            parentContextNode.updatePatternValue( pattern, firstUri ) ;
-//            
-//            Node LastNode = patternContextNodes.get(patternContextNodes.size() - 1 )  ;
-//            Map<String, Set<String>> patternContextValues = patternNode.getPredicatsValuesIgnoringType() ;
-//            LastNode.addPredicatWithObjects(patternContextValues) ;
-//        }
-//       
-//        return patternContextNodes ;
-//        
-//    }
-
     private Integer findParallelPatternByID( String id_pattern ) {
 
         return 
@@ -192,8 +169,8 @@ public class ManagerPatternParallel {
                                                  .stream()
                                                  .collect(Collectors.toMap( Map.Entry::getKey ,
                                                                             e -> e.getValue().contains(",") ? 
-                                                                                    e.getValue().split(",")[index].trim() : 
-                                                                                    e.getValue().trim() ) )               ;
+                                                                                 e.getValue().split(",")[index].trim() : 
+                                                                                 e.getValue().trim() ) )               ;
        nodes.stream()
             .forEach( node -> node.applyKeyValues( valuesIndexI )) ;
     }

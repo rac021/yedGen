@@ -1,15 +1,15 @@
 
 package org.inra.yedgen.processor.io;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.List;
+import java.io.File ;
+import java.util.List ;
+import java.nio.file.Path ;
+import java.io.IOException ;
+import java.nio.file.Paths ;
+import java.nio.file.Files ;
+import java.nio.file.LinkOption ;
+import java.nio.file.StandardOpenOption ;
+import java.nio.charset.StandardCharsets ;
 
 /**
  *
@@ -37,8 +37,6 @@ public class Writer {
     public static String getFileWithoutExtension( String fileName ) {      
          return fileName.replaceFirst("[.][^.]+$", "") ;
     }
-     
-    
       
     public List<String> readTextFile(String fileName) throws IOException {
     Path path = Paths.get(fileName);
@@ -90,7 +88,5 @@ public class Writer {
         File file = new File(path);
         file.createNewFile();
     }
-    
-    
     
 }

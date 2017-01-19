@@ -1,15 +1,15 @@
 
 package org.inra.yedgen.properties;
 
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.inra.yedgen.processor.io.Writer;
-import org.inra.yedgen.processor.output.Messages;
-import org.apache.commons.configuration.Configuration;
-import org.inra.yedgen.processor.scripts.ScriptsEngine;
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.PropertiesConfiguration;
+import java.util.List ;
+import java.util.logging.Level ;
+import java.util.logging.Logger ;
+import org.inra.yedgen.processor.io.Writer ;
+import org.inra.yedgen.processor.output.Messages ;
+import org.apache.commons.configuration.Configuration ;
+import org.inra.yedgen.processor.scripts.ScriptsEngine ;
+import org.apache.commons.configuration.ConfigurationException ;
+import org.apache.commons.configuration.PropertiesConfiguration ;
 
 /**
  *
