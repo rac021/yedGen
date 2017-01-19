@@ -20,6 +20,9 @@ function sufixCamelize( str ) {
    
 }
 
+function contextCamelize( str ) {
+   return  categCamelize( str )  ;
+}
 
 function categCamelize( str ) {
          
