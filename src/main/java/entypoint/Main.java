@@ -66,7 +66,7 @@ public class Main {
        }
     }
        
-    if( nbParams < 7 ) {
+    if( nbParams < 6 ) {
             
        System.out.println ( " missing parameters " ) ;
        return ;

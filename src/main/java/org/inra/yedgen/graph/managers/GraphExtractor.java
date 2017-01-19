@@ -1,26 +1,26 @@
 
 package org.inra.yedgen.graph.managers;
 
-import org.json.XML;
-import java.io.File;
-import java.util.Map;
-import java.util.Set;
-import java.util.List;
-import java.util.Locale;
-import java.util.HashMap;
-import org.json.JSONArray;
-import java.nio.file.Path;
-import org.json.JSONObject;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.io.FileInputStream;
-import java.util.regex.Pattern;
-import org.inra.yedgen.graph.utils.Utils;
-import org.inra.yedgen.graph.entities.Edge;
-import org.inra.yedgen.processor.entities.Node;
-import static java.util.stream.Collectors.toList;
-import org.inra.yedgen.processor.output.Messages;
+import org.json.XML ;
+import java.io.File ;
+import java.util.Map ;
+import java.util.Set ;
+import java.util.List ;
+import java.util.Locale ;
+import java.util.HashMap ;
+import org.json.JSONArray ;
+import java.nio.file.Path ;
+import org.json.JSONObject ;
+import java.io.IOException ;
+import java.io.InputStream ;
+import java.nio.file.Files ;
+import java.io.FileInputStream ;
+import java.util.regex.Pattern ;
+import org.inra.yedgen.graph.utils.Utils ;
+import org.inra.yedgen.graph.entities.Edge ;
+import org.inra.yedgen.processor.entities.Node ;
+import static java.util.stream.Collectors.toList ;
+import org.inra.yedgen.processor.output.Messages ;
 
 /**
  *

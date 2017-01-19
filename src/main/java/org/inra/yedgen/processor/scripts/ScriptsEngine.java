@@ -1,13 +1,13 @@
 
-package org.inra.yedgen.processor.scripts;
+package org.inra.yedgen.processor.scripts ;
 
-import java.io.FileReader;
-import javax.script.Invocable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import org.inra.yedgen.processor.managers.ManagerVariable;
+import java.io.FileReader ;
+import javax.script.Invocable ;
+import java.util.logging.Level ;
+import java.util.logging.Logger ;
+import javax.script.ScriptEngine ;
+import javax.script.ScriptEngineManager ;
+import org.inra.yedgen.processor.managers.ManagerVariable ;
 
 /**
  *
@@ -23,9 +23,8 @@ public class ScriptsEngine {
         
       try {
            Invocable invocable = (Invocable) engine                 ;
-           Object  result      = invocable.invokeFunction (method , 
-                                                            // (Object[]) words ) ;
-                                                             String.join ( " ", words ) , 
+           Object  result      = invocable.invokeFunction (  method , 
+                                                             String.join ( ManagerVariable.INTRA_COLUMN_SPLITTER, words ) , 
                                                              ManagerVariable.INTRA_COLUMN_SPLITTER ) ;
            return result.toString() ;
             

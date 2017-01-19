@@ -2,13 +2,13 @@
 
 package org.inra.yedgen.graph.utils;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.Objects;
-import org.inra.yedgen.graph.entities.Edge;
-import org.inra.yedgen.processor.entities.Node;
+import java.util.Map ;
+import java.util.Set ;
+import java.util.HashSet ;
+import java.util.HashMap ;
+import java.util.Objects ;
+import org.inra.yedgen.graph.entities.Edge ;
+import org.inra.yedgen.processor.entities.Node ;
 
 /**
  *
@@ -61,12 +61,12 @@ public class Utils {
                                 Integer hash, Edge edge ) {
    
        if(map.containsKey(hash)) {
-           map.get(hash).add(edge ) ;
+           map.get(hash).add(edge )  ;
        }
        else {
-           Set set = new HashSet<>();
-           set.add(edge)      ;
-           map.put(hash, set) ;
+           Set set = new HashSet<>() ;
+           set.add(edge)             ;
+           map.put(hash, set)        ;
        }
    }
 
@@ -91,7 +91,7 @@ public class Utils {
        else {
            Map nodeMap = new HashMap<>() ;
            nodeMap.put(id, node)         ;
-           map.put(hash, nodeMap)      ;
+           map.put(hash, nodeMap)        ;
        }
    }
    
@@ -101,6 +101,5 @@ public class Utils {
                      .stream()
                      .collect( HashSet::new, HashSet::addAll, HashSet::addAll) ;
   }
-   
-   
+      
 }

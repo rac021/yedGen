@@ -1,38 +1,38 @@
 
 package org.inra.yedgen.processor ;
 
-import java.io.File;
-import java.util.Set;
-import java.util.List;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.stream.Stream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.function.Consumer;
-import org.inra.yedgen.graph.utils.Utils;
-import org.inra.yedgen.processor.io.Writer;
-import org.inra.yedgen.graph.entities.Edge;
-import org.inra.yedgen.processor.io.ObdaHeader;
-import org.inra.yedgen.processor.entities.Node;
-import org.inra.yedgen.properties.CsvProperties;
-import org.inra.yedgen.processor.output.Messages;
-import org.inra.yedgen.properties.ObdaProperties;
-import org.inra.yedgen.graph.managers.ManagerEdge;
-import org.inra.yedgen.processor.entities.Variable;
-import org.inra.yedgen.processor.managers.ManagerUri;
-import org.inra.yedgen.graph.managers.ManagerConcept;
-import org.inra.yedgen.graph.managers.GraphExtractor;
-import org.inra.yedgen.processor.managers.ManagerNode;
-import org.inra.yedgen.processor.factories.FactoryNode;
-import org.inra.yedgen.processor.managers.ManagerQuery;
-import org.inra.yedgen.processor.managers.ManagerVariable;
-import org.inra.yedgen.processor.managers.MetaPatternManager;
-import org.inra.yedgen.processor.managers.ManagerPatternContext;
-import org.inra.yedgen.processor.managers.ManagerPatternParallel;
-import static org.inra.yedgen.graph.managers.GraphExtractor.PREFIX_PREDICAT;
+import java.io.File ;
+import java.util.Set ;
+import java.util.List ;
+import java.io.IOException ;
+import java.nio.file.Files ;
+import java.nio.file.Paths ;
+import java.util.ArrayList ;
+import java.util.stream.Stream ;
+import java.util.logging.Level ;
+import java.util.logging.Logger ;
+import java.util.function.Consumer ;
+import org.inra.yedgen.graph.utils.Utils ;
+import org.inra.yedgen.processor.io.Writer ;
+import org.inra.yedgen.graph.entities.Edge ;
+import org.inra.yedgen.processor.io.ObdaHeader ;
+import org.inra.yedgen.processor.entities.Node ;
+import org.inra.yedgen.properties.CsvProperties ;
+import org.inra.yedgen.processor.output.Messages ;
+import org.inra.yedgen.properties.ObdaProperties ;
+import org.inra.yedgen.graph.managers.ManagerEdge ;
+import org.inra.yedgen.processor.entities.Variable ;
+import org.inra.yedgen.processor.managers.ManagerUri ;
+import org.inra.yedgen.graph.managers.ManagerConcept ;
+import org.inra.yedgen.graph.managers.GraphExtractor ;
+import org.inra.yedgen.processor.managers.ManagerNode ;
+import org.inra.yedgen.processor.factories.FactoryNode ;
+import org.inra.yedgen.processor.managers.ManagerQuery ;
+import org.inra.yedgen.processor.managers.ManagerVariable ;
+import org.inra.yedgen.processor.managers.MetaPatternManager ;
+import org.inra.yedgen.processor.managers.ManagerPatternContext ;
+import org.inra.yedgen.processor.managers.ManagerPatternParallel ;
+import static org.inra.yedgen.graph.managers.GraphExtractor.PREFIX_PREDICAT ;
 
 /**
  *
@@ -141,23 +141,23 @@ public class Processor {
       
       for( Variable variable : managerVariable.getVariables()) {
      
-         Set<Node> graph        = managerVariable.process( variable )     ;
+         Set<Node> graph      = managerVariable.process( variable )  ;
           
-         List<String> outPut    = new ArrayList<>()                       ;
+         List<String> outPut  = new ArrayList<>()                    ;
                       
          // Prepare Output Header 
-         outPut.addAll(obdaHeader.getHeaderOut())                         ; 
+         outPut.addAll(obdaHeader.getHeaderOut())                    ; 
           
          graph.stream().forEach( node -> { outPut.add( node.outputObda())            ; 
                                            checkMatchers( variable.getVariableName() , 
-                                                          node.outputObda() ) ; })   ;
+                                                          node.outputObda() ) ; } )  ;
           
          outPut.add(ObdaProperties.MAPPING_COLLECTION_END) ;
                 
          try {
               
-            String _fileName = outputFile.substring(0, outputFile.lastIndexOf('.')) ;
-            String extension = outputFile.substring(outputFile.lastIndexOf('.'))    ;
+            String _fileName = outputFile.substring( 0, outputFile.lastIndexOf('.')) ;
+            String extension = outputFile.substring( outputFile.lastIndexOf('.'))    ;
              
             String outFile = _fileName + "_Graph_"                             + 
                              variable.getVariableName().replaceFirst(":", "")  + 
@@ -167,7 +167,7 @@ public class Processor {
             Writer.writeTextFile(outPut, outFile) ;
             
             Messages.printMessageInfoGeneratedVariable( variable.getVariableName() ,
-                                                             outFile                  ) ;
+                                                        outFile                    ) ;
 
          } catch (IOException ex) {
                 Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex) ;
@@ -189,8 +189,8 @@ public class Processor {
       
      /* Check and skip if patterns are null */ 
      
-     if( metaPatternManager.getMetaPatternContext()  == null   ||
-         metaPatternManager.getMetaPatternVariable() == null   ||
+     if( metaPatternManager.getMetaPatternContext()  == null  ||
+         metaPatternManager.getMetaPatternVariable() == null  ||
          metaPatternManager.getMetaPatternParallel() == null   )  {
                      
            Messages.printMessageMetaPatternsNull() ;
@@ -238,10 +238,7 @@ public class Processor {
                          String fileNameWithoutExtension = Writer.getFileWithoutExtension(fileName ) ;
                          String extension = Writer.getFileExtension(fileName) ; 
                          
-//                         String _fileName = outputFile.substring(0, outputFile.lastIndexOf('.')) ;
-//                         String extension = outputFile.substring(outputFile.lastIndexOf('.'))    ;
-
-                         String outFile = folder + File.separator        + 
+                         String outFile = folder    + File.separator     + 
                                           counter++ + "_" +
                                           fileNameWithoutExtension       +
                                           "_CSV_"                        + 
@@ -266,50 +263,6 @@ public class Processor {
             });
            
         }
-            
-//         Files.lines ( Paths.get(csvFile) ).skip(1).forEach ((String line) -> {
-//                     
-//               List<String> outPut    = new ArrayList<>() ;
-//                 
-//               // Prepare Output Header 
-//               outPut.addAll(obdaHeader.getHeaderOut()) ; 
-//                 
-//              // Treat Variable
-//              // String nLine = csvProperties.process( line )                            ;
-//              String patternContext   = metaPatternManager.generatePatternContext(line)  ;
-//              String patternVariable  = metaPatternManager.generatePatternVariable(line) ;
-//                    
-//              Variable variable       = managerVariable.transformToVariable( patternVariable   ,
-//                                                                             patternContext  ) ;
-//                        
-//              Set<Node> nodes         = managerVariable.process( variable )    ;
-//                        
-//              nodes.stream().forEach( node -> { outPut.add( node.outputObda())            ; 
-//                                                checkMatchers( variable.getVariableName() , 
-//                                                                node.outputObda() ) ; })  ;
-//                        
-//              outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
-//                                           
-//              try {
-//              
-//                String _fileName = outputFile.substring(0, outputFile.lastIndexOf('.')) ;
-//                String extension = outputFile.substring(outputFile.lastIndexOf('.'))    ;
-//
-//                String outFile = _fileName + "_CSV_"                               + 
-//                                 variable.getVariableName().replaceFirst(":", "")  + 
-//                                 extension                                         ;
-//                       
-//                Writer.checkFile( outFile )           ;
-//                Writer.writeTextFile(outPut, outFile) ;
-//                       
-//                Messages.printMessageInfoGeneratedVariable( variable.getVariableName() ,
-//                                                                 outFile                  ) ;
-//                       
-//              } catch (IOException ex) {
-//                   Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex)  ;
-//              }
-//           }
- //        ) ;
             
       } catch (IOException ex) {
           Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex)  ;
@@ -352,7 +305,7 @@ public class Processor {
             Writer.writeTextFile(outPut, outFile) ;
             
             Messages.printMessageInfoGeneratedVariable( "Undefined Variable" ,
-                                                             outFile            ) ;
+                                                         outFile           ) ;
 
          } catch (IOException ex) {
                 Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex) ;
@@ -371,7 +324,7 @@ public class Processor {
         
         boolean process = false ; 
         
-        if( includingGraphVariables && csvFile != null ) {
+        if( includingGraphVariables && csvFile != null )  {
             process = processFull( outputFile, csvFile )  ;
         }
         else if ( ! includingGraphVariables && 

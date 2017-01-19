@@ -1,10 +1,10 @@
 
 package org.inra.yedgen.graph.managers;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.HashSet;
-import org.inra.yedgen.graph.entities.Edge;
+import java.util.Map ;
+import java.util.Set ;
+import java.util.HashSet ;
+import org.inra.yedgen.graph.entities.Edge ;
 
 /**
  *

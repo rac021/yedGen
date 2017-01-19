@@ -6,10 +6,8 @@ import java.util.Arrays ;
 import java.util.ArrayList ;
 import java.util.Collections ;
 import java.util.Comparator;
-import java.util.Map.Entry;
 import java.util.regex.Matcher ;
 import java.util.regex.Pattern ;
-import org.inra.yedgen.processor.entities.Node;
 import org.inra.yedgen.properties.CsvProperties ;
 import static org.inra.yedgen.processor.output.Messages.* ;
 /**
@@ -100,22 +98,22 @@ public class MetaPatternManager {
           List<String> tmp = new ArrayList<>()  ;
             
           for( int i = 1 ; i < combinedNums.length ; i ++ ) {              
-             int num = Integer.parseInt( combinedNums[i].replaceAll("[^0-9]", "")) ;
-             tmp.add(csvLine.replaceAll(" +", " ")
-                            .split(CSV_SEPARATOR)[num]) ;
+             int num = Integer.parseInt( combinedNums[i].replaceAll("[^0-9]", "") ) ;
+             tmp.add( csvLine.replaceAll(" +", " ")
+                             .split(CSV_SEPARATOR)[num] )  ;
           }
             
           String resScript ;
           
           if(params.trim().startsWith(":") ) {
-            tmp.add ( 0 , ":") ;
+            tmp.add ( 0 , ": ") ;
             resScript = csvProperties.process( params.replaceFirst(":", "") , 
                                                tmp.toArray(new String[tmp.size()]) ) ;
           }
           else if( params.trim().startsWith("'") || params.trim().startsWith("\"") ) {
             
               resScript = csvProperties.process( params , 
-                                               tmp.toArray(new String[tmp.size()]) ) ; 
+                                                 tmp.toArray(new String[tmp.size()]) ) ; 
             
             if(resScript.contains(ManagerVariable.INTRA_COLUMN_SPLITTER )) {
                 resScript = params.charAt(0) + 
@@ -139,10 +137,8 @@ public class MetaPatternManager {
              variable = variable.replaceAll ( params, resScript ) ;
           }
          
-
         }
 
-        
         return variable.replace(META_PATTERN_CONTEXT, MATCHER_PATTERN_CONTEXT  )
                        .replace(META_PATTERN_PARALLEL, MATCHER_PATTERN_PARALLEL);
     }
@@ -160,25 +156,38 @@ public class MetaPatternManager {
                                             .replace("]", "")
                                             .trim() ;
         
-        int variablesColumnNum = Integer.parseInt( matcher.split(" ")[0].split("_COLUMN_")[1]) ;
+        Pattern p = Pattern.compile("[:'\"]?COLUMN_+\\w+['\"]?") ;
+        Matcher m = p.matcher( metaPatternContext ) ;
+        
+        m.find() ;
+        String column = m.group().replace(" + ", "").trim() ;
+        
+       int variablesColumnNum = Integer.parseInt( column.replaceAll("[^0-9]", "")) ;
+       
+       if( variablesColumnNum > csvLine.split(CSV_SEPARATOR).length ) {
+            printMessageError( "-> Error : ColumnNumber > csvLine_Separator // Probably Bad CSV_SEPARATOR ! " ) ;
+            System.exit( 0 ) ;
+        }
+        
+       String  resScript = csvProperties.process( column.replace(":", "") , 
+                             column.startsWith(":") ? 
+                                " : " + ManagerVariable.INTRA_COLUMN_SPLITTER + " " + 
+                                        csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim() :
+                                csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim() )       ; 
         
         String nums            = matcher.split("Q_")[1]               ;
         int    startQueryNum   = Integer.parseInt(nums.split("_")[0]) ;
         int    middleQueryNum  = Integer.parseInt(nums.split("_")[1]) ;
         int    endQueryNum     = Integer.parseInt(nums.split("_")[2]) ;
-        
         int loop               = startQueryNum                        ;
         
-        
-
-        if( variablesColumnNum > csvLine.split(CSV_SEPARATOR).length ) {
-            printMessageError( "-> Error : ColumnNumber > csvLine_Separator // Probably Bad CSV_SEPARATOR ! " ) ;
-            System.exit( 0 ) ;
-        }
-        
+       
         if ( csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim().length() == 0 ) return null ;
         
-        String[] variablesContext = csvLine.split(CSV_SEPARATOR)[variablesColumnNum].replaceAll(" +", "").trim().split(",") ;
+         
+        String[] variablesContext = resScript.replaceAll(" +", "")
+                                             .trim()
+                                             .split(ManagerVariable.INTRA_COLUMN_SPLITTER) ;
        
         Collections.reverse(Arrays.asList(variablesContext)) ;
 
@@ -188,7 +197,7 @@ public class MetaPatternManager {
             
             String variable = variablesContext[i] ;
             
-            pattern += "[ " + matcher.replace( "COLUMN_" + variablesColumnNum , validatePrefix( null, variable) )
+            pattern += "[ " + matcher.replace( column ,  variable )
                                      .replace(" Q_" + nums, " Q_" + String.valueOf(loop) ) + " ] " ;
             
             if( i == variablesContext.length - 2 || variablesContext.length ==  2 ) {
