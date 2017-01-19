@@ -1,0 +1,36 @@
+Standard AnaEE;Categorie(s) AnaEE;Contexte(s);prefix Entité si autre que anaee-france;Entité;prefix Caractéristique si autre que anaee-france;Caractéristique;Protocol;Qualificatifs (flexible);prefix Unité si autre que anaee-france;nom de l'unité (display name);nom varaiable (fr) dans bd;nom (fr) type de donnée dans la bd
+air carbon dioxide  molar fraction;meteorology, carbon cycle;atmosphere, air;;carbon dioxyde;;molar fraction;;half-hourly average;;micromole per mole;CO2;flux sh
+air water vapour molar fraction;meteorology, water cycle;atmosphere, air;;water;;molar fraction;;half-hourly average;;millimole per mole;H2O;flux sh
+atmospheric air  stability parameter;meteorology, surface energy balance;atmosphere;;air;;stability parameter;;half-hourly average;;unitless;ZL;flux sh
+net carbon dioxide  flux density above the ecosystem;surface flux, carbon cycle;top of ecosystem;;carbon dioxyde;;mass flux density;;half-hourly average;;micromole per meter squared per second;FCO2;flux sh
+net carbon dioxide  flux density above the ecosystem;surface flux, carbon cycle;top of ecosystem;;carbon dioxyde;;molar flux density;gapfilled;half-hourly average;;micromole per meter squared and per second;FCO2_gf;flux sh
+sensible heat energy flux density;surface flux, surface energy balance;top of ecosystem;;sensible heat;;energy flux density;;half-hourly average;;watt per meter squared;H;flux sh
+latent heat energy flux density;surface flux, surface energy balance;top of ecosystem;;latent heat;;energy flux density;;half-hourly average;;watt per meter squared;LE;flux sh
+air momentum flux density;surface flux, Atmospheric convection;atmosphere, air;;momentum;;momentum flux density;;half-hourly average;;kilogram per meter per second;T;flux sh
+wind friction velocity;meteorology, Atmospheric convection;atmosphere, air;;wind;;friction velocity;;half-hourly average;oboe-standards;meter per second;u*;flux sh
+stand transpiration flux;surface flux, water cycle;stand;;transpiration;;volumetric flux;;half-hourly cumulative;;milliliter per meter squared;TR;flux sh
+biomass canopy heat storage flux density;surface flux, surface energy balance;vegetation cover, biomass;;heat storage;;energy flux density;;half-hourly average;;watt per meter squared;Sb;flux sh
+air vegetation carbon dioxide storage flux density;surface flux, carbon cycle;vegetation cover, air;;carbon dioxyde storage;;mass flux density;;half-hourly average;;micromole per meter squared per second;Sc;flux sh
+air vegetation latent heat storage flux density;surface flux, surface energy balance;vegetation cover, air;;latent heat storage;;energy flux density;;half-hourly average;;watt per meter squared;Sw;flux sh
+air vegetation sensible heat storage flux density;surface flux, surface energy balance;vegetation cover, air;;sensible heat storage;;energy flux density;;half-hourly average;;watt per meter squared;Sa;flux sh
+net ecosystem carbon dioxyde flux density;surface flux, carbon cycle;ecosystem components;;carbon dioxyde;;energy flux density;;half-hourly average;;micromole per meter squared per second;NEE;flux sh
+net ecosystem carbon dioxyde flux density;surface flux, carbon cycle;ecosystem components;;carbon dioxyde;;energy flux density;gapfilled;half-hourly average;;micromole per meter squared per second;NEE_gf;flux sh
+reflected shortwave radiation  flux density;surface flux, surface energy balance;atmosphere, surface;;reflected shortwave radiation;;energy flux density;;half-hourly average;;watt per meter squared;Rr;meteo sh
+upward longwave radiation  flux density;surface flux, surface energy balance;atmosphere, surface;;upward longwave radiation;;energy flux density;;half-hourly average;;watt per meter squared;LWout;meteo sh
+net radiation  flux density;surface flux, surface energy balance;surface;;net radiation;;energy flux density;;half-hourly average;;watt per meter squared;Rn;meteo sh
+diffuse incident shortwave radiation  flux density;meteorology, surface energy balance;atmosphere;;diffuse incident shortwave radiation;;energy flux density;;half-hourly average;;watt per meter squared;Rd;meteo sh
+incident photosynthetically active radiation molar flux density;meteorology, photosynthesis;atmosphere;;incident photosynthetically active radiation;;molar flux density;;half-hourly average;;micromole per meter squared per second;PPFD;meteo sh
+diffuse incident photosynthetically active radiation flux density;meteorology, photosynthesis;atmosphere;;diffuse incident photosynthetically active radiation;;molar flux density;;half-hourly average;;micromole per meter squared per second;PPFDd;meteo sh
+reflected photosynthetically active radiation  flux density;surface flux, photosynthesis;atmosphere;;reflected photosynthetically active radiation;;molar flux density;;half-hourly average;;micromole per meter squared per second;PPFDr;meteo sh
+Soil incident  photosynthetically active radiation  flux density;meteorology, photosynthesis;atmosphere, below vegetation;;incident photosynthetically active radiation;;molar flux density;;half-hourly average;;micromole per meter squared per second;PPFDbc;meteo sh
+absorbed photosynthetically active radiation  by vegetation  flux density;surface flux, photosynthesis;vegetation cover;;absorbed photosynthetically active radiation;;molar flux density;;half-hourly average;;micromole per meter squared per second;APAR;meteo sh
+vegetation radiative temperature;vegetation, surface energy balance;vegetation cover;oboe-spatial;surface;;radiative temperature;;half-hourly average;;degree celsius;Tc;meteo sh
+tree stem temperature;vegetation, surface energy balance;stand,tree, stem;oboe-spatial;surface;oboe-characteristics;temperature;;half-hourly average;;degree celsius;Tarbre;meteo sh
+cumulative rainfall;meteorology, water cycle;;;cumulative rain;;volume per surface;;half-hourly cumulative;oboe-standards;millimeter;P;meteo sh
+Incident shortwave radiation flux density;meteorology, surface energy balance;atmosphere;;incident shortwave radiation;;energy flux density;;half-hourly average;;watt per meter squared;Rg;meteo sh
+incident longwave radiation flux density;meteorology, surface energy balance;atmosphere;;incident longwave radiation;;energy flux density;;half-hourly average;;watt per meter squared;LWin;meteo sh
+air temperature;meteorology;atmosphere;;air;oboe-characteristics;temperature;;half-hourly average;;degree celsius;Ta;meteo sh
+air pressure;meteorology;atmosphere;;air;oboe-characteristics;pressure;;half-hourly average;oboe-standards;kilopascal;Pa;meteo sh
+air relative humidity;meteorology, water cycle;atmosphere, air;;water vapour;;relative humidity;;half-hourly average;;percent;Rh;meteo sh
+wind direction;meteorology, atmospheric convection;atmosphere;;wind;;direction;;half-hourly average;oboe-standards;degree;WD;meteo sh
+horizontal wind speed;meteorology, atmospheric convection;atmosphere;;wind;;horizontal speed;;half-hourly average;oboe-standards;meter per second;WS;meteo sh
