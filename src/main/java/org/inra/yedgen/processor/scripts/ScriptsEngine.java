@@ -19,16 +19,16 @@ public class ScriptsEngine {
     
     public String evaluate( String method, String ... words )   {
        
-      if( engine == null ) return String.join ( " ", words )     ;
+      if( engine == null ) return String.join ( " ", words )    ;
         
       try {
-           Invocable invocable = (Invocable) engine              ;
+           Invocable invocable = (Invocable) engine             ;
            Object  result      = invocable.invokeFunction (  method , 
                                                              String.join ( ManagerVariable.INTRA_COLUMN_SPLITTER, words ) , 
                                                              ManagerVariable.INTRA_COLUMN_SPLITTER ) ;
            return result.toString() ;
             
-       } catch ( Exception ex ) {
+       } catch ( Exception ex )     {
            Logger.getLogger(ScriptsEngine.class.getName())
                                                .log(Level.SEVERE, null, ex)     ;
            return String.join ( " ", words )                                    ;

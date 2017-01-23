@@ -38,16 +38,16 @@ public class ObdaHeader {
                                  .replace("?password", sourceDeclaration.get("password"))
                                  .replace("?driverClass", sourceDeclaration.get("driverClass"))) ;
                      
-     headerOut.add("") ;
+     headerOut.add("")                                        ;
                       
      headerOut.add( ObdaProperties.MAPPING_COLLECTION_BEGIN ) ;
                       
-     headerOut.add("") ;
+     headerOut.add("")                                        ;
      
     }
 
     public List<String> getHeaderOut() {
-        return headerOut;
+        return headerOut ;
     }
 
    

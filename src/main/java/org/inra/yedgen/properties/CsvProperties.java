@@ -33,7 +33,7 @@ public class CsvProperties {
        return String.join ( ":", words ) ;
     }
     
-    private List<String> getFunctions( String column ) {
+    private List<String> getFunctions( String column )  {
        return config == null ? null   :
               config.getList(column ) ;
     }
@@ -82,11 +82,11 @@ public class CsvProperties {
     }
 
     public Configuration getConfig() {
-        return config;
+        return config ;
     }
 
     public ScriptsEngine getScriptsEngine() {
-        return scriptsEngine;
+        return scriptsEngine ;
     }
     
     

@@ -36,7 +36,7 @@ public class ManagerNode {
              Node existingNode = nodes.get(hash).get(id) ;
              if(existingNode != null ) {
                 // Update node predicats 
-                existingNode.addPredicatWithObjects(node.getPredicatsValues());
+                existingNode.addPredicatWithObjects(node.getPredicatsValues()) ;
                 nodes.get(hash).put(id, existingNode) ;
              }
              else {
@@ -50,7 +50,7 @@ public class ManagerNode {
        }
    }
 
-  public Map getNodesByHash ( int hash ) {
+  public Map getNodesByHash ( int hash )    {
       
       return nodes.getOrDefault(hash, null) ;
   }
@@ -86,7 +86,7 @@ public class ManagerNode {
             .stream()
             .map(entry -> { return entry.values() ; } )
             .map( values -> { values.remove(node) ; return values ; } )
-            .findFirst();
+            .findFirst() ;
   }
   
   public void cloneNodes() {
@@ -115,7 +115,6 @@ public class ManagerNode {
            .forEach(node -> node.removeEmptyOptionalEntry( oprionnalValue )) ;
   }
 
-
  /*
     public static <K1, K2, V> Map<K1, Map<K2, V>> genericDeepCopy( Map<K1, Map<K2, V>> original) {
       Objects.requireNonNull(original) ;
@@ -126,7 +125,6 @@ public class ManagerNode {
       return copy ;
    }
 */
-  
    
 }
 

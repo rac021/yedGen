@@ -81,7 +81,7 @@ public class Processor {
                                                                 managerQuery     , 
                                                                 factoryNode  )   ;
       
-      this.csvProperties =        new CsvProperties( propertieFile, jsFile )     ;
+      this.csvProperties          = new CsvProperties( propertieFile, jsFile )   ;
         
       this.metaPatternManager     = new  MetaPatternManager( graphExtractor.getMetaPatternHash()     ,
                                                              graphExtractor.getMetaPatternVariable() , 
@@ -91,7 +91,7 @@ public class Processor {
       
       this.managerPatternParallel = new ManagerPatternParallel ( graphExtractor.getMapPatternParallels() , 
                                                                  managerUri     , 
-                                                                 factoryNode  ,
+                                                                 factoryNode    ,
                                                                  metaPatternManager ) ;
       
       this.managerVariable        = new ManagerVariable( graphExtractor.getMapVariables() ,
@@ -135,7 +135,7 @@ public class Processor {
       
     }
 
-    public boolean processOnlyGraphVariables ( String outputFile )        {
+    public boolean processOnlyGraphVariables ( String outputFile )   {
       
       Messages.printMessageStartProcessVariableGraphGeneration()     ;
       
@@ -166,7 +166,7 @@ public class Processor {
             Writer.checkFile( outFile )           ;
             Writer.writeTextFile(outPut, outFile) ;
             
-            Messages.printMessageInfoGeneratedVariable( variable.getVariableName() ,
+            Messages.printMessageInfoGeneratedVariable( variable.getVariableName()   ,
                                                         outFile                    ) ;
 
          } catch (IOException ex) {
@@ -213,7 +213,7 @@ public class Processor {
                       List<String> outPut    = new ArrayList<>() ;
 
                       // Prepare Output Header 
-                      outPut.addAll(obdaHeader.getHeaderOut()) ; 
+                      outPut.addAll(obdaHeader.getHeaderOut())   ; 
 
                       // Treat Variable
                       // String nLine = csvProperties.process( line )                            ;
@@ -260,7 +260,7 @@ public class Processor {
                          Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, e)  ;
                     }
                 }
-            });
+            }) ;
            
         }
             
@@ -297,9 +297,9 @@ public class Processor {
             String _fileName = outputFile.substring(0, outputFile.lastIndexOf('.')) ;
             String extension = outputFile.substring(outputFile.lastIndexOf('.'))    ;
              
-            String outFile   = _fileName + "_Graph_"                             + 
-                               System.currentTimeMillis()                        +
-                               extension                                         ;
+            String outFile   = _fileName + "_Graph_"       + 
+                               System.currentTimeMillis()  +
+                               extension                   ;
               
             Writer.checkFile( outFile )           ;
             Writer.writeTextFile(outPut, outFile) ;

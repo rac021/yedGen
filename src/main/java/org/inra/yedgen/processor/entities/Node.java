@@ -1,21 +1,21 @@
 
 package org.inra.yedgen.processor.entities;
 
-import java.util.Set;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Comparator;
-import java.io.Serializable;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import org.apache.commons.lang.StringUtils;
-import org.inra.yedgen.properties.ObdaProperties;
-import static java.util.stream.Collectors.joining;
-import org.inra.yedgen.processor.managers.ManagerVariable;
+import java.util.Set ;
+import java.util.Map ;
+import java.util.HashMap ;
+import java.util.HashSet ;
+import java.util.Objects ;
+import java.util.Iterator ;
+import java.util.Map.Entry ;
+import java.util.Comparator ;
+import java.io.Serializable ;
+import java.util.regex.Pattern ;
+import java.util.stream.Collectors ;
+import org.apache.commons.lang.StringUtils ;
+import org.inra.yedgen.properties.ObdaProperties ;
+import static java.util.stream.Collectors.joining ;
+import org.inra.yedgen.processor.managers.ManagerVariable ;
 
 /**
  *
@@ -93,26 +93,26 @@ public final class Node implements Serializable  {
     }
 
     public String getQuery() {
-        return query;
+        return query ;
     }
 
     public String getUriObject() {
-        return uriObject;
+        return uriObject ;
     }
 
     public String getQueryObject() {
-        return queryObject;
+        return queryObject ;
     }
 
     public String getPredicat() {
         return predicat;
     }
     public String getDefaultPrefix() {
-        return defaultPrefix;
+        return defaultPrefix ;
     }
 
     public Map<String, Set<String>> getPredicatsValues() {
-        return predicatsValues;
+        return predicatsValues ;
     }
     
     public Map<String, Set<String>> getPredicatsValuesIgnoringType() {
@@ -143,14 +143,14 @@ public final class Node implements Serializable  {
         if(predicat == null || object == null ) return ;
         
         predicat = validatePrefix(defaultPrefix, predicat ) ;
-        object   = validatePrefix(defaultPrefix, object ) ;
+        object   = validatePrefix(defaultPrefix, object )   ;
         
-        if( predicatsValues.containsKey(predicat) )   {
+        if( predicatsValues.containsKey(predicat) )     {
             predicatsValues.get(predicat).add( object ) ;
         }
         else {
-            Set<String> values = new HashSet() ;
-            values.add( object ) ;
+            Set<String> values = new HashSet()     ;
+            values.add( object )                   ;
             predicatsValues.put(predicat, values ) ;
         }
     }
@@ -181,25 +181,25 @@ public final class Node implements Serializable  {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
-            return true;
+            return true ;
         }
         if (obj == null) {
-            return false;
+            return false ;
         }
         if (getClass() != obj.getClass()) {
-            return false;
+            return false ;
         }
         final Node other = (Node) obj;
         if (!Objects.equals(this.hash, other.hash)) {
-            return false;
+            return false ;
         }
         if (!Objects.equals(this.id, other.id)) {
-            return false;
+            return false ;
         }
         if (!Objects.equals(this.code, other.code)) {
-            return false;
+            return false ;
         }
-        return true;
+        return true ;
     }
     
     /**
@@ -302,12 +302,12 @@ public final class Node implements Serializable  {
         
       Set<String> remove = predicatsValues.get(predicatKey.getKey()).isEmpty() ? 
                            predicatsValues.remove(predicatKey.getKey()) : null ;
-      this.addPredicatWithObject(predicatKey.getKey() , uri ) ;
+      this.addPredicatWithObject(predicatKey.getKey() , uri )                  ;
     
     }
 
     public void removePredicat( String predicat ) {
-       this.predicatsValues.remove(predicat);
+       this.predicatsValues.remove(predicat)      ;
     }
     
     private String validatePrefix ( String defaulPrefix , String entity ) {

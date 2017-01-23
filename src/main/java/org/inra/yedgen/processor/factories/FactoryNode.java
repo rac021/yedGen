@@ -1,14 +1,14 @@
 
 package org.inra.yedgen.processor.factories;
 
-import java.util.UUID;
-import java.util.regex.Pattern;
-import org.inra.yedgen.processor.entities.Node;
-import org.inra.yedgen.graph.managers.ManagerConcept;
-import org.inra.yedgen.graph.managers.ManagerEdge;
-import org.inra.yedgen.graph.managers.GraphExtractor;
-import org.inra.yedgen.processor.managers.ManagerQuery;
-import org.inra.yedgen.processor.managers.ManagerUri;
+import java.util.UUID ;
+import java.util.regex.Pattern ;
+import org.inra.yedgen.processor.entities.Node ;
+import org.inra.yedgen.graph.managers.ManagerEdge ;
+import org.inra.yedgen.graph.managers.GraphExtractor ;
+import org.inra.yedgen.processor.managers.ManagerUri ;
+import org.inra.yedgen.graph.managers.ManagerConcept ;
+import org.inra.yedgen.processor.managers.ManagerQuery ;
 
 /**
  *
@@ -37,21 +37,21 @@ public class FactoryNode {
                             String objectId   ,
                             String defaultPrefix )  {
         
-        final String Labelsubject = managerConcept.getConcept( hash, subjectId ) ;
-        final String object       = managerConcept.getConcept( hash, objectId )  ;
+        final String Labelsubject = managerConcept.getConcept( hash, subjectId )                        ;
+        final String object       = managerConcept.getConcept( hash, objectId )                         ;
             
-        int codeForSubject       = extractCode (Labelsubject) ; 
+        int codeForSubject        = extractCode (Labelsubject)                                          ; 
 
-        String uriSubject        = managerUri.getUriByHashAndCode( hash, codeForSubject, Labelsubject) ;
+        String uriSubject         = managerUri.getUriByHashAndCode( hash, codeForSubject, Labelsubject) ;
         
-        String typeOfSubject     = extractType ( Labelsubject ) ;
+        String typeOfSubject      = extractType ( Labelsubject )                                        ;
         
-        String queryForSubject   = managerQuery.getQueryByHashAndCode( hash, codeForSubject) ;
+        String queryForSubject    = managerQuery.getQueryByHashAndCode( hash, codeForSubject)           ;
         
-        int codeForObject        = extractCode (object ) ; 
+        int codeForObject         = extractCode (object )                                               ; 
 
-        String uriObject         = managerUri.getUriByHashAndCode( hash, codeForObject, object ) ;
-        String queryForObject    = managerQuery.getQueryByHashAndCode( hash, codeForObject)      ;
+        String uriObject          = managerUri.getUriByHashAndCode( hash, codeForObject, object )       ;
+        String queryForObject     = managerQuery.getQueryByHashAndCode( hash, codeForObject)            ;
         
         return new Node( hash            , 
                          subjectId       , 
@@ -128,14 +128,14 @@ public class FactoryNode {
       return 
             createNode(hash, 
                         UUID.randomUUID().toString() , 
-                        code , 
-                        uri  , 
-                        type , 
-                        type , 
-                        predicatObject , 
-                        query  , 
-                        object , 
-                        null   , 
+                        code                         , 
+                        uri                          , 
+                        type                         , 
+                        type                         , 
+                        predicatObject               , 
+                        query                        , 
+                        object                       , 
+                        null                         , 
                         GraphExtractor.PREFIX_PREDICAT ) ;
     }
     

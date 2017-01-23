@@ -39,9 +39,9 @@ public class ManagerVariable {
                             ManagerPatternContext  managerPatternContext    , 
                             ManagerPatternParallel managerPatternParallel ) {
         
-        this.managerNode            = managerNode            ;
-        this.managerPatternContext  = managerPatternContext  ;
-        this.managerPatternParallel = managerPatternParallel ;
+        this.managerNode            = managerNode                         ;
+        this.managerPatternContext  = managerPatternContext               ;
+        this.managerPatternParallel = managerPatternParallel              ;
         this.variables              = transformToVariables( mapVariable ) ;
     }
 
@@ -51,7 +51,7 @@ public class ManagerVariable {
 
        Set<Variable> resVariables = new HashSet<>() ;
 
-       mapVariable.forEach( (hash, mapVal) -> mapVal.forEach( (id, value ) -> 
+       mapVariable.forEach( (hash, mapVal) -> mapVal.forEach( (id, value )  -> 
                       resVariables.add(transformToVariable(hash, id, value)) )) ;
         
       return resVariables ;
@@ -91,26 +91,26 @@ public class ManagerVariable {
         
        Pattern p = Pattern.compile("\\{.*?\\}") ;
     
-       String patternContextId , variableName , keyValuesVariable = null ;
+       String patternContextId , variableName , keyValuesVariable = null   ;
        
        String stringValue      = patternValue.trim().replaceAll(" +", " ") ;
        
-       if( stringValue.split(" ")[0].trim().startsWith(PATTERN_CONTEXT)) {
+       if( stringValue.split(" ")[0].trim().startsWith(PATTERN_CONTEXT))   {
            
-           patternContextId  = stringValue.split(" ")[0].trim()          ;
-           variableName      = stringValue.split(" ")[1].trim()          ;
+           patternContextId  = stringValue.split(" ")[0].trim()            ;
+           variableName      = stringValue.split(" ")[1].trim()            ;
        }
                    
        else {
            
            patternContextId  = null ;
-           variableName      = stringValue.split(" ")[0].trim()          ;
+           variableName      = stringValue.split(" ")[0].trim()            ;
        }
           
        keyValuesVariable = stringValue.split(Pattern.quote("&&"))[0] 
                                                     .split(variableName, 2 )[1] ;
        
-       Matcher m = p.matcher(keyValuesVariable ) ;
+       Matcher m = p.matcher(keyValuesVariable )                  ;
            
        Map<String, String> mapKeyValuesVariable = new HashMap<>() ;
        Set<PatternParallel> setpPatternParallel = new HashSet<>() ;
@@ -132,7 +132,7 @@ public class ManagerVariable {
            
        }
            
-       String[] patternParallel ;
+       String[] patternParallel       ;
                
        if(stringValue.contains("&&")) {   
                
@@ -153,7 +153,7 @@ public class ManagerVariable {
                   
                    Map<String, String>  mapKeyValuePatternParallel = new  HashMap<>() ;
              
-                   while (matcher.find()) {
+                   while (matcher.find())                                  {
                        
                         String param = matcher.group()
                                              .replace("{", "")
@@ -268,14 +268,14 @@ public class ManagerVariable {
     }
     
     private Set<Node> generateGraphIncludingContext( String patternContext      ,
-                                                     String patternContextValue ) {
+                                                     String patternContextValue )          {
         
       Node patternContextNode = managerNode.find ( node -> node.getUri()
-                                                               .equals(patternContext) ) ;
+                                                               .equals(patternContext) )   ;
       
       Node parentContextNode  = managerNode.find ( 
                                     node -> !node.getUri().equals(patternContext) && 
-                                    node.hasPredicateWithValue(patternContext) )   ;
+                                    node.hasPredicateWithValue(patternContext) )           ;
       
       List<Node> generatedContextNodes = managerPatternContext
                                          .genereatePatternContext( patternContextValue )   ;
@@ -284,7 +284,7 @@ public class ManagerVariable {
                                                                        patternContextNode  , 
                                                                        patternContext      , 
                                                                        generatedContextNodes ) ;
-      managerNode.removeNode( patternContextNode ) ;
+      managerNode.removeNode( patternContextNode )        ;
      
       HashSet resultSet = new HashSet(homogenizedContext) ;
       

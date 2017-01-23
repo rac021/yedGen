@@ -22,12 +22,12 @@ public class ManagerEdge {
          
    public void put(Integer hash, Edge edge ) {
    
-       if(edges.containsKey(hash)) {
+       if(edges.containsKey(hash))    {
            edges.get(hash).add(edge ) ;
        }
        else {
-           Set edgeSet = new HashSet<>();
-           edgeSet.add(edge)      ;
+           Set edgeSet = new HashSet<>() ;
+           edgeSet.add(edge)        ;
            edges.put(hash, edgeSet) ;
        }
    }

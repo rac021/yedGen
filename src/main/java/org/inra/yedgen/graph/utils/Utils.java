@@ -95,7 +95,7 @@ public class Utils {
        }
    }
    
-   public static Set<Edge> getAll ( Map< Integer, Set<Edge>> mapEdges ) {
+   public static Set<Edge> getAll ( Map< Integer, Set<Edge>> mapEdges )        {
 
       return mapEdges.values()
                      .stream()

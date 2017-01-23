@@ -12,7 +12,7 @@ import java.util.HashMap ;
 public class ManagerUri {
 
    /* Hash-File - Code_URI - URI */
-    private final Map< Integer, Map< Integer, String>> uris ;
+    private final Map< Integer, Map< Integer, String>> uris        ;
 
     public ManagerUri( Map< Integer, Map< Integer, String>> uris ) {
 
@@ -21,7 +21,7 @@ public class ManagerUri {
          
    public void registerUri (Integer hash, Integer code, String uri ) {
    
-       if(uris.containsKey(hash)) {
+       if(uris.containsKey(hash))          {
            uris.get(hash).put( code, uri ) ;
        }
        else {
@@ -37,7 +37,7 @@ public class ManagerUri {
       return uris.getOrDefault(hash, null).getOrDefault(code, null) ;
      }
   
-     return findUriByID(code);
+     return findUriByID(code) ;
   }
 
   public String findUriByID( Integer code ) {
@@ -61,7 +61,7 @@ public class ManagerUri {
           return getUri( null, codeUri ) ;
      }
      
-     return getUri( hash, codeUri)     ;
+     return getUri( hash, codeUri)      ;
   }
   
 }

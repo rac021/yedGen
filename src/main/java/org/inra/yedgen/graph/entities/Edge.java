@@ -16,77 +16,81 @@ public class Edge {
     private final String objetId  ;
     private final String predicat ;
     
-    public Edge(int hash, String id, String sujetId, String predicat, String objetId ) {
+    public Edge( int hash, 
+                 String id, 
+                 String sujetId, 
+                 String predicat, 
+                 String objetId )    {
         
-        this.hash      = hash     ;
-        this.id        = id       ;
+        this.hash      = hash       ;
+        this.id        = id         ;
         this.sujetId     = sujetId  ;
-        this.predicat  = predicat ;
+        this.predicat  = predicat   ;
         this.objetId     = objetId  ;
     }
 
     public String getId() {
-        return id;
+        return id ;
     }
 
     public String getSujetId() {
-        return sujetId;
+        return sujetId ;
     }
 
     public String getObjetId() {
-        return objetId;
+        return objetId ;
     }
 
     public String getPredicat() {
-        return predicat;
+        return predicat ;
     }
 
     public int getHash() {
-        return hash;
+        return hash ;
     }
        
     @Override
     public String toString() {
         return "Edge{" + "id=" + id       + 
-               ", sujet="      + sujetId    + 
+               ", sujet="      + sujetId  + 
                ", predicat="   + predicat + 
-               ", objet=" + objetId + '}'   ;
+               ", objet="      + objetId  + '}' ;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        return hash;
+        int hash = 7 ;
+        return hash  ;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
-            return true;
+            return true ;
         }
         if (obj == null) {
-            return false;
+            return false ;
         }
         if (getClass() != obj.getClass()) {
-            return false;
+            return false ;
         }
-        final Edge other = (Edge) obj;
-        if (this.hash != other.hash) {
-            return false;
+        final Edge other = (Edge) obj ;
+        if (this.hash != other.hash)  {
+            return false ;
         }
         if (!Objects.equals(this.id, other.id)) {
-            return false;
+            return false ;
         }
         if (!Objects.equals(this.sujetId, other.sujetId)) {
-            return false;
+            return false ;
         }
         if (!Objects.equals(this.objetId, other.objetId)) {
-            return false;
+            return false ;
         }
         if (!Objects.equals(this.predicat, other.predicat)) {
-            return false;
+            return false ;
         }
-        return true;
+        return true ;
     }
     
 }

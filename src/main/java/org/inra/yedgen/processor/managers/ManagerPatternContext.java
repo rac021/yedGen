@@ -39,8 +39,8 @@ public class ManagerPatternContext {
        else {
             
            Map<String, String > patternMap = new HashMap<>() ;
-           patternMap.put(id_pattern, pattern )  ;
-           PATTERNS_CONTEXT.put(hash, patternMap) ;
+           patternMap.put(id_pattern, pattern )              ;
+           PATTERNS_CONTEXT.put(hash, patternMap)            ;
        }
     }
     
@@ -58,12 +58,12 @@ public class ManagerPatternContext {
          
         /* if hash == null then full_search  */ 
         if( hash == null ) {
-           pattern = findContextPatternByID( id_pattern ) ;
+           pattern = findContextPatternByID( id_pattern )  ;
         }
-        else if ( PATTERNS_CONTEXT.get(hash) == null ) {
+        else if ( PATTERNS_CONTEXT.get(hash) == null )     {
 
              Messages.printMessageErrorContext(id_pattern) ;
-             return nodes                                       ;
+             return nodes                                  ;
         }
         else {
              pattern  = PATTERNS_CONTEXT.get(hash).get(id_pattern) ;
@@ -71,8 +71,8 @@ public class ManagerPatternContext {
         
         
         if( pattern == null ) {
-            Messages.printMessageErrorContext(id_pattern) ;
-            return nodes                                       ;
+            Messages.printMessageErrorContext(id_pattern)  ;
+            return nodes                                   ;
         }
          
         String URI_PATTERN  = pattern.split(" ") [1]       ;
@@ -107,7 +107,7 @@ public class ManagerPatternContext {
             String queryForSubject =  managerQuery.getQuery( hash, numQuery ) ; 
             
             if( queryForSubject == null ) {
-               Messages.printErrorNumQueryNotFound( numQuery );
+               Messages.printErrorNumQueryNotFound( numQuery ) ;
             }
             
             String uriSubject = URI_PATTERN.replace(MATCHER_ENTITY , cleanName(entityName) ) ;
@@ -116,31 +116,31 @@ public class ManagerPatternContext {
             
             if( i == 0 ) {
                
-                node = factoryNode.createNode( hash , 
+                node = factoryNode.createNode( hash                          , 
                                                UUID.randomUUID().toString()  , 
-                                               startCode--     , 
-                                               uriSubject      , 
-                                               typeOfSubject   , 
-                                               entityName      ,
-                                               predicat        , 
-                                               queryForSubject , 
-                                               null   , 
-                                               null , 
+                                               startCode--                   ,  
+                                               uriSubject                    ,
+                                               typeOfSubject                 , 
+                                               entityName                    ,
+                                               predicat                      , 
+                                               queryForSubject               , 
+                                               null                          , 
+                                               null                          , 
                                                GraphExtractor.PREFIX_PREDICAT ) ;
             }
             
             else {
                 
-                node = factoryNode.createNode( hash , 
-                                               UUID.randomUUID().toString()  , 
-                                               startCode--     , 
-                                               uriSubject      , 
-                                               typeOfSubject   , 
-                                               entityName      ,
-                                               predicat        , 
-                                               queryForSubject , 
-                                               nodes.get(i-1).getUri()   , 
-                                               nodes.get(i-1).getQuery() , 
+                node = factoryNode.createNode( hash                         , 
+                                               UUID.randomUUID().toString() , 
+                                               startCode--                  , 
+                                               uriSubject                   , 
+                                               typeOfSubject                , 
+                                               entityName                   ,
+                                               predicat                     , 
+                                               queryForSubject              , 
+                                               nodes.get(i-1).getUri()      ,  
+                                               nodes.get(i-1).getQuery()    , 
                                                nodes.get(i-1).getDefaultPrefix() ) ;
             }
 
@@ -155,19 +155,19 @@ public class ManagerPatternContext {
     
     public List<Node> genereatePatternContext( String patternContext ) {
       
-        List<Node> nodes = new ArrayList<>()      ;
+        List<Node> nodes = new ArrayList<>()                 ;
          
-        if( patternContext == null ) return nodes ;
+        if( patternContext == null ) return nodes            ;
         
-        String URI_PATTERN  = patternContext.split(" ") [1]       ;
+        String URI_PATTERN  = patternContext.split(" ") [1]  ;
                   
-        String predicat     =  patternContext.split(" ")[2]       ;
+        String predicat     =  patternContext.split(" ")[2]  ;
                   
-        Pattern p           = Pattern.compile("\\[.*?\\]")        ;
+        Pattern p           = Pattern.compile("\\[.*?\\]")   ;
         
-        Matcher m           = p.matcher(patternContext)           ;
+        Matcher m           = p.matcher(patternContext)      ;
        
-        List<String> vars   = new ArrayList()                     ;
+        List<String> vars   = new ArrayList()                ;
          
         while (m.find()) {
         
@@ -198,35 +198,35 @@ public class ManagerPatternContext {
             
             String uriSubject = URI_PATTERN.replace(MATCHER_ENTITY , cleanName(entityName) ) ;
 
-            Node node ;
+            Node node    ;
             
             if( i == 0 ) {
                
-                node = factoryNode.createNode( null , 
+                node = factoryNode.createNode( null                          , 
                                                UUID.randomUUID().toString()  , 
-                                               startCode--     , 
-                                               uriSubject      , 
-                                               typeOfSubject   , 
-                                               entityName      ,
-                                               predicat        , 
-                                               queryForSubject , 
-                                               null   , 
-                                               null , 
+                                               startCode--                   , 
+                                               uriSubject                    , 
+                                               typeOfSubject                 , 
+                                               entityName                    ,
+                                               predicat                      , 
+                                               queryForSubject               , 
+                                               null                          , 
+                                               null                          , 
                                                GraphExtractor.PREFIX_PREDICAT ) ;
             }
             
             else {
                 
-                node = factoryNode.createNode( null , 
-                                               UUID.randomUUID().toString()  , 
-                                               startCode--     , 
-                                               uriSubject      , 
-                                               typeOfSubject   , 
-                                               entityName      ,
-                                               predicat        , 
-                                               queryForSubject , 
-                                               nodes.get(i-1).getUri()   , 
-                                               nodes.get(i-1).getQuery() , 
+                node = factoryNode.createNode( null                           , 
+                                               UUID.randomUUID().toString()   , 
+                                               startCode--                    , 
+                                               uriSubject                     , 
+                                               typeOfSubject                  , 
+                                               entityName                     ,
+                                               predicat                       , 
+                                               queryForSubject                , 
+                                               nodes.get(i-1).getUri()        , 
+                                               nodes.get(i-1).getQuery()      , 
                                                nodes.get(i-1).getDefaultPrefix() ) ;
             }
 

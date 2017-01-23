@@ -61,11 +61,11 @@ public class Variable {
     }
 
     public void addPatternParallel ( PatternParallel patternParallel ) {
-        this.patternParallel.add(patternParallel);
+        this.patternParallel.add(patternParallel) ;
     }
 
     public String getPatternContext() {
-        return patternContext;
+        return patternContext ;
     }
 
     private String trim(String value) {

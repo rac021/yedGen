@@ -8,47 +8,47 @@ package org.inra.yedgen.processor.output;
 public class Messages {
     
      public static void printMessageErrorContext(String id_pattern) {
-        System.err.println("")   ;
-        System.err.println(" Error // No Pattern context found with ID : " + id_pattern ) ;
+        System.err.println("")                                                                   ;
+        System.err.println(" Error // No Pattern context found with ID : " + id_pattern )        ;
         System.err.println(" This will be considered as an Empty_Pattern_Context for the rest ") ;
-        System.err.println("")   ;
+        System.err.println("")                                                                   ;
     }
      
     public static void printMessageErrorContext(String id_pattern, String variableName ) {
-        System.err.println("")   ;
-        System.err.println(" Error // No Pattern context found with ID : " + id_pattern ) ;
+        System.err.println("")                                                                                       ;
+        System.err.println(" Error // No Pattern context found with ID : " + id_pattern )                            ;
         System.err.println(" The variable : " + variableName + " -> will be generated with Empty_Pattern_Context " ) ;
-        System.err.println("")   ;
+        System.err.println("")                                                                                       ;
     }
     
-    public static void printMessageMetaPatternError(String idPattern ) {
-        System.err.println("")   ;
+    public static void printMessageMetaPatternError(String idPattern )             {
+        System.err.println("")                                                     ;
         System.err.println(" Error // MetaPattern " + idPattern +" not found !! ") ;
-        System.err.println("")   ;
+        System.err.println("")                                                     ;
     }
     
     public static void printMessageMetaPatternErrorMustContain( String pattenId_1, String pattenId_2 ) {
-        System.err.println("")   ;
+        System.err.println("")                                                                            ;
         System.err.println(" Error // MetaPattern // " + pattenId_1 + " Must contain --> " + pattenId_2 ) ;
-        System.err.println("")   ;
+        System.err.println("")                                                                            ;
     }
      
     public static void printMessageErrorParallel ( String id_pattern ) {
-       System.err.println("")   ;
+       System.err.println("")                                                            ;
        System.err.println(" Error // No Pattern Prallel found with ID : " + id_pattern ) ;
-       System.err.println("")   ;
+       System.err.println("")                                                            ;
     }
     
     public static void printMessageMetaPatternErrorMustContains( String pattern_1 , String pattern_2 ) {
-       System.err.println("")   ;
+       System.err.println("")                                                        ;
        System.err.println(" Error // "+ pattern_1 + " Must Contains  " + pattern_2 ) ;
-       System.err.println("")   ;
+       System.err.println("")                                                        ;
      }
     
     public static void printMessageMetaPatternsNull() {
-       System.err.println("")   ;
+       System.err.println("")                                                             ;
        System.err.println(" --> Error // MetaPatterns are null // CSV Generation abort ") ;
-       System.err.println("")   ;
+       System.err.println("")                                                             ;
      }
 
     public static void printMessageStartProcessVariableGraphGeneration() {
@@ -76,9 +76,9 @@ public class Messages {
     }
     
     public static void printErrorNumQueryNotFound( Integer numQuery ) {
-       System.out.println("")   ;
+       System.out.println("")                                                         ;
        System.out.println(" NumQuery [ "+numQuery+" ] not found in numUris Map !! " ) ;
-       System.out.println("")   ;
+       System.out.println("")                                                         ;
     }
     
     public static void printErrorMatcher(String variableName, String subLine ) {
@@ -102,17 +102,17 @@ public class Messages {
     
     public static void printMessageFilesNotFoundExtentsion( String directory , String extension ) {
       System.out.println ( " No File with extension [' " + extension + "' ]  found " +
-                           " in the Directory  : " + directory ) ;
+                           " in the Directory  : " + directory )                     ;
       System.out.println ( "                                                     " ) ;  
     }
     
     public static void printLoadingFile(String type , String name) {
-      System.out.println (" -> Loading "+ type + " : " + name ) ;
+      System.out.println (" -> Loading "+ type + " : " + name )     ;
     }
     
     public static void printErrorLoadingFile(String type , String name) {
       System.out.println (" -> Error Loading : " + type + " [ "   + 
-                                     name + " ] doesn't exist " )    ;
+                                     name + " ] doesn't exist " )       ;
     }
     
     public static void printSeparator() {
@@ -120,9 +120,9 @@ public class Messages {
     }
     
     public static void printExtractionError() {
-       System.err.println(" ") ;
+       System.err.println(" ")                                                ;
        System.err.println(" Oops something went wrong during Extraction !! ") ;
-       System.err.println(" ") ;
+       System.err.println(" ")                                                ;
     }
     
     public static void printNotFoundLabelError()   {
@@ -134,6 +134,6 @@ public class Messages {
     }
     
     public static void printMessageError( String message ) {
-      System.out.println( " \n " + message + " \n " ) ;
+      System.out.println( " \n " + message + " \n " )      ;
     }
 }

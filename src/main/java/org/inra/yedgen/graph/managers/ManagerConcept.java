@@ -21,11 +21,11 @@ public class ManagerConcept {
          
    public void put(Integer hash, String id , String label ) {
    
-       if( concepts.containsKey(hash)) {
+       if( concepts.containsKey(hash))          {
            concepts.get(hash).put( id , label ) ;
        }
        else {
-           Map<String, String > uriMap = new HashMap<>();
+           Map<String, String > uriMap = new HashMap<>() ;
            uriMap.put(id , label)     ;
            concepts.put(hash, uriMap) ;
        }

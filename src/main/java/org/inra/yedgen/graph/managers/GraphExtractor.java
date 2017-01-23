@@ -91,7 +91,7 @@ public class GraphExtractor {
 
             Object obj                    = jsonArrayConcepts.get(i) ;
             
-            JSONObject jsonObjectConcept  = (JSONObject) obj      ;
+            JSONObject jsonObjectConcept  = (JSONObject) obj         ;
 
             if(obj != null) {
 
@@ -103,15 +103,16 @@ public class GraphExtractor {
                                                     .getString("content").trim()
                                                     .replaceAll(" +", " ") ;
   
-                    String id       =  jsonObjectConcept.getString("id") ;
+                    String id    =  jsonObjectConcept.getString("id")      ;
 
-                    Utils.putInMap(mapConcepts, hash, id , label ) ;
+                    Utils.putInMap(mapConcepts, hash, id , label )         ;
                     
                 }
 
                 if ( jsonObjectConcept.has("graph")) {
 
-                    if ( jsonObjectConcept.getJSONObject("graph").toString().startsWith("{\"node\":[")) {
+                    if ( jsonObjectConcept.getJSONObject("graph")
+                                          .toString().startsWith("{\"node\":["))  {
 
                         JSONArray jsonArrayGroupConcepts =
                                 jsonObjectConcept.getJSONObject("graph")
@@ -119,7 +120,7 @@ public class GraphExtractor {
 
                         for (int j = 0; j < jsonArrayGroupConcepts.length(); j++) {
 
-                            if ( jsonArrayGroupConcepts.toString().startsWith("{\"data\":[")   ||
+                            if ( jsonArrayGroupConcepts.toString().startsWith("{\"data\":[")    ||
                                     jsonArrayGroupConcepts.toString().startsWith("[{\"data\":[") ) {
 
                                 if ( jsonArrayGroupConcepts.getJSONObject(j)
@@ -163,7 +164,6 @@ public class GraphExtractor {
                                         Utils.putInMap( mapUris, hash, code , label.split( Pattern
                                                                                    .quote(")"))[1]
                                                                                    .trim())      ;
-                                        
                                     }
                                 }
                             }
@@ -188,14 +188,13 @@ public class GraphExtractor {
                                     
                                     if (label.startsWith(MATCHER_PATTERN_CONTEXT) && label.contains(" ")) {
                                             
-                                        
                                             Utils.putInMap( mapPatternContexts, 
                                                             hash, 
                                                             label.split(" ")[0] , 
                                                             label.replaceFirst(Pattern.quote(label
                                                                  .split(" ")[0]),"").trim() ) ; 
-                                            
                                     }
+                                    
                                     if (label.startsWith(MATCHER_PATTERN_PARALLEL) && label.contains(" ")) {
                                             
                                             Utils.putInMap( mapPatternParallels, 
@@ -482,7 +481,7 @@ public class GraphExtractor {
 
                     Edge       e = new Edge( hash, id, sujet, predicat, objet ) ;
 
-                    Utils.putInMap(mapEdges, hash, e);
+                    Utils.putInMap(mapEdges, hash, e) ;
 
                 }
                 
@@ -550,7 +549,7 @@ public class GraphExtractor {
                     }
                 }
                 else {
-                    Messages.printNotFoundLabelError()    ;
+                    Messages.printNotFoundLabelError()         ;
                 }
 
                 String id    = jsonObject.getString("id")      ;
@@ -579,7 +578,7 @@ public class GraphExtractor {
     }   
     
     public void genGraphPopulatingManagers( String directory     ,
-                                            String extensionFile ) throws Exception {
+                                            String extensionFile ) throws Exception   {
 
         Messages.printMessageExtractGraph( directory ) ;
         
@@ -592,7 +591,7 @@ public class GraphExtractor {
             if(path.toString().endsWith(extensionFile )) {
              
                 Messages.printMessageProcessingGraphFile( path.toAbsolutePath()
-                                                                   .toString())    ;
+                                                                   .toString())      ;
              
                 process(path.toString() )                          ;
                 if ( ! processed ) processed = true                ;
@@ -610,73 +609,73 @@ public class GraphExtractor {
     }
 
     public Map<Integer, Map<Integer, String>> getMapUris() {
-        return mapUris;
+        return mapUris ;
     }
 
     public Map<Integer, Set<Edge>> getMapEdges() {
-        return mapEdges;
+        return mapEdges ;
     }
 
     public Map<Integer, Map<String, Node>> getMapNodes() {
-        return mapNodes;
+        return mapNodes ;
     }
 
     public Map<Integer, Map<Integer, String>> getMapQueries() {
-        return mapQueries;
+        return mapQueries ;
     }
 
     public Map<Integer, Map<String, String>> getMapConcepts() {
-        return mapConcepts;
+        return mapConcepts ;
     }
 
     public Map<Integer, Map<String, String>> getMapPatternContexts() {
-        return mapPatternContexts;
+        return mapPatternContexts ;
     }
 
     public Map<Integer, Map<String, String>> getMapPatternParallels() {
-        return mapPatternParallels;
+        return mapPatternParallels ;
     }
 
     public Map<Integer, Map<String, String>> getMapVariables() {
-        return mapVariables;
+        return mapVariables ;
     }
 
     public String getMetaPatternVariable() {
-        return metaPatternVariable;
+        return metaPatternVariable ;
     }
 
     public String getMetaPatternContext() {
-        return metaPatternContext;
+        return metaPatternContext ;
     }
 
     public String getMetaPatternParallel() {
-        return metaPatternParallel;
+        return metaPatternParallel ;
     }
 
     public Map<String, String> getPrefixs() {
-        return prefixs;
+        return prefixs ;
     }
 
     public Map<String, String> getSourceDeclaration() {
-        return SourceDeclaration;
+        return SourceDeclaration ;
     }
 
     public Integer getMetaPatternHash() {
-        return metaPatternHash;
+        return metaPatternHash ;
     }
     
     /* Constructor */
     
-    public GraphExtractor ()  {
+    public GraphExtractor ()                  {
         
-       mapUris              = new HashMap<>()         ;
-       mapNodes             = new HashMap<>()         ;
-       mapEdges             = new HashMap<>()         ;
-       mapQueries           = new HashMap<>()         ;
-       mapConcepts          = new HashMap<>()         ;
-       mapVariables         = new HashMap<>()         ;
-       mapPatternContexts   = new HashMap<>()         ;
-       mapPatternParallels  = new HashMap<>()         ;
+       mapUris              = new HashMap<>() ;
+       mapNodes             = new HashMap<>() ;
+       mapEdges             = new HashMap<>() ;
+       mapQueries           = new HashMap<>() ;
+       mapConcepts          = new HashMap<>() ;
+       mapVariables         = new HashMap<>() ;
+       mapPatternContexts   = new HashMap<>() ;
+       mapPatternParallels  = new HashMap<>() ;
     }
 
 }

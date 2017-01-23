@@ -14,7 +14,7 @@ import static org.inra.yedgen.processor.output.Messages.* ;
  *
  * @author ryahiaoui
  */
-public class MetaPatternManager {
+public class MetaPatternManager                {
     
     private final Integer metaPatternHash      ;
     private final String  metaPatternVariable  ;
@@ -46,8 +46,8 @@ public class MetaPatternManager {
         if( this.csvProperties != null && this.csvProperties.getConfig() != null ) {
             
           CSV_SEPARATOR =  
-           this.csvProperties.getConfig().getString("CSV_SEPARATOR") != null ?
-           this.csvProperties.getConfig().getString("CSV_SEPARATOR") : "\t"  ;
+          this.csvProperties.getConfig().getString("CSV_SEPARATOR") != null ?
+          this.csvProperties.getConfig().getString("CSV_SEPARATOR") : "\t"  ;
         } else {
           CSV_SEPARATOR = "\t" ;
         }
@@ -77,35 +77,35 @@ public class MetaPatternManager {
         
         if( metaPatternVariable == null ) return null ;
         
-        String variable = metaPatternVariable ;
+        String variable = metaPatternVariable         ;
          
         Pattern p = Pattern.compile("[:'\"]?COLUMN_+\\w+['\"]?") ;
-        Matcher m = p.matcher(metaPatternVariable ) ;
+        Matcher m = p.matcher(metaPatternVariable )              ;
         
         List<String> columns    = new ArrayList() ;
         Comparator<String> comp = Comparator.comparing ( s -> s.length()) ;
         
-        while (m.find()) {
+        while (m.find())                                   {
           columns.add(m.group().replace(" + ", "").trim()) ;
         }
        
         Collections.sort(columns , comp.reversed() ) ;
          
-        for( String params : columns ) {
+        for( String params : columns )               {
           
           String[] combinedNums = params.split("_")  ;
             
-          List<String> tmp = new ArrayList<>()  ;
+          List<String> tmp = new ArrayList<>()       ;
             
-          for( int i = 1 ; i < combinedNums.length ; i ++ ) {              
+          for( int i = 1 ; i < combinedNums.length ; i ++ )                         {              
              int num = Integer.parseInt( combinedNums[i].replaceAll("[^0-9]", "") ) ;
              tmp.add( csvLine.replaceAll(" +", " ")
-                             .split(CSV_SEPARATOR)[num] )  ;
+                             .split(CSV_SEPARATOR)[num] )   ;
           }
             
           String resScript ;
           
-          if(params.trim().startsWith(":") ) {
+          if(params.trim().startsWith(":") )                                         {
             tmp.add ( 0 , ": ") ;
             resScript = csvProperties.process( params.replaceFirst(":", "") , 
                                                tmp.toArray(new String[tmp.size()]) ) ;
@@ -127,10 +127,10 @@ public class MetaPatternManager {
                                                tmp.toArray(new String[tmp.size()]) ) ;
           }
          
-          if(params.startsWith("'") && params.endsWith("'")) {
-              variable = variable.replaceAll ( params, "'" + resScript + "'" ) ;
+          if(params.startsWith("'") && params.endsWith("'"))                     {
+              variable = variable.replaceAll ( params, "'" + resScript + "'" )   ;
           }
-          else if(params.startsWith("\"") && params.endsWith("\"")) {
+          else if(params.startsWith("\"") && params.endsWith("\""))              {
               variable = variable.replaceAll ( params, "\"" + resScript + "\"" ) ;
           }
           else {
@@ -140,7 +140,7 @@ public class MetaPatternManager {
         }
 
         return variable.replace(META_PATTERN_CONTEXT, MATCHER_PATTERN_CONTEXT  )
-                       .replace(META_PATTERN_PARALLEL, MATCHER_PATTERN_PARALLEL);
+                       .replace(META_PATTERN_PARALLEL, MATCHER_PATTERN_PARALLEL) ;
     }
 
         
@@ -157,10 +157,10 @@ public class MetaPatternManager {
                                             .trim() ;
         
         Pattern p = Pattern.compile("[:'\"]?COLUMN_+\\w+['\"]?") ;
-        Matcher m = p.matcher( metaPatternContext ) ;
+        Matcher m = p.matcher( metaPatternContext )              ;
         
-        m.find() ;
-        String column = m.group().replace(" + ", "").trim() ;
+        m.find()                                                 ;
+        String column = m.group().replace(" + ", "").trim()      ;
         
        int variablesColumnNum = Integer.parseInt( column.replaceAll("[^0-9]", "")) ;
        
@@ -269,6 +269,5 @@ public class MetaPatternManager {
          printMessageMetaPatternError("metaPatternParallel") ;
       }
     }
-
         
 }

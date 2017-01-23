@@ -30,7 +30,7 @@ public class ManagerPatternParallel {
     public ManagerPatternParallel( Map< Integer, Map< String, String>> PATTERNS_PARALLEL ,
                                    ManagerUri managerUri   , 
                                    FactoryNode factoryNode ,
-                                   MetaPatternManager metaPatternManager )              {
+                                   MetaPatternManager metaPatternManager )               {
         
         this.managerUri         = managerUri         ;
         this.factoryNode        = factoryNode        ;
@@ -46,8 +46,8 @@ public class ManagerPatternParallel {
        }
        else {
            Map<String, String > patternMap = new HashMap<>() ;
-           patternMap.put(id_pattern, pattern )    ;
-           PATTERNS_PARALLEL.put(hash, patternMap) ;
+           patternMap.put(id_pattern, pattern )              ;
+           PATTERNS_PARALLEL.put(hash, patternMap)           ;
        }
     }
     
@@ -69,14 +69,14 @@ public class ManagerPatternParallel {
         
         else {
             
-            hash = findParallelPatternByID ( id_pattern ) ;
+            hash = findParallelPatternByID ( id_pattern )        ;
    
             if( hash == null ) {
                 Messages.printMessageErrorParallel( id_pattern ) ;
                 return nodes ;
             }
             
-            pattern = PATTERNS_PARALLEL.get(hash).get( id_pattern )   ;
+            pattern = PATTERNS_PARALLEL.get(hash).get( id_pattern ) ;
         }
         
         if( pattern == null ) {
@@ -88,7 +88,7 @@ public class ManagerPatternParallel {
             
             for( int i = 0 ; i< entities.length ; i++ ) {
                 
-                String predicat_object = entities[i] ;
+                String predicat_object = entities[i]    ;
                 
                 Node node = null ;
                 
@@ -123,7 +123,7 @@ public class ManagerPatternParallel {
         return 
         PATTERNS_PARALLEL.entrySet()
                          .stream()
-                         .filter( entry -> entry.getValue().get(id_pattern) != null  )
+                         .filter( entry -> entry.getValue().get(id_pattern) != null )
                          .map(entry -> entry.getKey())
                          .findFirst().orElse(null);
     }
@@ -138,7 +138,7 @@ public class ManagerPatternParallel {
         return concept ;
     }
 
-     private int extractCode ( String concept ) {
+     private int extractCode ( String concept )            {
 
         if(concept.contains("(") && concept.endsWith(")")) {
           return Integer.parseInt( concept
@@ -162,8 +162,8 @@ public class ManagerPatternParallel {
   
     public void applyKeyValuesAtIndex ( Set<Node> nodes             ,
                                         Map<String, String > values ,
-                                        int index , 
-                                        String splitter )    {
+                                        int index                   , 
+                                        String splitter )           {
        
         Map<String, String> valuesIndexI = values.entrySet()
                                                  .stream()
