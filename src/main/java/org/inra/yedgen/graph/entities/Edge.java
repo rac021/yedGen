@@ -1,8 +1,8 @@
 
 
-package org.inra.yedgen.graph.entities;
+package org.inra.yedgen.graph.entities ;
 
-import java.util.Objects;
+import java.util.Objects ;
 
 /**
  *
@@ -16,17 +16,17 @@ public class Edge {
     private final String objetId  ;
     private final String predicat ;
     
-    public Edge( int hash, 
-                 String id, 
-                 String sujetId, 
-                 String predicat, 
-                 String objetId )    {
+    public Edge( int hash        , 
+                 String id       , 
+                 String sujetId  , 
+                 String predicat , 
+                 String objetId  )  {
         
         this.hash      = hash       ;
         this.id        = id         ;
-        this.sujetId     = sujetId  ;
+        this.sujetId   = sujetId    ;
         this.predicat  = predicat   ;
-        this.objetId     = objetId  ;
+        this.objetId   = objetId    ;
     }
 
     public String getId() {
