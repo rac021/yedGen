@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.graph.managers;
+package org.inra.yedgen.graph.managers ;
 
 import org.json.XML ;
 import java.io.File ;
@@ -74,10 +74,10 @@ public class GraphExtractor {
                 builder.append((char) ptr) ;
             }
 
-            xml = builder.toString() ;
+            xml = builder.toString()       ;
         }
 
-        return XML.toJSONObject(xml) ;
+        return XML.toJSONObject(xml)       ;
     }
 
 
@@ -87,7 +87,7 @@ public class GraphExtractor {
                                              .getJSONObject( "graph" )
                                              .getJSONArray( "node" ) ;
 
-        for (int i = 0; i < jsonArrayConcepts.length(); i++)      {
+        for (int i = 0; i < jsonArrayConcepts.length(); i++)         {
 
             Object obj                    = jsonArrayConcepts.get(i) ;
             
@@ -95,7 +95,7 @@ public class GraphExtractor {
 
             if(obj != null) {
 
-                if(obj.toString().startsWith("{\"data\":{")) {
+                if(obj.toString().startsWith("{\"data\":{"))                    {
 
                     String label = jsonObjectConcept.getJSONObject("data")
                                                     .getJSONObject("y:ShapeNode")
@@ -175,7 +175,7 @@ public class GraphExtractor {
 
                                 if ( jsonArrayGroupConcepts.getJSONObject(j)
                                                         .getJSONObject("data")
-                                                        .has("y:ShapeNode"))       {
+                                                        .has("y:ShapeNode"))                            {
 
                                     String id = jsonArrayGroupConcepts.getJSONObject(j).getString("id") ;
                                     
@@ -257,21 +257,21 @@ public class GraphExtractor {
                                                              .trim())       ;
                                     }
                                     else
-                                    if (label.toLowerCase().startsWith("prefix ")) {
+                                    if (label.toLowerCase().startsWith("prefix "))       {
                                         String pref = label.split(Pattern.quote(" "))[1] ;
                                         String uri  = label.split(Pattern.quote(" "))[2] ;
 
                                         prefixs .put(pref, uri) ;
                                     }
                                     else
-                                    if (label.startsWith("PREDICAT_PREFIX :"))       {
+                                    if (label.startsWith("PREDICAT_PREFIX :"))                 {
                                         
                                         PREFIX_PREDICAT = label.split(Pattern
                                                                .quote("PREDICAT_PREFIX :"))[1] ;
                                         
                                     }
                                     else
-                                    if (label.toLowerCase().startsWith("obda-"))    {
+                                    if (label.toLowerCase().startsWith("obda-"))   {
 
                                         if  ( label.split(Pattern.quote(" : ")) [0]
                                                    .equals("obda-sourceUri"))     {
@@ -306,7 +306,7 @@ public class GraphExtractor {
                                                         
                                             SourceDeclaration.put("driverClass", label
                                                              .split(Pattern
-                                                             .quote(" : "))[1])   ;
+                                                             .quote(" : "))[1])      ;
                                         }
                                     }
                                 }
@@ -332,14 +332,14 @@ public class GraphExtractor {
                                             .getJSONObject("y:ShapeNode")
                                             .getJSONObject("y:NodeLabel")
                                             .getString("content").trim()
-                                            .replaceAll(" +", " ") ;
+                                            .replaceAll(" +", " ")     ;
 
                             int code ;
 
                             if (label.startsWith(MATCHER_PATTERN_CONTEXT) && label.contains(" ")) {
                                     
-                                Utils.putInMap( mapPatternContexts , 
-                                                hash    , 
+                                Utils.putInMap( mapPatternContexts     , 
+                                                hash                   , 
                                                 label.split(" ")[0]    , 
                                                 label.replaceFirst(Pattern.quote(label
                                                                            .split(" ")[0]),"").trim() ) ; 
@@ -348,7 +348,7 @@ public class GraphExtractor {
                             else if (label.startsWith(MATCHER_PATTERN_PARALLEL) && label.contains(" ")) {
 
                                 Utils.putInMap( mapPatternParallels , 
-                                                hash,
+                                                hash                ,
                                                 label.split(" ")[0] , 
                                                 label.replaceFirst(Pattern.quote( label
                                                      .split(" ")[0]),"").trim() ) ; 
@@ -357,18 +357,18 @@ public class GraphExtractor {
                             
                             else if (label.startsWith(MATCHER_VARIABLE) && label.contains(" ")) {  
 
-                                Utils.putInMap( mapVariables, 
-                                                hash, 
-                                                id , 
+                                Utils.putInMap( mapVariables , 
+                                                hash         , 
+                                                id           , 
                                                 label.trim().replaceFirst(label.split(" ")[0],"") ) ;  
                             }
                             
                             else if (label.startsWith(META_VERIABLE) && label.contains(" ")) {                                           
-                                  metaPatternVariable = label.replaceFirst(Pattern.quote(META_VERIABLE),"")       ;
-                                  metaPatternHash     = hash                                                      ;
-                            }
+                                  metaPatternVariable = label.replaceFirst(Pattern.quote(META_VERIABLE),"")        ;
+                                  metaPatternHash     = hash                                                       ;
+                            } 
                             else if (label.startsWith(META_PATTERN_CONTEXT) && label.contains(" ")) {                                           
-                                  metaPatternContext = label.replaceFirst(Pattern.quote(META_PATTERN_CONTEXT),"") ;
+                                  metaPatternContext = label.replaceFirst(Pattern.quote(META_PATTERN_CONTEXT),"")  ;
                             }
                             else if (label.startsWith(META_PATTERN_PARALLEL) && label.contains(" ")) {                                           
                                  metaPatternParallel = label.replaceFirst(Pattern.quote(META_PATTERN_PARALLEL),"") ;
@@ -392,7 +392,7 @@ public class GraphExtractor {
                             }
                             else
                             if( label.toLowerCase().startsWith("(") 
-                                && label.toLowerCase().contains(")") )   {
+                                && label.toLowerCase().contains(")") )     {
                                       
                                 code =  Integer.parseInt(label
                                                .split(Pattern.quote(")"))[0]
@@ -411,7 +411,7 @@ public class GraphExtractor {
                             if(label.toLowerCase().startsWith("prefix "))        {
                                 String pref = label.split(Pattern.quote(" "))[1] ;
                                 String uri  = label.split(Pattern.quote(" "))[2] ;
-                                prefixs .put(pref, uri) ;
+                                prefixs .put(pref, uri)                          ;
                             }
                             
                             else
@@ -434,7 +434,7 @@ public class GraphExtractor {
 
         if ( ! jsonObj.getJSONObject("graphml")
                       .getJSONObject("graph")
-                      .has("edge") )    {
+                      .has("edge") )         {
            return ;
         }
 
@@ -473,11 +473,11 @@ public class GraphExtractor {
                                                 .getJSONObject("y:EdgeLabel")
                                                 .getString("content") ;
 
-                    String id    = jsonObject.getString("id")     ;
+                    String id    = jsonObject.getString("id")         ;
 
-                    String sujet = jsonObject.getString("source") ;
+                    String sujet = jsonObject.getString("source")     ;
 
-                    String objet = jsonObject.getString("target") ;
+                    String objet = jsonObject.getString("target")     ;
 
                     Edge       e = new Edge( hash, id, sujet, predicat, objet ) ;
 
@@ -500,11 +500,11 @@ public class GraphExtractor {
 
                     Edge e = new Edge( hash , id, sujet, predicat, objet)      ;
 
-                    Utils.putInMap(mapEdges, hash, e); 
+                    Utils.putInMap(mapEdges, hash, e) ; 
                     
                 }
                 else {
-                    Messages.printExtractionError() ;
+                    Messages.printExtractionError()   ;
                 }
             }
             
@@ -560,7 +560,7 @@ public class GraphExtractor {
 
                 Edge   e     = new Edge(hash, id, sujet, predicat, objet) ;
 
-                Utils.putInMap(mapEdges, hash, e); 
+                Utils.putInMap(mapEdges, hash, e) ; 
 
             }
             else {
@@ -593,16 +593,16 @@ public class GraphExtractor {
                 Messages.printMessageProcessingGraphFile( path.toAbsolutePath()
                                                                    .toString())      ;
              
-                process(path.toString() )                          ;
-                if ( ! processed ) processed = true                ;
+                process(path.toString() )                                            ;
+                if ( ! processed ) processed = true                                  ;
             }
         }
       
         if ( ! processed ) {
          
             Messages.printMessageFilesNotFoundExtentsion( directory, 
-                                                               extensionFile ) ;
-            System.exit ( 0 )                                                  ; 
+                                                               extensionFile )      ;
+            System.exit ( 0 )                                                       ; 
         }
      
         Messages.printSeparator();
