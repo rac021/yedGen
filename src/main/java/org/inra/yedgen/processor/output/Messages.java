@@ -92,7 +92,7 @@ public class Messages {
     }
     
     public static void printMessageExtractGraph( String directory ) {
-      System.out.println("------------------------------------------------------------") ;
+      System.out.println ( " " ) ;  printSeparator() ;     
       System.out.println(" Extracting Graph from Directory  : " + directory + "  ... " ) ;
     }
     
