@@ -21,7 +21,7 @@ function sufixCamelize( str ) {
 }
 
 function contextCamelize( str ) {
-   return  categCamelize( str )  ;
+  return categCamelize( str, arguments [ arguments.length  -1 ]  ) ;
 }
 
 function categCamelize( str ) {
