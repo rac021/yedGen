@@ -1,7 +1,7 @@
 
 function camelize(str) {
    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
-     return index == 0 ? letter.toLowerCase() : letter.toUpperCase();
+     return index == 0 ? letter.toLowerCase() : letter.toUpperCase() ;
    }).replace(/\s+/g, '').capitalizeFirstLetter() ; 
 }
 
@@ -12,13 +12,28 @@ String.prototype.capitalizeFirstLetter = function()     {
 
 function sufixCamelize( str ) {
        
+   var pref = " " ;
    var SPLITER = arguments [ arguments.length  -1 ] ;
-   var res_0 = str.split(SPLITER)[0].trim() ;
-   var res_1 = str.split(SPLITER)[1].trim() ;
+   var vars = str.split(SPLITER);
+   
+   if( vars[0].trim() == ":" || vars[0].trim().length == 0 ) {            
+      if( vars[0].trim() == ":") {
+          pref = ":" ;              
+       }
+       vars.shift() ;     
+   }    
+        
+   if( vars[1].trim().length == 0 ) {
+      vars.shift() ;                 
+   }    
+        
+   var res_0 = vars[0].trim() ;
+   var res_1 = vars[1].trim() ;
   
-   return res_0  + camelize ( ":" + res_1 ) ;
+   return res_0  + camelize( pref + res_1 ) ;
    
 }
+
 
 function contextCamelize( str ) {
   return categCamelize( str, arguments [ arguments.length  -1 ]  ) ;
