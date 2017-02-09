@@ -96,6 +96,8 @@ public class Main {
       processor.process ( outFile                  , 
                           csv                      , 
                           includingGraphVariables  , 
+                          classe                   ,
+                          column                   ,
                           verbose )  ;
         
       long executionTime = System.currentTimeMillis() - startTime ;
