@@ -269,5 +269,9 @@ public class MetaPatternManager                {
          printMessageMetaPatternError("metaPatternParallel") ;
       }
     }
+
+    public String getCSV_SEPARATOR() {
+        return CSV_SEPARATOR;
+    }
         
 }
