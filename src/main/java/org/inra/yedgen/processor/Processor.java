@@ -125,9 +125,12 @@ public class Processor {
     
     }
         
-    public boolean processFull ( String outputFile, String csvFile )  {
+    public boolean processFull ( String outputFile , 
+                                 String csvFile    , 
+                                 String classe     ,
+                                 int column        )  {
         
-        boolean processCSV       = processOnlyCSV(outputFile, csvFile)     ;
+        boolean processCSV       = processOnlyCSV( outputFile, csvFile, classe, column ) ;
         
         boolean processVariables = processOnlyGraphVariables( outputFile ) ;
         
@@ -178,7 +181,10 @@ public class Processor {
       
    }
     
-   public boolean processOnlyCSV ( String outputFile , String csvFile )     {
+   public boolean processOnlyCSV ( String outputFile , 
+                                   String csvFile    , 
+                                   String classe     ,
+                                   int column  )     {
          
      Messages.printMessageStartProcessCsvVariableGeneration( csvFile ) ;
      
@@ -207,6 +213,11 @@ public class Processor {
                 
                 @Override
                 public void accept(String line) {
+                    
+                 if( ! line.split(metaPatternManager.getCSV_SEPARATOR())[column].trim()
+                                                    .replaceAll(" +", " ").equals(classe.trim())) {
+                     return ;
+                 }
                     
                  try {
                                   
@@ -253,11 +264,13 @@ public class Processor {
                                                                      outFile                  ) ;
 
                        } catch (IOException ex) {
-                            Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex) ;
+                            Logger.getLogger(Processor.class.getName())
+                                  .log(Level.SEVERE, null, ex)        ;
                        }
                                                
                     } catch (Exception e) {
-                         Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, e)  ;
+                         Logger.getLogger(Processor.class.getName())
+                               .log(Level.SEVERE, null, e)         ;
                     }
                 }
             }) ;
@@ -318,25 +331,27 @@ public class Processor {
     public void process ( String  outputFile              , 
                           String  csvFile                 , 
                           boolean includingGraphVariables ,
+                          String classe                   ,
+                          int column                      ,
                           boolean verbose )               {
       
         this.verbose = verbose  ;
         
         boolean process = false ; 
         
-        if( includingGraphVariables && csvFile != null )  {
-            process = processFull( outputFile, csvFile )  ;
+        if( includingGraphVariables && csvFile != null )                    {
+            process = processFull( outputFile, csvFile, classe, column )    ;
         }
         else if ( ! includingGraphVariables && 
-                    csvFile != null )                      {
-            process = processOnlyCSV( outputFile, csvFile) ;
+                    csvFile != null )                                       {
+            process = processOnlyCSV( outputFile, csvFile, classe, column ) ;
         }
         else  {
-            process = processOnlyGraphVariables( outputFile ) ;
+            process = processOnlyGraphVariables( outputFile )               ;
         }
         
-        if( ! process ) {
-            processOnlyGraphWithoutVariables( outputFile )    ;
+        if( ! process )                                                     {
+            processOnlyGraphWithoutVariables( outputFile )                  ;
         }
     }
     
