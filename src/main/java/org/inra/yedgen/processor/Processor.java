@@ -214,9 +214,18 @@ public class Processor {
                 @Override
                 public void accept(String line) {
                     
-                 if( ! line.split(metaPatternManager.getCSV_SEPARATOR())[column].trim()
-                                                    .replaceAll(" +", " ").equals(classe.trim())) {
-                     return ;
+                 if( classe != null ) {
+                      
+                   if( column < 0 ) throw new IllegalArgumentException(" Column Num can't be negative ") ;
+                    
+                   if( line.split(metaPatternManager.getCSV_SEPARATOR()).length < column + 1 )
+                       throw new IllegalArgumentException(" Column Does't exists !! ")       ;
+                    
+                   if( ! line.split(metaPatternManager.getCSV_SEPARATOR())[column].trim()
+                                                      .replaceAll(" +", " ").equals(classe.trim())) {
+                      counter ++ ;
+                      return     ;
+                   }
                  }
                     
                  try {
