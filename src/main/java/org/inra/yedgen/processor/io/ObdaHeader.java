@@ -31,12 +31,17 @@ public class ObdaHeader {
      headerOut.add("");
      Map<String, String> sourceDeclaration = graphExtractor.getSourceDeclaration() ;
                       
-     headerOut.add(ObdaProperties.SOURCE_DEC_STRING
-                                 .replace("?sourceUri", sourceDeclaration.get("sourceUri"))
-                                 .replace("?connectionUrl", sourceDeclaration.get("connectionUrl"))
-                                 .replace("?username", sourceDeclaration.get("username"))
-                                 .replace("?password", sourceDeclaration.get("password"))
-                                 .replace("?driverClass", sourceDeclaration.get("driverClass"))) ;
+      headerOut.add( ObdaProperties.SOURCE_DEC_STRING
+                                   .replace("?sourceUri"    , sourceDeclaration.get("sourceUri")     != null ? 
+                                                              sourceDeclaration.get("sourceUri")     : "?sourceUri"      )
+                                   .replace("?connectionUrl", sourceDeclaration.get("connectionUrl") != null ? 
+                                                              sourceDeclaration.get("connectionUrl") : "?connectionUrl"  )
+                                   .replace("?username"     , sourceDeclaration.get("username")      != null ? 
+                                                              sourceDeclaration.get("username")      : "?username"       )
+                                   .replace("?password"     , sourceDeclaration.get("password")      != null ? 
+                                                              sourceDeclaration.get("password")      : "?password"       )
+                                   .replace("?driverClass"  , sourceDeclaration.get("driverClass")   != null ? 
+                                                              sourceDeclaration.get("driverClass")   : "?driverClass" )) ;
                      
      headerOut.add("")                                        ;
                       
