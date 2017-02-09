@@ -1,8 +1,8 @@
 
-package entypoint;
+package entypoint ;
 
-import java.io.File;
-import org.inra.yedgen.processor.Processor;
+import java.io.File ;
+import org.inra.yedgen.processor.Processor ;
 
 /**
  *
@@ -31,9 +31,9 @@ public class Main {
  
   public static void main (String[] args) throws Exception    {
         
-    String directory = null , outFile = null , ext = null , csv = null ;
-        
-    String prf = null , js = null                                      ;
+    String directory = null ,     outFile = null , ext = null , csv = null ;
+    String prf       = null ,     js      = null                           ;
+    String classe    = null ; int column  = -1                             ;
         
     boolean includingGraphVariables = false ,  verbose = false ;
        
@@ -43,26 +43,31 @@ public class Main {
             
        String token = args[i] ;
            
-       switch(token)   {
+        switch(token)   {
          
-         case "-d"   :  directory = args[i+1] ; nbParams += 2 ;
-                         break ;
-         case "-out" :  outFile   = args[i+1] ; nbParams += 2 ;
-                         break ;
-         case "-ext" :  ext       = args[i+1] ; nbParams += 2 ;
-                         break ;            
-         case "-csv" :  csv       = args[i+1] ; nbParams += 2 ;
-                         break ;    
-         case "-prf" :  prf       = args[i+1] ; nbParams += 2 ;
-                         break ;            
-         case "-js" :  js         = args[i+1] ; nbParams += 2 ;
-                         break ;            
-         case "-ig" :   includingGraphVariables = true ; 
-                         nbParams += 1 ;
-                         break ;            
-         case "-v"  :   verbose = true ; 
-                         nbParams += 1 ;
-                         break ;            
+         case "-d"     :  directory = args[i+1] ; nbParams += 2  ;
+                          break ;
+         case "-out"   :  outFile   = args[i+1] ; nbParams += 2  ;
+                          break ;
+         case "-ext"   :  ext       = args[i+1] ; nbParams += 2  ;
+                          break ;            
+         case "-csv"   :  csv       = args[i+1] ; nbParams += 2  ;
+                          break ;    
+         case "-prf"   :  prf       = args[i+1] ; nbParams += 2  ;
+                          break ;            
+         case "-js"    :  js         = args[i+1] ; nbParams += 2 ;
+                          break ;            
+         case "-class" :  classe = args[i+1] ; nbParams += 2     ;
+                          break ;    
+         case "-column":  column = Integer.parseInt(args[i+1])   ; 
+                          nbParams += 2                          ; 
+                          break ;    
+         case "-ig"    :  includingGraphVariables = true         ;  
+                          nbParams += 1                          ;
+                          break ;            
+         case "-v"     :  verbose = true                         ;
+                          nbParams += 1                          ;
+                          break ;            
        }
     }
        
