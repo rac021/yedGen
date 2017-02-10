@@ -219,7 +219,7 @@ public class Processor {
                    if( column < 0 ) throw new IllegalArgumentException(" Column Num can't be negative ") ;
                     
                    if( line.split(metaPatternManager.getCSV_SEPARATOR()).length < column + 1 )
-                       throw new IllegalArgumentException(" Column Does't exists !! ")       ;
+                       throw new IllegalArgumentException(" Column [ " + column + " ] Does't exists ! ") ;
                     
                    if( ! line.split(metaPatternManager.getCSV_SEPARATOR())[column].trim()
                                                       .replaceAll(" +", " ").equals(classe.trim())) {
