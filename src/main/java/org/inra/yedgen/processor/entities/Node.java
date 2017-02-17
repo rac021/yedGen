@@ -414,9 +414,15 @@ public final class Node implements Serializable  {
    }
    
    public static String cleanValue( String value ) {
-       return value.replace(":" , "")
-                   .replace("'" , "")
-                   .replace("\"", "")
-                   .replaceAll(" +" , "") ;
+        
+      return value.startsWith(":")        ?
+             value.replace(":" , "")
+                  .replace("'" , "")
+                  .replace("\"", "")
+                  .replaceAll(" +" , "")  :
+             value.replace(":" , "-")
+                  .replace("'" , "")
+                  .replace("\"", "")
+                  .replaceAll(" +" , "")  ;
    }
 }
