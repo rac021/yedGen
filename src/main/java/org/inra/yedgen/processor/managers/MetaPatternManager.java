@@ -174,8 +174,7 @@ public class MetaPatternManager                {
         }
         
         return base + " " + pattern ;
-     
-     
+          
     }
     
     public String generatePatternParallel ( String csvLine )  {
