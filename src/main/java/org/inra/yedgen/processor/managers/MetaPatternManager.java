@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.processor.managers;
+package org.inra.yedgen.processor.managers ;
 
 import java.util.List ;
 import java.util.Arrays ;
@@ -82,73 +82,43 @@ public class MetaPatternManager                {
         Pattern p = Pattern.compile("[:'\"]?COLUMN_+\\w+['\"]?") ;
         Matcher m = p.matcher(metaPatternVariable )              ;
         
-        List<String> columns    = new ArrayList() ;
-        Comparator<String> comp = Comparator.comparing ( s -> s.length()) ;
+        List<String> usedColumns = new ArrayList()                         ;
+        Comparator<String> comp  = Comparator.comparing ( s -> s.length()) ;
         
-        while (m.find())                                   {
-          columns.add(m.group().replace(" + ", "").trim()) ;
+        while ( m.find() ) {
+          usedColumns.add(m.group().replace(" + ", "").trim()) ;
         }
        
-        Collections.sort(columns , comp.reversed() ) ;
+        Collections.sort(usedColumns , comp.reversed() )       ;
          
-        for( String params : columns )               {
-          
-          String[] combinedNums = params.split("_")  ;
-            
-          List<String> tmp = new ArrayList<>()       ;
-            
-          for( int i = 1 ; i < combinedNums.length ; i ++ )                         {              
-             int num = Integer.parseInt( combinedNums[i].replaceAll("[^0-9]", "") ) ;
-             tmp.add( csvLine.replaceAll(" +", " ")
-                             .split(CSV_SEPARATOR)[num] )   ;
+        for ( String columnPattern : usedColumns )             {
+
+          int num = Integer.parseInt( columnPattern.replaceAll("[^0-9]", "") ) ;
+          String columnValue = csvLine.replaceAll(" +", " ")
+                                      .split(CSV_SEPARATOR)[num]               ;
+                       
+          if ( columnPattern.trim().startsWith("'")  )         {
+             columnValue = "'" + columnValue ;
+             if ( columnPattern.trim().endsWith("'") ) columnValue += "'"      ;
           }
-            
-          String resScript ;
-          
-          if(params.trim().startsWith(":") )                                         {
-            tmp.add ( 0 , ": ") ;
-            resScript = csvProperties.process( params.replaceFirst(":", "") , 
-                                               tmp.toArray(new String[tmp.size()]) ) ;
-          }
-          else if( params.trim().startsWith("'") || params.trim().startsWith("\"") ) {
-            
-              resScript = csvProperties.process( params , 
-                                                 tmp.toArray(new String[tmp.size()]) ) ; 
-            
-            if(resScript.contains(ManagerVariable.INTRA_COLUMN_SPLITTER )) {
-                resScript = params.charAt(0) + 
-                            resScript.replace(ManagerVariable.INTRA_COLUMN_SPLITTER, "','" ) + 
-                            params.charAt(0) ;
-            }            
+          else if ( columnPattern.trim().startsWith("\"") )    {
+             columnValue = "\"" + columnValue ;
+             if ( columnPattern.trim().endsWith("\"") ) columnValue += "\""    ;
           }
           
-          else {
-            resScript = csvProperties.process( params , 
-                                               tmp.toArray(new String[tmp.size()]) ) ;
-          }
-         
-          if(params.startsWith("'") && params.endsWith("'"))                     {
-              variable = variable.replaceAll ( params, "'" + resScript + "'" )   ;
-          }
-          else if(params.startsWith("\"") && params.endsWith("\""))              {
-              variable = variable.replaceAll ( params, "\"" + resScript + "\"" ) ;
-          }
-          else {
-             variable = variable.replaceAll ( params, resScript ) ;
-          }
-         
+           variable = variable.replaceAll ( columnPattern, columnValue )       ;
         }
 
         return variable.replace(META_PATTERN_CONTEXT, MATCHER_PATTERN_CONTEXT  )
-                       .replace(META_PATTERN_PARALLEL, MATCHER_PATTERN_PARALLEL) ;
+                       .replace(META_PATTERN_PARALLEL, MATCHER_PATTERN_PARALLEL) ;        
     }
 
         
-    public String generatePatternContext ( String csvLine ) {
+    public String generatePatternContext ( String csvLine )                    {
         
-        checkMetaPatternContext()                    ;
+        checkMetaPatternContext()                     ;
         
-        if( metaPatternContext == null ) return null ;
+        if ( metaPatternContext == null ) return null ;
         
         String pattern = "" ;
         String base    =  metaPatternContext.split(Pattern.quote("["))[0].trim() ;
@@ -168,26 +138,20 @@ public class MetaPatternManager                {
             printMessageError( "-> Error : ColumnNumber > csvLine_Separator // Probably Bad CSV_SEPARATOR ! " ) ;
             System.exit( 0 ) ;
         }
-        
-       String  resScript = csvProperties.process( column.replace(":", "") , 
-                             column.startsWith(":") ? 
-                                " : " + ManagerVariable.INTRA_COLUMN_SPLITTER + " " + 
-                                        csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim() :
-                                csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim() )       ; 
-        
+
         String nums            = matcher.split("Q_")[1]               ;
         int    startQueryNum   = Integer.parseInt(nums.split("_")[0]) ;
         int    middleQueryNum  = Integer.parseInt(nums.split("_")[1]) ;
         int    endQueryNum     = Integer.parseInt(nums.split("_")[2]) ;
-        int loop               = startQueryNum                        ;
-        
+        int loop               = startQueryNum                        ;        
        
         if ( csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim().length() == 0 ) return null ;
         
          
-        String[] variablesContext = resScript.replaceAll(" +", "")
-                                             .trim()
-                                             .split(ManagerVariable.INTRA_COLUMN_SPLITTER) ;
+        String[] variablesContext =  csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim()
+                                            .replaceAll(" +", "")
+                                            .trim()
+                                            .split(ManagerVariable.INTRA_COLUMN_SPLITTER) ;
        
         Collections.reverse(Arrays.asList(variablesContext)) ;
 
@@ -211,14 +175,13 @@ public class MetaPatternManager                {
         
         return base + " " + pattern ;
      
+     
     }
-
     
-    public String generatePatternParallel ( String csvLine ) {
+    public String generatePatternParallel ( String csvLine )  {
         checkMetaPatternParallel() ;
         return metaPatternParallel ;
     }
-
  
     private String validatePrefix ( String defaulPrefix , String entity ) {
         
@@ -236,7 +199,6 @@ public class MetaPatternManager                {
         
     }
 
-
     private void checkMetaPatternVariable() {
         
       if( metaPatternVariable == null || metaPatternVariable.isEmpty()) {
@@ -249,7 +211,7 @@ public class MetaPatternManager                {
         
       if(  metaPatternVariable != null && 
            metaPatternParallel != null && 
-          !metaPatternVariable.contains( META_PATTERN_CONTEXT )) {
+          !metaPatternVariable.contains( META_PATTERN_CONTEXT ))  {
          printMessageMetaPatternErrorMustContains( META_VERIABLE, META_PATTERN_PARALLEL) ;
       }
     
@@ -257,7 +219,7 @@ public class MetaPatternManager                {
     
     private void checkMetaPatternContext() {
 
-      if( metaPatternContext == null || metaPatternContext.isEmpty()) {
+      if( metaPatternContext == null || metaPatternContext.isEmpty())   {
          printMessageMetaPatternError("metaPatternContext") ;
       }        
          
@@ -271,7 +233,7 @@ public class MetaPatternManager                {
     }
 
     public String getCSV_SEPARATOR() {
-        return CSV_SEPARATOR;
+        return CSV_SEPARATOR ;
     }
         
 }
