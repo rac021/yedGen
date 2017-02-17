@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.processor.entities;
+package org.inra.yedgen.processor.entities ;
 
 import java.util.Set ;
 import java.util.Map ;
@@ -328,6 +328,12 @@ public final class Node implements Serializable  {
         
     }
    
+    private boolean isUri( String uri) {
+        return  uri.contains(":") || 
+                uri.contains("/") ||
+                uri.startsWith("<") && uri.endsWith(">") ;
+    }
+    
     public void applyKeyValue ( String pattern , String value ) {
         
         if( value  == null     ||
@@ -341,13 +347,13 @@ public final class Node implements Serializable  {
              
             Set<String> set = iterator.next() ;
             
-            for (Iterator<String> iterator1 = set.iterator(); iterator1.hasNext();) {
+            for (Iterator<String> iterator1 = set.iterator() ; iterator1.hasNext() ; )       {
             
                 String line = iterator1.next() ;
                 
-                if(line.contains(pattern)) {
-                    set.remove(line )                      ;
-                    set.add(line.replace(pattern, value) ) ;
+                if(line.contains(pattern))     {
+                    set.remove(line )                                                         ;
+                    set.add(line.replace(pattern, isUri(line) ? cleanValue(value) : value  )) ;
                 }
             }
             
@@ -360,7 +366,6 @@ public final class Node implements Serializable  {
         queryObject =  queryObject != null ? queryObject.replace( pattern, value )     : queryObject ;
         
     }
-    
 
     public void applyKeyValues ( Map<String, String > values )                   {
     
