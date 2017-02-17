@@ -166,8 +166,7 @@ public class MetaPatternManager                {
             if( i == variablesContext.length - 2 || variablesContext.length ==  2 ) {
                 loop = endQueryNum ;
             }
-            else 
-            if( i == 0 ) {
+            else  if( i == 0 ) {
                 loop = middleQueryNum ;
             }
         }
