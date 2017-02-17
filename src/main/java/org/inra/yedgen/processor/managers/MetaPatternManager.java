@@ -145,8 +145,7 @@ public class MetaPatternManager                {
         int    endQueryNum     = Integer.parseInt(nums.split("_")[2]) ;
         int loop               = startQueryNum                        ;        
        
-        if ( csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim().length() == 0 ) return null ;
-        
+        if ( csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim().length() == 0 ) return null ;        
          
         String[] variablesContext =  csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim()
                                             .replaceAll(" +", "")
