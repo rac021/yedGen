@@ -601,7 +601,7 @@ public class GraphExtractor {
         if ( ! processed ) {
          
             Messages.printMessageFilesNotFoundExtentsion( directory, 
-                                                               extensionFile )      ;
+                                                          extensionFile )           ;
             System.exit ( 0 )                                                       ; 
         }
      
@@ -612,11 +612,11 @@ public class GraphExtractor {
         return mapUris ;
     }
 
-    public Map<Integer, Set<Edge>> getMapEdges() {
+    public Map<Integer, Set<Edge>> getMapEdges()           {
         return mapEdges ;
     }
 
-    public Map<Integer, Map<String, Node>> getMapNodes() {
+    public Map<Integer, Map<String, Node>> getMapNodes()   {
         return mapNodes ;
     }
 
@@ -628,7 +628,7 @@ public class GraphExtractor {
         return mapConcepts ;
     }
 
-    public Map<Integer, Map<String, String>> getMapPatternContexts() {
+    public Map<Integer, Map<String, String>> getMapPatternContexts()  {
         return mapPatternContexts ;
     }
 
@@ -636,19 +636,19 @@ public class GraphExtractor {
         return mapPatternParallels ;
     }
 
-    public Map<Integer, Map<String, String>> getMapVariables() {
+    public Map<Integer, Map<String, String>> getMapVariables()        {
         return mapVariables ;
     }
 
-    public String getMetaPatternVariable() {
+    public String getMetaPatternVariable()  {
         return metaPatternVariable ;
     }
 
-    public String getMetaPatternContext() {
+    public String getMetaPatternContext()   {
         return metaPatternContext ;
     }
 
-    public String getMetaPatternParallel() {
+    public String getMetaPatternParallel()  {
         return metaPatternParallel ;
     }
 
@@ -660,7 +660,7 @@ public class GraphExtractor {
         return SourceDeclaration ;
     }
 
-    public Integer getMetaPatternHash() {
+    public Integer getMetaPatternHash()               {
         return metaPatternHash ;
     }
     
