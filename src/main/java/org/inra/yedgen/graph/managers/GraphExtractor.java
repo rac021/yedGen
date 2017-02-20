@@ -660,7 +660,7 @@ public class GraphExtractor {
         return SourceDeclaration ;
     }
 
-    public Integer getMetaPatternHash()               {
+    public Integer getMetaPatternHash()        {
         return metaPatternHash ;
     }
     
