@@ -398,9 +398,11 @@ public class Processor {
             
             lines.forEach ( line  -> {
 
-                          String[] splitedLines = line.replaceAll(" +", " ").trim().split(" ") ;
+                          String[] splitedLines = line.replaceAll(" +", " ").trim().split(" ")   ;
                           if( splitedLines.length >= 3 ) 
-                          prefixMap.put(splitedLines[1].trim(), splitedLines[2].trim()) ;
+                          prefixMap.put(splitedLines[1].trim(), splitedLines[2].trim()
+					                                       .replace("<", "")
+                                                                               .replace(">","")) ;
             }) ;
                         
 	} catch (IOException e) {
