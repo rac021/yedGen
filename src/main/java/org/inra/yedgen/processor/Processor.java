@@ -417,9 +417,9 @@ public class Processor {
 
 	       lines.forEach ( line  -> {
                    if(line.replaceAll(" +", " ").trim().startsWith("obda-") && line.contains(":")) {
-                     String[] splitedLines = line.replaceAll(" +", "").trim().split(":") ;
+                     String[] splitedLines = line.replaceAll(" +", "").trim().split(":", 2 ) ;
                      if( splitedLines.length >= 2 ) 
-                     sourceDeclarationMap.put(  splitedLines[0].trim().replace("obda-", "") , 
+                     sourceDeclarationMap.put(  splitedLines[0].trim().replace("obda-", "")  , 
                                                 splitedLines[1].trim()) ;
                    }
                }) ;
