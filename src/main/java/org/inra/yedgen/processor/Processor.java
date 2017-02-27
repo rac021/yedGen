@@ -8,6 +8,7 @@ import java.io.IOException ;
 import java.nio.file.Files ;
 import java.nio.file.Paths ;
 import java.util.ArrayList ;
+import java.util.Map;
 import java.util.stream.Stream ;
 import java.util.logging.Level ;
 import java.util.logging.Logger ;
@@ -53,14 +54,25 @@ public class Processor {
     private boolean                      verbose                 ;
     
     
-    public Processor( String directory     , 
-                      String extensionFile ,
-                      String propertieFile ,
-                      String jsFile        ) throws Exception                {
+    public Processor( String  directory     , 
+                      String  extensionFile ,
+                      String  propertieFile ,
+                      String  jsFile        ,
+                      String  connecFile    ,
+                      String  prefixFile    ,
+                      String default_prefix ) throws Exception  {
    
-      this.graphExtractor  =  new GraphExtractor ()                          ;
-      
-      graphExtractor.genGraphPopulatingManagers( directory , extensionFile ) ;
+      this.graphExtractor  =  new GraphExtractor ()             ;
+        
+      graphExtractor.genGraphPopulatingManagers( directory , extensionFile )    ;
+          
+      if(default_prefix != null ) GraphExtractor.PREFIX_PREDICAT = default_prefix ;
+     
+      /* Add External Prefixs if prefixFile not null */ 
+      updateConnection( connecFile, this.graphExtractor.getSourceDeclaration()) ;
+              
+      /* Add External Prefixs if prefixFile not null */ 
+      updatePrefixs(prefixFile, this.graphExtractor.getPrefixs()) ;
 
       ManagerUri     managerUri     =  new ManagerUri( graphExtractor.getMapUris())          ;
       ManagerEdge    managerEdge    =  new ManagerEdge( graphExtractor.getMapEdges() )       ;
@@ -375,6 +387,46 @@ public class Processor {
            if ( patt.contains("?") )
            Messages.printErrorMatcher( variableName , patt ) ; 
         }
+    }
+
+    /* Override Prefixs */
+    private void updatePrefixs(String prefixFile, Map<String, String> prefixMap ) {
+       
+        if( prefixFile == null || prefixMap == null ) return ;
+         
+        try ( Stream<String> lines = Files.lines(Paths.get(prefixFile))) {
+            
+            lines.forEach ( line  -> {
+
+                          String[] splitedLines = line.replaceAll(" +", " ").trim().split(" ") ;
+                          if( splitedLines.length >= 3 ) 
+                          prefixMap.put(splitedLines[1].trim(), splitedLines[2].trim()) ;
+            }) ;
+                        
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+    }
+
+    /* Override Coonection Info */ 
+    private void updateConnection(String connecFile, Map<String, String> sourceDeclarationMap) {
+        
+        if( connecFile == null || sourceDeclarationMap == null ) return ;
+        
+        try (Stream<String> lines = Files.lines(Paths.get(connecFile))) {
+
+	       lines.forEach ( line  -> {
+                   if(line.replaceAll(" +", " ").trim().startsWith("obda-") && line.contains(":")) {
+                     String[] splitedLines = line.replaceAll(" +", "").trim().split(":") ;
+                     if( splitedLines.length >= 2 ) 
+                     sourceDeclarationMap.put(  splitedLines[0].trim().replace("obda-", "") , 
+                                                splitedLines[1].trim()) ;
+                   }
+               }) ;
+
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
     }
 
 }

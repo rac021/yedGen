@@ -31,10 +31,11 @@ public class Main {
  
   public static void main (String[] args) throws Exception    {
         
-    String directory = null ,     outFile = null , ext = null , csv = null ;
-    String prf       = null ,     js      = null                           ;
-    String classe    = null ; int column  = -1                             ;
-        
+    String directory    = null ,  outFile     = null , ext = null , csv = null ;
+    String prf          = null ,  js          = null                           ;
+    String classe       = null ;  int column  = -1                             ;
+    String prefixFile   = null ,  connecFile  = null , def_prefix  = null      ;
+    
     boolean includingGraphVariables = false ,  verbose = false ;
        
     int     nbParams                = 0       ;
@@ -45,29 +46,35 @@ public class Main {
            
         switch(token)   {
          
-         case "-d"     :  directory = args[i+1] ; nbParams += 2  ;
-                          break ;
-         case "-out"   :  outFile   = args[i+1] ; nbParams += 2  ;
-                          break ;
-         case "-ext"   :  ext       = args[i+1] ; nbParams += 2  ;
-                          break ;            
-         case "-csv"   :  csv       = args[i+1] ; nbParams += 2  ;
-                          break ;    
-         case "-prf"   :  prf       = args[i+1] ; nbParams += 2  ;
-                          break ;            
-         case "-js"    :  js         = args[i+1] ; nbParams += 2 ;
-                          break ;            
-         case "-class" :  classe = args[i+1] ; nbParams += 2     ;
-                          break ;    
-         case "-column":  column = Integer.parseInt(args[i+1])   ; 
-                          nbParams += 2                          ; 
-                          break ;    
-         case "-ig"    :  includingGraphVariables = true         ;  
-                          nbParams += 1                          ;
-                          break ;            
-         case "-v"     :  verbose = true                         ;
-                          nbParams += 1                          ;
-                          break ;            
+         case "-d"          :  directory = args[i+1] ; nbParams += 2  ;
+                               break ;
+         case "-out"        :  outFile   = args[i+1] ; nbParams += 2  ;
+                               break ;
+         case "-ext"        :  ext       = args[i+1] ; nbParams += 2  ;
+                               break ;            
+         case "-csv"        :  csv       = args[i+1] ; nbParams += 2  ;
+                               break ;    
+         case "-prf"        :  prf       = args[i+1] ; nbParams += 2  ;
+                               break ;            
+         case "-js"         :  js         = args[i+1] ; nbParams += 2 ;
+                               break ;            
+         case "-class"      :  classe = args[i+1] ; nbParams += 2     ;
+                                       break ;    
+         case "-column"     :  column = Integer.parseInt(args[i+1])   ; 
+                               nbParams += 2                          ; 
+                               break ;    
+         case "-ig"         :  includingGraphVariables = true         ;  
+                               nbParams += 1                          ;
+                               break ;            
+         case "-v"          :  verbose = true                         ;
+                               nbParams += 1                          ;
+                               break ;         
+         case "-def_prefix" :  def_prefix = args[i+1] ; nbParams += 2 ;                            
+                               break ;         
+         case "-connecFile" :  connecFile = args[i+1] ; nbParams += 2 ;
+                               break ;
+         case "-prefixFile" :  prefixFile = args[i+1] ; nbParams += 2 ;
+                               break ;
        }
     }
        
@@ -91,7 +98,10 @@ public class Main {
       Processor processor = new Processor ( directory          ,
                                             ext                ,
                                             prf                ,
-                                            js   )             ;
+                                            js                 ,
+                                            connecFile         ,
+                                            prefixFile         ,
+                                            def_prefix )       ;
         
       processor.process ( outFile                  , 
                           csv                      , 
