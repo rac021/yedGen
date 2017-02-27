@@ -831,11 +831,11 @@ Query_(3):  SELECT dt.code AS dty_code, var.code AS var_code ,
         <node id="n2::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="55.264150803061966" width="841.0327008799795" x="-2690.038051350846" y="-1844.349622569503"/>
+              <y:Geometry height="55.264150803061966" width="929.9841211627192" x="-2690.038051350846" y="-1844.349622569503"/>
               <y:Fill color="#FFFF99" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" modelName="custom" textColor="#0000FF" visible="true" width="832.779296875" x="4.126702002489765" y="11.663325401530983">##META_PATTERN_CONTEXT 
-2000 ola/observation/?ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_COLUMN_2 Q_2000_2001_2002 ] <y:LabelModel>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" modelName="custom" textColor="#0000FF" visible="true" width="896.04296875" x="16.97057620635951" y="11.663325401530983">##META_PATTERN_CONTEXT 
+2000 ola/observation/?CONTEXT_ENTITY/{dty_code}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_COLUMN_2 Q_2000_2001_2002 ] <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -951,7 +951,7 @@ ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:Lab
               <y:Geometry height="269.84329757366254" width="571.8214569643476" x="-3130.622350130734" y="-2268.0188307507224"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="215.53125" modelName="custom" textColor="#000000" visible="true" width="571.8214569643476" x="0.0" y="27.156023786831156">!! ?VARIABLE :Water 
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="215.53125" modelName="custom" textColor="#000000" visible="true" width="571.8214569643476" x="0.0" y="27.156023786831156">!! ?VARIABLE_ENTITY :Water 
 
  { ?VAR_ENTITY_URI=ph } 
  { ?UNIT_STANDARD_NAME_GRAPH=:pHUnit} 
@@ -1016,7 +1016,7 @@ ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:Lab
               <y:Geometry height="261.83472577821726" width="531.5193255775996" x="-1951.267513065719" y="-2261.997790549936"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="215.53125" modelName="custom" textColor="#000000" visible="true" width="531.5193255775996" x="0.0" y="23.151737889108517">?VARIABLE  ##PATTERN_CONTEXT_2 :Sulphates 
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="215.53125" modelName="custom" textColor="#000000" visible="true" width="531.5193255775996" x="0.0" y="23.151737889108517">?VARIABLE_ENTITY  ##PATTERN_CONTEXT_2 :Sulphates 
 
  { ?VAR_ENTITY_URI=sulfates } 
  { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } 
@@ -1047,7 +1047,7 @@ ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:Lab
               <y:Geometry height="263.82225737287604" width="559.1622952112259" x="-2537.4876129884915" y="-2261.997790549936"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="215.53125" modelName="custom" textColor="#000000" visible="true" width="559.1622952112259" x="0.0" y="24.145503686438133">?VARIABLE  ##PATTERN_CONTEXT_2 :Potassium 
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="215.53125" modelName="custom" textColor="#000000" visible="true" width="559.1622952112259" x="0.0" y="24.145503686438133">?VARIABLE_ENTITY  ##PATTERN_CONTEXT_2 :Potassium 
 
  { ?VAR_ENTITY_URI=potassium } 
  { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } 
@@ -1078,7 +1078,7 @@ ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:Lab
               <y:Geometry height="269.8432975736623" width="531.5193255775998" x="-1951.2675130657192" y="-2567.8621283243847"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="215.53125" modelName="custom" textColor="#000000" visible="true" width="531.5193255775998" x="0.0" y="27.156023786831156">?VARIABLE  ##PATTERN_CONTEXT_2 :Chloride 
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="215.53125" modelName="custom" textColor="#000000" visible="true" width="531.5193255775998" x="0.0" y="27.156023786831156">?VARIABLE_ENTITY  ##PATTERN_CONTEXT_2 :Chloride 
 
  { ?VAR_ENTITY_URI=chloride } 
  { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } 
@@ -1109,7 +1109,7 @@ ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:Lab
               <y:Geometry height="269.8432975736621" width="559.1622952112259" x="-2537.4876129884915" y="-2567.8621283243847"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="215.53125" modelName="custom" textColor="#000000" visible="true" width="559.1622952112259" x="0.0" y="27.156023786831156">?VARIABLE ##PATTERN_CONTEXT_3 :Calcium 
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="215.53125" modelName="custom" textColor="#000000" visible="true" width="559.1622952112259" x="0.0" y="27.156023786831156">?VARIABLE_ENTITY ##PATTERN_CONTEXT_3 :Calcium 
 
  { ?VAR_ENTITY_URI=calcium } 
  { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter } 
@@ -1141,7 +1141,7 @@ ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:Lab
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="243.46875" modelName="custom" textColor="#000000" visible="true" width="571.8214569643476" x="0.0" y="13.187273786831156">
-?VARIABLE  ##PATTERN_CONTEXT_1 :Nitrogen 
+?VARIABLE_ENTITY  ##PATTERN_CONTEXT_1 :Nitrogen 
 
  { ?VAR_ENTITY_URI=nitrogen }
  { ?UNIT_STANDARD_NAME_GRAPH=oboe-standard:MilligramPerLiter }

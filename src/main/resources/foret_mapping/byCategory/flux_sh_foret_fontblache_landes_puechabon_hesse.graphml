@@ -326,7 +326,7 @@
           <y:Geometry height="42.0" width="123.2792053742802" x="-3561.0216726003005" y="-508.6052360552811"/>
           <y:Fill color="#99CCFF" transparent="false"/>
           <y:BorderStyle color="#3366FF" type="line" width="2.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#0000FF" visible="true" width="65.2646484375" x="29.00727846839027" y="13.1796875">?VARIABLE<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#0000FF" visible="true" width="110.0693359375" x="6.604934718390268" y="13.1796875">?VARIABLE_ENTITY<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1027,7 +1027,7 @@
               <y:Geometry height="30.0" width="1242.3943873099975" x="-3313.642132631334" y="-1741.1513036956512"/>
               <y:Fill color="#FFFF99" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1242.3943873099975" x="0.0" y="6.015625">##META_PATTERN_CONTEXT 20 foret/observation/?ENTITY/{dty_id}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_:COLUMN_2 Q_200_201_202 ] <y:LabelModel>
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1242.3943873099975" x="0.0" y="6.015625">##META_PATTERN_CONTEXT 20 foret/observation/?CONTEXT_ENTITY/{dty_id}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_:COLUMN_2 Q_200_201_202 ] <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
