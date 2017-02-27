@@ -25,7 +25,7 @@ public class ManagerPatternContext {
     private final ManagerQuery managerQuery  ;
     private final FactoryNode  factoryNode   ;
     
-    private static final String  MATCHER_ENTITY  = "?ENTITY"  ;
+    private static final String  MATCHER_ENTITY  = "?CONTEXT_ENTITY"  ;
     
     /* Hash-File - ID_PATTERN - PATTERN */
     private final Map< Integer, Map< String, String>> PATTERNS_CONTEXT  ;

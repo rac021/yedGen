@@ -21,7 +21,7 @@ public class ManagerVariable {
     
     public static final String PATTERN_CONTEXT  = "##PATTERN_CONTEXT"  ;
     public static final String PATTERN_PARALLEL = "##PATTERN_PARALLEL" ;
-    public static final String PATTERN_VARIABLE = "?VARIABLE"          ;
+    public static final String PATTERN_VARIABLE = "?VARIABLE_ENTITY"   ;
     
     public static final String INTRA_COLUMN_SPLITTER  = ","            ;
 

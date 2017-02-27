@@ -20,6 +20,7 @@ import org.inra.yedgen.graph.utils.Utils ;
 import org.inra.yedgen.graph.entities.Edge ;
 import org.inra.yedgen.processor.entities.Node ;
 import static java.util.stream.Collectors.toList ;
+import org.inra.yedgen.processor.managers.ManagerVariable;
 import org.inra.yedgen.processor.output.Messages ;
 
 /**
@@ -48,8 +49,7 @@ public class GraphExtractor {
     private final Map<String , String>  prefixs           =  new  HashMap<>()    ;
 
     public static String  PREFIX_PREDICAT          =  "oboe-coreX"               ;
-
-    private static final String  MATCHER_VARIABLE         = "?VARIABLE"          ;
+   
     private static final String  MATCHER_PATTERN_CONTEXT  = "##PATTERN_CONTEXT"  ;
     private static final String  MATCHER_PATTERN_PARALLEL = "##PATTERN_PARALLEL" ;
     public  static final String  OF_ENTITY_PATTERN        = "oboe-core:ofEntity" ;
@@ -204,12 +204,12 @@ public class GraphExtractor {
                                                                  .split(" ")[0]),"").trim() ) ;  
                                     }
                                     
-                                    else if (label.startsWith(MATCHER_VARIABLE) && label.contains(" ")) {
+                                    else if (label.startsWith(ManagerVariable.PATTERN_VARIABLE) && label.contains(" ")) {
                                         
                                         Utils.putInMap( mapVariables, 
                                                         hash, 
                                                         id , 
-                                                        label.trim().replaceFirst( Pattern.quote(MATCHER_VARIABLE),"") ) ;  
+                                                        label.trim().replaceFirst( Pattern.quote(ManagerVariable.PATTERN_VARIABLE),"") ) ;  
                                     }
                                     
                                     else if (label.startsWith(META_VERIABLE) && label.contains(" ")) {                                           
@@ -355,7 +355,7 @@ public class GraphExtractor {
 
                             }
                             
-                            else if (label.startsWith(MATCHER_VARIABLE) && label.contains(" ")) {  
+                            else if (label.startsWith(ManagerVariable.PATTERN_VARIABLE) && label.contains(" ")) {  
 
                                 Utils.putInMap( mapVariables , 
                                                 hash         , 
