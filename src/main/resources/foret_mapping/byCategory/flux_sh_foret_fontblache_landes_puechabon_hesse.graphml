@@ -981,19 +981,19 @@
               <y:Geometry height="185.76741931990568" width="1242.3943873099975" x="-3313.642132631334" y="-1633.4966990235134"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="187.59375" modelName="custom" textColor="#000000" visible="true" width="1242.3943873099975" x="0.0" y="-0.9131653400470441">?META_VARIABLE ##META_PATTERN_CONTEXT :COLUMN_4  
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="187.59375" modelName="custom" textColor="#000000" visible="true" width="1242.3943873099975" x="0.0" y="-0.9131653400470441">?META_VARIABLE ##META_PATTERN_CONTEXT COLUMN_4  
 { ?VAR_ENTITY_URI=COLUMN_4 } 
-{ ?UNIT_STANDARD_NAME_GRAPH = COLUMN_9_10 } 
+{ ?UNIT_STANDARD_NAME_GRAPH = COLUMN_10 } 
 { ?DATATYPE_SQL='COLUMN_12' } 
 { ?VARIABLE_SQL='COLUMN_11'  }
-{ ?VARIABLE_STANDARD_NAME_GRAPH=:COLUMN_0 }
-{ ?VAR_CHARACTERISTIC_GRAPH=:COLUMN_5_6 } 
+{ ?VARIABLE_STANDARD_NAME_GRAPH=COLUMN_0 }
+{ ?VAR_CHARACTERISTIC_GRAPH=COLUMN_6 } 
 { ?VAR_CHARACTERISTIC_NAME_URI=COLUMN_6 } 
 { ?CHAR_QUALIFIER_NAME_URI=COLUMN_8 }
-{ ?QUALIFIER_NAME_GRAPH= :COLUMN_8 }
-{ ?PROTOCOL_NAME_GRAPH= :COLUMN_7 }
+{ ?QUALIFIER_NAME_GRAPH= COLUMN_8 }
+{ ?PROTOCOL_NAME_GRAPH= COLUMN_7 }
 &amp;&amp; ##META_PATTERN_PARALLEL 
-{ ?CATEGORY_STANDARD_NAME_URI=COLUMN_1} { ?CATEGORY_STANDARD_NAME_PATTERN=:COLUMN_1 } <y:LabelModel>
+{ ?CATEGORY_STANDARD_NAME_URI=COLUMN_1} { ?CATEGORY_STANDARD_NAME_PATTERN=COLUMN_1 } <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1027,7 +1027,7 @@
               <y:Geometry height="30.0" width="1242.3943873099975" x="-3313.642132631334" y="-1741.1513036956512"/>
               <y:Fill color="#FFFF99" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1242.3943873099975" x="0.0" y="6.015625">##META_PATTERN_CONTEXT 20 foret/observation/?CONTEXT_ENTITY/{dty_id}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_:COLUMN_2 Q_200_201_202 ] <y:LabelModel>
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1242.3943873099975" x="0.0" y="6.015625">##META_PATTERN_CONTEXT 20 foret/observation/?CONTEXT_ENTITY/{dty_id}/{mesure_id} oboe-core:hasContext [ oboe-core:Observation_COLUMN_2 Q_200_201_202 ] <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1111,7 +1111,7 @@ WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL)<y:LabelModel>
               <y:Geometry height="373.0724995512792" width="660.0271269894822" x="-4421.81312807486" y="-2268.961962866077"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="355.21875" modelName="custom" textColor="#000000" visible="true" width="660.0271269894822" x="0.0" y="8.92687477563959">Query_(51): SELECT dt.id AS dty_id, mfs.mfs_id as mesure_id, mfs.mfs_date AS date
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="341.25" modelName="custom" textColor="#000000" visible="true" width="660.0271269894822" x="0.0" y="15.91124977563959">Query_(51): SELECT dt.id AS dty_id, mfs.mfs_id as mesure_id, mfs.mfs_date AS date
 FROM public.datatype dt  INNER JOIN public.datatype_unite_variable_foret_vdt dtvu ON dt.id = dtvu.dty_id 
 INNER JOIN public.variable_foret var ON dtvu.var_id = var.id
 INNER JOIN public.valeurs_flux_tour_vfs vfs ON var.id = vfs.id
@@ -1134,8 +1134,7 @@ AS (
 )
 SELECT id as zet_id, zet_code, rootzet_id, rootzet_code from parent_zet
 WHERE parent_id is null) as rootsite ON mfs.id=rootsite.zet_id
-WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)
-AND rootsite.rootzet_id IN (1,163841,163842, 229379, 98304) AND EXTRACT(YEAR FROM mfs_date)&gt;2008<y:LabelModel>
+WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1192,7 +1191,7 @@ WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE
               <y:Geometry height="379.87399071282516" width="943.8547117395713" x="-5108.514256997214" y="-3942.0329104640664"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="355.21875" modelName="custom" textColor="#000000" visible="true" width="943.8547117395713" x="0.0" y="12.327620356412353">Query_(1): SELECT dt.id AS dty_id, var.id AS var_id , mfs.mfs_id AS mesure_id, vfs.id_valeur AS value_id, rootsite.rootzet_id AS site_id
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="341.25" modelName="custom" textColor="#000000" visible="true" width="943.8547117395713" x="0.0" y="19.311995356412353">Query_(1): SELECT dt.id AS dty_id, var.id AS var_id , mfs.mfs_id AS mesure_id, vfs.id_valeur AS value_id, rootsite.rootzet_id AS site_id
 FROM public.datatype dt  INNER JOIN public.datatype_unite_variable_foret_vdt dtvu ON dt.id = dtvu.dty_id
 INNER JOIN public.variable_foret var ON dtvu.var_id = var.id
 INNER JOIN public.valeurs_flux_tour_vfs vfs ON var.id = vfs.id
@@ -1215,8 +1214,7 @@ AS (
 )
 SELECT id as zet_id, zet_code, rootzet_id, rootzet_code from parent_zet
 WHERE parent_id is null) as rootsite ON mfs.id=rootsite.zet_id
-WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)
-AND rootsite.rootzet_id IN (1,163841,163842, 229379, 98304) AND EXTRACT(YEAR FROM mfs_date)&gt;2008<y:LabelModel>
+WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1233,7 +1231,7 @@ AND rootsite.rootzet_id IN (1,163841,163842, 229379, 98304) AND EXTRACT(YEAR FRO
               <y:Geometry height="379.87399071282516" width="699.245168485179" x="-4134.659545257644" y="-3942.0329104640664"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="369.1875" modelName="custom" textColor="#000000" visible="true" width="699.245168485179" x="0.0" y="5.343245356412353">Query_(2): SELECT dt.id AS dty_id, vfs.id_valeur AS value_id, vfs.vfs_valeur AS value
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="355.21875" modelName="custom" textColor="#000000" visible="true" width="699.245168485179" x="0.0" y="12.327620356412353">Query_(2): SELECT dt.id AS dty_id, vfs.id_valeur AS value_id, vfs.vfs_valeur AS value
 FROM public.datatype dt  INNER JOIN public.datatype_unite_variable_foret_vdt dtvu ON dt.id = dtvu.dty_id 
 INNER JOIN public.variable_foret var ON dtvu.var_id = var.id
 INNER JOIN public.valeurs_flux_tour_vfs vfs ON var.id = vfs.id
@@ -1257,7 +1255,6 @@ AS (
 SELECT id as zet_id, zet_code, rootzet_id, rootzet_code from parent_zet
 WHERE parent_id is null) as rootsite ON mfs.id=rootsite.zet_id
 WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)
-AND rootsite.rootzet_id IN (1,163841,163842, 229379, 98304) AND EXTRACT(YEAR FROM mfs_date)&gt;2008
 <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
@@ -1275,7 +1272,7 @@ AND rootsite.rootzet_id IN (1,163841,163842, 229379, 98304) AND EXTRACT(YEAR FRO
               <y:Geometry height="371.7669218202593" width="668.6531233998226" x="-5108.514256997214" y="-2268.7334201361114"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="355.21875" modelName="custom" textColor="#000000" visible="true" width="668.6531233998226" x="0.0" y="8.274085910129543">Query_(50): SELECT dt.id AS dty_id, mfs.mfs_id as mesure_id
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="341.25" modelName="custom" textColor="#000000" visible="true" width="668.6531233998226" x="0.0" y="15.258460910129543">Query_(50): SELECT dt.id AS dty_id, mfs.mfs_id as mesure_id
 FROM public.datatype dt  INNER JOIN public.datatype_unite_variable_foret_vdt dtvu ON dt.id = dtvu.dty_id 
 INNER JOIN public.variable_foret var ON dtvu.var_id = var.id
 INNER JOIN public.valeurs_flux_tour_vfs vfs ON var.id = vfs.id
@@ -1298,8 +1295,7 @@ AS (
 )
 SELECT id as zet_id, zet_code, rootzet_id, rootzet_code from parent_zet
 WHERE parent_id is null) as rootsite ON mfs.id=rootsite.zet_id
-WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)
-AND rootsite.rootzet_id IN (1,163841,163842, 229379, 98304) AND EXTRACT(YEAR FROM mfs_date)&gt;2008<y:LabelModel>
+WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1418,7 +1414,7 @@ AS (
 SELECT id as zet_id, zet_code, rootzet_id, rootzet_code from parent_zet
 WHERE parent_id is null) as rootsite ON mfs.id=rootsite.zet_id
 WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)
-AND rootsite.rootzet_id IN (1,163841,163842, 229379, 98304) AND EXTRACT(YEAR FROM mfs_date)&gt;2008<y:LabelModel>
+<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1452,7 +1448,7 @@ AND rootsite.rootzet_id IN (1,163841,163842, 229379, 98304) AND EXTRACT(YEAR FRO
               <y:Geometry height="379.87399071282516" width="943.8547117395713" x="-5108.514256997214" y="-2678.8359535789027"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="355.21875" modelName="custom" textColor="#000000" visible="true" width="943.8547117395713" x="0.0" y="12.327620356412353">Query_(202): SELECT dt.id AS dty_id, var.id AS var_id , mfs.mfs_id AS mesure_id, rootsite.rootzet_id AS site_id
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="341.25" modelName="custom" textColor="#000000" visible="true" width="943.8547117395713" x="0.0" y="19.311995356412353">Query_(202): SELECT dt.id AS dty_id, var.id AS var_id , mfs.mfs_id AS mesure_id, rootsite.rootzet_id AS site_id
 FROM public.datatype dt  INNER JOIN public.datatype_unite_variable_foret_vdt dtvu ON dt.id = dtvu.dty_id
 INNER JOIN public.variable_foret var ON dtvu.var_id = var.id
 INNER JOIN public.valeurs_flux_tour_vfs vfs ON var.id = vfs.id
@@ -1475,8 +1471,7 @@ AS (
 )
 SELECT id as zet_id, zet_code, rootzet_id, rootzet_code from parent_zet
 WHERE parent_id is null) as rootsite ON mfs.id=rootsite.zet_id
-WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)
-AND rootsite.rootzet_id IN (1,163841,163842, 229379, 98304) AND EXTRACT(YEAR FROM mfs_date)&gt;2008<y:LabelModel>
+WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1493,7 +1488,7 @@ AND rootsite.rootzet_id IN (1,163841,163842, 229379, 98304) AND EXTRACT(YEAR FRO
               <y:Geometry height="406.76216868170695" width="660.0271269894824" x="-5108.514256997214" y="-3109.573909275338"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="369.1875" modelName="custom" textColor="#000000" visible="true" width="660.0271269894824" x="0.0" y="18.78733434085325">Query_(200): SELECT dt.id AS dty_id, mfs.mfs_id as mesure_id
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="355.21875" modelName="custom" textColor="#000000" visible="true" width="660.0271269894824" x="0.0" y="25.77170934085325">Query_(200): SELECT dt.id AS dty_id, mfs.mfs_id as mesure_id
 FROM public.datatype dt  INNER JOIN public.datatype_unite_variable_foret_vdt dtvu ON dt.id = dtvu.dty_id 
 INNER JOIN public.variable_foret var ON dtvu.var_id = var.id
 INNER JOIN public.valeurs_flux_tour_vfs vfs ON var.id = vfs.id
@@ -1517,7 +1512,6 @@ AS (
 SELECT id as zet_id, zet_code, rootzet_id, rootzet_code from parent_zet
 WHERE parent_id is null) as rootsite ON mfs.id=rootsite.zet_id
 WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)
-AND rootsite.rootzet_id IN (1,163841,163842, 229379, 98304) AND EXTRACT(YEAR FROM mfs_date)&gt;2008
 <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
@@ -1535,7 +1529,7 @@ AND rootsite.rootzet_id IN (1,163841,163842, 229379, 98304) AND EXTRACT(YEAR FRO
               <y:Geometry height="406.76216868170695" width="660.0271269894824" x="-4428.498649243102" y="-3109.573909275338"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="369.1875" modelName="custom" textColor="#000000" visible="true" width="660.0271269894824" x="0.0" y="18.78733434085325">Query_(201): SELECT dt.id AS dty_id, mfs.mfs_id as mesure_id
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="355.21875" modelName="custom" textColor="#000000" visible="true" width="660.0271269894824" x="0.0" y="25.77170934085325">Query_(201): SELECT dt.id AS dty_id, mfs.mfs_id as mesure_id
 FROM public.datatype dt  INNER JOIN public.datatype_unite_variable_foret_vdt dtvu ON dt.id = dtvu.dty_id 
 INNER JOIN public.variable_foret var ON dtvu.var_id = var.id
 INNER JOIN public.valeurs_flux_tour_vfs vfs ON var.id = vfs.id
@@ -1559,7 +1553,6 @@ AS (
 SELECT id as zet_id, zet_code, rootzet_id, rootzet_code from parent_zet
 WHERE parent_id is null) as rootsite ON mfs.id=rootsite.zet_id
 WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE_SQL)
-AND rootsite.rootzet_id IN (1,163841,163842, 229379, 98304) AND EXTRACT(YEAR FROM mfs_date)&gt;2008
 <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
