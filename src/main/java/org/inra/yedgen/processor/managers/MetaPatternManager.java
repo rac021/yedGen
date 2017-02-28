@@ -4,10 +4,12 @@ package org.inra.yedgen.processor.managers ;
 import java.util.List ;
 import java.util.Arrays ;
 import java.util.ArrayList ;
-import java.util.Collections ;
 import java.util.Comparator;
+import java.util.Collections ;
 import java.util.regex.Matcher ;
 import java.util.regex.Pattern ;
+import static java.util.stream.Collectors.toList;
+import java.util.stream.Stream;
 import org.inra.yedgen.properties.CsvProperties ;
 import static org.inra.yedgen.processor.output.Messages.* ;
 /**
@@ -23,7 +25,8 @@ public class MetaPatternManager                {
     
     private final CsvProperties  csvProperties ;
     
-    private final String CSV_SEPARATOR         ;
+    private static String       CSV_SEPARATOR            ;
+    public  static List<String> INTRA_COLUMN_SEPARATORS  ;
     
     private static final String  META_PATTERN_CONTEXT     = "##META_PATTERN_CONTEXT"  ;
     private static final String  META_PATTERN_PARALLEL    = "##META_PATTERN_PARALLEL" ;
@@ -48,11 +51,20 @@ public class MetaPatternManager                {
           CSV_SEPARATOR =  
           this.csvProperties.getConfig().getString("CSV_SEPARATOR") != null ?
           this.csvProperties.getConfig().getString("CSV_SEPARATOR") : "\t"  ;
-        } else {
+          
+          INTRA_COLUMN_SEPARATORS = this.csvProperties.getConfig().getString("INTRA_COLUMN_SEPARATORS") != null ?
+                  Arrays.asList(csvProperties.getConfig().getString("INTRA_COLUMN_SEPARATORS").split("(?!^)")) : 
+                  Arrays.asList(",");
+                  
+                                         
+        }
+        else {
           CSV_SEPARATOR = "\t" ;
+          INTRA_COLUMN_SEPARATORS = Arrays.asList(",") ;
         }
         
-         printMessage( " -> CSV_SEPARATOR :  " + CSV_SEPARATOR ) ;
+        printMessage( " -> CSV_SEPARATOR :  " + CSV_SEPARATOR ) ;
+        
     }
 
     public String getMetaPatternVariable() {
@@ -150,7 +162,7 @@ public class MetaPatternManager                {
         String[] variablesContext =  csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim()
                                             .replaceAll(" +", "")
                                             .trim()
-                                            .split(ManagerVariable.INTRA_COLUMN_SPLITTER) ;
+                                            .split(findFirstIntraColumnSeparator(csvLine)) ;
        
         Collections.reverse(Arrays.asList(variablesContext)) ;
 
@@ -233,4 +245,9 @@ public class MetaPatternManager                {
         return CSV_SEPARATOR ;
     }
         
+    public static String findFirstIntraColumnSeparator( String value ) {
+      return INTRA_COLUMN_SEPARATORS.stream()
+                                    .filter( separator -> value.contains(separator))
+                                    .findFirst().orElse(null) ;
+    }
 }

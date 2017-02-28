@@ -162,8 +162,7 @@ public class ManagerPatternParallel {
   
     public void applyKeyValuesAtIndex ( Set<Node> nodes             ,
                                         Map<String, String > values ,
-                                        int index                   , 
-                                        String splitter )           {
+                                        int index                   )           {
        
         Map<String, String> valuesIndexI = values.entrySet()
                                                  .stream()

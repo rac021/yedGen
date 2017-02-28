@@ -20,8 +20,8 @@ import org.inra.yedgen.graph.utils.Utils ;
 import org.inra.yedgen.graph.entities.Edge ;
 import org.inra.yedgen.processor.entities.Node ;
 import static java.util.stream.Collectors.toList ;
-import org.inra.yedgen.processor.output.Messages ;
 import org.inra.yedgen.processor.managers.ManagerVariable;
+import org.inra.yedgen.processor.output.Messages ;
 
 /**
  *

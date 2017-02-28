@@ -22,9 +22,7 @@ public class ManagerVariable {
     public static final String PATTERN_CONTEXT  = "##PATTERN_CONTEXT"  ;
     public static final String PATTERN_PARALLEL = "##PATTERN_PARALLEL" ;
     public static final String PATTERN_VARIABLE = "?VARIABLE_ENTITY"   ;
-    
-    public static final String INTRA_COLUMN_SPLITTER  = ","            ;
-
+  
     public static final String OPTIONAL_NODE          = "##NULL##"     ;
     
     private final ManagerPatternContext  managerPatternContext         ;
@@ -214,7 +212,7 @@ public class ManagerVariable {
                                           s2.split(",").length ? 1 : -1 )
                                   .orElse("") ;
         
-        int repeat = deepest.split(ManagerVariable.INTRA_COLUMN_SPLITTER).length ;
+        int repeat = deepest.split(MetaPatternManager.findFirstIntraColumnSeparator(deepest)).length ;
         
         for ( int parallelIndex = 0 ; parallelIndex < repeat ; parallelIndex++ ) {
                 
@@ -229,10 +227,9 @@ public class ManagerVariable {
 
             if( ! generatePatternParallel.isEmpty() ) {
 
-                managerPatternParallel.applyKeyValuesAtIndex(new HashSet<>(generatePatternParallel) , 
-                                                       patternParallel.getKeyValues()         ,
-                                                       parallelIndex ,
-                                                       ManagerVariable.INTRA_COLUMN_SPLITTER ) ;
+                managerPatternParallel.applyKeyValuesAtIndex( new HashSet<>(generatePatternParallel) , 
+                                                              patternParallel.getKeyValues()         ,
+                                                              parallelIndex                        ) ;
 
                 StickPatternParallelNodes( managerNode.find( node -> node.hasPredicateWithValue ( PATTERN_PARALLEL )) , 
                                            generatePatternParallel.get(0)) ;
