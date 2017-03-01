@@ -159,10 +159,13 @@ public class MetaPatternManager                {
        
         if ( csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim().length() == 0 ) return null ;        
          
-        String[] variablesContext =  csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim()
-                                            .replaceAll(" +", "")
-                                            .trim()
-                                            .split(findFirstIntraColumnSeparator(csvLine)) ;
+        String variableContextColumn = csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim()
+                                              .replaceAll(" +", "")
+                                              .trim() ;
+        
+        String[] variablesContext =  variableContextColumn.split  ( 
+                                        findFirstIntraColumnSeparator ( variableContextColumn ) 
+                                     ) ;
        
         Collections.reverse(Arrays.asList(variablesContext)) ;
 
