@@ -208,8 +208,10 @@ public class ManagerVariable {
         
         String deepest = keyValues.values()
                                   .stream()
-                                  .max( ( s1, s2 ) -> s1.split(",").length >
-                                          s2.split(",").length ? 1 : -1 )
+                                  .max( ( s1, s2 ) -> s1.split( MetaPatternManager
+                                                        .findFirstIntraColumnSeparator(s1)).length >
+                                                      s2.split( MetaPatternManager
+                                                        .findFirstIntraColumnSeparator(s2)).length ? 1 : -1 )
                                   .orElse("") ;
         
         int repeat = deepest.split(MetaPatternManager.findFirstIntraColumnSeparator(deepest)).length ;
