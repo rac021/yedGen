@@ -116,13 +116,13 @@ public class Messages {
     }
     
     public static void printSeparator() {
-        System.out.println( " ------------------------------------------------------------ " ) ;
+      System.out.println( " ------------------------------------------------------------ " ) ;
     }
     
     public static void printExtractionError() {
-       System.err.println(" ")                                                ;
-       System.err.println(" Oops something went wrong during Extraction !! ") ;
-       System.err.println(" ")                                                ;
+      System.err.println(" ")                                                ;
+      System.err.println(" Oops something went wrong during Extraction !! ") ;
+      System.err.println(" ")                                                ;
     }
     
     public static void printNotFoundLabelError()   {
@@ -135,5 +135,14 @@ public class Messages {
     
     public static void printMessageError( String message ) {
       System.out.println( " \n " + message + " \n " )      ;
+    }
+    
+        
+    public static void printInfoCSVTreatment( String csvFile, int nbLines , String classe, int column ) {
+      System.out.println( " " ) ;
+      System.out.println( " --> Info CSV : " + nbLines + " "
+                          + "line(s) treated for the class [ " + classe + " ] in the CSV : " 
+                          + csvFile + " //  Discriminator Column : " + column  ) ;
+      System.out.println( " " ) ;
     }
 }
