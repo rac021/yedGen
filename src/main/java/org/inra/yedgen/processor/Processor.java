@@ -1,6 +1,7 @@
 
 package org.inra.yedgen.processor ;
 
+import java.util.Map;
 import java.io.File ;
 import java.util.Set ;
 import java.util.List ;
@@ -8,7 +9,6 @@ import java.io.IOException ;
 import java.nio.file.Files ;
 import java.nio.file.Paths ;
 import java.util.ArrayList ;
-import java.util.Map;
 import java.util.stream.Stream ;
 import java.util.logging.Level ;
 import java.util.logging.Logger ;
@@ -18,6 +18,7 @@ import org.inra.yedgen.processor.io.Writer ;
 import org.inra.yedgen.graph.entities.Edge ;
 import org.inra.yedgen.processor.io.ObdaHeader ;
 import org.inra.yedgen.processor.entities.Node ;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.inra.yedgen.properties.CsvProperties ;
 import org.inra.yedgen.processor.output.Messages ;
 import org.inra.yedgen.properties.ObdaProperties ;
@@ -217,6 +218,8 @@ public class Processor {
   
      try {
          
+	 AtomicInteger treatedLine = new AtomicInteger(0) ;
+	     
          try ( Stream<String> lines = Files.lines(Paths.get(csvFile)).skip(1)) {
              
              lines.forEach (new Consumer<String>() {
@@ -265,34 +268,28 @@ public class Processor {
                                                                         node.outputObda() ) ; })  ;
 
                       outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
-
-                      try {
+ 
+                      String folder    = Writer.getFolder ( outputFile )   ;
+                      String fileName  = Writer.getfileName ( outputFile ) ;
+                      String fileNameWithoutExtension = Writer.getFileWithoutExtension(fileName ) ;
+                      String extension = Writer.getFileExtension(fileName) ; 
                          
-                         String folder    = Writer.getFolder ( outputFile )   ;
-                         String fileName  = Writer.getfileName ( outputFile ) ;
-                         String fileNameWithoutExtension = Writer.getFileWithoutExtension(fileName ) ;
-                         String extension = Writer.getFileExtension(fileName) ; 
-                         
-                         String outFile = folder    + File.separator     + 
-                                          counter++ + "_" +
-                                          fileNameWithoutExtension       +
-                                          "_CSV_"                        + 
-                                          variable.getVariableName()
-                                                  .replaceFirst(":", "") + 
-                                          extension                      ;
+                      String outFile = folder    + File.separator     + 
+                                       counter++ + "_" +
+                                       fileNameWithoutExtension       +
+                                       "_CSV_"                        + 
+                                       variable.getVariableName()
+                                               .replaceFirst(":", "") + 
+                                       extension                      ;
 
-                         Writer.checkFile( outFile )           ;
-                         Writer.writeTextFile(outPut, outFile) ;
+                      Writer.checkFile( outFile )           ;
+                      Writer.writeTextFile(outPut, outFile) ;
 
-                         Messages.printMessageInfoGeneratedVariable( variable.getVariableName() ,
-                                                                     outFile                  ) ;
-
-                       } catch (IOException ex) {
-                            Logger.getLogger(Processor.class.getName())
-                                  .log(Level.SEVERE, null, ex)        ;
-                       }
+                      Messages.printMessageInfoGeneratedVariable( variable.getVariableName() ,
+                                                                  outFile                  ) ;
+		      treatedLine.getAndAdd(1)                                               ;
                                                
-                    } catch (Exception e) {
+                    } catch (IOException e) {
                          Logger.getLogger(Processor.class.getName())
                                .log(Level.SEVERE, null, e)         ;
                     }
@@ -300,17 +297,18 @@ public class Processor {
             }) ;
            
         }
-            
-      } catch (IOException ex) {
-          Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex)  ;
+        catch (Exception ex) {
+          Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex)   ;
+        } 
+	     
+        Messages.printInfoCSVTreatment(csvFile, treatedLine.get() , classe, column) ;
+	     
+	return treatedLine.get() > 0 ;
+        
+      } catch (Exception ex) {
+          Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex)   ;
      }
         
-     try {
-          return Files.lines( Paths.get(csvFile) ).skip(1).count() > 0             ;
-     } catch ( IOException ex ) {
-          Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex)  ;
-      }
-         
      return false ;
         
    }
