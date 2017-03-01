@@ -164,12 +164,16 @@ public class ManagerPatternParallel {
                                         Map<String, String > values ,
                                         int index                   )           {
        
-        Map<String, String> valuesIndexI = values.entrySet()
-                                                 .stream()
-                                                 .collect(Collectors.toMap( Map.Entry::getKey ,
-                                                                            e -> e.getValue().contains(",") ? 
-                                                                                 e.getValue().split(",")[index].trim() : 
-                                                                                 e.getValue().trim() ) )               ;
+       Map<String, String> valuesIndexI  = 
+               
+            values.entrySet().stream()
+                  .collect(Collectors.toMap( Map.Entry::getKey ,
+                                             e -> e.getValue()
+                                                   .contains(MetaPatternManager
+                                                   .findFirstIntraColumnSeparator(e.getValue())) ? 
+                                                  e.getValue().split(MetaPatternManager
+                                                   .findFirstIntraColumnSeparator(e.getValue()))[index].trim() : 
+                                                  e.getValue().trim() ) ) ;
        nodes.stream()
             .forEach( node -> node.applyKeyValues( valuesIndexI )) ;
     }
