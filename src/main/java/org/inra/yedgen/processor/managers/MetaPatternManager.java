@@ -251,6 +251,6 @@ public class MetaPatternManager                {
     public static String findFirstIntraColumnSeparator( String value ) {
       return INTRA_COLUMN_SEPARATORS.stream()
                                     .filter( separator -> value.contains(separator))
-                                    .findFirst().orElse("") ;
+                                    .findFirst().orElse(" ") ;
     }
 }
