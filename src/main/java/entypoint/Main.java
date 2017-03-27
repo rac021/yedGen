@@ -56,17 +56,18 @@ public class Main {
                                break ;    
          case "-prf"        :  prf       = args[i+1] ; nbParams += 2  ;
                                break ;            
-         case "-js"         :  js         = args[i+1] ; nbParams += 2 ;
+         case "-js"         :  js        = args[i+1] ; nbParams += 2  ;
                                break ;            
-         case "-class"      :  classe = args[i+1] ; nbParams += 2     ;
-                                       break ;    
-         case "-column"     :  column = Integer.parseInt(args[i+1])   ; 
+         case "-class"      :  classe    = args[i+1] ; nbParams += 2  ;
+                               break ;    
+         case "-column"     :  column = Integer.parseInt(args [ i+1 ]
+                                               .replaceAll(" +", "")) ; 
                                nbParams += 2                          ; 
                                break ;    
          case "-ig"         :  includingGraphVariables = true         ;  
                                nbParams += 1                          ;
                                break ;            
-         case "-v"          :  verbose = true                         ;
+         case "-v"          :  verbose   = true                       ;
                                nbParams += 1                          ;
                                break ;         
          case "-def_prefix" :  def_prefix = args[i+1] ; nbParams += 2 ;                            
