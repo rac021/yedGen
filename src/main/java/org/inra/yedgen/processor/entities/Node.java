@@ -409,7 +409,7 @@ public final class Node implements Serializable  {
    private String cleanQ ( String query ) {
      return query == null ? null : 
                      query.replaceAll("\n", " ")
-                          .replaceAll("\t", " ")
+                          .replaceAll("[\n\r]", "")
                           .replaceAll(" +", " ") ;
     
    }
