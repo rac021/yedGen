@@ -1,11 +1,11 @@
 
-package org.inra.yedgen.processor.io;
+package org.inra.yedgen.processor.io ;
 
-import java.util.List ;
 import java.util.Map ;
+import java.util.List ;
 import java.util.ArrayList ;
-import org.inra.yedgen.graph.managers.GraphExtractor ;
 import org.inra.yedgen.properties.ObdaProperties ;
+import org.inra.yedgen.graph.managers.GraphExtractor ;
 
 /**
  *
@@ -54,8 +54,5 @@ public class ObdaHeader {
     public List<String> getHeaderOut() {
         return headerOut ;
     }
-
-   
-    
     
 }

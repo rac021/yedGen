@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.processor.output;
+package org.inra.yedgen.processor.output ;
 
 /**
  *

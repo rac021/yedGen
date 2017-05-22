@@ -8,8 +8,6 @@ import java.util.Comparator;
 import java.util.Collections ;
 import java.util.regex.Matcher ;
 import java.util.regex.Pattern ;
-import static java.util.stream.Collectors.toList;
-import java.util.stream.Stream;
 import org.inra.yedgen.properties.CsvProperties ;
 import static org.inra.yedgen.processor.output.Messages.* ;
 /**
@@ -194,22 +192,6 @@ public class MetaPatternManager                {
         checkMetaPatternParallel() ;
         return metaPatternParallel ;
     }
- 
-    private String validatePrefix ( String defaulPrefix , String entity ) {
-        
-        if ( entity == null                || 
-             entity.startsWith("?")        ||
-             entity.startsWith("##PATTERN") 
-           )  
-           
-           return entity ;
-        
-        if ( entity.contains("/") ) return entity.startsWith(":") ? entity : ":" + entity ;
-        if ( entity.contains(":") ) return entity ;
-        
-        return defaulPrefix == null ? ":" + entity : defaulPrefix + ":" + entity ;
-        
-    }
 
     private void checkMetaPatternVariable() {
         
@@ -253,4 +235,25 @@ public class MetaPatternManager                {
                                     .filter( separator -> value.contains(separator))
                                     .findFirst().orElse(" ") ;
     }
+    
+    /*
+    
+    private String validatePrefix ( String defaulPrefix , String entity ) {
+        
+        if ( entity == null                || 
+             entity.startsWith("?")        ||
+             entity.startsWith("##PATTERN") 
+           )  
+           
+           return entity ;
+        
+        if ( entity.contains("/") ) return entity.startsWith(":") ? entity : ":" + entity ;
+        if ( entity.contains(":") ) return entity ;
+        
+        return defaulPrefix == null ? ":" + entity : defaulPrefix + ":" + entity ;
+        
+    }
+    
+    */
+
 }

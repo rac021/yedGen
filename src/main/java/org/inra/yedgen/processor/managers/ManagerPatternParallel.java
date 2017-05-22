@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.processor.managers;
+package org.inra.yedgen.processor.managers ;
 
 import java.util.Set ;
 import java.util.Map ;
@@ -86,35 +86,35 @@ public class ManagerPatternParallel {
          
         String[] entities = pattern.split(Pattern.quote(".") ) ;
             
-            for( int i = 0 ; i< entities.length ; i++ ) {
+        for( int i = 0 ; i< entities.length ; i++ ) {
                 
-                String predicat_object = entities[i]    ;
+            String predicat_object = entities[i]    ;
                 
-                Node node = null ;
+            Node node = null ;
                 
-                String[] subEntity = predicat_object.trim().split(";") ;
+            String[] subEntity = predicat_object.trim().split(";") ;
                 
-                for( int j = 0 ; j < subEntity.length ; j++ ) {
+            for( int j = 0 ; j < subEntity.length ; j++ ) {
                  
-                    if( j == 0 ) {
+                if( j == 0 ) {
                         
-                      node = factoryNode.createNode( hash, subEntity[j] ) ;
-                      continue ;
+                   node = factoryNode.createNode( hash, subEntity[j] ) ;
+                   continue ;
                       
-                    }
+                }
                      
-                    if(node != null ) {
+                if(node != null ) {
                         
-                    node.addPredicatWithObject( subEntity[j].trim().split(" ") [0]  , 
-                                                treateConcept( hashNode , subEntity[j].trim()
-                                                                                      .split(" ")[1]) ) ;
-                    }
-                 }
-                
-                nodes.add(node);
+                node.addPredicatWithObject( subEntity[j].trim().split(" ") [0]  , 
+                                            treateConcept( hashNode , subEntity[j].trim()
+                                                                                  .split(" ")[1]) ) ;
+                }
             }
+                
+            nodes.add(node) ;
+       }
             
-     return nodes ; 
+       return nodes ; 
 
     }
 
@@ -131,20 +131,21 @@ public class ManagerPatternParallel {
   
     private String treateConcept( Integer hash , String concept ) {
           
-          if(concept.contains("(") && concept.endsWith(")")) {
+          if( concept.contains("(") && concept.endsWith(")")) {
               int code = extractCode(concept)      ;
               return managerUri.getUri(hash, code) ;
           }
         return concept ;
     }
 
-     private int extractCode ( String concept )            {
+    private int extractCode ( String concept )             {
 
         if(concept.contains("(") && concept.endsWith(")")) {
           return Integer.parseInt( concept
                         .split(Pattern.quote("("))[1]
                         .replace(")", "")) ;
         }
+        
         return -1 ;
     }
    

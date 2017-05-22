@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.graph.managers;
+package org.inra.yedgen.graph.managers ;
 
 import java.util.Map ;
 import java.util.Set ;

@@ -1,8 +1,8 @@
 
 package org.inra.yedgen.processor ;
 
-import java.util.Map;
 import java.io.File ;
+import java.util.Map ;
 import java.util.Set ;
 import java.util.List ;
 import java.io.IOException ;
@@ -18,8 +18,8 @@ import org.inra.yedgen.processor.io.Writer ;
 import org.inra.yedgen.graph.entities.Edge ;
 import org.inra.yedgen.processor.io.ObdaHeader ;
 import org.inra.yedgen.processor.entities.Node ;
-import java.util.concurrent.atomic.AtomicInteger;
 import org.inra.yedgen.properties.CsvProperties ;
+import java.util.concurrent.atomic.AtomicInteger ;
 import org.inra.yedgen.processor.output.Messages ;
 import org.inra.yedgen.properties.ObdaProperties ;
 import org.inra.yedgen.graph.managers.ManagerEdge ;
@@ -47,6 +47,7 @@ public class Processor {
     private final MetaPatternManager     metaPatternManager      ;
     private final ManagerVariable        managerVariable         ;
     private final GraphExtractor         graphExtractor          ;
+    private final ManagerQuery           managerQuery            ;
     private final ManagerNode            managerNode             ;
     private final ObdaHeader             obdaHeader              ;
     
@@ -77,7 +78,9 @@ public class Processor {
 
       ManagerUri     managerUri     =  new ManagerUri( graphExtractor.getMapUris())          ;
       ManagerEdge    managerEdge    =  new ManagerEdge( graphExtractor.getMapEdges() )       ;
-      ManagerQuery   managerQuery   =  new ManagerQuery( graphExtractor.getMapQueries() )    ;
+      
+                     managerQuery   =  new ManagerQuery( graphExtractor.getMapQueries() )    ;
+                     
       ManagerConcept managerConcept =  new ManagerConcept( graphExtractor.getMapConcepts() ) ;
       
       
@@ -155,7 +158,7 @@ public class Processor {
       
       Messages.printMessageStartProcessVariableGraphGeneration()     ;
       
-      for( Variable variable : managerVariable.getVariables()) {
+      for( Variable variable : managerVariable.getVariables())       {
      
          Set<Node> graph      = managerVariable.process( variable )  ;
           
@@ -164,26 +167,39 @@ public class Processor {
          // Prepare Output Header 
          outPut.addAll(obdaHeader.getHeaderOut())                    ; 
           
-         graph.stream().forEach( node -> { outPut.add( node.outputObda())            ; 
-                                           checkMatchers( variable.getVariableName() , 
-                                                          node.outputObda() ) ; } )  ;
-          
-         outPut.add(ObdaProperties.MAPPING_COLLECTION_END) ;
-                
-         try {
-              
-            String _fileName = outputFile.substring( 0, outputFile.lastIndexOf('.')) ;
-            String extension = outputFile.substring( outputFile.lastIndexOf('.'))    ;
+         String _fileName = outputFile.substring( 0, outputFile.lastIndexOf('.')) ;
+         String extension = outputFile.substring( outputFile.lastIndexOf('.'))    ;
              
-            String outFile = _fileName + "_Graph_"                             + 
-                             variable.getVariableName().replaceFirst(":", "")  + 
-                             extension                                         ;
-              
-            Writer.checkFile( outFile )           ;
-            Writer.writeTextFile(outPut, outFile) ;
-            
-            Messages.printMessageInfoGeneratedVariable( variable.getVariableName()   ,
-                                                        outFile                    ) ;
+         String outFile = _fileName + "_Graph_"                             + 
+                          variable.getVariableName().replaceFirst(":", "")  + 
+                          extension    ;       
+         
+         try {          
+                if( graphExtractor.getMagicFilter() != null ) {
+
+                        /* Split if MagicFilter Enabled */
+
+                        ObdaSplitter.split( graphExtractor.getMagicFilter() ,
+                                            graph                           ,
+                                            variable                        ,
+                                            obdaHeader                      ,
+                                            managerQuery                    ,
+                                            outFile )                       ;
+
+                } else {
+
+                    graph.stream().forEach( node -> { outPut.add( node.outputObda())            ; 
+                                                      checkMatchers( variable.getVariableName() , 
+                                                                     node.outputObda() ) ; } )  ;
+
+                    outPut.add(ObdaProperties.MAPPING_COLLECTION_END) ;
+
+                    Writer.checkFile( outFile )           ;
+                    Writer.writeTextFile(outPut, outFile) ;
+
+                    Messages.printMessageInfoGeneratedVariable( variable.getVariableName()   ,
+                                                                outFile                    ) ;
+                }
 
          } catch (IOException ex) {
                 Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex) ;
@@ -194,10 +210,10 @@ public class Processor {
       
    }
     
-   public boolean processOnlyCSV ( String outputFile , 
-                                   String csvFile    , 
-                                   String classe     ,
-                                   int column  )     {
+    public boolean processOnlyCSV ( String outputFile , 
+                                    String csvFile    , 
+                                    String classe     ,
+                                    int column  )     {
          
      Messages.printMessageStartProcessCsvVariableGeneration( csvFile ) ;
      
@@ -240,8 +256,9 @@ public class Processor {
                    }
                     
                    if( ! line.split(metaPatternManager.getCSV_SEPARATOR())[column].trim()
-                                                      .replaceAll(" +", " ").equals(classe.trim())) {
+                                                      .replaceAll(" +", " ").equalsIgnoreCase(classe.trim())) {
                       counter ++ ;
+
                       return     ;
                    }
                  }
@@ -263,12 +280,6 @@ public class Processor {
 
                       Set<Node> nodes         = managerVariable.process( variable )    ;
 
-                      nodes.stream().forEach( node -> { outPut.add( node.outputObda())            ; 
-                                                        checkMatchers( variable.getVariableName() , 
-                                                                        node.outputObda() ) ; })  ;
-
-                      outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
- 
                       String folder    = Writer.getFolder ( outputFile )   ;
                       String fileName  = Writer.getfileName ( outputFile ) ;
                       String fileNameWithoutExtension = Writer.getFileWithoutExtension(fileName ) ;
@@ -281,13 +292,32 @@ public class Processor {
                                        variable.getVariableName()
                                                .replaceFirst(":", "") + 
                                        extension                      ;
+                     
+                      if( graphExtractor.getMagicFilter() != null ) {
+                          
+                            /* Split if MagicFilter Enabled */
+                            
+                            ObdaSplitter.split( graphExtractor.getMagicFilter() , 
+                                                nodes                           ,
+                                                variable                        , 
+                                                obdaHeader                      ,
+                                                managerQuery                    ,
+                                                outFile )                       ;
+                      } else {
+                          
+                          nodes.stream().forEach( node -> { outPut.add( node.outputObda())       ; 
+                                                       checkMatchers( variable.getVariableName() , 
+                                                                       node.outputObda() ) ; })  ;
 
-                      Writer.checkFile( outFile )           ;
-                      Writer.writeTextFile(outPut, outFile) ;
+                          outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
+                      
+                          Writer.checkFile( outFile )           ;
+                          Writer.writeTextFile(outPut, outFile) ;
+                          Messages.printMessageInfoGeneratedVariable( variable.getVariableName() ,
+                                                                      outFile                  ) ;
+                      }
 
-                      Messages.printMessageInfoGeneratedVariable( variable.getVariableName() ,
-                                                                  outFile                  ) ;
-		      treatedLine.getAndAdd(1)                                               ;
+		      treatedLine.getAndAdd(1)                                                   ;
                                                
                     } catch (IOException e) {
                          Logger.getLogger(Processor.class.getName())
@@ -311,7 +341,7 @@ public class Processor {
         
      return false ;
         
-   }
+    }
 
     
     public boolean processOnlyGraphWithoutVariables ( String outputFile ) {
@@ -377,13 +407,13 @@ public class Processor {
         }
     }
     
-    private void checkMatchers( String variableName , String outLine ) {
+    public static void checkMatchers( String variableName , String outLine ) {
    
-        String[] patts = outLine.split(" ") ; 
+        String[] tokens = outLine.split(" ") ; 
         
-        for ( String patt : patts ) {
-           if ( patt.contains("?") )
-           Messages.printErrorMatcher( variableName , patt ) ; 
+        for ( String token : tokens ) {
+           if ( token.contains("?") )
+           Messages.printErrorMatcher( variableName , token ) ; 
         }
     }
 
@@ -407,7 +437,7 @@ public class Processor {
 	}
     }
 
-    /* Override Coonection Info */ 
+    /* Override Conection Info */ 
     private void updateConnection(String connecFile, Map<String, String> sourceDeclarationMap) {
         
         if( connecFile == null || sourceDeclarationMap == null ) return ;

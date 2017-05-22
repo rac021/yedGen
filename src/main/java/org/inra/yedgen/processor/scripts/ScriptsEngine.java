@@ -7,7 +7,7 @@ import java.util.logging.Level ;
 import java.util.logging.Logger ;
 import javax.script.ScriptEngine ;
 import javax.script.ScriptEngineManager ;
-import org.inra.yedgen.processor.managers.MetaPatternManager;
+import org.inra.yedgen.processor.managers.MetaPatternManager ;
 
 /**
  *

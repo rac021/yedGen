@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.processor.managers;
+package org.inra.yedgen.processor.managers ;
 
 import java.util.Map ;
 import java.util.Set ;

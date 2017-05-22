@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.processor.managers;
+package org.inra.yedgen.processor.managers ;
 
 import java.util.Set ;
 import java.util.Map ;
@@ -124,6 +124,7 @@ public class ManagerPatternContext {
                                                entityName                    ,
                                                predicat                      , 
                                                queryForSubject               , 
+                                               null                          ,
                                                null                          , 
                                                null                          , 
                                                GraphExtractor.PREFIX_PREDICAT ) ;
@@ -139,6 +140,7 @@ public class ManagerPatternContext {
                                                entityName                   ,
                                                predicat                     , 
                                                queryForSubject              , 
+                                               null                         ,
                                                nodes.get(i-1).getUri()      ,  
                                                nodes.get(i-1).getQuery()    , 
                                                nodes.get(i-1).getDefaultPrefix() ) ;
@@ -187,8 +189,12 @@ public class ManagerPatternContext {
 
             int numQuery           = Integer.parseInt(vars.get(i)
                                             .split(" " )[1].split("_")[1]) ;
-                
+             
+            /* register a link between numQuery and startCode in the managerQuery */
+            managerQuery.registerLink( startCode, numQuery ) ;
+            
             String queryForSubject =  managerQuery.getQuery( null , numQuery ) ; 
+            
             
             if( queryForSubject == null ) {
                 System.out.println("")   ;
@@ -212,6 +218,7 @@ public class ManagerPatternContext {
                                                queryForSubject               , 
                                                null                          , 
                                                null                          , 
+                                               null                          , 
                                                GraphExtractor.PREFIX_PREDICAT ) ;
             }
             
@@ -225,6 +232,7 @@ public class ManagerPatternContext {
                                                entityName                     ,
                                                predicat                       , 
                                                queryForSubject                , 
+                                               null                           ,
                                                nodes.get(i-1).getUri()        , 
                                                nodes.get(i-1).getQuery()      , 
                                                nodes.get(i-1).getDefaultPrefix() ) ;

@@ -20,8 +20,8 @@ import org.inra.yedgen.graph.utils.Utils ;
 import org.inra.yedgen.graph.entities.Edge ;
 import org.inra.yedgen.processor.entities.Node ;
 import static java.util.stream.Collectors.toList ;
-import org.inra.yedgen.processor.managers.ManagerVariable;
 import org.inra.yedgen.processor.output.Messages ;
+import org.inra.yedgen.processor.managers.ManagerVariable ;
 
 /**
  *
@@ -42,6 +42,7 @@ public class GraphExtractor {
     private String metaPatternVariable                                     ;
     private String metaPatternContext                                      ;
     private String metaPatternParallel                                     ;
+    private String magicFilter                                             ;
     
     private Integer metaPatternHash                                        ;
     
@@ -57,6 +58,7 @@ public class GraphExtractor {
     private static final String  META_PATTERN_CONTEXT  = "##META_PATTERN_CONTEXT"  ;
     private static final String  META_PATTERN_PARALLEL = "##META_PATTERN_PARALLEL" ;
     private static final String  META_VERIABLE         = "?META_VARIABLE"          ;
+    private static final String  MAGIC_FILTER          = "##Magic_Filter "         ;
     
     
     private  JSONObject loadJsonObject ( String pathFile ) throws IOException {
@@ -222,6 +224,11 @@ public class GraphExtractor {
                                     else if ( label.startsWith(META_PATTERN_PARALLEL) && label.contains(" ")) {                                           
                                         metaPatternParallel = label.replaceFirst(Pattern.quote(META_PATTERN_PARALLEL),"") ;
                                     }
+                                    else if ( label.trim().replaceAll(" +", " ").startsWith(MAGIC_FILTER) && label.contains(":")) { 
+                                        magicFilter = label.trim().replaceAll(" +", " ")
+                                                           .replaceFirst(Pattern.quote(MAGIC_FILTER),"")
+                                                           .split(Pattern.quote(":"))[1] ;
+                                    }
 
                                     int code ;
 
@@ -373,8 +380,13 @@ public class GraphExtractor {
                             else if (label.startsWith(META_PATTERN_PARALLEL) && label.contains(" ")) {                                           
                                  metaPatternParallel = label.replaceFirst(Pattern.quote(META_PATTERN_PARALLEL),"") ;
                             }
+                            else if ( label.trim().replaceAll(" +", " ").startsWith(MAGIC_FILTER) && label.contains(":")) { 
+                                        magicFilter = label.trim().replaceAll(" +", " ")
+                                                           .replaceFirst(Pattern.quote(MAGIC_FILTER),"")
+                                                           .split(Pattern.quote(":"))[1] ;
+                            }
 
-                            if(label.toLowerCase().startsWith("query_("))  {
+                            else if(label.toLowerCase().startsWith("query_("))  {
                                 
                                 code =  Integer.parseInt(label
                                                .split(Pattern.quote(":"))[0]
@@ -390,7 +402,9 @@ public class GraphExtractor {
                                                      .replaceAll("--.*\\n", "")) ;
                                  
                             }
+                            
                             else
+                                
                             if( label.toLowerCase().startsWith("(") 
                                 && label.toLowerCase().contains(")") )     {
                                       
@@ -662,6 +676,10 @@ public class GraphExtractor {
 
     public Integer getMetaPatternHash()        {
         return metaPatternHash ;
+    }
+
+    public String getMagicFilter() {
+        return magicFilter ;
     }
     
     /* Constructor */

@@ -1,8 +1,10 @@
 
 package org.inra.yedgen.processor.entities ;
 
+import java.util.List ;
 import java.util.Set ;
 import java.util.Map ;
+import java.util.Arrays ;
 import java.util.HashMap ;
 import java.util.HashSet ;
 import java.util.Objects ;
@@ -13,6 +15,7 @@ import java.io.Serializable ;
 import java.util.regex.Pattern ;
 import java.util.stream.Collectors ;
 import org.apache.commons.lang.StringUtils ;
+import org.inra.yedgen.processor.SqlAnalyzer;
 import org.inra.yedgen.properties.ObdaProperties ;
 import static java.util.stream.Collectors.joining ;
 import org.inra.yedgen.processor.managers.ManagerVariable ;
@@ -37,33 +40,52 @@ public final class Node implements Serializable  {
      
     private final Map<String , Set<String> > predicatsValues = new HashMap<>() ;
     
-    public Node( Integer hash        , 
-                 String  id          , 
-                 int     code        , 
-                 String  uri         , 
-                 String  type        , 
-                 String  label       ,
-                 String  predicat    ,
-                 String  query       ,
-                 String  uriObject   ,
-                 String  queryObject ,
+    public Node( Integer hash          , 
+                 String  id            , 
+                 int     codeSubject   , 
+                 String  uri           , 
+                 String  type          , 
+                 String  label         ,
+                 String  predicat      ,
+                 String  query         ,
+                 Integer codeObject    ,
+                 String  uriObject     ,
+                 String  queryObject   ,
                  String  defaultPrefix )  {
 
-        this.defaultPrefix = defaultPrefix ;
-        this.hash          = hash          ;
-        this.id            = id            ;
-        this.code          = code          ;
-        this.label         = label         ;
-        this.query         = cleanQ(query) ;
-        this.queryObject   = queryObject   ;
-        this.uri           = validatePrefix( defaultPrefix, uri ) ;
+        Objects.requireNonNull(codeSubject ) ;
+        this.defaultPrefix   = defaultPrefix ;
+        this.hash            = hash          ;
+        this.id              = id            ;
+        this.code            = codeSubject   ;
+        this.label           = label         ;
+        this.query           = cleanQ(query) ;
+        this.queryObject     = queryObject   ;
+        this.uri             = validatePrefix( defaultPrefix, uri )       ;
+        this.type            = validatePrefix( defaultPrefix, type      ) ;
+        this.uriObject       = validatePrefix( defaultPrefix, uriObject ) ;
         
+        
+        this.addPredicatWithObject( "a", type )                         ;
         this.predicat      = validatePrefix( defaultPrefix, predicat  ) ;
-        this.type          = validatePrefix( defaultPrefix, type      ) ;
-        this.uriObject     = validatePrefix( defaultPrefix, uriObject ) ;
         
-        this.addPredicatWithObject( "a", type ) ;
-        this.addPredicatWithObject( this.predicat, uriObject ) ;
+        if ( codeObject == null || codeObject != codeSubject ) {
+            
+            this.addPredicatWithObject( predicat , uriObject )          ;
+            
+        } else {
+            
+            /* Recursivity */
+            
+             this.predicat  = this.predicat.replaceAll(" +", " ").trim()
+                       .split(Pattern.quote("{"))[0].trim() ;
+             
+            List<String> expp =  extractPredicatePattern( predicat )    ;
+            
+            this.addPredicatWithObject( this.predicat , 
+                                        uriObject.replace( expp.get(0).trim()   , 
+                                                          expp.get(1).trim()) ) ;
+        }
         
     }
 
@@ -311,7 +333,7 @@ public final class Node implements Serializable  {
     }
     
     private String validatePrefix ( String defaulPrefix , String entity ) {
-        
+                
         if ( entity == null                 || 
              entity.startsWith("?")         ||
              entity.startsWith("##PATTERN") ||
@@ -414,6 +436,16 @@ public final class Node implements Serializable  {
     
    }
    
+   private List<String> extractPredicatePattern( String predicate ) {
+    // index 0 : sourcerPredicatePattern
+    // index 1 : targetPredicatePattern
+    return  Arrays.asList(predicate.replace("}", "")
+                  .replaceAll(" +", " ")
+                  .trim()
+                  .split(Pattern.quote("{"))[1].split(">")) ;
+   }
+   
+   
    public static String cleanValue( String value ) {
         
       return value.startsWith(":")        ?
@@ -426,4 +458,13 @@ public final class Node implements Serializable  {
                   .replace("\"", "")
                   .replaceAll(" +" , "")  ;
    }
+   
+   public void applyToQuery(String filterQuery ) {
+       
+        if(filterQuery != null ) {
+            query = SqlAnalyzer.treatQuery(getQuery(), filterQuery ) ;
+        }
+        
+    }
 }
+

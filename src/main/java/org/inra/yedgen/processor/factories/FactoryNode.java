@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.processor.factories;
+package org.inra.yedgen.processor.factories ;
 
 import java.util.UUID ;
 import java.util.regex.Pattern ;
@@ -61,6 +61,7 @@ public class FactoryNode {
                          Labelsubject    ,
                          predicat        , 
                          queryForSubject , 
+                         codeForObject   ,
                          uriObject       , 
                          queryForObject  ,
                          defaultPrefix ) ;
@@ -81,17 +82,18 @@ public class FactoryNode {
         return -1 ;
     }
     
-    public Node createNode(  Integer hash             , 
-                             String  id               , 
-                             Integer code             , 
-                             String uriSubject        , 
-                             String typeOfSubject     , 
-                             String entityName        , 
-                             String predicat          , 
-                             String queryForSubject   ,
-                             String uriObject, 
-                             String queryObject , 
-                             String defaultPrefix )   {
+    public Node createNode(  Integer hash              , 
+                             String  id                , 
+                             Integer code              , 
+                             String  uriSubject        , 
+                             String  typeOfSubject     , 
+                             String  entityName        , 
+                             String  predicat          , 
+                             String  queryForSubject   ,
+                             Integer codeObject        , 
+                             String  uriObject         , 
+                             String  queryObject       , 
+                             String  defaultPrefix )   {
     
             return new Node( hash            ,  
                              id              , 
@@ -101,6 +103,7 @@ public class FactoryNode {
                              entityName      ,
                              predicat        , 
                              queryForSubject , 
+                             codeObject      , 
                              uriObject       , 
                              queryObject     , 
                              defaultPrefix ) ;
@@ -126,7 +129,7 @@ public class FactoryNode {
        }
       
       return 
-            createNode(hash, 
+            createNode( hash                         , 
                         UUID.randomUUID().toString() , 
                         code                         , 
                         uri                          , 
@@ -134,6 +137,7 @@ public class FactoryNode {
                         type                         , 
                         predicatObject               , 
                         query                        , 
+                        null                         ,
                         object                       , 
                         null                         , 
                         GraphExtractor.PREFIX_PREDICAT ) ;
@@ -150,3 +154,4 @@ public class FactoryNode {
     }
     
 }
+//-d "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/COBY_27-02-17/FINAL/work-tmp/input_tmp/" -out "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/COBY_27-02-17/FINAL/SI/FORET/output/01_obda/mapping.obda" -ext ".graphml" -js "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/SI/FORET/csv/config/si.js" -prf "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/SI/FORET/csv/config/si.properties" -csv "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/COBY_27-02-17/FINAL/SI/FORET/csv/si.csv" -class "flux sh" -column 12 -connecFile "/home/ryahiaoui/Bureau/COBY/SI/FORET/connection.txt"

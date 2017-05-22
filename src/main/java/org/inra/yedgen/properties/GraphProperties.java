@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.properties;
+package org.inra.yedgen.properties ;
 
 /**
  *

@@ -1,5 +1,4 @@
 
-
 package org.inra.yedgen.graph.entities ;
 
 import java.util.Objects ;
