@@ -46,9 +46,9 @@ public class Messages {
      }
     
     public static void printMessageMetaPatternsNull() {
-       System.err.println("")                                                             ;
-       System.err.println(" --> Error // MetaPatterns are null // CSV Generation abort ") ;
-       System.err.println("")                                                             ;
+       System.err.println("")                                                               ;
+       System.err.println(" --> Warning // MetaPatterns are null // CSV Generation abort ") ;
+       System.err.println("")                                                               ;
      }
 
     public static void printMessageStartProcessVariableGraphGeneration() {
