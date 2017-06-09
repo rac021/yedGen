@@ -214,7 +214,8 @@ public class GraphExtractor {
                                         Utils.putInMap( mapVariables, 
                                                         hash, 
                                                         id , 
-                                                        label.trim().replaceFirst( Pattern.quote(ManagerVariable.PATTERN_VARIABLE),"") ) ;  
+                                                        label.trim().replaceFirst( Pattern.quote ( 
+                                                                     ManagerVariable.PATTERN_VARIABLE),"") ) ;  
                                     }
                                     
                                     else if (label.startsWith(META_VERIABLE) && label.contains(" ")) {                                           
@@ -227,7 +228,8 @@ public class GraphExtractor {
                                     else if ( label.startsWith(META_PATTERN_PARALLEL) && label.contains(" ")) {                                           
                                         metaPatternParallel = label.replaceFirst(Pattern.quote(META_PATTERN_PARALLEL),"") ;
                                     }
-                                    else if ( label.trim().replaceAll(" +", " ").startsWith(MAGIC_FILTER) && label.contains(":")) { 
+                                    else if ( label.trim().replaceAll(" +", " ").startsWith(MAGIC_FILTER) && 
+                                              label.contains(":"))                                         { 
                                         magicFilter = label.trim().replaceAll(" +", " ")
                                                            .replaceFirst(Pattern.quote(MAGIC_FILTER),"")
                                                            .split(Pattern.quote(":"))[1] ;
@@ -677,11 +679,11 @@ public class GraphExtractor {
         return SourceDeclaration ;
     }
 
-    public Integer getMetaPatternHash()        {
+    public Integer getMetaPatternHash()  {
         return metaPatternHash ;
     }
 
-    public String getMagicFilter() {
+    public String getMagicFilter()      {
         return magicFilter ;
     }
     
