@@ -257,10 +257,10 @@ public class ManagerPatternContext {
         this.PATTERNS_CONTEXT = PATTERNS_CONTEXT ;
     }
 
-    public List<Node> linkNodes ( Node parentContextNode    , 
-                                          Node patternNode  , 
-                                          String pattern    , 
-                                          List<Node> patternContextNodes ) {
+    public List<Node> linkNodes ( Node parentContextNode , 
+                                  Node patternNode       , 
+                                  String pattern         , 
+                                  List<Node> patternContextNodes ) {
         
         if(patternContextNodes.isEmpty() ) {
             Map<String, Set<String>> patternContextValues = patternNode.getPredicatsValuesIgnoringType() ;
