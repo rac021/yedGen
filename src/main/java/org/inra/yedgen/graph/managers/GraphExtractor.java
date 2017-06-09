@@ -12,9 +12,8 @@ import org.json.JSONArray ;
 import java.nio.file.Path ;
 import org.json.JSONObject ;
 import java.io.IOException ;
-import java.io.InputStream ;
 import java.nio.file.Files ;
-import java.io.FileInputStream ;
+import java.nio.file.Paths ;
 import java.util.regex.Pattern ;
 import org.inra.yedgen.graph.utils.Utils ;
 import org.inra.yedgen.graph.entities.Edge ;
@@ -61,9 +60,9 @@ public class GraphExtractor {
     private static final String  MAGIC_FILTER          = "##Magic_Filter "         ;
     
     
-    private  JSONObject loadJsonObject ( String pathFile ) throws IOException {
+    private  JSONObject loadJsonObject ( String pathFile ) throws IOException  {
 
-        String xml ;
+        /** String xml ;
 
         try ( InputStream inputStream = new FileInputStream(pathFile) )  {
 
@@ -77,9 +76,13 @@ public class GraphExtractor {
             }
 
             xml = builder.toString()       ;
-        }
-
+        } **/
+     
+        String xml  = new String ( Files.readAllBytes( Paths.get(pathFile) ) ) ;
+        
         return XML.toJSONObject(xml)       ;
+     
+     
     }
 
 
