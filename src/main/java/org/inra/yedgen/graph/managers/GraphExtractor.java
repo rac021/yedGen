@@ -218,14 +218,14 @@ public class GraphExtractor {
                                                                      ManagerVariable.PATTERN_VARIABLE),"") ) ;  
                                     }
                                     
-                                    else if (label.startsWith(META_VERIABLE) && label.contains(" ")) {                                           
+                                    else if (label.startsWith(META_VERIABLE) && label.contains(" "))              {
                                         metaPatternVariable = label.replaceFirst(Pattern.quote(META_VERIABLE),"") ;
                                         metaPatternHash     = hash                                                ;
                                     }
-                                    else if ( label.startsWith(META_PATTERN_CONTEXT) && label.contains(" ")) {                                           
+                                    else if ( label.startsWith(META_PATTERN_CONTEXT) && label.contains(" "))  {
                                         metaPatternContext = label.replaceFirst(Pattern.quote(META_PATTERN_CONTEXT),"")   ;
                                     }
-                                    else if ( label.startsWith(META_PATTERN_PARALLEL) && label.contains(" ")) {                                           
+                                    else if ( label.startsWith(META_PATTERN_PARALLEL) && label.contains(" ")) {
                                         metaPatternParallel = label.replaceFirst(Pattern.quote(META_PATTERN_PARALLEL),"") ;
                                     }
                                     else if ( label.trim().replaceAll(" +", " ").startsWith(MAGIC_FILTER) && 
@@ -375,14 +375,14 @@ public class GraphExtractor {
                                                 label.trim().replaceFirst(label.split(" ")[0],"") ) ;  
                             }
                             
-                            else if (label.startsWith(META_VERIABLE) && label.contains(" ")) {                                           
+                            else if (label.startsWith(META_VERIABLE) && label.contains(" ")) {
                                   metaPatternVariable = label.replaceFirst(Pattern.quote(META_VERIABLE),"")        ;
                                   metaPatternHash     = hash                                                       ;
                             } 
-                            else if (label.startsWith(META_PATTERN_CONTEXT) && label.contains(" ")) {                                           
+                            else if (label.startsWith(META_PATTERN_CONTEXT) && label.contains(" ")) { 
                                   metaPatternContext = label.replaceFirst(Pattern.quote(META_PATTERN_CONTEXT),"")  ;
                             }
-                            else if (label.startsWith(META_PATTERN_PARALLEL) && label.contains(" ")) {                                           
+                            else if (label.startsWith(META_PATTERN_PARALLEL) && label.contains(" ")) { 
                                  metaPatternParallel = label.replaceFirst(Pattern.quote(META_PATTERN_PARALLEL),"") ;
                             }
                             else if ( label.trim().replaceAll(" +", " ").startsWith(MAGIC_FILTER) && label.contains(":")) { 
