@@ -155,7 +155,9 @@ public class GraphExtractor {
                                         Utils.putInMap( mapQueries, hash, code , label.split( Pattern
                                                                                 .quote(": "))[1]
                                                                                 .trim()
-                                                                                .replaceAll("--.*\\n", "")) ;
+                                                                                .replaceAll("--.*\\n", "")
+                                                                                .replaceAll("--.*", ""   ) 
+                                                                                .replaceAll(" +", " ")   ) ;
                                     }
                                     
                                     else if (label.toLowerCase()
@@ -249,7 +251,9 @@ public class GraphExtractor {
                                                          code , 
                                                          label.split( Pattern.quote(": "))[1]
                                                               .trim()
-                                                              .replaceAll("--.*\\n", "")) ;
+                                                              .replaceAll("--.*\\n", "")
+                                                              .replaceAll("--.*", ""   ) 
+                                                              .replaceAll(" +", " ")   ) ;
                                     }
                                     
                                     else
@@ -404,7 +408,9 @@ public class GraphExtractor {
                                                 label.split( Pattern
                                                      .quote(": "))[1]
                                                      .trim()
-                                                     .replaceAll("--.*\\n", "")) ;
+                                                     .replaceAll("--.*\\n", "")
+                                                     .replaceAll("--.*", ""   ) 
+                                                     .replaceAll(" +", " ")   ) ;
                                  
                             }
                             
