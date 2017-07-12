@@ -56,22 +56,22 @@ public class Processor {
     private boolean                      verbose                 ;
     
     
-    public Processor( String  directory     , 
-                      String  extensionFile ,
-                      String  propertieFile ,
-                      String  jsFile        ,
-                      String  connecFile    ,
-                      String  prefixFile    ,
-                      String default_prefix ) throws Exception  {
+    public Processor( String  directory      , 
+                      String  extensionFile  ,
+                      String  propertieFile  ,
+                      String  jsFile         ,
+                      String  connecFile     ,
+                      String  prefixFile     ,
+                      String  default_prefix ) throws Exception  {
    
-      this.graphExtractor  =  new GraphExtractor ()             ;
+      this.graphExtractor  =  new GraphExtractor ()              ;
         
-      graphExtractor.genGraphPopulatingManagers( directory , extensionFile )    ;
+      graphExtractor.genGraphPopulatingManagers( directory , extensionFile )      ;
           
       if(default_prefix != null ) GraphExtractor.PREFIX_PREDICAT = default_prefix ;
      
       /* Add External Prefixs if prefixFile not null */ 
-      updateConnection( connecFile, this.graphExtractor.getSourceDeclaration()) ;
+      updateConnection( connecFile, this.graphExtractor.getSourceDeclaration())   ;
               
       /* Add External Prefixs if prefixFile not null */ 
       updatePrefixs(prefixFile, this.graphExtractor.getPrefixs()) ;
@@ -141,12 +141,19 @@ public class Processor {
     
     }
         
-    public boolean processFull ( String outputFile , 
-                                 String csvFile    , 
-                                 String classe     ,
-                                 int column        )  {
+    public boolean processFull ( String       outputFile  , 
+                                 String       csvFile     , 
+                                 String       classe      ,
+                                 int          column      ,
+                                 Integer      matchColumn ,
+                                 List<String> matchWord   )  {
         
-        boolean processCSV       = processOnlyCSV( outputFile, csvFile, classe, column ) ;
+        boolean processCSV       = processOnlyCSV ( outputFile  , 
+                                                    csvFile     , 
+                                                    classe      ,
+                                                    column      ,
+                                                    matchColumn ,
+                                                    matchWord   ) ;
         
         boolean processVariables = processOnlyGraphVariables( outputFile ) ;
         
@@ -210,10 +217,12 @@ public class Processor {
       
    }
     
-    public boolean processOnlyCSV ( String outputFile , 
-                                    String csvFile    , 
-                                    String classe     ,
-                                    int column  )     {
+    public boolean processOnlyCSV ( String       outputFile  ,
+                                    String       csvFile     , 
+                                    String       classe      ,
+                                    int          column      ,
+                                    Integer      matchColumn ,
+                                    List<String> matchWord ) {
          
      Messages.printMessageStartProcessCsvVariableGeneration( csvFile ) ;
      
@@ -261,6 +270,19 @@ public class Processor {
 
                       return     ;
                    }
+                 }
+                 
+                 if(  matchColumn != null &&   matchColumn > 0   && 
+                      matchWord   != null && ! matchWord.isEmpty() ) {
+                     
+                    if( ! matchWord.contains( line.split( metaPatternManager
+                                                  .getCSV_SEPARATOR())[ matchColumn ]
+                                                  .trim()
+                                                  .replaceAll(" +", " "))) {
+                       counter ++ ;
+
+                       return     ;
+                    }
                  }
                     
                  try {
@@ -380,23 +402,36 @@ public class Processor {
       
     }
     
-    public void process ( String  outputFile              , 
-                          String  csvFile                 , 
-                          boolean includingGraphVariables ,
-                          String classe                   ,
-                          int column                      ,
-                          boolean verbose )               {
+    public void process ( String       outputFile              , 
+                          String       csvFile                 , 
+                          boolean      includingGraphVariables ,
+                          String       classe                  ,
+                          int          column                  ,
+                          Integer      matchColumn             ,
+                          List<String> matchWord               ,
+                          boolean verbose                    ) {
       
         this.verbose = verbose  ;
         
         boolean process = false ; 
         
         if( includingGraphVariables && csvFile != null )                    {
-            process = processFull( outputFile, csvFile, classe, column )    ;
+            
+            process = processFull( outputFile  , 
+                                   csvFile     , 
+                                   classe      , 
+                                   column      ,
+                                   matchColumn ,
+                                   matchWord   ) ;
         }
-        else if ( ! includingGraphVariables && 
-                    csvFile != null )                                       {
-            process = processOnlyCSV( outputFile, csvFile, classe, column ) ;
+        else if ( ! includingGraphVariables && csvFile != null )           {
+            
+            process = processOnlyCSV( outputFile  , 
+                                      csvFile     , 
+                                      classe      , 
+                                      column      ,
+                                      matchColumn ,
+                                      matchWord   ) ;
         }
         else  {
             process = processOnlyGraphVariables( outputFile )               ;

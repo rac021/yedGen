@@ -2,6 +2,9 @@
 package entypoint ;
 
 import java.io.File ;
+import java.util.List ;
+import java.util.Arrays ;
+import java.util.stream.Collectors ;
 import org.inra.yedgen.processor.Processor ;
 
 /**
@@ -36,46 +39,54 @@ public class Main {
     String classe       = null ;  int column  = -1                             ;
     String prefixFile   = null ,  connecFile  = null , def_prefix  = null      ;
     
+    Integer matchColumn = null ; String  _matchWord  = null   ;
+      
     boolean includingGraphVariables = false ,  verbose = false ;
        
     int     nbParams                = 0       ;
        
     for ( int i = 0 ; i < args.length ; i++ ) {
             
-       String token = args[i] ;
+        String token = args[i] ;
            
         switch(token)   {
          
-         case "-d"          :  directory = args[i+1] ; nbParams += 2  ;
-                               break ;
-         case "-out"        :  outFile   = args[i+1] ; nbParams += 2  ;
-                               break ;
-         case "-ext"        :  ext       = args[i+1] ; nbParams += 2  ;
-                               break ;            
-         case "-csv"        :  csv       = args[i+1] ; nbParams += 2  ;
-                               break ;    
-         case "-prf"        :  prf       = args[i+1] ; nbParams += 2  ;
-                               break ;            
-         case "-js"         :  js        = args[i+1] ; nbParams += 2  ;
-                               break ;            
-         case "-class"      :  classe    = args[i+1] ; nbParams += 2  ;
-                               break ;    
-         case "-column"     :  column = Integer.parseInt(args [ i+1 ]
-                                               .replaceAll(" +", "")) ; 
-                               nbParams += 2                          ; 
-                               break ;    
-         case "-ig"         :  includingGraphVariables = true         ;  
-                               nbParams += 1                          ;
-                               break ;            
-         case "-v"          :  verbose   = true                       ;
-                               nbParams += 1                          ;
-                               break ;         
-         case "-def_prefix" :  def_prefix = args[i+1] ; nbParams += 2 ;                            
-                               break ;         
-         case "-connecFile" :  connecFile = args[i+1] ; nbParams += 2 ;
-                               break ;
-         case "-prefixFile" :  prefixFile = args[i+1] ; nbParams += 2 ;
-                               break ;
+         case "-d"           :  directory = args[i+1] ; nbParams += 2      ;
+                                break ;
+         case "-out"         :  outFile   = args[i+1] ; nbParams += 2      ;
+                                break ;
+         case "-ext"         :  ext       = args[i+1] ; nbParams += 2      ;
+                                break ;            
+         case "-csv"         :  csv       = args[i+1] ; nbParams += 2      ;
+                                break ;    
+         case "-prf"         :  prf       = args[i+1] ; nbParams += 2      ;
+                                break ;            
+         case "-js"          :  js        = args[i+1] ; nbParams += 2      ;
+                                break ;            
+         case "-class"       :  classe    = args[i+1] ; nbParams += 2      ;
+                                break ;    
+         case "-column"      :  column   = Integer.parseInt(args [ i+1 ]
+                                                .replaceAll(" +", ""))     ; 
+                                nbParams += 2                              ; 
+                                break ;    
+         case "-ig"          :  includingGraphVariables = true             ;  
+                                nbParams += 1                              ;
+                                break ;            
+         case "-v"           :  verbose   = true                           ;
+                                nbParams += 1                              ;
+                                break ;         
+         case "-def_prefix"  :  def_prefix = args[i+1] ; nbParams += 2     ;                            
+                                break ;         
+         case "-connecFile"  :  connecFile = args[i+1] ; nbParams += 2     ;
+                                break ;
+         case "-prefixFile"  :  prefixFile = args[i+1] ; nbParams += 2     ;
+                                break ;
+         case "-matchWord"   :  _matchWord = args[i+1] ; nbParams += 2     ;
+                                break ;
+         case "-matchColumn" :  matchColumn = Integer.parseInt(args [ i+1 ]
+                                                 .replaceAll(" +", ""))    ; 
+                                nbParams += 2                              ; 
+                                break ;
        }
     }
        
@@ -88,35 +99,50 @@ public class Main {
     if( directory == null || directory.isEmpty() || 
         outFile   == null || outFile.isEmpty())   {
             
-        System.out.println (" directory or outFile is Empty " ) ;
+        System.out.println (" directory or outFile is Empty " )  ;
         return ;
     }
         
-    if(ext == null || ext.length() == 0 ) ext = ".graphml"     ;
+    if(ext == null || ext.length() == 0 ) ext = ".graphml"       ;
+       
+    List<String> wordList = null  ;
+    
+    if( _matchWord != null && ! _matchWord.isEmpty() )           {
         
-      long startTime = System.currentTimeMillis()              ;  
-        
-      Processor processor = new Processor ( directory          ,
-                                            ext                ,
-                                            prf                ,
-                                            js                 ,
-                                            connecFile         ,
-                                            prefixFile         ,
-                                            def_prefix )       ;
-        
-      processor.process ( outFile                  , 
-                          csv                      , 
-                          includingGraphVariables  , 
-                          classe                   ,
-                          column                   ,
-                          verbose )  ;
-        
-      long executionTime = System.currentTimeMillis() - startTime ;
-        
-      System.out.println(" Elapsed seconds : "                    + 
-                                    executionTime / 1000 + " s" ) ; 
-        
-      System.out.println(" ")                                     ;
+        wordList = Arrays.asList( _matchWord.trim()
+                                            .replaceAll(" +", " ")
+                                            .split(","))
+                         .stream()
+                         .map( word -> word.trim() )
+                         .collect(Collectors.toList()) ;
     }
+      
+    long startTime = System.currentTimeMillis()              ;  
+        
+    Processor processor = new Processor ( directory          ,
+                                          ext                ,
+                                          prf                ,
+                                          js                 ,
+                                          connecFile         ,
+                                          prefixFile         ,
+                                          def_prefix )       ;
+        
+    processor.process ( outFile                  , 
+                        csv                      , 
+                        includingGraphVariables  , 
+                        classe                   ,
+                        column                   ,
+                        matchColumn              ,
+                        wordList                 ,
+                        verbose                ) ;
+        
+    long executionTime = System.currentTimeMillis() - startTime ;
+        
+    System.out.println(" Elapsed seconds : "                    + 
+                                  executionTime / 1000 + " s" ) ; 
+        
+    System.out.println(" ")                                     ;
+    
+  }
  
 }
