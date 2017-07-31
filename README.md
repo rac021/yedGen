@@ -2,6 +2,10 @@
 
  > OBDA file generator using yEd Graph Editor v 3.14.2
 
+| Branch    | build status  |
+|-----------|---------------|
+| [master](https://github.com/rac021/yedGen/tree/master)  |[![Build Status](https://travis-ci.org/ontop/ontop.svg?branch=master)](https://travis-ci.org/rac021/yedGen)|
+
 - Install procedure :
 
    - ` mvn clean install assembly:single `
