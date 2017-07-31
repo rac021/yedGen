@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>run</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-classpath %classpath entypoint.MagicInstancier ?years "1900,1901,1910,1981,2015"  ?sites " 'site_1', 'site_2', 'site_3' " -inTemplateMagicFilterFile "/home/ryahiaoui/Bureau/COBY/work-tmp/input_tmp/magicFilter.txt" -outInstanceMagicFilterFile "/home/ryahiaoui/Bureau/COBY/work-tmp/input_tmp/magicFilter_Instance.txt"     -magicFilter "/home/ryahiaoui/Bureau/COBY/work-tmp/input_tmp/magicFilter.txt" -d "/home/ryahiaoui/Bureau/COBY/work-tmp/input_tmp/" -out "/home/ryahiaoui/Bureau/COBY/SI/ACBB/output/01_obda/mapping.obda" -ext ".graphml" -js "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/SI/FORET/csv/config/si.js" -prf "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/SI/FORET/csv/config/si.properties" -csv "/home/ryahiaoui/Bureau/COBY/SI/ACBB/csv/pipeline_si.csv"  -connecFile "/home/ryahiaoui/Bureau/COBY/SI/ACBB/connection.txt" -class "Météorologie semi-horaire" -column 12</exec.args>
+                <exec.executable>java</exec.executable>
+                <exec.workingdir></exec.workingdir>
+            </properties>
+        </action>
+        <action>
+            <actionName>debug</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address} -classpath %classpath entypoint.MagicInstancier ?years "1900,1901,1910,1981,2015"  ?sites " 'site_1', 'site_2', 'site_3' " -inTemplateMagicFilterFile "/home/ryahiaoui/Bureau/COBY/work-tmp/input_tmp/magicFilter.txt" -outInstanceMagicFilterFile "/home/ryahiaoui/Bureau/COBY/work-tmp/input_tmp/magicFilter_Instance.txt"     -magicFilter "/home/ryahiaoui/Bureau/COBY/work-tmp/input_tmp/magicFilter.txt" -d "/home/ryahiaoui/Bureau/COBY/work-tmp/input_tmp/" -out "/home/ryahiaoui/Bureau/COBY/SI/ACBB/output/01_obda/mapping.obda" -ext ".graphml" -js "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/SI/FORET/csv/config/si.js" -prf "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/SI/FORET/csv/config/si.properties" -csv "/home/ryahiaoui/Bureau/COBY/SI/ACBB/csv/pipeline_si.csv"  -connecFile "/home/ryahiaoui/Bureau/COBY/SI/ACBB/connection.txt" -class "Météorologie semi-horaire" -column 12</exec.args>
+                <exec.executable>java</exec.executable>
+                <jpda.listen>true</jpda.listen>
+                <exec.workingdir></exec.workingdir>
+            </properties>
+        </action>
+        <action>
+            <actionName>profile</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-classpath %classpath entypoint.MagicInstancier ?years "1900,1901,1910,1981,2015"  ?sites " 'site_1', 'site_2', 'site_3' " -inTemplateMagicFilterFile "/home/ryahiaoui/Bureau/COBY/work-tmp/input_tmp/magicFilter.txt" -outInstanceMagicFilterFile "/home/ryahiaoui/Bureau/COBY/work-tmp/input_tmp/magicFilter_Instance.txt"     -magicFilter "/home/ryahiaoui/Bureau/COBY/work-tmp/input_tmp/magicFilter.txt" -d "/home/ryahiaoui/Bureau/COBY/work-tmp/input_tmp/" -out "/home/ryahiaoui/Bureau/COBY/SI/ACBB/output/01_obda/mapping.obda" -ext ".graphml" -js "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/SI/FORET/csv/config/si.js" -prf "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/SI/FORET/csv/config/si.properties" -csv "/home/ryahiaoui/Bureau/COBY/SI/ACBB/csv/pipeline_si.csv"  -connecFile "/home/ryahiaoui/Bureau/COBY/SI/ACBB/connection.txt" -class "Météorologie semi-horaire" -column 12</exec.args>
+                <exec.executable>java</exec.executable>
+                <exec.workingdir></exec.workingdir>
+            </properties>
+        </action>
+    </actions>

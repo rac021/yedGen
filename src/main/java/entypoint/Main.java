@@ -10,8 +10,7 @@ import org.inra.yedgen.processor.Processor ;
 /**
  *
  * @author ryahiaoui
- */
- 
+ */ 
 public class Main {
     
   static {
@@ -37,8 +36,9 @@ public class Main {
     String directory    = null ,  outFile     = null , ext = null , csv = null ;
     String prf          = null ,  js          = null                           ;
     String classe       = null ;  int column  = -1                             ;
-    String prefixFile   = null ,  connecFile  = null , def_prefix  = null      ;
-    
+    String prefixFile   = null ,  connecFile  = null , def_prefix  = null      ,
+    magicFilterFile     = null ;
+             
     Integer matchColumn = null ; String  _matchWord  = null   ;
       
     boolean includingGraphVariables = false ,  verbose = false ;
@@ -87,6 +87,9 @@ public class Main {
                                                  .replaceAll(" +", ""))    ; 
                                 nbParams += 2                              ; 
                                 break ;
+        case "-magicFilter"  :  magicFilterFile = args[i+1]                ;
+                                nbParams += 2                              ;
+                                break ;
        }
     }
        
@@ -125,7 +128,8 @@ public class Main {
                                           js                 ,
                                           connecFile         ,
                                           prefixFile         ,
-                                          def_prefix )       ;
+                                          def_prefix         ,
+                                          magicFilterFile )  ;
         
     processor.process ( outFile                  , 
                         csv                      , 

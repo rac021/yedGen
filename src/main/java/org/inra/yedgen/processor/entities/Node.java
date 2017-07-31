@@ -14,8 +14,8 @@ import java.util.Comparator ;
 import java.io.Serializable ;
 import java.util.regex.Pattern ;
 import java.util.stream.Collectors ;
+import org.inra.yedgen.sql.SqlAnalyzer ;
 import org.apache.commons.lang.StringUtils ;
-import org.inra.yedgen.processor.SqlAnalyzer;
 import org.inra.yedgen.properties.ObdaProperties ;
 import static java.util.stream.Collectors.joining ;
 import org.inra.yedgen.processor.managers.ManagerVariable ;
@@ -101,32 +101,32 @@ public final class Node implements Serializable  {
         return code ;
     }
     
-    public String getId() {
+    public String getId()    {
         return id ;
     }
 
-    public String getUri() {
+    public String getUri()   {
         return uri ;
     }
     
-    public String getType() {
-        if(type == null ) return ""      ;
-        return type.replaceAll(" ", "" ) ;
+    public String getType()  {
+     if(type == null ) return ""      ;
+     return type.replaceAll(" ", "" ) ;
     }
 
     public String getQuery() {
         return query ;
     }
 
-    public String getUriObject() {
+    public String getUriObject()     {
         return uriObject ;
     }
 
-    public String getQueryObject() {
+    public String getQueryObject()   {
         return queryObject ;
     }
 
-    public String getPredicat() {
+    public String getPredicat()      {
         return predicat;
     }
     public String getDefaultPrefix() {
@@ -315,6 +315,7 @@ public final class Node implements Serializable  {
     public void updatePatternValue( String pattern, String uri ) {
 
         Entry<String, Set<String>> predicatKey = 
+                
                 predicatsValues.entrySet()
                                .stream()
                                .filter( entry -> entry.getValue().contains(pattern) )

@@ -12,7 +12,7 @@ import java.util.Collections ;
 import java.util.regex.Pattern ;
 import java.util.regex.Matcher ;
 import org.inra.yedgen.processor.entities.Node ;
-import org.inra.yedgen.processor.output.Messages ;
+import org.inra.yedgen.processor.logs.Messages ;
 import org.inra.yedgen.graph.managers.GraphExtractor ;
 import org.inra.yedgen.processor.factories.FactoryNode ;
 

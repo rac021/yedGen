@@ -16,11 +16,12 @@ import java.util.function.Consumer ;
 import org.inra.yedgen.graph.utils.Utils ;
 import org.inra.yedgen.processor.io.Writer ;
 import org.inra.yedgen.graph.entities.Edge ;
-import org.inra.yedgen.processor.io.ObdaHeader ;
+import org.inra.yedgen.obda.header.ObdaHeader ;
 import org.inra.yedgen.processor.entities.Node ;
+import org.inra.yedgen.processor.logs.Messages ;
+import org.inra.yedgen.splitter.ObdaSplitter_V1 ;
 import org.inra.yedgen.properties.CsvProperties ;
 import java.util.concurrent.atomic.AtomicInteger ;
-import org.inra.yedgen.processor.output.Messages ;
 import org.inra.yedgen.properties.ObdaProperties ;
 import org.inra.yedgen.graph.managers.ManagerEdge ;
 import org.inra.yedgen.processor.entities.Variable ;
@@ -31,7 +32,7 @@ import org.inra.yedgen.processor.managers.ManagerNode ;
 import org.inra.yedgen.processor.factories.FactoryNode ;
 import org.inra.yedgen.processor.managers.ManagerQuery ;
 import org.inra.yedgen.processor.managers.ManagerVariable ;
-import org.inra.yedgen.processor.managers.MetaPatternManager ;
+import org.inra.yedgen.processor.managers.ManagerMetaPattern ;
 import org.inra.yedgen.processor.managers.ManagerPatternContext ;
 import org.inra.yedgen.processor.managers.ManagerPatternParallel ;
 import static org.inra.yedgen.graph.managers.GraphExtractor.PREFIX_PREDICAT ;
@@ -44,7 +45,7 @@ public class Processor {
     
     private final ManagerPatternParallel managerPatternParallel  ;
     private final ManagerPatternContext  managerPatternContext   ;
-    private final MetaPatternManager     metaPatternManager      ;
+    private final ManagerMetaPattern     metaPatternManager      ;
     private final ManagerVariable        managerVariable         ;
     private final GraphExtractor         graphExtractor          ;
     private final ManagerQuery           managerQuery            ;
@@ -55,14 +56,14 @@ public class Processor {
     
     private boolean                      verbose                 ;
     
-    
-    public Processor( String  directory      , 
-                      String  extensionFile  ,
-                      String  propertieFile  ,
-                      String  jsFile         ,
-                      String  connecFile     ,
-                      String  prefixFile     ,
-                      String  default_prefix ) throws Exception  {
+    public Processor( String  directory       , 
+                      String  extensionFile   ,
+                      String  propertieFile   ,
+                      String  jsFile          ,
+                      String  connecFile      ,
+                      String  prefixFile      ,
+                      String  default_prefix  ,
+                      String  magicFilterFile ) throws Exception  {
    
       this.graphExtractor  =  new GraphExtractor ()              ;
         
@@ -74,8 +75,15 @@ public class Processor {
       updateConnection( connecFile, this.graphExtractor.getSourceDeclaration())   ;
               
       /* Add External Prefixs if prefixFile not null */ 
-      updatePrefixs(prefixFile, this.graphExtractor.getPrefixs()) ;
+      updatePrefixs(prefixFile, this.graphExtractor.getPrefixs())        ;
 
+      /* Override Magic Filter if magicFilterFile not null  */
+      String updateMagicFilter = updateMagicFilter ( magicFilterFile )   ;
+      
+      if( updateMagicFilter != null ) {
+          graphExtractor.setMagicFilter(updateMagicFilter)               ;
+      }
+      
       ManagerUri     managerUri     =  new ManagerUri( graphExtractor.getMapUris())          ;
       ManagerEdge    managerEdge    =  new ManagerEdge( graphExtractor.getMapEdges() )       ;
       
@@ -99,7 +107,7 @@ public class Processor {
       
       this.csvProperties          = new CsvProperties( propertieFile, jsFile )   ;
         
-      this.metaPatternManager     = new  MetaPatternManager( graphExtractor.getMetaPatternHash()     ,
+      this.metaPatternManager     = new  ManagerMetaPattern( graphExtractor.getMetaPatternHash()     ,
                                                              graphExtractor.getMetaPatternVariable() , 
                                                              graphExtractor.getMetaPatternContext()  , 
                                                              graphExtractor.getMetaPatternParallel() ,
@@ -186,12 +194,12 @@ public class Processor {
 
                         /* Split if MagicFilter Enabled */
 
-                        ObdaSplitter.split( graphExtractor.getMagicFilter() ,
-                                            graph                           ,
-                                            variable                        ,
-                                            obdaHeader                      ,
-                                            managerQuery                    ,
-                                            outFile )                       ;
+                        ObdaSplitter_V1.split( graphExtractor.getMagicFilter() ,
+                                               graph                           ,
+                                               variable                        ,
+                                               obdaHeader                      ,
+                                               managerQuery                    ,
+                                               outFile )                       ;
 
                 } else {
 
@@ -258,7 +266,7 @@ public class Processor {
                       
                    if( column < 0 ) throw new IllegalArgumentException(" Column Num can't be negative ") ;
                     
-                   if( line.split(metaPatternManager.getCSV_SEPARATOR()).length < column + 1 ) {
+                   if( line.split( metaPatternManager.getCSV_SEPARATOR()).length < column + 1 ) {
                        System.out.println(" + CSV Column size = " + 
                                               line.split(metaPatternManager.getCSV_SEPARATOR()).length)  ;
                        throw new IllegalArgumentException(" Column [ " + column + " ] Does't exists ! ") ;
@@ -293,12 +301,11 @@ public class Processor {
                       outPut.addAll(obdaHeader.getHeaderOut())   ; 
 
                       // Treat Variable
-                      // String nLine = csvProperties.process( line )                            ;
                       String patternContext   = metaPatternManager.generatePatternContext(line)  ;
                       String patternVariable  = metaPatternManager.generatePatternVariable(line) ;
 
-                      Variable variable       = managerVariable.transformToVariable( patternVariable    ,
-                                                                                      patternContext  ) ;
+                      Variable variable       = managerVariable.transformToVariable( patternVariable   ,
+                                                                                     patternContext  ) ;
 
                       Set<Node> nodes         = managerVariable.process( variable )    ;
 
@@ -319,12 +326,12 @@ public class Processor {
                           
                             /* Split if MagicFilter Enabled */
                             
-                            ObdaSplitter.split( graphExtractor.getMagicFilter() , 
-                                                nodes                           ,
-                                                variable                        , 
-                                                obdaHeader                      ,
-                                                managerQuery                    ,
-                                                outFile )                       ;
+                            ObdaSplitter_V1.split( graphExtractor.getMagicFilter() , 
+                                                   nodes                           ,
+                                                   variable                        , 
+                                                   obdaHeader                      ,
+                                                   managerQuery                    ,
+                                                   outFile )                       ;
                       } else {
                           
                           nodes.stream().forEach( node -> { outPut.add( node.outputObda())       ; 
@@ -364,7 +371,6 @@ public class Processor {
      return false ;
         
     }
-
     
     public boolean processOnlyGraphWithoutVariables ( String outputFile ) {
       
@@ -411,9 +417,9 @@ public class Processor {
                           List<String> matchWord               ,
                           boolean verbose                    ) {
       
-        this.verbose = verbose  ;
+        this.verbose    = verbose  ;
         
-        boolean process = false ; 
+        boolean process = false    ; 
         
         if( includingGraphVariables && csvFile != null )                    {
             
@@ -461,9 +467,10 @@ public class Processor {
             
             lines.forEach ( line  -> {
 
-                          String[] splitedLines = line.replaceAll(" +", " ").trim().split(" ") ;
-                          if( splitedLines.length >= 3 ) 
-                          prefixMap.put(splitedLines[1].trim(), splitedLines[2].trim().replace("<", "")
+                 String[] splitedLines = line.replaceAll(" +", " ").trim().split(" ") ;
+                 
+                 if( splitedLines.length >= 3 ) 
+                   prefixMap.put(splitedLines[1].trim(), splitedLines[2].trim().replace("<", "")
                                                                                .replace(">","")) ;
             }) ;
                         
@@ -491,6 +498,16 @@ public class Processor {
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
+    }
+    
+    /* Override magicFilter  */
+    
+    private String updateMagicFilter ( String magicFilterFile ) throws IOException {
+     
+       if( magicFilterFile == null || magicFilterFile.isEmpty() ) {
+          return null ;
+       }
+       return new String(Files.readAllBytes(Paths.get(magicFilterFile))) ;
     }
 
 }

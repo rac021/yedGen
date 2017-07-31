@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.csv ;
+package entypoint ;
 
 import java.util.List ;
 import java.util.Arrays ;
@@ -17,7 +17,6 @@ import org.inra.yedgen.processor.io.Writer ;
  *
  * @author ryahiaoui
  */
-
 public class CsvFilter {
     
     

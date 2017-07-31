@@ -8,8 +8,8 @@ import java.util.HashMap ;
 import java.util.ArrayList ;
 import java.util.regex.Pattern ;
 import java.util.stream.Collectors ;
+import org.inra.yedgen.processor.logs.Messages ;
 import org.inra.yedgen.processor.entities.Node ;
-import org.inra.yedgen.processor.output.Messages ;
 import org.inra.yedgen.processor.factories.FactoryNode ;
 
 /**
@@ -20,7 +20,7 @@ public class ManagerPatternParallel {
     
     private final ManagerUri         managerUri         ;
     private final FactoryNode        factoryNode        ;
-    private final MetaPatternManager metaPatternManager ;
+    private final ManagerMetaPattern metaPatternManager ;
     
     
     /* Hash-File - ID_PATTERN - PATTERN */
@@ -30,7 +30,7 @@ public class ManagerPatternParallel {
     public ManagerPatternParallel( Map< Integer, Map< String, String>> PATTERNS_PARALLEL ,
                                    ManagerUri managerUri   , 
                                    FactoryNode factoryNode ,
-                                   MetaPatternManager metaPatternManager )               {
+                                   ManagerMetaPattern metaPatternManager )               {
         
         this.managerUri         = managerUri         ;
         this.factoryNode        = factoryNode        ;
@@ -69,10 +69,10 @@ public class ManagerPatternParallel {
         
         else {
             
-            hash = findParallelPatternByID ( id_pattern )        ;
+            hash = findParallelPatternByID ( id_pattern )           ;
    
             if( hash == null ) {
-                Messages.printMessageErrorParallel( id_pattern ) ;
+                Messages.printMessageErrorParallel( id_pattern )    ;
                 return nodes ;
             }
             
@@ -170,9 +170,9 @@ public class ManagerPatternParallel {
             values.entrySet().stream()
                   .collect(Collectors.toMap( Map.Entry::getKey ,
                                              e -> e.getValue()
-                                                   .contains(MetaPatternManager
+                                                   .contains( ManagerMetaPattern
                                                    .findFirstIntraColumnSeparator(e.getValue())) ? 
-                                                  e.getValue().split(MetaPatternManager
+                                                  e.getValue().split( ManagerMetaPattern
                                                    .findFirstIntraColumnSeparator(e.getValue()))[index].trim() : 
                                                   e.getValue().trim() ) ) ;
        nodes.stream()

@@ -18,8 +18,8 @@ import java.util.regex.Pattern ;
 import org.inra.yedgen.graph.utils.Utils ;
 import org.inra.yedgen.graph.entities.Edge ;
 import org.inra.yedgen.processor.entities.Node ;
+import org.inra.yedgen.processor.logs.Messages ;
 import static java.util.stream.Collectors.toList ;
-import org.inra.yedgen.processor.output.Messages ;
 import org.inra.yedgen.processor.managers.ManagerVariable ;
 
 /**
@@ -81,10 +81,7 @@ public class GraphExtractor {
         String xml  = new String ( Files.readAllBytes( Paths.get(pathFile) ) ) ;
         
         return XML.toJSONObject(xml)       ;
-     
-     
     }
-
 
     private void loadConcepts ( JSONObject jsonObj , Integer hash )  {
 
@@ -411,7 +408,6 @@ public class GraphExtractor {
                                                      .replaceAll("--.*\\n", "")
                                                      .replaceAll("--.*", ""   ) 
                                                      .replaceAll(" +", " ")   ) ;
-                                 
                             }
                             
                             else
@@ -691,6 +687,10 @@ public class GraphExtractor {
 
     public String getMagicFilter()      {
         return magicFilter ;
+    }
+    
+    public void setMagicFilter( String magicFilter ) {
+        this.magicFilter =  magicFilter ;
     }
     
     /* Constructor */

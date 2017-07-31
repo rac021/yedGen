@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.processor ;
+package org.inra.yedgen.sql ;
 
 import java.io.StringReader ;
 import net.sf.jsqlparser.JSQLParserException ;
@@ -8,12 +8,12 @@ import net.sf.jsqlparser.parser.CCJSqlParserUtil ;
 import net.sf.jsqlparser.statement.select.Select ;
 import net.sf.jsqlparser.parser.CCJSqlParserManager ;
 import net.sf.jsqlparser.statement.select.PlainSelect ;
-import net.sf.jsqlparser.expression.operators.conditional.AndExpression ;
 
 /**
  *
  * @author ryahiaoui
  */
+
 public class SqlAnalyzer {
  
     
@@ -30,19 +30,18 @@ public class SqlAnalyzer {
             Expression wher = ps.getWhere()                                            ;
 
             if( wher != null ) {
-               AndExpression e  = (AndExpression) ps.getWhere()                        ;
-               Expression filt = CCJSqlParserUtil.parseCondExpression( whereFilter )   ;
-               e.setRightExpression(filt) ;             
-               return ps.toString()       ;
+                return ps.toString().replace( wher.toString(), 
+                                         wher.toString() + " AND " + whereFilter )
+                                    .replaceAll(" + ", " ") ;
             }
             else  {       
                      try {
-                          Expression expr = CCJSqlParserUtil.parseCondExpression(   whereFilter ) ;
+                          Expression expr = CCJSqlParserUtil.parseCondExpression ( whereFilter ) ;
                           ((PlainSelect) select.getSelectBody()).setWhere(expr) ; 
-                          return select.toString()  ;
+                          return select.toString().replaceAll(" + ", " ")  ;
                      } catch( JSQLParserException x ) {
                          x.printStackTrace()      ;
-                         return select.toString() ;
+                         return select.toString().replaceAll(" + ", " ") ;
                      }
             }     
            

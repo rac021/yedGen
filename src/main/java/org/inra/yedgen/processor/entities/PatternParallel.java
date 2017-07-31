@@ -1,7 +1,7 @@
 
-package org.inra.yedgen.processor.entities;
+package org.inra.yedgen.processor.entities ;
 
-import java.util.Map;
+import java.util.Map ;
 
 /**
  *

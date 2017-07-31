@@ -75,7 +75,7 @@ public class ManagerQuery {
      return this.linkerNodeQuery.getOrDefault(codeNode , null ) ;
   }  
 
-  private void printErrorMessage( int hash , int codeQuery ) {
+  private void printErrorMessage( int hash , int codeQuery )    {
      System.err.println("")   ;
      System.err.println(" Note // Query with code : " + codeQuery + " - Hash : " + hash +" not found !!" ) ;
      System.err.println("")   ;

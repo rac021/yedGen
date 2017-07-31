@@ -7,7 +7,7 @@ import java.util.logging.Level ;
 import java.util.logging.Logger ;
 import javax.script.ScriptEngine ;
 import javax.script.ScriptEngineManager ;
-import org.inra.yedgen.processor.managers.MetaPatternManager ;
+import org.inra.yedgen.processor.managers.ManagerMetaPattern ;
 
 /**
  *
@@ -23,10 +23,10 @@ public class ScriptsEngine {
         
       try {
            Invocable invocable = (Invocable) engine             ;
-           String intraColumnSeparator = MetaPatternManager.findFirstIntraColumnSeparator(String.join(" ", words )) ;
-           Object  result      = invocable.invokeFunction (  method                                      , 
-                                                             String.join ( intraColumnSeparator, words ) , 
-                                                             intraColumnSeparator )                      ;
+           String intraColumnSeparator = ManagerMetaPattern.findFirstIntraColumnSeparator(String.join(" ", words )) ;
+           Object  result      = invocable.invokeFunction ( method                                      , 
+                                                            String.join ( intraColumnSeparator, words ) , 
+                                                            intraColumnSeparator )                      ;
            return result.toString() ;
             
        } catch ( Exception ex )     {

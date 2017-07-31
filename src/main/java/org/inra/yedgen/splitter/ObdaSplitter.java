@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.processor ;
+package org.inra.yedgen.splitter ;
 
 import java.io.File ;
 import java.util.Map ;
@@ -14,9 +14,10 @@ import java.util.stream.Stream ;
 import java.util.regex.Pattern ;
 import java.util.stream.IntStream ;
 import java.util.stream.Collectors ;
+import org.inra.yedgen.processor.Processor;
 import org.inra.yedgen.processor.io.Writer ;
+import org.inra.yedgen.obda.header.ObdaHeader ;
 import org.inra.yedgen.processor.entities.Node ;
-import org.inra.yedgen.processor.io.ObdaHeader ;
 import static java.util.stream.Collectors.toSet ;
 import org.inra.yedgen.properties.ObdaProperties ;
 import static java.util.stream.Collectors.toList ;
@@ -32,19 +33,20 @@ public class ObdaSplitter {
    
     /** Magic-Filter Exemples :
     
-      Magic_Filter :  ( 131073, 229390, 98304, 163841, 163842 , 1, 229378 ) 
-      *               { rootsite.rootzet_id & 1, 2, 200, 201, 202, 50, 51, 52  } PEEK 1 ; 
-                      2000_2015 {  EXTRACT(YEAR FROM mfs_date) & 1, 2, 200, 201, 202, 50, 51, 52 } STEP 1
+      ##Magic_Filter : ( 131073, 229390, 98304, 163841, 163842 , 1, 229378 ) 
+                       { rootsite.rootzet_id & 1, 2, 200, 201, 202, 50, 51, 52   } PEEK 1 ; 
+                       2000_2015 {  EXTRACT(YEAR FROM mfs_date) & 1, 2, 200, 201 } STEP 1
    
-      Magic_Filter : (163841, 1, 1445, 124 ) { var_01 & 20  } { var_02 & 50  } PEEK 4 
+      ##Magic_Filter : ( 163841, 1, 1445, 124 ) { var_01 & 20  } { var_02 & 50 } PEEK 4 
       
-      Magic_Filter : "Magic_Filter :  ('val_1','val_2','val_3' ) { var_01 & 20,8  } { var_02 & 51  } PEEK 1 ;
-                      1900_2015 { EXTRACT( YEAR FROM mfs_date) & 20 }  { EXTRACT( YEAR FROM mfs_date_Plus ) &  50, 51  } STEP 1y ;
+      ##Magic_Filter : ('val_1','val_2','val_3' ) { var_01 & 20,8  } { var_02 & 51 } PEEK 1 ;
+                       1900_2015 { EXTRACT( YEAR FROM mfs_date) & 20 }  
+                                 { EXTRACT( YEAR FROM mfs_date_Plus ) &  50, 51 } STEP 1Y   ;
 
-      Magic_Filter :  2014_2015 { EXTRACT( YEAR FROM mfs_date) & 20 } { EXTRACT( YEAR FROM mfs_date_other_var ) &  21, 22 } STEP 1y ;
+      ##Magic_Filter : 2014_2015 { EXTRACT( YEAR FROM mfs_date) & 20 } 
+                                 { EXTRACT( YEAR FROM mfs_date_other_var ) &  21, 22 } STEP 1Y ;
      
     **/
-   
     
     /**
      * 
@@ -81,7 +83,7 @@ public class ObdaSplitter {
        
         for ( String expresion : expressions ) {
 
-            if(isPeek(expresion)) {
+            if( isPeek(expresion) ) {
                 
                peekerSize  = Integer.parseInt(expresion.toLowerCase().split(" peek ")[1].trim()) ;
                
@@ -120,12 +122,12 @@ public class ObdaSplitter {
             
             else if(isStep(expresion)) {
                 
-               step  = expresion.toLowerCase().split(" step ")[1].trim() ;
+              step  = expresion.toLowerCase().split(" step ")[1].trim() ;
                
-               dates = Stream.of(expresion.split("\\{")[0].trim().replaceAll(" +", "").split("_"))
-                             .filter( s -> ! s.isEmpty() )                            
-                             .map(s -> Integer.parseInt(s))
-                             .collect(toList()) ;
+              dates = Stream.of(expresion.split("\\{")[0].trim().replaceAll(" +", "").split("_"))
+                            .filter( s -> ! s.isEmpty() )                            
+                            .map(s -> Integer.parseInt(s))
+                            .collect(toList()) ;
               
               Matcher mPatternQuery  = patternFilter.matcher( expresion) ;
               

@@ -1,5 +1,5 @@
 
-package org.inra.yedgen.processor.io ;
+package org.inra.yedgen.obda.header ;
 
 import java.util.Map ;
 import java.util.List ;
@@ -18,7 +18,6 @@ public class ObdaHeader {
     
     public ObdaHeader( GraphExtractor graphExtractor ) {
     
-    
     headerOut.add(ObdaProperties.PREFIXDECLARATION) ;
     
      for (Map.Entry<String, String> entrySet : graphExtractor.getPrefixs().entrySet()) {
@@ -28,7 +27,7 @@ public class ObdaHeader {
                                            .replace("?uri", uri)) ;
      }
                       
-     headerOut.add("");
+     headerOut.add("") ;
      Map<String, String> sourceDeclaration = graphExtractor.getSourceDeclaration() ;
                       
       headerOut.add( ObdaProperties.SOURCE_DEC_STRING

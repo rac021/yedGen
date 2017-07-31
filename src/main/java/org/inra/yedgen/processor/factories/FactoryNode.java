@@ -154,4 +154,3 @@ public class FactoryNode {
     }
     
 }
-//-d "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/COBY_27-02-17/FINAL/work-tmp/input_tmp/" -out "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/COBY_27-02-17/FINAL/SI/FORET/output/01_obda/mapping.obda" -ext ".graphml" -js "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/SI/FORET/csv/config/si.js" -prf "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/SI/FORET/csv/config/si.properties" -csv "/home/ryahiaoui/Bureau/Plus/Anaee-Test-Multiple-Variables/Anaee-Foret-Mapping/AUTOMATISATION/COBY_27-02-17/FINAL/SI/FORET/csv/si.csv" -class "flux sh" -column 12 -connecFile "/home/ryahiaoui/Bureau/COBY/SI/FORET/connection.txt"

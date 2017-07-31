@@ -72,19 +72,19 @@ public class Writer {
         
     }
     
-    private static void checkDirectory( String directory ) throws IOException {
+    public static void checkDirectory( String directory ) throws IOException {
       
      Path path = Paths.get(directory) ;
      if(!Files.exists(path, new LinkOption[]{ LinkOption.NOFOLLOW_LINKS}))
        Files.createDirectory(path) ;
     }
     
-    private static void deleteFile( String path ) throws IOException {
+    public static void deleteFile( String path ) throws IOException {
       Path pat = Paths.get(path) ;
       Files.delete(pat) ;
-   }
+    }
     
-    private static void createFile( String path ) throws IOException {
+    public static void createFile( String path ) throws IOException {
         File file = new File(path) ;
         file.createNewFile()       ;
     }

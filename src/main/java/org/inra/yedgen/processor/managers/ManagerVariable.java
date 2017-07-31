@@ -9,7 +9,7 @@ import java.util.HashSet ;
 import java.util.regex.Matcher ;
 import java.util.regex.Pattern ;
 import org.inra.yedgen.processor.entities.Node ;
-import org.inra.yedgen.processor.output.Messages ;
+import org.inra.yedgen.processor.logs.Messages ;
 import org.inra.yedgen.processor.entities.Variable ;
 import org.inra.yedgen.processor.entities.PatternParallel ;
 
@@ -208,13 +208,13 @@ public class ManagerVariable {
         
         String deepest = keyValues.values()
                                   .stream()
-                                  .max( ( s1, s2 ) -> s1.split( MetaPatternManager
+                                  .max( ( s1, s2 ) -> s1.split( ManagerMetaPattern
                                                         .findFirstIntraColumnSeparator(s1)).length >
-                                                      s2.split( MetaPatternManager
+                                                      s2.split( ManagerMetaPattern
                                                         .findFirstIntraColumnSeparator(s2)).length ? 1 : -1 )
                                   .orElse("") ;
         
-        int repeat = deepest.split(MetaPatternManager.findFirstIntraColumnSeparator(deepest)).length ;
+        int repeat = deepest.split(ManagerMetaPattern.findFirstIntraColumnSeparator(deepest)).length ;
         
         for ( int parallelIndex = 0 ; parallelIndex < repeat ; parallelIndex++ ) {
                 

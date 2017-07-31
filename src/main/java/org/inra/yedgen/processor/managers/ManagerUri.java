@@ -14,7 +14,6 @@ public class ManagerUri {
     private final Map< Integer, Map< Integer, String>> uris        ;
 
     public ManagerUri( Map< Integer, Map< Integer, String>> uris ) {
-
         this.uris = uris ;
     }
          

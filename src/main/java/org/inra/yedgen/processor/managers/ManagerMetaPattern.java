@@ -9,12 +9,12 @@ import java.util.Collections ;
 import java.util.regex.Matcher ;
 import java.util.regex.Pattern ;
 import org.inra.yedgen.properties.CsvProperties ;
-import static org.inra.yedgen.processor.output.Messages.* ;
+import static org.inra.yedgen.processor.logs.Messages.* ;
 /**
  *
  * @author ryahiaoui
  */
-public class MetaPatternManager                {
+public class ManagerMetaPattern                {
     
     private final Integer metaPatternHash      ;
     private final String  metaPatternVariable  ;
@@ -32,7 +32,7 @@ public class MetaPatternManager                {
     private static final String  MATCHER_PATTERN_CONTEXT  = "##PATTERN_CONTEXT"       ;
     private static final String  MATCHER_PATTERN_PARALLEL = "##PATTERN_PARALLEL"      ;
     
-    public MetaPatternManager( Integer metaPatternHash     ,
+    public ManagerMetaPattern( Integer metaPatternHash     ,
                                String metaPatternVariable  ,
                                String metaPatternContext   , 
                                String metaPatternParallel  ,

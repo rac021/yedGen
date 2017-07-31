@@ -5,7 +5,7 @@ import java.util.List ;
 import java.util.logging.Level ;
 import java.util.logging.Logger ;
 import org.inra.yedgen.processor.io.Writer ;
-import org.inra.yedgen.processor.output.Messages ;
+import org.inra.yedgen.processor.logs.Messages ;
 import org.apache.commons.configuration.Configuration ;
 import org.inra.yedgen.processor.scripts.ScriptsEngine ;
 import org.apache.commons.configuration.ConfigurationException ;
