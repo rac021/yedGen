@@ -88,6 +88,10 @@ public class MagicInstancier {
         }
     }
     
+    magicContent = Stream.of(magicContent.trim().split(";"))
+                         .filter( l -> ! l.contains("?"))
+                         .collect(Collectors.joining(";")) ;
+      
     if( Writer.existFile(outInstanceMagicFilterFile)) {
         Writer.deleteFile(outInstanceMagicFilterFile) ;
     }
