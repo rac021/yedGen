@@ -97,9 +97,9 @@ public class MagicInstancier {
     }
    
     if( ok ) {
-      Writer.checkFile(outInstanceMagicFilterFile)       ;
-      Writer.writeTextFile(  Arrays.asList(magicContent) , 
-                            outInstanceMagicFilterFile)  ;
+      Writer.checkFile(outInstanceMagicFilterFile)      ;
+      Writer.writeTextFile( Arrays.asList(magicContent) , 
+                            outInstanceMagicFilterFile) ;
     } else {
       System.out.println ( "                                 " ) ;
       System.out.println ( " Magic Filter doesn't matches !! " ) ;
