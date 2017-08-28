@@ -55,7 +55,7 @@ public class MagicInstancier {
          outInstanceMagicFilterFile  == null || outInstanceMagicFilterFile.isEmpty())  {
             
         System.out.println ( " inTemplateMagicFilterFile AND outInstanceMagicFilterFile " + 
-                             " can't be NULL or AEMTY " )                                 ;
+                             " can't be NULL or EMPTY " )                                 ;
         System.out.println ("                                                         " ) ;
         return ;
     }
