@@ -14,7 +14,21 @@ import org.inra.yedgen.processor.io.Writer ;
 /**
  *
  * @author ryahiaoui
+ * 
+  inMagicFilterFile Exemple :
+     ?years { year & 1, 10  } { annee & 20 }                 STEP 1 ;
+     ( ?sites )     { site_01_id & 1  } { sites_02_id & 2  } PEEK 1 ;
+      -- ( ?sites ) { sites_01 & 1  }   { sites_02 & 2     } PEEK 3 ;
+        
+  Invocation : 
+   
+   ?years "1981_2010"  
+   ?sites " 'site_1', 'site_2', 'site_3' " 
+   -inTemplateMagicFilterFile "magicFilter.txt"
+   -outInstanceMagicFilterFile "magicFilter_Instance.txt" 
+ * 
  */ 
+
 public class MagicInstancier {
     
   public static void main (String[] args) throws Exception  {
