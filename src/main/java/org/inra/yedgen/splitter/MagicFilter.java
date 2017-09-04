@@ -100,6 +100,8 @@ public class MagicFilter {
     
     private void treatRange( String expresion ) {
     
+       /* Range values : null - d - D - m - M - y - Y*/
+        
        Character range = expresion.trim()
                                   .toLowerCase().split(" step ")[1]
                                   .charAt(expresion.trim()
@@ -108,6 +110,8 @@ public class MagicFilter {
        
        boolean isLetter = ! Character.isDigit( range )               ;
        
+       range            = isLetter ? range : null                    ;
+        
        int step  = Integer.parseInt(expresion.toLowerCase().split(" step ")[1]
                                                            .replace( isLetter == true ?
                                                                      "" + range : "" , "" )
@@ -166,7 +170,7 @@ public class MagicFilter {
                                                    int       step        ,
                                                    Character range     ) {
         
-      if ( range == null || range == 'Y' || range == 'y' )          {
+      if ( range == null || range == 'y' || range == 'Y' )          {
           
           List<Integer> dates  = Stream.of(stringDates.split("_")   )
                                        .filter ( s -> ! s.isEmpty() )                            
@@ -176,7 +180,7 @@ public class MagicFilter {
          return peekDatesY( dates.get(0), dates.get(1), step )      ;
       }
       
-      else if ( range == 'm' || range == 'm' )                      {
+      else if ( range == 'm' || range == 'M' )                      {
           
          List<String> dates  = Stream.of(stringDates.split("_")     )
                                      .filter ( s -> ! s.isEmpty()   )                            
@@ -185,7 +189,7 @@ public class MagicFilter {
          return peekDatesM( dates.get(0) , dates.get(1) , step )    ; 
       }
       
-      else if ( range == 'D' || range == 'd' )                      {
+      else if ( range == 'd' || range == 'D' )                      {
           
           List<String> dates  = Stream.of(stringDates.split("_")    )
                                       .filter ( s -> ! s.isEmpty()  )                            
