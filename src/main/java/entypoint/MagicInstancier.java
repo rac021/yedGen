@@ -2,10 +2,12 @@
 package entypoint ;
 
 import java.util.Map ;
+import java.util.List ;
 import java.util.Arrays ;
 import java.util.HashMap ;
-import java.nio.file.Files ;
+import java.util.ArrayList;
 import java.nio.file.Paths ;
+import java.nio.file.Files ;
 import java.util.regex.Pattern ;
 import java.util.stream.Stream ;
 import java.util.stream.Collectors ;
@@ -86,27 +88,30 @@ public class MagicInstancier {
     
     String magicContent = new String( Files.readAllBytes ( Paths.get(inTemplateMagicFilterFile))) ;
     
-    magicContent        = Stream.of( magicContent.trim().split(";") )
+    magicContent        = Stream.of( magicContent.trim().split("\n") )
                                 .filter( l -> ! l.trim().startsWith ("--") )
-                                .filter( l -> ! l.trim().isEmpty() )
-                                .collect(Collectors.joining(";") ) ;
+                                .filter( l -> ! l.trim().isEmpty()  )
+                                .collect(Collectors.joining( "\n" ) ) ;
     
-    boolean ok = true ; 
+    boolean ok          = true              ; 
+    List<String> errors = new ArrayList<>() ;
     
-    for (Map.Entry<String, String> entry : variables.entrySet())                  {
+    for (Map.Entry<String, String> entry : variables.entrySet()) {
         
-        if( ! magicContent.contains( entry.getKey() + " " ) )  {
-            ok = false ;
+        if( ! magicContent.contains( entry.getKey() + " "  ) &
+            ! magicContent.contains( entry.getKey() + "\n" ) )   {
+            ok = false                  ;
+            errors.add(entry.getKey() ) ;
         } else {
             magicContent = magicContent.replaceAll( Pattern.quote(entry.getKey()) ,
                                                     entry.getValue() )            ;
         }
     }
     
-    magicContent = Stream.of( magicContent.trim().split(";")  )
+    magicContent = Stream.of( magicContent.trim().split("\n") )
                          .filter( l -> l.trim().startsWith("#") 
                                        || ! l.contains("?")   )
-                         .collect(Collectors.joining(";") )   ;
+                         .collect(Collectors.joining("\n") )  ;
       
     if( Writer.existFile(outInstanceMagicFilterFile)) {
         Writer.deleteFile(outInstanceMagicFilterFile) ;
@@ -124,6 +129,8 @@ public class MagicInstancier {
     } else {
       System.out.println ( "                                 " ) ;
       System.out.println ( " Magic Filter doesn't matches !! " ) ;
+      System.out.println ( " Error Variables :               " ) ;
+      System.out.println ( " --> " + errors                    ) ;
     }
     
     System.out.println("");
