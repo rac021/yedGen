@@ -86,9 +86,10 @@ public class MagicInstancier {
     
     String magicContent = new String( Files.readAllBytes ( Paths.get(inTemplateMagicFilterFile))) ;
     
-    magicContent        = Stream.of(magicContent.trim().split(";"))
-                                .filter( l -> ! l.trim().startsWith("--"))
-                                .collect(Collectors.joining(";")) ;
+    magicContent        = Stream.of(magicContent.trim().split(";") )
+                                .filter( l -> ! l.trim().startsWith ("--") )
+                                .filter( l -> ! l.trim().isEmpty() )
+                                .collect(Collectors.joining(";") ) ;
     
     boolean ok = true ; 
     
