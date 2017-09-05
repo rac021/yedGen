@@ -86,7 +86,7 @@ public class MagicInstancier {
     
     String magicContent = new String( Files.readAllBytes ( Paths.get(inTemplateMagicFilterFile))) ;
     
-    magicContent        = Stream.of(magicContent.trim().split(";") )
+    magicContent        = Stream.of( magicContent.trim().split(";") )
                                 .filter( l -> ! l.trim().startsWith ("--") )
                                 .filter( l -> ! l.trim().isEmpty() )
                                 .collect(Collectors.joining(";") ) ;
@@ -95,15 +95,15 @@ public class MagicInstancier {
     
     for (Map.Entry<String, String> entry : variables.entrySet())                  {
         
-        if( ! magicContent.contains(entry.getKey()) ) {
+        if( ! magicContent.contains( entry.getKey() + " " ) )  {
             ok = false ;
         } else {
             magicContent = magicContent.replaceAll( Pattern.quote(entry.getKey()) ,
-                                                   entry.getValue())              ;
+                                                    entry.getValue() )            ;
         }
     }
     
-    magicContent = Stream.of(magicContent.trim().split(";"))
+    magicContent = Stream.of( magicContent.trim().split(";")  )
                          .filter( l -> l.trim().startsWith("#") 
                                        || ! l.contains("?")   )
                          .collect(Collectors.joining(";") )   ;
