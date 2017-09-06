@@ -22,20 +22,21 @@ import org.inra.yedgen.processor.io.Writer ;
      ( ?sites )     { site_01_id & 1  } { sites_02_id & 2  } PEEK 1 ;
       -- ( ?sites ) { sites_01 & 1  }   { sites_02 & 2     } PEEK 3 ;
         
-  Invocation : 
-   
-   ?years "1981_2010"  
-   ?sites " 'site_1', 'site_2', 'site_3' " 
-   -inTemplateMagicFilterFile "magicFilter.txt"
-   -outInstanceMagicFilterFile "magicFilter_Instance.txt" 
+  Invocation :   
+   -inTemplateMagicFilterFile    "magicFilter.txt"
+   -outInstanceMagicFilterFile   "magicFilter_Instance.txt" 
+   "?years := 1981_2010 ; ?sites := 'site_1', 'site_2'"
  * 
  */ 
 
 public class MagicInstancier {
-    
+
+  static Map<String, String> variables  = new HashMap<>()   ;
+  private static final String OPERATOR  = ":="              ;
+  private static final String SPLITER   = ";"               ;
+  
   public static void main (String[] args) throws Exception  {
 
-    Map<String, String> variables      = new HashMap<>() ;
     String inTemplateMagicFilterFile   = null            ;
     String outInstanceMagicFilterFile  = null            ;
     int    nbParams                    = 0               ;
@@ -52,11 +53,8 @@ public class MagicInstancier {
         case "-outInstanceMagicFilterFile" :  outInstanceMagicFilterFile = args[i+1]   ;
                                               nbParams += 2                            ;
                                               break ;
-        default                            :  if(args[i].trim().startsWith("?"))       {
-                                               variables.put( args[i].trim()           , 
-                                                              args[i+1].trim()       ) ;
-                                               nbParams += 2                           ;
-                                              }
+        default                            :  treatParams( args[i] )                   ;
+                                              nbParams += 1                            ;
                                               break ;
        }
     }
@@ -144,4 +142,13 @@ public class MagicInstancier {
     
   }
  
+  private static void treatParams(String vars) {
+     Arrays.asList(vars.split(SPLITER))
+           .stream()
+           .forEach( line -> {
+               variables.put( line.split(OPERATOR)[0].trim().replaceAll(" +", " ") ,
+                              line.split(OPERATOR)[1].trim().replaceAll(" +", " ") ) ;
+           }) ;
+  }
+  
 }
