@@ -23,9 +23,9 @@ import org.inra.yedgen.processor.io.Writer ;
       -- ( ?sites ) { sites_01 & 1  }   { sites_02 & 2     } PEEK 3 ;
         
   Invocation :   
-   -inTemplateMagicFilterFile    "magicFilter.txt"
-   -outInstanceMagicFilterFile   "magicFilter_Instance.txt" 
-   "?years := 1981_2010 ; ?sites := 'site_1', 'site_2'"
+   -inTemplateMagicFilterFile      "magicFilter.txt"
+   -outInstanceMagicFilterFile     "magicFilter_Instance.txt" 
+   -filters "?years := 1981_2010 ; ?sites := 'site_1', 'site_2'"
  * 
  */ 
 
@@ -53,8 +53,8 @@ public class MagicInstancier {
         case "-outInstanceMagicFilterFile" :  outInstanceMagicFilterFile = args[i+1]   ;
                                               nbParams += 2                            ;
                                               break ;
-        default                            :  treatParams( args[i] )                   ;
-                                              nbParams += 1                            ;
+        case "-filters"                    :  treatParams( args[ i + 1] )              ;
+                                              nbParams += 2                            ;
                                               break ;
        }
     }
