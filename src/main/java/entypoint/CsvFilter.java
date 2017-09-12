@@ -84,8 +84,7 @@ public class CsvFilter {
                                              matcher       ,
                                              _csv_sep      ,
                                              _words_sep    ,
-                                             intra_csv_sep ) ;
-                         
+                                             intra_csv_sep ) ;                         
             if( treateLine != null ) {
                 outLines.add( line ) ;
             }
@@ -166,7 +165,7 @@ public class CsvFilter {
                      }
               } ) ;                  
               
-              if( !okSubColumns.isEmpty()) {
+              if( !okSubColumns.isEmpty() ) {
                  newLine.append( okSubColumns.stream()
                                              .collect( Collectors
                                              .joining( intra_sep != null ? 
