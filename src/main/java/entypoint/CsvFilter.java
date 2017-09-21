@@ -48,7 +48,7 @@ public class CsvFilter {
                                  break ; 
          case "-words_sep"     : words_sep = args[i+1]                    ;
                                  break ; 
-         case "-intra_csv_sep" : intra_csv_sep.addAll(
+         case "-separator"     : intra_csv_sep.addAll (
                                            Arrays.asList (
                                                   args[i+1].split(" ")))  ;
                                  break ; 
