@@ -318,13 +318,15 @@ public class Processor {
                                        counter++ + "_" +
                                        fileNameWithoutExtension       +
                                        "_CSV_"                        + 
-                                      variable.getVariableName()
-                                              .replaceFirst( "/", "_" )  
+                                      variable.getVariableName()                                              
                                               .replaceFirst( ".", "_" )  
                                               .replaceFirst( "<", ""  )
                                               .replaceFirst( ">", ""  )
-                                              .replaceFirst( ":", "") + 
-                                       extension                      ;
+                                              .replaceFirst( ":", ""  ) 
+			                      .replaceFirst( Pattern
+							    .quote("/") ,
+							     "_"      ) + 
+                                       extension                        ;
                      
                       if( graphExtractor.getMagicFilter() != null ) {
                           
