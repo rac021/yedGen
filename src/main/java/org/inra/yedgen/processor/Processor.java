@@ -9,7 +9,6 @@ import java.io.IOException ;
 import java.nio.file.Files ;
 import java.nio.file.Paths ;
 import java.util.ArrayList ;
-import java.util.regex.Pattern ;
 import java.util.stream.Stream ;
 import java.util.logging.Level ;
 import java.util.logging.Logger ;
@@ -320,14 +319,12 @@ public class Processor {
                                        fileNameWithoutExtension       +
                                        "_CSV_"                        + 
                                       variable.getVariableName()  
-			                      .replaceFirst( ":", ""  ) 
-                                              .replace( ".", "_" )  
-                                              .replace( "<", ""  )
-                                              .replace( ">", ""  )                                              
-			                      .replace( Pattern
-							.quote("/")   ,
-							 "_"      )   + 
-                                       extension                      ;
+			                      .replaceFirst( ":", ""  )
+                                              .replace( "." , "_"     )
+                                              .replace( "<" , ""      )
+                                              .replace( ">" , ""      )
+			                      .replaceAll( "/" , "_"  ) 
+			               + extension                    ;
                      
                       if( graphExtractor.getMagicFilter() != null ) {
                           
