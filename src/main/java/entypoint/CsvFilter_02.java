@@ -19,7 +19,7 @@ import org.inra.yedgen.processor.io.Writer ;
  *
  * @author ryahiaoui
  */
-public class CsvFilter {
+public class CsvFilter_02 {
     
   public static void main (String[] args) throws Exception    {
         
@@ -91,7 +91,7 @@ public class CsvFilter {
         } ) ;
        
     } catch (Exception ex) {
-       Logger.getLogger(CsvFilter.class.getName()).log( Level.SEVERE, null, ex ) ;
+       Logger.getLogger(CsvFilter_02.class.getName()).log( Level.SEVERE, null, ex ) ;
     }
     
     if( outLines.size() > 1 )     {
