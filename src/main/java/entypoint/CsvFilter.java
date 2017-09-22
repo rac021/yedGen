@@ -100,8 +100,8 @@ public class CsvFilter {
     List<String> mirrorLines = new ArrayList<>() ;
     
     if( outFilterdMirrorCsv != null ) {
-       mirrorLines.add(Files.lines ( Paths.get(outFilterdMirrorCsv) )
-                            .findFirst().get() )                    ;
+       mirrorLines.add(Files.lines ( Paths.get( mirrorCsv ) )
+                            .findFirst().get() )                          ;
     }
    
     try ( Stream<String> lines = Files.lines(Paths.get(csvFile)).skip(1)) {
