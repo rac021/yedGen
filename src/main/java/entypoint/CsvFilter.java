@@ -29,7 +29,7 @@ public class CsvFilter {
     String    csvFile       = null ;
     String    outCsv        = null ;
     String    csv_sep       = null ;
-    String    words_sep     = null ;
+    String    match_sep     = null ;
     
     String    outFilterdMirrorCsv = null ;
     String    mirrorCsv           = null ;
@@ -56,9 +56,9 @@ public class CsvFilter {
                                            break ;
          case "-csv_sep"                 : csv_sep   = args[i+1]                    ;
                                            break ; 
-         case "-words_sep"               : words_sep = args[i+1]                    ;
+         case "-match_sep"               : match_sep = args[i+1]                    ;
                                            break ; 
-         case "-separator"               : intra_csv_sep.addAll (
+         case "-intra_sep"               : intra_csv_sep.addAll (
                                                      Arrays.asList (
                                                             args[i+1].split(" ")))  ;
                                            break ; 
@@ -80,7 +80,7 @@ public class CsvFilter {
     
     String  _outCsv         = outCsv      ;
     String  _csv_sep        = csv_sep     ;
-    String  _words_sep      = words_sep   ;
+    String  _match_sep      = match_sep   ;
     String  _mirrorCsv      = mirrorCsv   ;
     
     System.out.println("                                       " ) ; 
@@ -88,7 +88,7 @@ public class CsvFilter {
     System.out.println(" - Input CSV File  : " + _outCsv         ) ; 
     System.out.println(" - csv_separator   : " + _csv_sep        ) ; 
     System.out.println(" - intra_csv_sep   : " + intra_csv_sep   ) ; 
-    System.out.println(" - words_sep       : " + words_sep       ) ; 
+    System.out.println(" - match_sep       : " + match_sep       ) ; 
     System.out.println(" - matcher         : " + matcher         ) ; 
     System.out.println(" **********************************    " ) ; 
     System.out.println("                                       " ) ;  
@@ -113,7 +113,7 @@ public class CsvFilter {
             List<String> treateLine = treateLine ( line          ,
                                                    matcher       ,
                                                    _csv_sep      ,
-                                                   _words_sep    ,
+                                                   _match_sep    ,
                                                    intra_csv_sep ,
                                                    readLine( _mirrorCsv, numLine ) ) ;
             
@@ -176,7 +176,7 @@ public class CsvFilter {
   private static List<String> treateLine( String line                  ,  
                                           Map<Integer, String> matcher ,
                                           String csv_sep               ,
-                                          String word_sep              ,
+                                          String match_sep             ,
                                           List<String> intra_csv_sep   ,
                                           String csvMirrorLine )       {
       
@@ -190,7 +190,7 @@ public class CsvFilter {
       
           if( matcher.get(columnNum) != null ) {
               
-              List<String> subWords = split(  matcher.get(columnNum) , word_sep ) ;
+              List<String> subWords = split(  matcher.get(columnNum) , match_sep ) ;
                
                String column = line.trim()
                                    .replaceAll(" +", " ")
