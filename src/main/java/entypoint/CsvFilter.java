@@ -69,13 +69,13 @@ public class CsvFilter {
     Objects.requireNonNull( csvFile ) ;
     Objects.requireNonNull( outCsv  ) ;
      
-    if ( ( outFilterdMirrorCsv == null && mirrorCsv != null  )        ||
-         ( outFilterdMirrorCsv != null && mirrorCsv == null  ) )       {
-       System.out.println( "                                       " ) ;
-       System.out.println( " -mirrorCsv AND -outFilterdMirrorCsv can't "
-                           + " be null at same time !" )               ;
-       System.out.println( "                                       " ) ;
-       System.exit( 2 )                                                ;
+    if ( ( outFilterdMirrorCsv == null && mirrorCsv != null  )          ||
+         ( outFilterdMirrorCsv != null && mirrorCsv == null  ) )         {
+       System.out.println( "                                       " )   ;
+       System.out.println( " -mirrorCsv AND -outFilterdMirrorCsv  MUST   "
+                           + " be null [ OR NOT ] at the same time ! " ) ;
+       System.out.println( "                                       "   ) ;
+       System.exit( 2 )                                                  ;
     }
     
     String  _outCsv         = outCsv      ;
