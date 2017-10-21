@@ -105,10 +105,153 @@ public class GraphExtractor {
                                                     .getString("content").trim()
                                                     .replaceAll(" +", " ") ;
   
-                    String id    =  jsonObjectConcept.getString("id")      ;
-
-                    Utils.putInMap(mapConcepts, hash, id , label )         ;
+                    // String  id    =  jsonObjectConcept.getString("id")  ;
+                    // Utils.putInMap(mapConcepts, hash, id , label )      ;
+                 
+                    String  id    =  jsonObjectConcept.getString("id")     ;
                     
+                    Integer code                                           ;
+                 
+                    if ( label.startsWith(MATCHER_PATTERN_CONTEXT) && label.contains(" ")) {
+                                            
+                        Utils.putInMap( mapPatternContexts, 
+                                        hash, 
+                                        label.split(" ")[0] , 
+                                        label.replaceFirst(Pattern.quote(label
+                                             .split(" ")[0]),"").trim() ) ; 
+                    }
+                                    
+                    else if ( label.startsWith(MATCHER_PATTERN_PARALLEL) && 
+                              label.contains(" "))                        {
+                                            
+                        Utils.putInMap( mapPatternParallels, 
+                                        hash, 
+                                        label.split(" ")[0] , 
+                                        label.replaceFirst(Pattern.quote(label
+                                             .split(" ")[0]),"").trim() ) ;  
+                    }
+                                    
+                    else if ( label.startsWith(ManagerVariable.PATTERN_VARIABLE) && 
+                              label.contains(" "))                                {
+                                        
+                        Utils.putInMap( mapVariables, 
+                                        hash, 
+                                        id , 
+                                        label.trim().replaceFirst( Pattern.quote ( 
+                                                     ManagerVariable.PATTERN_VARIABLE),"") ) ;  
+                    }
+                                    
+                    else if (label.startsWith(META_VERIABLE) && label.contains(" "))  {
+                        metaPatternVariable = label.replaceFirst (
+                                                    Pattern.quote(META_VERIABLE),"" ) ;
+                        metaPatternHash     = hash                                    ;
+                    }
+                    
+                    else if ( label.startsWith(META_PATTERN_CONTEXT) && label.contains(" "))  {
+                        metaPatternContext = label.replaceFirst (
+                                                   Pattern.quote( META_PATTERN_CONTEXT),"" )  ;
+                    }
+                    
+                    else if ( label.startsWith(META_PATTERN_PARALLEL) && label.contains(" ")) {
+                        metaPatternParallel = label.replaceFirst(
+                                                    Pattern.quote(META_PATTERN_PARALLEL),"" ) ;
+                    }
+                    
+                    else if ( label.trim().replaceAll(" +", " ").startsWith(MAGIC_FILTER) && 
+                              label.contains(":"))                                         { 
+                        magicFilter = label.trim().replaceAll(" +", " ")
+                                           .replaceFirst(Pattern.quote(MAGIC_FILTER),"")
+                                           .split(Pattern.quote(":"))[1] ;
+                    }
+
+                    else if (label.toLowerCase().startsWith("query_(")) {
+                                        
+                        code =  Integer.parseInt(label
+                                       .split(Pattern.quote(":"))[0]
+                                       .split(Pattern.quote("_"))[1]
+                                       .replaceAll("[^0-9]", ""))  ;
+
+                        Utils.putInMap( mapQueries , 
+                                        hash , 
+                                        code , 
+                                        label.split( Pattern.quote(": "))[1]
+                                             .trim()
+                                             .replaceAll("--.*\\n", "")
+                                             .replaceAll("--.*", ""   ) 
+                                             .replaceAll(" +", " ")   ) ;
+                    }
+                     
+                    else if (  label.toLowerCase().startsWith("(")   && 
+                               label.toLowerCase().contains(")")     &&
+                             ! label.toLowerCase().trim().endsWith(")") ) {
+                                                
+                        code =  Integer.parseInt(label
+                                       .split(Pattern.quote(")"))[0]
+                                       .replaceAll("[^0-9]", ""))  ;
+
+                        Utils.putInMap( mapUris , 
+                                        hash    , 
+                                        code    , 
+                                        label.split(Pattern
+                                             .quote(")")) [1]
+                                             .trim())       ;
+                    }
+                     
+                    else if (label.toLowerCase().startsWith("prefix "))  {
+                        String pref = label.split(Pattern.quote(" "))[1] ;
+                        String uri  = label.split(Pattern.quote(" "))[2] ;
+
+                        prefixs .put(pref, uri) ;
+                    }
+                    
+                    else  if (label.startsWith("PREDICAT_PREFIX :"))           {
+                                        
+                        PREFIX_PREDICAT = label.split(Pattern
+                                               .quote("PREDICAT_PREFIX :"))[1] ;
+                    }
+                    
+                    else if (label.toLowerCase().startsWith("obda-"))   {
+
+                        if  ( label.split(Pattern.quote(" : ")) [0]
+                                   .equals("obda-sourceUri"))     {
+                                                       
+                            SourceDeclaration.put("sourceUri",
+                                    label.split(Pattern
+                                         .quote(" : "))[1]) ;
+                        }
+                        else if ( label.split(Pattern.quote(" : ")) [0]
+                                       .equals("obda-connectionUrl")) {
+                                                  
+                            SourceDeclaration.put("connectionUrl", label
+                                             .split(Pattern
+                                             .quote(" : "))[1]) ;
+                        }
+                        else if (label.split(Pattern.quote(" : "))[0]
+                                      .equals("obda-username"))     {
+                                                        
+                            SourceDeclaration.put("username",  label
+                                             .split(Pattern
+                                             .quote(" : "))[1])    ;
+                        }
+                        else if (label.split(Pattern.quote(" : "))[0]
+                                      .equals("obda-password"))     {
+                                                  
+                            SourceDeclaration.put("password", label
+                                             .split(Pattern
+                                             .quote(" : "))[1])   ;
+                        }
+                        else if ( label.split(Pattern.quote(" : "))[0]
+                                       .equals("obda-driverClass"))  {
+                                                        
+                            SourceDeclaration.put("driverClass", label
+                                             .split(Pattern
+                                             .quote(" : "))[1])      ;
+                        }
+                    }
+                    
+                    else {
+                            Utils.putInMap(mapConcepts, hash, id , label ) ;
+                    }                    
                 }
 
                 if ( jsonObjectConcept.has("graph")) {
