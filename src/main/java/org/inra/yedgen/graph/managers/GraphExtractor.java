@@ -48,7 +48,7 @@ public class GraphExtractor {
     private final Map<String,  String>  SourceDeclaration                  ;
     private final Map<String , String>  prefixs                            ;
 
-    public static String  PREFIX_PREDICAT                 =  "oboe-coreX"  ;
+    public static String  PREFIX_PREDICAT                 =  "NULL-PREFIX"      ;
    
     private static final String  MATCHER_PATTERN_CONTEXT  = "##PATTERN_CONTEXT"  ;
     private static final String  MATCHER_PATTERN_PARALLEL = "##PATTERN_PARALLEL" ;

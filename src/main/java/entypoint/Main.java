@@ -11,8 +11,11 @@ import org.inra.yedgen.processor.Processor ;
  *
  * @author ryahiaoui
  */ 
+
 public class Main {
     
+  public static enum VERSION { V1 , V3 } ;
+  
   static {
      
     String property =  System.getProperty("log") ;
@@ -31,6 +34,21 @@ public class Main {
   
   }
  
+  public static VERSION checkVersion ( String version ) {
+  
+      try {
+         return VERSION.valueOf(version.toUpperCase() )                 ;
+      } catch( Exception ex ) {
+          System.out.println("       ")                                 ;
+          System.out.println(" ERROR VERSION ")                         ;
+          System.err.println("  " +  ex       )                         ;
+          System.err.println("  --> Retained Version : " + VERSION.V1 ) ;
+          System.out.println("                                 " )      ;
+          return VERSION.V1                                             ;
+      }
+  }
+  
+  
   public static void main (String[] args) throws Exception    {
         
     String directory    = null ,  outFile     = null , ext = null , csv = null ;
@@ -38,6 +56,7 @@ public class Main {
     String classe       = null ;  int column  = -1                             ;
     String prefixFile   = null ,  connecFile  = null , def_prefix  = null      ,
     magicFilterFile     = null ;
+    VERSION version     = null ;
              
     Integer matchColumn = null ; String  _matchWord  = null   ;
       
@@ -72,10 +91,13 @@ public class Main {
          case "-ig"          :  includingGraphVariables = true             ;  
                                 nbParams += 1                              ;
                                 break ;            
-         case "-v"           :  verbose   = true                           ;
+         case "-verbose"     :  verbose   = true                           ;
                                 nbParams += 1                              ;
                                 break ;         
          case "-def_prefix"  :  def_prefix = args[i+1] ; nbParams += 2     ;                            
+                                break ;         
+         case "-version"     :  version = checkVersion( args[i+1] )        ;
+                                nbParams += 2                              ;
                                 break ;         
          case "-connecFile"  :  connecFile = args[i+1] ; nbParams += 2     ;
                                 break ;
@@ -105,7 +127,28 @@ public class Main {
         System.out.println (" directory or outFile is Empty " )  ;
         return ;
     }
+       
+    if ( version == VERSION.V3 && 
+         ( connecFile ==  null || 
+           connecFile.isEmpty() ) ) {
         
+        System.out.println ( " You Have to Provide a "
+                           + "ConnecFile with the VERSION 3 "
+                           + "of OBDA " )                        ;
+        return ;
+        
+    }
+    
+    if ( prefixFile == null ) {
+        
+        System.out.println("  ")                                 ;
+        System.out.println ( " Warning : No PrefixFile "
+                           + " Provided " )                      ;
+        System.out.println("  ")                                 ;
+        return ;
+        
+    }
+    
     if(ext == null || ext.length() == 0 ) ext = ".graphml"       ;
        
     List<String> wordList = null  ;
@@ -129,7 +172,8 @@ public class Main {
                                           connecFile         ,
                                           prefixFile         ,
                                           def_prefix         ,
-                                          magicFilterFile )  ;
+                                          magicFilterFile    ,
+                                          version )          ;
         
     processor.process ( outFile                  , 
                         csv                      , 
@@ -137,8 +181,7 @@ public class Main {
                         classe                   ,
                         column                   ,
                         matchColumn              ,
-                        wordList                 ,
-                        verbose                ) ;
+                        wordList               ) ;
         
     long executionTime = System.currentTimeMillis() - startTime ;
         

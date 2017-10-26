@@ -9,6 +9,7 @@ import java.io.IOException ;
 import java.nio.file.Files ;
 import java.nio.file.Paths ;
 import java.util.ArrayList ;
+import entypoint.Main.VERSION ;
 import java.util.stream.Stream ;
 import java.util.logging.Level ;
 import java.util.logging.Logger ;
@@ -39,8 +40,9 @@ import static org.inra.yedgen.graph.managers.GraphExtractor.PREFIX_PREDICAT ;
 
 /**
  *
- * @author ryahiaoui 26-10-2016 17:20
+ * @author ryahiaoui 
  */
+
 public class Processor {
     
     private final ManagerPatternParallel managerPatternParallel  ;
@@ -56,6 +58,8 @@ public class Processor {
     
     private boolean                      verbose                 ;
     
+    private final VERSION                version                 ;
+    
     public Processor( String  directory       , 
                       String  extensionFile   ,
                       String  propertieFile   ,
@@ -63,9 +67,12 @@ public class Processor {
                       String  connecFile      ,
                       String  prefixFile      ,
                       String  default_prefix  ,
-                      String  magicFilterFile ) throws Exception  {
+                      String  magicFilterFile ,
+                      VERSION version         ) throws Exception  {
+        
+      this.version         =  version                             ;
    
-      this.graphExtractor  =  new GraphExtractor ()              ;
+      this.graphExtractor  =  new GraphExtractor ()               ;
         
       graphExtractor.genGraphPopulatingManagers( directory , extensionFile )      ;
           
@@ -99,7 +106,7 @@ public class Processor {
             
       this.managerNode            = instantiateManagerNode ( managerEdge, factoryNode )  ;
         
-      this.obdaHeader             = new ObdaHeader(graphExtractor)                       ;
+      this.obdaHeader             = new ObdaHeader(graphExtractor , version )            ;
       
       this.managerPatternContext  = new ManagerPatternContext ( graphExtractor.getMapPatternContexts() , 
                                                                 managerQuery     , 
@@ -154,22 +161,26 @@ public class Processor {
                                  String       classe      ,
                                  int          column      ,
                                  Integer      matchColumn ,
-                                 List<String> matchWord   )  {
+                                 List<String> matchWord   ,
+                                 VERSION      version  )  {
         
         boolean processCSV       = processOnlyCSV ( outputFile  , 
                                                     csvFile     , 
                                                     classe      ,
                                                     column      ,
                                                     matchColumn ,
-                                                    matchWord   ) ;
+                                                    matchWord   ,
+                                                    version   ) ;
         
-        boolean processVariables = processOnlyGraphVariables( outputFile ) ;
+        boolean processVariables = processOnlyGraphVariables( outputFile ,
+                                                              version  ) ;
         
         return processVariables && processCSV ;
       
     }
 
-    public boolean processOnlyGraphVariables ( String outputFile )   {
+    public boolean processOnlyGraphVariables ( String  outputFile ,
+                                               VERSION version    )  {
       
       Messages.printMessageStartProcessVariableGraphGeneration()     ;
       
@@ -221,7 +232,7 @@ public class Processor {
           }
       }
       
-      return managerVariable.getVariables().size() > 0  ;
+      return managerVariable.getVariables().size() > 0       ;
       
    }
     
@@ -230,7 +241,8 @@ public class Processor {
                                     String       classe      ,
                                     int          column      ,
                                     Integer      matchColumn ,
-                                    List<String> matchWord ) {
+                                    List<String> matchWord   ,
+                                    VERSION      version ) {
          
      Messages.printMessageStartProcessCsvVariableGeneration( csvFile ) ;
      
@@ -418,11 +430,8 @@ public class Processor {
                           String       classe                  ,
                           int          column                  ,
                           Integer      matchColumn             ,
-                          List<String> matchWord               ,
-                          boolean verbose                    ) {
+                          List<String> matchWord             ) {
       
-        this.verbose    = verbose  ;
-        
         boolean process = false    ; 
         
         if( includingGraphVariables && csvFile != null )                    {
@@ -432,23 +441,25 @@ public class Processor {
                                    classe      , 
                                    column      ,
                                    matchColumn ,
-                                   matchWord   ) ;
+                                   matchWord   ,
+                                   version   ) ;
         }
-        else if ( ! includingGraphVariables && csvFile != null )           {
+        else if ( ! includingGraphVariables && csvFile != null )            {
             
             process = processOnlyCSV( outputFile  , 
                                       csvFile     , 
                                       classe      , 
                                       column      ,
                                       matchColumn ,
-                                      matchWord   ) ;
+                                      matchWord   ,
+                                      version   ) ;
         }
         else  {
-            process = processOnlyGraphVariables( outputFile )               ;
+            process = processOnlyGraphVariables( outputFile , version  )     ;
         }
         
-        if( ! process )                                                     {
-            processOnlyGraphWithoutVariables( outputFile )                  ;
+        if( ! process )                                                      {
+            processOnlyGraphWithoutVariables( outputFile )                   ;
         }
     }
     

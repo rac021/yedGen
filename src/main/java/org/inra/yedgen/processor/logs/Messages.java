@@ -145,4 +145,11 @@ public class Messages {
                           + csvFile + " //  Discriminator Column : " + column  ) ;
       System.out.println( " " ) ;
     }
+    
+    public static void printEmptyDeclarationWarning() {
+      System.err.println(" ")                                                     ;
+      System.err.println(" Note : No PrefixDeclaration Detected for OBDA files ") ;
+      System.err.println(" ")                                                     ;
+    }
+    
 }
