@@ -338,7 +338,8 @@ public class Processor {
 			                      .replaceAll( "/" , "_"  ) 
 			               + extension                    ;
                      
-                      if( graphExtractor.getMagicFilter() != null ) {
+                      if( graphExtractor.getMagicFilter() != null  &&
+			  ! graphExtractor.getMagicFilter().isEmpty()) {
                           
                             /* Split if MagicFilter Enabled */
                             
