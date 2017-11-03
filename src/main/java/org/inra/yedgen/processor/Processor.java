@@ -339,7 +339,8 @@ public class Processor {
 			               + extension                    ;
                      
                       if( graphExtractor.getMagicFilter() != null  &&
-			  ! graphExtractor.getMagicFilter().isEmpty()) {
+			  ! graphExtractor.getMagicFilter(
+				          .trim().isEmpty())        {
                           
                             /* Split if MagicFilter Enabled */
                             
