@@ -152,8 +152,7 @@ public class Processor {
         }
         
         localManager.cloneNodes() ;
-        return  localManager      ;
-    
+        return  localManager      ;    
     }
         
     public boolean processFull ( String       outputFile  , 
