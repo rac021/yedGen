@@ -392,34 +392,56 @@ public class Processor {
     
     public boolean processOnlyGraphWithoutVariables ( String outputFile ) {
       
-         Set<Node> all = managerNode.getAll()                             ;
-      
-         List<String> outPut    = new ArrayList<>()                       ;
-                      
-         // Prepare Output Header 
-         outPut.addAll(obdaHeader.getHeaderOut())                         ; 
-                      
-         all.stream().forEach( node -> outPut.add( node.outputObda()) )   ;
-         
-         outPut.add( ObdaProperties.MAPPING_COLLECTION_END )              ;
+	 String _fileName = outputFile.substring(0, outputFile.lastIndexOf('.')) ;
+         String extension = outputFile.substring(outputFile.lastIndexOf('.')   ) ;
+             
+         String outFile   = _fileName + "_Graph_"       + 
+                            System.currentTimeMillis()  +
+                            extension                   ;
+	    
+         Set<Node> all = managerNode.getAll()           ;      
                 
          try {
-              
-            String _fileName = outputFile.substring(0, outputFile.lastIndexOf('.')) ;
-            String extension = outputFile.substring(outputFile.lastIndexOf('.'))    ;
-             
-            String outFile   = _fileName + "_Graph_"       + 
-                               System.currentTimeMillis()  +
-                               extension                   ;
-              
-            Writer.checkFile( outFile )           ;
-            Writer.writeTextFile(outPut, outFile) ;
             
-            Messages.printMessageInfoGeneratedVariable( "Undefined Variable" ,
-                                                         outFile           ) ;
+            if ( graphExtractor.getMagicFilter() != null ) {
 
+               /* Split if MagicFilter Enabled */
+
+               ObdaSplitter_V1.split( graphExtractor.getMagicFilter() ,
+                                      all                             ,                                     
+                                      new Variable( -9999       , 
+                                                    "idUndefVa" , 
+                                                    "UndefVar"  ,
+                                                    null        , 
+                                                    null        ,
+                                                    null        ,
+                                                    null        )     ,
+                                      obdaHeader                      ,
+                                      managerQuery                    ,
+                                      outFile )                       ;
+            }
+	  
+	     else {
+		     
+		List<String> outPut    = new ArrayList<>()                       ;
+                      
+                // Prepare Output Header 
+                outPut.addAll(obdaHeader.getHeaderOut())                         ;
+                      
+                all.stream().forEach( node -> outPut.add( node.outputObda()) )   ;
+         
+                outPut.add( ObdaProperties.MAPPING_COLLECTION_END )              ;
+		     
+		Writer.checkFile( outFile )                                      ;
+                Writer.writeTextFile(outPut, outFile)                            ;
+            
+                Messages.printMessageInfoGeneratedVariable( "Undefined Variable" ,
+                                                            outFile           )  ;        
+	     }
+	    
          } catch (IOException ex) {
-                Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex) ;
+           Logger.getLogger(Processor.class.getName())
+		                     .log(Level.SEVERE, null, ex  ) ;
           }
      
       return all.size() > 0 ;
