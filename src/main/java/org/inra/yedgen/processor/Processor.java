@@ -402,7 +402,8 @@ public class Processor {
                 
          try {
             
-            if ( graphExtractor.getMagicFilter() != null ) {
+            if ( graphExtractor.getMagicFilter() != null &&  
+               ! graphExtractor.getMagicFilter().trim().isEmpty() )  {
 
                /* Split if MagicFilter Enabled */
 
