@@ -200,7 +200,8 @@ public class Processor {
                           extension    ;       
          
          try {          
-                if( graphExtractor.getMagicFilter() != null ) {
+                if ( graphExtractor.getMagicFilter() != null &&  
+                     ! graphExtractor.getMagicFilter().trim().isEmpty() )      {
 
                         /* Split if MagicFilter Enabled */
 
@@ -513,8 +514,8 @@ public class Processor {
                                                                                .replace(">","")) ;
             }) ;
                         
-	} catch (IOException e) {
-		e.printStackTrace();
+	} catch (IOException e)  {
+	     e.printStackTrace() ;
 	}
     }
 
@@ -525,17 +526,17 @@ public class Processor {
         
         try (Stream<String> lines = Files.lines(Paths.get(connecFile))) {
 
-	       lines.forEach ( line  -> {
-                   if(line.replaceAll(" +", " ").trim().startsWith("obda-") && line.contains(":")) {
-                     String[] splitedLines = line.replaceAll(" +", "").trim().split(":", 2) ;
-                     if( splitedLines.length >= 2 ) 
-                     sourceDeclarationMap.put(  splitedLines[0].trim().replace("obda-", "") , 
-                                                splitedLines[1].trim()) ;
-                   }
-               }) ;
+	  lines.forEach ( line  -> {
+              if(line.replaceAll(" +", " ").trim().startsWith("obda-") && line.contains(":"))  {
+                String[] splitedLines = line.replaceAll(" +", "").trim().split(":", 2) ;
+                if( splitedLines.length >= 2 ) 
+                sourceDeclarationMap.put(  splitedLines[0].trim().replace("obda-", "") , 
+                                           splitedLines[1].trim()) ;
+              }
+          }) ;
 
-	} catch (IOException e) {
-		e.printStackTrace();
+	} catch (IOException e)  {
+	     e.printStackTrace() ;
 	}
     }
     
