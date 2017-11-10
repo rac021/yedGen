@@ -29,7 +29,6 @@ public class MagicFilter {
     private final boolean                isList                                   ;
     
     static Pattern patternFilter = Pattern.compile("\\{.*?\\}") ;
-    static Pattern listFilter    = Pattern.compile("\\(.*?\\)") ;
     
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd") ;
 
@@ -60,24 +59,18 @@ public class MagicFilter {
         return codeQueryByVariables ;
     }
     
-    private void treateList( String expresion ) {
+    private void treateList( String expression ) {
         
-      int step  = Integer.parseInt(expresion.toLowerCase().split(" peek ")[1].trim()) ;
+      int step  = Integer.parseInt(expression.toLowerCase()
+                         .split(" peek ")[1].trim()) ;
                
-      Matcher mListFilter     = listFilter.matcher( expresion) ;
-               
-      while ( mListFilter.find() ) {
-                  
-           List<String> asList = Arrays.asList(mListFilter.group()
-                                       .replace("(", "").replace(")","")
-                                       .trim().split(","))   ;
-           List<String> peeker = peeker( step, asList)       ;
-           list.addAll(peeker)                               ;
+      List<String> asList = automateExtractor(expression) ;
+           
+      List<String> peeker = peeker( step, asList)         ;
+      list.addAll(peeker)                                 ;
                     
-      }
-                
-      Matcher mPatternQuery  = patternFilter.matcher( expresion) ;
-      List<String> vars      = new ArrayList()                   ;
+      Matcher mPatternQuery  = patternFilter.matcher( expression) ;
+      List<String> vars      = new ArrayList()                    ;
               
       while ( mPatternQuery.find()) {
                   
@@ -119,7 +112,7 @@ public class MagicFilter {
         
        List<List<String>> peekDates = peekDates( expresion.split("\\{")[0].trim().replaceAll(" +", "") ,
                                                  step                                                  ,
-                                                 range                                               ) ;      
+                                                 range                                               ) ;
           
        list.addAll(peekDates) ;
       
@@ -170,33 +163,45 @@ public class MagicFilter {
                                                    int       step        ,
                                                    Character range     ) {
         
-      if ( range == null || range == 'y' || range == 'Y' )          {
+      if ( range == null )  {
           
           List<Integer> dates  = Stream.of(stringDates.split("_")   )
-                                       .filter ( s -> ! s.isEmpty() )                            
+                                       .filter ( s -> ! s.isEmpty() ) 
                                        .map(s -> Integer.parseInt(s))
                                        .collect(toList())           ;
           
-         return peekDatesY( dates.get(0), dates.get(1), step )      ;
+         return peekDatesY ( dates.get(0), dates.get(1), step )     ;
       }
       
-      else if ( range == 'm' || range == 'M' )                      {
+      else switch (range) {
           
-         List<String> dates  = Stream.of(stringDates.split("_")     )
-                                     .filter ( s -> ! s.isEmpty()   )                            
-                                     .collect(toList())             ;
-          
-         return peekDatesM( dates.get(0) , dates.get(1) , step )    ; 
-      }
-      
-      else if ( range == 'd' || range == 'D' )                      {
-          
-          List<String> dates  = Stream.of(stringDates.split("_")    )
-                                      .filter ( s -> ! s.isEmpty()  )                            
-                                      .collect(toList())            ;
-          
-         return peekDatesD( dates.get(0), dates.get(1), step  )     ;
-      }
+            case 'y': case 'Y':
+            {
+               List<Integer> dates  = Stream.of(stringDates.split("_")   )
+                                            .filter ( s -> ! s.isEmpty() )
+                                            .map(s -> Integer.parseInt(s))
+                                            .collect(toList())           ;
+                return peekDatesY ( dates.get(0), dates.get(1), step )   ;
+            }    
+            
+            case 'm': case 'M':
+            {
+                List<String> dates  = Stream.of(stringDates.split("_")     )
+                                            .filter ( s -> ! s.isEmpty()   )
+                                            .collect(toList())             ;
+                return peekDatesM ( dates.get(0) , dates.get(1) , step )   ;
+            }   
+            
+            case 'd': case 'D':
+            {
+                List<String> dates  = Stream.of(stringDates.split("_")    )
+                                            .filter ( s -> ! s.isEmpty()  )
+                                            .collect(toList())            ;
+                return peekDatesD ( dates.get(0), dates.get(1), step  )   ;
+            }   
+            
+            default : break ;
+        }
 
        return null ;
        
@@ -221,9 +226,9 @@ public class MagicFilter {
         return formatter.format(date)       ;
     }
       
-    private static List<List<String>>  peekDatesM ( String    dateBeg , 
-                                                    String    dateEnd , 
-                                                    int       step  ) {
+    private static List<List<String>>  peekDatesM ( String  dateBeg , 
+                                                    String  dateEnd , 
+                                                    int     step  ) {
         
           List<List<String>> dates     =  new ArrayList<>()         ;
           LocalDate          _dateBeg  =  LocalDate.parse(dateBeg ) ;
@@ -258,9 +263,9 @@ public class MagicFilter {
           return dates ;
     }
     
-    private static List<List<String>>  peekDatesD ( String   dateBeg , 
-                                                    String   dateEnd , 
-                                                    int      step  ) {
+    private static List<List<String>>  peekDatesD ( String dateBeg , 
+                                                    String dateEnd , 
+                                                    int    step  ) {
          step = step <= 0 ? 0 : step - 1 ;
          
           List<List<String>> dates     =  new ArrayList<>()     ;
@@ -294,9 +299,9 @@ public class MagicFilter {
           return dates ;
     }
     
-    private static List<List<String>>  peekDatesY ( int       dateBeg , 
-                                                    int       dateEnd , 
-                                                    int       step  ) {
+    private static List<List<String>>  peekDatesY ( int   dateBeg , 
+                                                    int   dateEnd , 
+                                                    int   step  ) {
         
        List<List<String>> dates = new ArrayList<>()       ;
         
@@ -310,5 +315,62 @@ public class MagicFilter {
        
        return dates ;
     }
+ 
+    private static List<String>  automateExtractor( String expression ) {
     
+     int totalOpenParentheses =  0 ;
+     
+     expression = expression.split(Pattern.quote("{"))[0].trim( )
+                            .replaceFirst(Pattern.quote("("), "")
+                            .replaceFirst(".$","").trim()       ;
+    
+     String[]      tokens          = expression.split("(?!^)") ;
+     StringBuilder sb              = new StringBuilder()       ;
+     List<String>  expressionArray = new ArrayList<>()         ;
+     
+     for( String token : tokens )    {
+                  
+         if( token.equals("(")) {
+             totalOpenParentheses ++ ;
+             sb.append(token) ;
+         }
+         else if ( token.equals(",") ) {
+             if( totalOpenParentheses == 0 ) {
+                 if( ! sb.toString().trim().isEmpty() )       {
+                    expressionArray.add(sb.toString().trim()) ;
+                    sb.setLength(0)                           ;
+                 }
+             } else {
+                 sb.append(token) ;
+             }
+         }
+         else if ( token.equals(")") ) {
+             totalOpenParentheses --   ;
+             if( totalOpenParentheses == 0 ) {
+                 sb.append(token) ;
+                 expressionArray.add(sb.toString().trim()) ;
+                 sb.setLength(0)  ;
+             }
+             else {
+                 sb.append(token) ;
+             }
+         }
+         else {
+             sb.append(token)     ;
+         }
+     }
+     
+     if( ! sb.toString().trim().isEmpty())        {
+        expressionArray.add(sb.toString().trim()) ;
+     }
+     if( totalOpenParentheses != 0 ) {        
+        expressionArray.clear()      ;
+     }
+    
+     return expressionArray ;
+        
+    }
+ 
 }
+
+ 
