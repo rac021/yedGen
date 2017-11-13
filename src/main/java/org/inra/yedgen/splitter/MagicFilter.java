@@ -165,7 +165,11 @@ public class MagicFilter {
         
       if ( range == null )  {
           
-          List<Integer> dates  = Stream.of(stringDates.split("_")   )
+          List<Integer> dates  = Stream.of(stringDates.replace("(" , "")
+                                                      .replace(")" , "")
+                                                      .replace("'" , "")
+                                                      .replace("\"", "")
+                                                      .split("_")   )
                                        .filter ( s -> ! s.isEmpty() ) 
                                        .map(s -> Integer.parseInt(s))
                                        .collect(toList())           ;
