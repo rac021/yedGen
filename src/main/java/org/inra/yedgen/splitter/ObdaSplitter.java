@@ -9,6 +9,7 @@ import java.util.Arrays ;
 import java.util.HashMap ;
 import java.io.IOException ;
 import java.util.ArrayList ;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher ;
 import java.util.stream.Stream ;
 import java.util.regex.Pattern ;
@@ -23,6 +24,7 @@ import org.inra.yedgen.properties.ObdaProperties ;
 import static java.util.stream.Collectors.toList ;
 import org.inra.yedgen.processor.entities.Variable ;
 import org.inra.yedgen.processor.managers.ManagerQuery ;
+import static org.inra.yedgen.processor.Processor.okMatchersAndValidateMapping;
 
 /**
  *
@@ -196,8 +198,10 @@ public class ObdaSplitter {
               
                         outPut.clear() ;
                         outPut.addAll(obdaHeader.getHeaderOut()) ; 
-                          
-                        copyNodes.forEach ( node -> {
+                         
+                        AtomicInteger ErrorCheckMatchersAndValidateMapping = new AtomicInteger(0) ;
+                        
+                        copyNodes.forEach (node -> {
                               
                             String filter = copyCodeQueriesWithFilter.get(node.getCode()) ;
                               
@@ -211,28 +215,36 @@ public class ObdaSplitter {
                             if( filter != null ) {
                                   node.applyToQuery( filter ) ;
                             }
+                            
                             outPut.add( node.outputObda()) ;
-                            Processor.checkMatchers( variable.getVariableName() , 
-                                                     node.outputObda() ) ;
+                            
+                            boolean checkMatchersAndValidateMapping = okMatchersAndValidateMapping( node                       , 
+                                                                                                    variable.getVariableName() , 
+                                                                                                    node.outputObda() )        ;
+                            
+                            if( ! checkMatchersAndValidateMapping ) ErrorCheckMatchersAndValidateMapping.getAndIncrement()     ;
                                        
                        }) ;
-                               
-                       outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
-                      
-                       String folder    = Writer.getFolder ( outFile )      ;
-                       String fileName  = Writer.getfileName ( outFile )    ;
-                       String extension = Writer.getFileExtension(fileName) ; 
-                       String fileNameWithoutExtension = Writer.getFileWithoutExtension(fileName ) ;
-                         
-                       String outF =  folder + File.separator + extrectIndexFromFileName(fileName) + 
-                                      File.separator + fileNameWithoutExtension  + "_" + index ++  + extension ;
                         
-                       Writer.checkFile( outF )                ;
-                                             
-                       Writer.writeTextFile(outPut, outF )    ;
-                         
-                       copyCodeQueriesWithFilter.clear()      ;
-                       copyCodeQueriesWithFilter.putAll(copy) ;
+                       if( ErrorCheckMatchersAndValidateMapping.get() == 0 ) {
+                 
+                            outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
+
+                            String folder    = Writer.getFolder ( outFile )      ;
+                            String fileName  = Writer.getfileName ( outFile )    ;
+                            String extension = Writer.getFileExtension(fileName) ; 
+                            String fileNameWithoutExtension = Writer.getFileWithoutExtension(fileName ) ;
+
+                            String outF =  folder + File.separator + extrectIndexFromFileName(fileName) + 
+                                           File.separator + fileNameWithoutExtension  + "_" + index ++  + extension ;
+
+                            Writer.checkFile( outF )                ;
+
+                            Writer.writeTextFile(outPut, outF )    ;
+
+                            copyCodeQueriesWithFilter.clear()      ;
+                            copyCodeQueriesWithFilter.putAll(copy) ;
+                       }
             
                    } else {
                         
@@ -245,7 +257,7 @@ public class ObdaSplitter {
                         outPut.clear();
                         outPut.addAll(obdaHeader.getHeaderOut())   ; 
                           
-                        copyNodes.forEach ( node -> {
+                        copyNodes.forEach (node -> {
                             
                             String filter = copyCodeQueriesWithFilter.get(node.getCode()) ;
                             
@@ -259,8 +271,9 @@ public class ObdaSplitter {
                                     node.applyToQuery( filter ) ;
                                 }
                                 outPut.add( node.outputObda()) ;
-                                Processor.checkMatchers( variable.getVariableName() , 
-                                                         node.outputObda() )        ;
+                                okMatchersAndValidateMapping( node                       ,
+                                                                 variable.getVariableName() , 
+                                                                 node.outputObda() )        ;
                                         
                            }) ;
                                    
@@ -303,7 +316,7 @@ public class ObdaSplitter {
                      outPut.clear() ;
                      outPut.addAll(obdaHeader.getHeaderOut()) ; 
                   
-                     copyNodes.forEach ( node -> {
+                     copyNodes.forEach (node -> {
                            
                          String filter = copyCodeQueriesWithFilter.get(node.getCode()) ;
                             
@@ -319,8 +332,9 @@ public class ObdaSplitter {
                          }
                             
                          outPut.add( node.outputObda()) ;
-                         Processor.checkMatchers( variable.getVariableName() , 
-                                                  node.outputObda() )        ;
+                         okMatchersAndValidateMapping( node                       ,
+                                                          variable.getVariableName() , 
+                                                          node.outputObda() )        ;
                                       
                      }) ;
                                  
@@ -363,7 +377,7 @@ public class ObdaSplitter {
                     outPut.clear() ;
                     outPut.addAll(obdaHeader.getHeaderOut()) ; 
                     
-                    copyNodes.forEach ( node -> {
+                    copyNodes.forEach (node -> {
                         
                         String filter = copyCodeQueriesWithFilter.get(node.getCode()) ;
                         
@@ -377,8 +391,9 @@ public class ObdaSplitter {
                                node.applyToQuery( filter ) ;
                             }
                             outPut.add( node.outputObda()) ;
-                            Processor.checkMatchers( variable.getVariableName() , 
-                                                     node.outputObda() ) ;
+                            okMatchersAndValidateMapping( node                       ,
+                                                             variable.getVariableName() , 
+                                                             node.outputObda() )        ;
                     }) ;
                                
                     outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;

@@ -16,6 +16,8 @@ public class ManagerQuery {
 
     /* Code_Node  - Code_Query  ( exists if code_node != code_query ) */
     private final Map< Integer,Integer> linkerNodeQuery        ;
+    
+    public static String SPEACIAL_SQL_QUERY = "SELECT __id__ FROM (VALUES ('1')) S(__id__) " ;
 
     public ManagerQuery( Map< Integer, Map< Integer, String>> queries ) {
 
@@ -44,15 +46,18 @@ public class ManagerQuery {
                          .filter( s ->  s.getValue().containsKey(code)  )
                          .map( s -> { return s.getValue().get(code) ; } )
                          .findFirst()
-                         .orElse(null) ;
+                         .orElse( SPEACIAL_SQL_QUERY ) ;
         }
         
+        if( queries.isEmpty() ) return SPEACIAL_SQL_QUERY             ; 
+        
         String res = queries.getOrDefault(hash, null)
-                            .getOrDefault( code, null ) ;
+                            .getOrDefault( code, SPEACIAL_SQL_QUERY ) ;
         
         return (res != null ) ? res :
                                 queries.getOrDefault(hash, null)
-                                       .getOrDefault( linkerNodeQuery.get(code), null ) ;
+                                       .getOrDefault( linkerNodeQuery.get(code) ,
+                                                      SPEACIAL_SQL_QUERY      ) ;
   }
 
    

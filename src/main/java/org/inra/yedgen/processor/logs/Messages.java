@@ -46,10 +46,10 @@ public class Messages {
      }
     
     public static void printMessageMetaPatternsNull() {
-       System.err.println("")                                                               ;
-       System.err.println(" --> Warning // MetaPatterns are null // CSV Generation abort ") ;
-       System.err.println("")                                                               ;
-     }
+       System.err.println("")                                                                           ;
+       System.err.println(" --> Warning // MetaPatterns Expressions are null // CSV Generation abort ") ;
+       System.err.println("")                                                                           ;
+    }
 
     public static void printMessageStartProcessVariableGraphGeneration() {
        System.err.println("                             " ) ;
@@ -81,10 +81,20 @@ public class Messages {
        System.out.println("")                                                         ;
     }
     
-    public static void printErrorMatcher(String variableName, String subLine ) {
+    public static void printErrorMatcherOnSubject( Integer code ,String variableName, String token )  {
         
-       System.out.println(" Error Matcher // Variable [ " + variableName   + 
-                          " ] doesn't contains Matcher for : " + subLine ) ; 
+       System.out.println( " ==> Error Matcher // Variable [ "  + variableName   + 
+                           " ] doesn't contains Matcher for the URI ( " + code + " ) \n     "
+                           + "URI ( " + code + " ) : [ " 
+                           + token + " ] \n ") ; 
+    }
+    
+    public static void printErrorMatcherOnObject( Integer code ,String variableName, String token ) {
+        
+       System.out.println( " ==> Error Matcher // Variable [ "  + variableName + 
+                           " ] contains a Node with the URI ( " + code + " ) \n     Which "
+                           + " is probably linked to another Node that doesn't contains Matcher. \n "
+                           + "    Token : [ " + token + " ] \n ") ; 
     }
     
     public static void printMessageErrorCSV( String csvFile ) {
@@ -101,7 +111,7 @@ public class Messages {
     }
     
     public static void printMessageFilesNotFoundExtentsion( String directory , String extension ) {
-      System.out.println ( " No File with extension [' " + extension + "' ]  found " +
+      System.out.println ( " No File with extension ['" + extension + "' ]  found "  +
                            " in the Directory  : " + directory )                     ;
       System.out.println ( "                                                     " ) ;  
     }
@@ -130,7 +140,7 @@ public class Messages {
     }
     
     public static void printMessage( String message ) {
-      System.out.println( " \n " + message + " \n " ) ;
+      System.out.println( " \n " + message   )        ;
     }
     
     public static void printMessageError( String message ) {
@@ -141,7 +151,17 @@ public class Messages {
     public static void printInfoCSVTreatment( String csvFile, int nbLines , String classe, int column ) {
       System.out.println( " " ) ;
       System.out.println( " --> Info CSV : " + nbLines + " "
-                          + "line(s) treated for the class [ " + classe + " ] in the CSV : " 
+                          + "line(s) treated for the class [ " 
+                          + (classe == null ? "*" : classe )
+                          + " ] in the CSV : " + csvFile 
+                          + " //  Discriminator Column : " + column  ) ;
+      System.out.println( " " ) ;
+    }
+    
+    public static void printInfoCSVEmptyTreatment( String csvFile, String classe, int column ) {
+      System.out.println( " " ) ;
+      System.out.println( " --> Info CSV : NO LINE Treated " 
+                          + " for the class [ " + classe + " ] in the CSV : " 
                           + csvFile + " //  Discriminator Column : " + column  ) ;
       System.out.println( " " ) ;
     }

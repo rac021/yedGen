@@ -3,6 +3,7 @@ package org.inra.yedgen.processor.factories ;
 
 import java.util.UUID ;
 import java.util.regex.Pattern ;
+import java.util.concurrent.ThreadLocalRandom;
 import org.inra.yedgen.processor.entities.Node ;
 import org.inra.yedgen.graph.managers.ManagerEdge ;
 import org.inra.yedgen.graph.managers.GraphExtractor ;
@@ -41,6 +42,10 @@ public class FactoryNode {
         final String object       = managerConcept.getConcept( hash, objectId )                         ;
             
         int codeForSubject        = extractCode (Labelsubject)                                          ; 
+        
+        if( codeForSubject == -1 ) {
+           codeForSubject = ThreadLocalRandom.current().nextInt( -999999 , -99999  )                    ;
+        }
 
         String uriSubject         = managerUri.getUriByHashAndCode( hash, codeForSubject, Labelsubject) ;
         
@@ -67,17 +72,19 @@ public class FactoryNode {
                          defaultPrefix ) ;
     }
 
-
     private String extractType (String subject )  {
       return subject.split(Pattern.quote("("))[0] ;
     }
 
     private int extractCode ( String concept ) {
 
-        if(concept.contains("(") && concept.endsWith(")")) {
+        if( concept != null       && 
+            concept.contains("(") && 
+            concept.endsWith(")")) {
           return Integer.parseInt( concept
                         .split(Pattern.quote("("))[1]
-                        .replace(")", "")) ;
+                        .replace(")", "")
+                        .trim() ) ;
         }
         return -1 ;
     }

@@ -3,8 +3,10 @@ package org.inra.yedgen.processor.managers ;
 
 import java.util.Map ;
 import java.util.Set ;
+import java.util.List ;
 import java.util.HashMap ;
 import java.util.HashSet ;
+import java.util.ArrayList ;
 import java.io.Serializable ;
 import java.util.function.Predicate ;
 import org.inra.yedgen.processor.entities.Node ;
@@ -115,6 +117,22 @@ public class ManagerNode {
            .forEach(node -> node.removeEmptyOptionalEntry( oprionnalValue )) ;
   }
 
+  public Node findNodeByURI( String concept ) {
+      
+    List<Node> l = new ArrayList() ;
+    
+    nodes.forEach( ( hash_node , id_node_nodes ) ->         {
+           
+     id_node_nodes.forEach(( String id_node, Node node ) -> {
+         if(  node.getUri() != null && node.getUri().trim().equals(concept)) {
+             if( l.isEmpty()) l.add(node) ;
+         }
+     }) ;       
+    }) ;
+     
+    return l.isEmpty() ? null : l.get(0) ;
+  }
+   
  /*
     public static <K1, K2, V> Map<K1, Map<K2, V>> genericDeepCopy( Map<K1, Map<K2, V>> original) {
       Objects.requireNonNull(original) ;

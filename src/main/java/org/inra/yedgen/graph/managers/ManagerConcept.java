@@ -3,7 +3,9 @@
 package org.inra.yedgen.graph.managers ;
 
 import java.util.Map ;
+import java.util.List ;
 import java.util.HashMap ;
+import java.util.ArrayList ;
 
 /**
  *
@@ -33,7 +35,28 @@ public class ManagerConcept {
 
   public String getConcept( Integer hash, String id ) {
       
-      return concepts.getOrDefault(hash, null).getOrDefault(id, null) ;
+      return concepts.getOrDefault(hash, null)
+                     .getOrDefault(id, null) ;
+  }
+  
+  public List<String> findConcept( String concept ) {
+      
+    List l =  new ArrayList() ;
+    
+    concepts.forEach( ( hash_concept , id_lavel_concepts ) ->        {
+           
+     id_lavel_concepts.forEach((String id_concept, String label ) -> {
+         if( label.trim().equals(concept))       {
+             if( l.isEmpty() ) {
+                 l.add( hash_concept ) ;
+                 l.add( id_concept ) ;
+                  
+             }
+         }
+     }) ;       
+    }) ;
+     
+    return l ;
   }
 
 }

@@ -43,9 +43,8 @@ public class ManagerPatternContext {
            PATTERNS_CONTEXT.put(hash, patternMap)            ;
        }
     }
-    
-    
-    public List<Node> genereatePatternContext( Integer hash, String id_pattern ) {
+        
+    public List<Node> generatePatternContext( Integer hash, String id_pattern ) {
       
         List<Node> nodes = new ArrayList<>()    ;
         
@@ -146,7 +145,8 @@ public class ManagerPatternContext {
                                                nodes.get(i-1).getDefaultPrefix() ) ;
             }
 
-            node.addPredicatWithObject( GraphExtractor.OF_ENTITY_PATTERN , entityName ) ;
+            node.addPredicatWithObject( GraphExtractor.PREDICAT_PATTERN_CONTEXT , 
+                                        entityName                            ) ;
             nodes.add(node) ;
         }
                
@@ -155,7 +155,7 @@ public class ManagerPatternContext {
 
     }
     
-    public List<Node> genereatePatternContext( String patternContext ) {
+    public List<Node> generatePatternContext( String patternContext ) {
       
         List<Node> nodes = new ArrayList<>()                 ;
          
@@ -238,7 +238,8 @@ public class ManagerPatternContext {
                                                nodes.get(i-1).getDefaultPrefix() ) ;
             }
 
-            node.addPredicatWithObject( GraphExtractor.OF_ENTITY_PATTERN , entityName ) ;
+            node.addPredicatWithObject( GraphExtractor.PREDICAT_PATTERN_CONTEXT , 
+                                        entityName                            ) ;
             nodes.add(node) ;
         }
                
@@ -246,7 +247,6 @@ public class ManagerPatternContext {
         return      nodes            ;
 
     }
-
     
     public ManagerPatternContext( Map< Integer, Map< String, String>> PATTERNS_CONTEXT ,
                                   ManagerQuery managerQuery , 
@@ -262,7 +262,11 @@ public class ManagerPatternContext {
                                   String pattern         , 
                                   List<Node> patternContextNodes ) {
         
-        if(patternContextNodes.isEmpty() ) {
+        if( patternNode == null ) {
+           return Collections.emptyList() ; 
+        }
+        
+        if( patternContextNodes.isEmpty() ) {
             Map<String, Set<String>> patternContextValues = patternNode.getPredicatsValuesIgnoringType() ;
             parentContextNode.updatePatternValues( pattern, patternContextValues ) ;
         }
@@ -277,16 +281,18 @@ public class ManagerPatternContext {
         }
        
         return patternContextNodes ;
-        
     }
 
     private String cleanName(String entityName ) {
         
         String cleanName =  entityName.contains(":")   ?  
                             entityName.startsWith(":") ? 
-                                 entityName.replaceFirst(":", "").replaceAll(":", "-")
-                                 : entityName.replaceAll(":", "-") 
-                            : entityName ;
+                                 entityName.replaceFirst(":", "")
+                                           .replace(":", "-")
+                                           .replace("\"", "")
+                                 : entityName.replace(":", "-") 
+                                             .replace("\"", "")
+                            : entityName.replace("\"", "") ;
         
         return cleanName.toLowerCase(Locale.FRENCH) ;
     }
@@ -302,6 +308,6 @@ public class ManagerPatternContext {
                         .map( s -> { return s.getValue().get(id_pattern) ; } )
                         .findFirst()
                         .orElse(null) ;
-        
     }
+   
 }

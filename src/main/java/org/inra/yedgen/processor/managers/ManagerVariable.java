@@ -31,6 +31,8 @@ public class ManagerVariable {
     
     private final Set<Variable>          variables                     ;
     
+    static  final Pattern  PATTERN_KEY_VALUES  =  Pattern.compile( "\\{(.*)\\}"   , 
+                                                                   Pattern.DOTALL ) ;
     
     public ManagerVariable( Map< Integer, Map< String, String>> mapVariable ,
                             ManagerNode            managerNode              ,
@@ -89,9 +91,11 @@ public class ManagerVariable {
         
        Pattern p = Pattern.compile("\\{.*?\\}") ;
     
-       String patternContextId , variableName , keyValuesVariable = null   ;
+       String  patternContextId ,  variableName   ;
+       String  keyValuesVariable = ""             ;
        
-       String stringValue      = patternValue.trim().replaceAll(" +", " ") ;
+       String stringValue      =  patternValue == null ? "" : 
+                                  patternValue.trim().replaceAll(" +", " ") ;
        
        if( stringValue.split(" ")[0].trim().startsWith(PATTERN_CONTEXT))   {
            
@@ -101,17 +105,28 @@ public class ManagerVariable {
                    
        else {
            
-           patternContextId  = null ;
-           variableName      = stringValue.split(" ")[0].trim()            ;
+            patternContextId  = null ;
+           
+            if( stringValue.isEmpty() || 
+                stringValue.trim().startsWith("{"))            {
+                variableName = "" + System.currentTimeMillis() ;
+            } else {
+               variableName = stringValue.split(" ")[0].trim() ;
+            }
        }
           
-       keyValuesVariable = stringValue.split(Pattern.quote("&&"))[0] 
-                                                    .split(variableName, 2 )[1] ;
-       
-       Matcher m = p.matcher(keyValuesVariable )                  ;
+        Matcher matcher_keys_values = PATTERN_KEY_VALUES.matcher ( 
+                                         stringValue.split(Pattern.quote("&&"))[0] 
+                                      ) ;
+        
+        if (matcher_keys_values.find()) {
+            keyValuesVariable = "{ " + matcher_keys_values.group(1) + "}" ;
+        }
+   
+       Matcher m = p.matcher(keyValuesVariable )                   ;
            
-       Map<String, String> mapKeyValuesVariable = new HashMap<>() ;
-       Set<PatternParallel> setpPatternParallel = new HashSet<>() ;
+       Map<String, String>  mapKeyValuesVariable = new HashMap<>() ;
+       Set<PatternParallel> setpPatternParallel  = new HashSet<>() ;
            
        while (m.find()) {
                      
@@ -122,12 +137,11 @@ public class ManagerVariable {
             String key   = param.split("=")[0].trim() ;
             String value = null                       ;
             
-           if(param.split("=").length > 1 ) {
+            if(param.split("=").length > 1 ) {
                    value = param.split("=")[1].trim() ;
-           }
+            }
            
-           mapKeyValuesVariable.put(key, value)       ;
-           
+            mapKeyValuesVariable.put(key, value)       ;
        }
            
        String[] patternParallel       ;
@@ -170,16 +184,16 @@ public class ManagerVariable {
            }
        }
         
-        patternContext = patternContext == null ? 
-                            managerPatternContext.findContextPatternByID( patternContextId ) : 
-                            patternContext ;
-        
-        if( hash              != null &&  
-            id                != null && 
-            patternContextId  != null 
-            && patternContext == null  )
+       patternContext = patternContext == null ? 
+                           managerPatternContext.findContextPatternByID( patternContextId ) : 
+                           patternContext ;
+       
+       if( hash              != null &&  
+           id                != null && 
+           patternContextId  != null 
+           && patternContext == null  )
             
-        Messages.printMessageErrorContext( patternContextId , variableName ) ;
+           Messages.printMessageErrorContext( patternContextId , variableName ) ;
         
        return new Variable( hash                    , 
                             id                      ,  
@@ -218,9 +232,8 @@ public class ManagerVariable {
         
         for ( int parallelIndex = 0 ; parallelIndex < repeat ; parallelIndex++ ) {
                 
-            List<Node> generatePatternParallel = managerPatternParallel.
-                                                 genereatePatternParallel ( variable.getHash()        ,
-                                                                            patternParallel.getId() ) ;
+            List<Node> generatePatternParallel = managerPatternParallel.generatePatternParallel ( variable.getHash()        ,
+                                                                                                  patternParallel.getId() ) ;
             if( nbPatternParallel != 0 )  {
                 int updateCode = nbPatternParallel ;
                 generatePatternParallel.stream()
@@ -277,7 +290,7 @@ public class ManagerVariable {
                                     node.hasPredicateWithValue(patternContext) )           ;
       
       List<Node> generatedContextNodes = managerPatternContext
-                                         .genereatePatternContext( patternContextValue )   ;
+                                         .generatePatternContext( patternContextValue )    ;
       
       List<Node> homogenizedContext = managerPatternContext.linkNodes( parentContextNode   , 
                                                                        patternContextNode  , 
@@ -294,10 +307,11 @@ public class ManagerVariable {
     }
    
     private void StickPatternParallelNodes ( Node parentParallelNode  ,
-                                             Node uriRootParallelNode )                 {
-        
-      String predicat = parentParallelNode.getPredicatContainingValue(PATTERN_PARALLEL) ;
-      parentParallelNode.addPredicatWithObject(predicat, uriRootParallelNode.getUri() ) ;
+                                             Node uriRootParallelNode )                    {
+      if( parentParallelNode != null )  {
+         String predicat = parentParallelNode.getPredicatContainingValue(PATTERN_PARALLEL) ;
+         parentParallelNode.addPredicatWithObject(predicat, uriRootParallelNode.getUri() ) ;
+      }
     }
 
    
@@ -310,14 +324,14 @@ public class ManagerVariable {
         return variables ;
     }
 
-    public void applyKeyValue ( Set<Node> nodes , String key , String value ) {
-      nodes.stream()
-           .forEach( node -> node.applyKeyValue( key, value )) ;
-    }
+//    public void applyKeyValue ( Set<Node> nodes , String key , String value ) {
+//      nodes.stream()
+//           .forEach( node -> node.applyKeyValue( key, value )) ;
+//    }
     
-    public void applyKeyValues ( Set<Node> nodes , Map<String, String > values ) {
-         nodes.stream()
-              .forEach( node -> node.applyKeyValues( values )) ;
-    }
+//    public void applyKeyValues ( Set<Node> nodes , Map<String, String > values ) {
+//         nodes.stream()
+//              .forEach( node -> node.applyKeyValues( values )) ;
+//    }
 
  }

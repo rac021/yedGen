@@ -32,17 +32,31 @@ public class ManagerMetaPattern                {
     private static final String  MATCHER_PATTERN_CONTEXT  = "##PATTERN_CONTEXT"       ;
     private static final String  MATCHER_PATTERN_PARALLEL = "##PATTERN_PARALLEL"      ;
     
-    public ManagerMetaPattern( Integer metaPatternHash     ,
-                               String metaPatternVariable  ,
-                               String metaPatternContext   , 
-                               String metaPatternParallel  ,
-                               CsvProperties csvProperties ) {
+    private final  boolean      isMataGraph            ;    
+    private final  boolean      containsPaternContext  ;
+    private final  boolean      containsPaternParralel ;
+    private final  boolean      containsVariables      ;
+
+    public ManagerMetaPattern( Integer       metaPatternHash        ,
+                               String        metaPatternVariable    ,
+                               String        metaPatternContext     , 
+                               String        metaPatternParallel    ,
+                               CsvProperties csvProperties          ,
+                               boolean       isMataGraph            ,
+                               boolean       containsPaternContext  ,
+                               boolean       containsPaternParralel ,
+                               boolean       containsVariables    ) {
         
         this.metaPatternHash     = metaPatternHash     ;
         this.metaPatternVariable = metaPatternVariable ;
         this.metaPatternContext  = metaPatternContext  ;
         this.metaPatternParallel = metaPatternParallel ;
         this.csvProperties       = csvProperties       ;
+
+        this.isMataGraph            = isMataGraph            ;
+        this.containsPaternContext  = containsPaternContext  ;
+        this.containsPaternParralel = containsPaternParralel ;
+        this.containsVariables      = containsVariables      ;
         
         if( this.csvProperties != null && this.csvProperties.getConfig() != null ) {
             
@@ -61,7 +75,8 @@ public class ManagerMetaPattern                {
           INTRA_COLUMN_SEPARATORS = Arrays.asList(",") ;
         }
         
-        printMessage( " -> CSV_SEPARATOR :  " + CSV_SEPARATOR ) ;
+        printMessage( " -> CSV_SEPARATOR           :  " + CSV_SEPARATOR )           ;
+        printMessage( " -> INTRA_COLUMN_SEPARATORS :  " + INTRA_COLUMN_SEPARATORS ) ;
         
     }
 
@@ -83,7 +98,9 @@ public class ManagerMetaPattern                {
     
     public String generatePatternVariable ( String csvLine ) {
      
-        checkMetaPatternVariable()                    ; 
+        if ( ! checkMetaPatternVariable() ) {            
+            System.exit(-1)                 ;
+        } 
         
         if( metaPatternVariable == null ) return null ;
         
@@ -104,6 +121,17 @@ public class ManagerMetaPattern                {
         for ( String columnPattern : usedColumns )             {
 
           int num = Integer.parseInt( columnPattern.replaceAll("[^0-9]", "") ) ;
+          
+          int total_columns = csvLine.replaceAll(" +", " ")
+                                      .split(CSV_SEPARATOR).length             ;
+          
+          if( num > total_columns - 1 ) {
+              
+              throw new IllegalArgumentException("\n \n "
+                        + "ArrayIndexOutOfBoundsException : "
+                        + " trying to acces the column [" + num + "] When Max column = "
+                        + total_columns + "\n ") ;
+          }
           String columnValue = csvLine.replaceAll(" +", " ")
                                       .split(CSV_SEPARATOR)[num]               ;
                        
@@ -153,7 +181,7 @@ public class ManagerMetaPattern                {
         int    startQueryNum   = Integer.parseInt(nums.split("_")[0]) ;
         int    middleQueryNum  = Integer.parseInt(nums.split("_")[1]) ;
         int    endQueryNum     = Integer.parseInt(nums.split("_")[2]) ;
-        int loop               = startQueryNum                        ;        
+        int    loop            = startQueryNum                        ;        
        
         if ( csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim().length() == 0 ) return null ;        
          
@@ -193,22 +221,30 @@ public class ManagerMetaPattern                {
         return metaPatternParallel ;
     }
 
-    private void checkMetaPatternVariable() {
+    private boolean checkMetaPatternVariable() {
         
-      if( metaPatternVariable == null || metaPatternVariable.isEmpty()) {
+      if( ( metaPatternVariable == null     || 
+            metaPatternVariable.isEmpty() ) && 
+            containsVariables ) {
          printMessageMetaPatternError("metaPatternVariable") ;
-      }       
-      if( metaPatternVariable != null && 
-          !metaPatternVariable.contains( META_PATTERN_CONTEXT ) ) {
+         return false ;
+      } 
+
+      if( metaPatternVariable != null && containsPaternContext   &&
+         ! metaPatternVariable.contains( META_PATTERN_CONTEXT ) ) {
          printMessageMetaPatternErrorMustContains( META_VERIABLE, META_PATTERN_CONTEXT ) ;
+         return false ;
       }
         
-      if(  metaPatternVariable != null && 
-           metaPatternParallel != null && 
-          !metaPatternVariable.contains( META_PATTERN_CONTEXT ))  {
-         printMessageMetaPatternErrorMustContains( META_VERIABLE, META_PATTERN_PARALLEL) ;
+      if(  metaPatternVariable != null && containsPaternParralel &&
+         ! metaPatternVariable.contains( META_PATTERN_PARALLEL ))  {
+         printMessageMetaPatternErrorMustContains( META_VERIABLE           , 
+                                                   META_PATTERN_PARALLEL ) ;
+         return false ;
       }
     
+      return true ;
+      
     }
     
     private void checkMetaPatternContext() {
@@ -236,6 +272,41 @@ public class ManagerMetaPattern                {
                                     .findFirst().orElse(" ") ;
     }
     
+    public boolean isMetaGraph() {
+        return isMataGraph ;
+    }
+    public boolean containsPaternContext() {
+        return containsPaternContext;
+    }
+
+    public boolean containsPaternParralel() {
+        return containsPaternParralel;
+    }
+
+    public boolean containsVariables() {
+        return containsVariables ;
+    } 
+    
+    public static String getMETA_PATTERN_CONTEXT() {
+        return META_PATTERN_CONTEXT ;
+    }
+
+    public static String getMETA_PATTERN_PARALLEL() {
+        return META_PATTERN_PARALLEL ;
+    }
+
+    public static String getMETA_VERIABLE() {
+        return META_VERIABLE ;
+    }
+
+    public static String getMATCHER_PATTERN_CONTEXT() {
+        return MATCHER_PATTERN_CONTEXT ;
+    }
+
+    public static String getMATCHER_PATTERN_PARALLEL() {
+        return MATCHER_PATTERN_PARALLEL ;
+    }
+    
     /*
     
     private String validatePrefix ( String defaulPrefix , String entity ) {
@@ -250,10 +321,8 @@ public class ManagerMetaPattern                {
         if ( entity.contains("/") ) return entity.startsWith(":") ? entity : ":" + entity ;
         if ( entity.contains(":") ) return entity ;
         
-        return defaulPrefix == null ? ":" + entity : defaulPrefix + ":" + entity ;
-        
+        return defaulPrefix == null ? ":" + entity : defaulPrefix + ":" + entity ;        
     }
     
     */
-
 }

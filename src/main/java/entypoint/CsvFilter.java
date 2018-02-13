@@ -31,8 +31,10 @@ public class CsvFilter {
     String    csv_sep       = null ;
     String    match_sep     = null ;
     
-    String    outFilterdMirrorCsv = null ;
-    String    mirrorCsv           = null ;
+    String    mirrorCsv           = null  ;
+    String    outFilterdMirrorCsv = null  ;
+    
+    boolean   i_c_s               = false ;
     
     List<String>  intra_csv_sep  = new ArrayList<>() ;
     Map<Integer, String> matcher = new HashMap<>()   ;
@@ -62,6 +64,8 @@ public class CsvFilter {
                                                      Arrays.asList (
                                                             args[i+1].split(" ")))  ;
                                            break ; 
+         case "-i"                       : i_c_s = true                             ;
+                                           break ;  
        
        }
     }
@@ -82,16 +86,18 @@ public class CsvFilter {
     String  _csv_sep        = csv_sep     ;
     String  _match_sep      = match_sep   ;
     String  _mirrorCsv      = mirrorCsv   ;
+    boolean _i_c_s          = i_c_s       ;
     
-    System.out.println("                                       " ) ; 
-    System.out.println(" **********************************    " ) ; 
-    System.out.println(" - Input CSV File  : " + _outCsv         ) ; 
-    System.out.println(" - csv_separator   : " + _csv_sep        ) ; 
-    System.out.println(" - intra_csv_sep   : " + intra_csv_sep   ) ; 
-    System.out.println(" - match_sep       : " + match_sep       ) ; 
-    System.out.println(" - matcher         : " + matcher         ) ; 
-    System.out.println(" **********************************    " ) ; 
-    System.out.println("                                       " ) ;  
+    System.out.println("                                              " ) ; 
+    System.out.println(" *****************************************    " ) ; 
+    System.out.println(" - Input CSV File         : " + _outCsv         ) ; 
+    System.out.println(" - csv_separator          : " + _csv_sep        ) ; 
+    System.out.println(" - intra_csv_sep          : " + intra_csv_sep   ) ; 
+    System.out.println(" - match_sep              : " + match_sep       ) ; 
+    System.out.println(" - matcher                : " + matcher         ) ; 
+    System.out.println(" - ignore_case_sensitive  : " + i_c_s           ) ; 
+    System.out.println(" *****************************************    " ) ; 
+    System.out.println("                                              " ) ;  
      
     List<String> outLines = new ArrayList<>()                             ;
     
@@ -110,12 +116,13 @@ public class CsvFilter {
         
         lines.forEach ( (String line)  ->                  {
             
-            List<String> treateLine = treateLine ( line          ,
-                                                   matcher       ,
-                                                   _csv_sep      ,
-                                                   _match_sep    ,
-                                                   intra_csv_sep ,
-                                                   readLine( _mirrorCsv, numLine ) ) ;
+            List<String> treateLine = treateLine ( line                            ,
+                                                   matcher                         ,
+                                                   _csv_sep                        ,
+                                                   _match_sep                      ,
+                                                   intra_csv_sep                   ,
+                                                   readLine( _mirrorCsv, numLine ) ,
+                                                   _i_c_s                        ) ;
             
             if( treateLine != null )          {
                 
@@ -178,7 +185,8 @@ public class CsvFilter {
                                           String csv_sep               ,
                                           String match_sep             ,
                                           List<String> intra_csv_sep   ,
-                                          String csvMirrorLine )       {
+                                          String csvMirrorLine         ,
+                                          boolean i_c_s )              {
       
       StringBuilder newLine       = new StringBuilder()    ;
       StringBuilder mirrorNewLine = new StringBuilder()    ;
@@ -190,7 +198,7 @@ public class CsvFilter {
       
           if( matcher.get(columnNum) != null ) {
               
-              List<String> subWords = split(  matcher.get(columnNum) , match_sep ) ;
+              List<String> subWords = split( matcher.get(columnNum) , match_sep ) ;
                
                String column = line.trim()
                                    .replaceAll(" +", " ")
@@ -206,7 +214,7 @@ public class CsvFilter {
                                              .trim() ;
               }
               
-               String intra_sep = getContainedSeparator( column, intra_csv_sep ) ;
+              String intra_sep = getContainedSeparator( column, intra_csv_sep ) ;
                         
               List<String> subColumns       = new ArrayList<>() ;
               List<String> mirrorSubColumns = new ArrayList<>() ;
@@ -225,8 +233,17 @@ public class CsvFilter {
               List<String> okMirrorSubColumns = new ArrayList<>() ;
               
               for ( int i = 0; i < subColumns.size() ; i++ )    {
-
-                if ( subWords.contains(subColumns.get(i) ) )    {
+                
+                boolean containsWord = false ;
+                
+                if( ! i_c_s ) {
+                    containsWord = subWords.contains(subColumns.get(i)) ;
+                } else {
+                    containsWord = subWords.stream()
+                                           .anyMatch( subColumns.get(i)::equalsIgnoreCase ) ;
+                }
+                
+                if ( containsWord )   {
                     okSubColumns.add(subColumns.get(i) )                ;
                     if( csvMirrorLine != null ) {
                        okMirrorSubColumns.add(mirrorSubColumns.get(i) ) ;

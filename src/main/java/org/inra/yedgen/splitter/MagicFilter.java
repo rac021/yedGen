@@ -28,7 +28,7 @@ public class MagicFilter {
     private final Map< Integer, String > codeQueryByVariables = new HashMap<>()   ;
     private final boolean                isList                                   ;
     
-    static Pattern patternFilter = Pattern.compile("\\{.*?\\}") ;
+    static Pattern      patternFilter   = Pattern.compile("\\{.*?\\}") ;   
     
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd") ;
 
@@ -133,6 +133,10 @@ public class MagicFilter {
        } 
     }
     
+    public static boolean isNumeric(String s) {  
+      return s != null && ! s.isEmpty() && s.matches("[-+]?\\d*\\.?\\d+");  
+    } 
+    
     public static boolean isCommented(String exp ) {
         return exp.trim().startsWith("--") ;
     }
@@ -169,8 +173,8 @@ public class MagicFilter {
                                                       .replace(")" , "")
                                                       .replace("'" , "")
                                                       .replace("\"", "")
-                                                      .split("_")   )
-                                       .filter ( s -> ! s.isEmpty() ) 
+                                                      .split("_")   )                                       
+                                       .filter ( s -> isNumeric(s) ) 
                                        .map(s -> Integer.parseInt(s))
                                        .collect(toList())           ;
           

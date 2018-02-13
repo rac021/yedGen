@@ -9,8 +9,8 @@ import java.util.Arrays ;
 import java.util.HashMap ;
 import java.io.IOException ;
 import java.util.ArrayList ;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Pattern ;
-import org.inra.yedgen.processor.Processor;
 import org.inra.yedgen.processor.io.Writer ;
 import org.inra.yedgen.processor.entities.Node ;
 import org.inra.yedgen.obda.header.ObdaHeader ;
@@ -18,6 +18,7 @@ import static java.util.stream.Collectors.toSet ;
 import org.inra.yedgen.properties.ObdaProperties ;
 import org.inra.yedgen.processor.entities.Variable ;
 import org.inra.yedgen.processor.managers.ManagerQuery ;
+import static org.inra.yedgen.processor.Processor.okMatchersAndValidateMapping ;
 
 /**
  *
@@ -126,9 +127,11 @@ public class ObdaSplitter_V1 {
                              list.get( (i/j) % list.size() ) ) ) ;
              }
      
-            if( indexMagicFilter == lists.size() -1 ) {
+             AtomicInteger ErrorCheckMatchersAndValidateMapping = new AtomicInteger(0) ;
+             
+             if( indexMagicFilter == lists.size() -1 ) {
 
-             copyNodes.forEach ( node -> {
+              copyNodes.forEach (node -> {
           
                 combined.forEach( applyedValues -> {
                      
@@ -147,33 +150,41 @@ public class ObdaSplitter_V1 {
                 }) ;
          
                 outPut.add ( node.outputObda()) ;
-                Processor.checkMatchers( variable.getVariableName() , 
-                                         node.outputObda() )        ;
-             }) ;
-           }                        
+                
+                boolean checkMatchersAndValidateMapping = okMatchersAndValidateMapping( node  ,
+                                                                                        variable.getVariableName() ,
+                                                                                        node.outputObda()        ) ;
+                
+                if( ! checkMatchersAndValidateMapping ) ErrorCheckMatchersAndValidateMapping.getAndIncrement()     ;
+                
+              }) ;
+             }                        
           
-           if ( indexMagicFilter == lists.size() -1 ) {
-         
-              outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
-                       
-              String folder    = Writer.getFolder ( outFile )      ;
-              String fileName  = Writer.getfileName ( outFile )    ;
-              String extension = Writer.getFileExtension(fileName) ; 
-              String fileNameWithoutExtension = Writer.getFileWithoutExtension(fileName ) ;
-                        
-              String outF =  folder + File.separator + extrectIndexFromFileName(fileName)     + 
-                             File.separator + fileNameWithoutExtension  + "_" + i + extension ;
-                        
-              Writer.checkFile( outF )             ;
-                                             
-              Writer.writeTextFile( outPut, outF ) ;
-           }              
+             if( ErrorCheckMatchersAndValidateMapping.get() == 0 ) {
              
-           System.out.println( " Applying Filters -> "           + 
-                               list.get( (i/j) % list.size() ) ) ;
+               if ( indexMagicFilter == lists.size() -1 ) {
+         
+                    outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
+
+                    String folder    = Writer.getFolder ( outFile )      ;
+                    String fileName  = Writer.getfileName ( outFile )    ;
+                    String extension = Writer.getFileExtension(fileName) ; 
+                    String fileNameWithoutExtension = Writer.getFileWithoutExtension(fileName ) ;
+
+                    String outF =  folder + File.separator + extrectIndexFromFileName(fileName)     + 
+                                   File.separator + fileNameWithoutExtension  + "_" + i + extension ;
+
+                    Writer.checkFile( outF )             ;
+
+                    Writer.writeTextFile( outPut, outF ) ;
+               }
+             }
+             
+             System.out.println( " Applying Filters -> "           + 
+                                 list.get( (i/j) % list.size() ) ) ;
    
-           j *= list.size()     ;
-           indexMagicFilter ++  ;
+             j *= list.size()     ;
+             indexMagicFilter ++  ;
              
          }
           

@@ -55,9 +55,9 @@ public class Main {
     String prf          = null ,  js          = null                           ;
     String classe       = null ;  int column  = -1                             ;
     String prefixFile   = null ,  connecFile  = null , def_prefix  = null      ,
-    magicFilterFile     = null ;
+    magicFilterFile     = null , predic_pattern_context = null                 ;
     VERSION version     = null ;
-             
+ 
     Integer matchColumn = null ; String  _matchWord  = null   ;
       
     boolean includingGraphVariables = false ,  verbose = false ;
@@ -94,7 +94,11 @@ public class Main {
          case "-verbose"     :  verbose   = true                           ;
                                 nbParams += 1                              ;
                                 break ;         
-         case "-def_prefix"  :  def_prefix = args[i+1] ; nbParams += 2     ;                            
+         case "-def_prefix"  :  if( ! args[i+1].startsWith("-") ) {
+                                  def_prefix = args[i+1] ; nbParams += 2   ;
+                                } else {
+                                  def_prefix = "" ; nbParams += 1          ;
+                                }
                                 break ;         
          case "-version"     :  version = checkVersion( args[i+1] )        ;
                                 nbParams += 2                              ;
@@ -109,9 +113,14 @@ public class Main {
                                                  .replaceAll(" +", ""))    ; 
                                 nbParams += 2                              ; 
                                 break ;
-        case "-magicFilter"  :  magicFilterFile = args[i+1]                ;
+         case "-magicFilter" :  magicFilterFile = args[i+1]                ;
                                 nbParams += 2                              ;
                                 break ;
+                                
+         case "-predicat_pattern_context" : 
+                                predic_pattern_context = args[i+1]         ;
+                                nbParams += 2                              ;
+                                break ;                              
        }
     }
        
@@ -163,17 +172,18 @@ public class Main {
                          .collect(Collectors.toList()) ;
     }
       
-    long startTime = System.currentTimeMillis()              ;  
+    long startTime = System.currentTimeMillis()                  ;
         
-    Processor processor = new Processor ( directory          ,
-                                          ext                ,
-                                          prf                ,
-                                          js                 ,
-                                          connecFile         ,
-                                          prefixFile         ,
-                                          def_prefix         ,
-                                          magicFilterFile    ,
-                                          version )          ;
+    Processor processor = new Processor ( directory              ,
+                                          ext                    ,
+                                          prf                    ,
+                                          js                     ,
+                                          connecFile             ,
+                                          prefixFile             ,
+                                          def_prefix             ,
+                                          magicFilterFile        ,
+                                          version                ,
+                                          predic_pattern_context ) ;
         
     processor.process ( outFile                  , 
                         csv                      , 

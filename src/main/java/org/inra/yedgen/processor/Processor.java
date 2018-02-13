@@ -1,4 +1,3 @@
-
 package org.inra.yedgen.processor ;
 
 import java.io.File ;
@@ -10,10 +9,13 @@ import java.nio.file.Files ;
 import java.nio.file.Paths ;
 import java.util.ArrayList ;
 import entypoint.Main.VERSION ;
+import java.util.regex.Matcher ;
+import java.util.regex.Pattern ;
 import java.util.stream.Stream ;
 import java.util.logging.Level ;
 import java.util.logging.Logger ;
 import java.util.function.Consumer ;
+import org.inra.yedgen.sql.SqlAnalyzer ;
 import org.inra.yedgen.graph.utils.Utils ;
 import org.inra.yedgen.processor.io.Writer ;
 import org.inra.yedgen.graph.entities.Edge ;
@@ -44,7 +46,7 @@ import static org.inra.yedgen.graph.managers.GraphExtractor.PREFIX_PREDICAT ;
  */
 
 public class Processor {
-    
+
     private final ManagerPatternParallel managerPatternParallel  ;
     private final ManagerPatternContext  managerPatternContext   ;
     private final ManagerMetaPattern     metaPatternManager      ;
@@ -60,6 +62,9 @@ public class Processor {
     
     private final VERSION                version                 ;
     
+    static  final Pattern  PATTERN_KEY_VALUES  =  Pattern.compile( "\\{(.*?)\\}"    , 
+                                                                   Pattern.DOTALL ) ;
+    
     public Processor( String  directory       , 
                       String  extensionFile   ,
                       String  propertieFile   ,
@@ -68,7 +73,8 @@ public class Processor {
                       String  prefixFile      ,
                       String  default_prefix  ,
                       String  magicFilterFile ,
-                      VERSION version         ) throws Exception  {
+                      VERSION version         ,
+                      String predic_pattern_context ) throws Exception  {
         
       this.version         =  version                             ;
    
@@ -87,15 +93,19 @@ public class Processor {
       /* Override Magic Filter if magicFilterFile not null  */
       String updateMagicFilter = updateMagicFilter ( magicFilterFile )   ;
       
+      /* Override Predicate_Pattern_Context if predic_pattern_context not null */
+      if( predic_pattern_context != null )  
+          GraphExtractor.PREDICAT_PATTERN_CONTEXT = predic_pattern_context ;
+      
       if( updateMagicFilter != null ) {
-          graphExtractor.setMagicFilter(updateMagicFilter)               ;
+          graphExtractor.setMagicFilter(updateMagicFilter)                 ;
       }
       
       ManagerUri     managerUri     =  new ManagerUri( graphExtractor.getMapUris())          ;
       ManagerEdge    managerEdge    =  new ManagerEdge( graphExtractor.getMapEdges() )       ;
       
                      managerQuery   =  new ManagerQuery( graphExtractor.getMapQueries() )    ;
-                     
+
       ManagerConcept managerConcept =  new ManagerConcept( graphExtractor.getMapConcepts() ) ;
       
       
@@ -105,7 +115,7 @@ public class Processor {
                                                      managerQuery   ) ;
             
       this.managerNode            = instantiateManagerNode ( managerEdge, factoryNode )  ;
-        
+      
       this.obdaHeader             = new ObdaHeader(graphExtractor , version )            ;
       
       this.managerPatternContext  = new ManagerPatternContext ( graphExtractor.getMapPatternContexts() , 
@@ -118,7 +128,11 @@ public class Processor {
                                                              graphExtractor.getMetaPatternVariable() , 
                                                              graphExtractor.getMetaPatternContext()  , 
                                                              graphExtractor.getMetaPatternParallel() ,
-                                                             csvProperties                         ) ;
+                                                             csvProperties                           ,
+                                                             GraphExtractor.isMetaGraph()            ,
+                                                             GraphExtractor.containsPaternContext()  ,
+                                                             GraphExtractor.containsPaternParralel() ,
+                                                             GraphExtractor.containsVariables()    ) ;
       
       this.managerPatternParallel = new ManagerPatternParallel ( graphExtractor.getMapPatternParallels() , 
                                                                  managerUri     , 
@@ -129,6 +143,33 @@ public class Processor {
                                                          managerNode                      , 
                                                          managerPatternContext            , 
                                                          managerPatternParallel)          ;
+       
+      /* Hack to check if Pattern Context Exists and if is a child node */
+        
+      String patter_context = ManagerMetaPattern.getMATCHER_PATTERN_CONTEXT() ;
+      Node   findNodeByURI  = managerNode.findNodeByURI( patter_context )     ;
+      
+      if( GraphExtractor.containsPaternContext() &&  findNodeByURI == null ) {
+          // Then PATTERN_CONTEXT_NODE EXISTS AND IS LEAF 
+          List findConcept = managerConcept.findConcept( patter_context ) ;
+          
+          if( findConcept != null && findConcept.size() == 2 ) {
+              
+            Integer hash_pattern_context = (Integer) findConcept.get(0) ;
+            String  id_pattern_context   = (String) findConcept.get(1)  ;
+          
+            Node createNode = factoryNode.createNode( hash_pattern_context , 
+                                                      id_pattern_context   ,
+                                                      null                 ,
+                                                      null                 ,
+                                                      default_prefix     ) ;
+              
+             this.managerNode.registerNode( hash_pattern_context , 
+                                            id_pattern_context   , 
+                                            createNode         ) ;
+          }
+      }
+                
     }
     
     private ManagerNode instantiateManagerNode ( ManagerEdge managerEdge , FactoryNode factoryNode )  {
@@ -214,17 +255,29 @@ public class Processor {
 
                 } else {
 
-                    graph.stream().forEach( node -> { outPut.add( node.outputObda())            ; 
-                                                      checkMatchers( variable.getVariableName() , 
-                                                                     node.outputObda() ) ; } )  ;
+                    AtomicInteger ErrorCheckMatchersAndValidateMapping = new AtomicInteger(0) ;
+             
+                    graph.stream().forEach( node -> { 
+                                            outPut.add ( node.outputObda() )   ; 
+                                            boolean checkMatchersAndValidateMapping 
+                                                    = okMatchersAndValidateMapping( node  ,
+                                                                                    variable.getVariableName() ,
+                                                                                    node.outputObda()        ) ;
+                                            if( ! checkMatchersAndValidateMapping )
+                                                ErrorCheckMatchersAndValidateMapping.getAndIncrement()         ;
+                                                       
+                    } )  ;
+                    
+                    if( ErrorCheckMatchersAndValidateMapping.get() == 0 ) {
+                 
+                        outPut.add(ObdaProperties.MAPPING_COLLECTION_END) ;
 
-                    outPut.add(ObdaProperties.MAPPING_COLLECTION_END) ;
+                        Writer.checkFile( outFile )           ;
+                        Writer.writeTextFile(outPut, outFile) ;
 
-                    Writer.checkFile( outFile )           ;
-                    Writer.writeTextFile(outPut, outFile) ;
-
-                    Messages.printMessageInfoGeneratedVariable( variable.getVariableName()   ,
-                                                                outFile                    ) ;
+                        Messages.printMessageInfoGeneratedVariable( variable.getVariableName()   ,
+                                                                    outFile                    ) ;
+                    }
                 }
 
          } catch (IOException ex) {
@@ -242,7 +295,7 @@ public class Processor {
                                     int          column      ,
                                     Integer      matchColumn ,
                                     List<String> matchWord   ,
-                                    VERSION      version ) {
+                                    VERSION      version )   {
          
      Messages.printMessageStartProcessCsvVariableGeneration( csvFile ) ;
      
@@ -253,23 +306,36 @@ public class Processor {
       
      /* Check and skip if patterns are null */ 
      
+     if( ( metaPatternManager.getMetaPatternContext()  == null && 
+           metaPatternManager.containsPaternContext() ) ||
+         ( metaPatternManager.getMetaPatternVariable() == null && 
+           metaPatternManager.containsVariables() )     ||
+         ( metaPatternManager.getMetaPatternParallel() == null &&
+           metaPatternManager.containsPaternParralel() )
+       )  {
+             Messages.printMessageMetaPatternsNull() ;
+             return false                            ;
+     }
+  
+     /*
      if( metaPatternManager.getMetaPatternContext()  == null  ||
          metaPatternManager.getMetaPatternVariable() == null  ||
          metaPatternManager.getMetaPatternParallel() == null   )  {
                      
-           Messages.printMessageMetaPatternsNull() ;
-           return false                            ;
+         Messages.printMessageMetaPatternsNull() ;
+         return false                            ;
      }
-  
+     */
+     
      try {
          
-	 AtomicInteger treatedLine = new AtomicInteger(0) ;
-	     
+	 AtomicInteger treatedLine   = new AtomicInteger(-1) ;
+         	 
          try ( Stream<String> lines = Files.lines(Paths.get(csvFile)).skip(1)) {
              
              lines.forEach (new Consumer<String>() {
                  
-                int counter = 0 ;
+                int counter = 0 ;               
                 
                 @Override
                 public void accept(String line) {
@@ -312,14 +378,21 @@ public class Processor {
                       // Prepare Output Header 
                       outPut.addAll(obdaHeader.getHeaderOut())   ; 
 
+                      String patternContext   = null ;
+                      String patternVariable  = null ;
+                      
                       // Treat Variable
-                      String patternContext   = metaPatternManager.generatePatternContext(line)  ;
-                      String patternVariable  = metaPatternManager.generatePatternVariable(line) ;
 
-                      Variable variable       = managerVariable.transformToVariable( patternVariable   ,
-                                                                                     patternContext  ) ;
+                      if( metaPatternManager.containsPaternContext() ) {
+                        patternContext   = metaPatternManager.generatePatternContext(line)  ;
+                      }
+                      
+                      patternVariable    = metaPatternManager.generatePatternVariable(line) ;
+                      
+                      Variable variable  = managerVariable.transformToVariable( patternVariable   ,
+                                                                                patternContext  ) ;
 
-                      Set<Node> nodes         = managerVariable.process( variable )    ;
+                      Set<Node> nodes    = managerVariable.process( variable )    ;
 
                       String folder    = Writer.getFolder ( outputFile )   ;
                       String fileName  = Writer.getfileName ( outputFile ) ;
@@ -327,7 +400,7 @@ public class Processor {
                       String extension = Writer.getFileExtension(fileName) ; 
                          
                       String outFile = folder    + File.separator     + 
-                                       counter++ + "_" +
+                                       counter++ + "_"                +
                                        fileNameWithoutExtension       +
                                        "_CSV_"                        + 
                                       variable.getVariableName()  
@@ -352,20 +425,34 @@ public class Processor {
                                                    outFile )                       ;
                       } else {
                           
-                          nodes.stream().forEach( node -> { outPut.add( node.outputObda())       ; 
-                                                       checkMatchers( variable.getVariableName() , 
-                                                                       node.outputObda() ) ; })  ;
+                         AtomicInteger ErrorCheckMatchersAndValidateMapping = new AtomicInteger(0) ;
+                          
+                          nodes.stream().forEach( node -> {
+                              
+                                                      outPut.add( node.outputObda())            ;
+                                                      boolean checkMatchersAndValidateMapping  =
+                                                      okMatchersAndValidateMapping (
+                                                                     node                       ,
+                                                                     variable.getVariableName() , 
+                                                                     node.outputObda() )        ; 
+                                                      if ( ! checkMatchersAndValidateMapping ) {
+                                                        ErrorCheckMatchersAndValidateMapping.getAndIncrement() ;
+                                                      }
+                          })  ;
+                          
+                          if( ErrorCheckMatchersAndValidateMapping.get() == 0 )     {
+                          
+                                outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
 
-                          outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;
-                      
-                          Writer.checkFile( outFile )           ;
-                          Writer.writeTextFile(outPut, outFile) ;
-                          Messages.printMessageInfoGeneratedVariable( variable.getVariableName() ,
-                                                                      outFile                  ) ;
+                                Writer.checkFile( outFile )           ;
+                                Writer.writeTextFile(outPut, outFile) ;
+                                Messages.printMessageInfoGeneratedVariable( variable.getVariableName() ,
+                                                                            outFile                  ) ;
+                          }
                       }
 
-		      treatedLine.getAndAdd(1)                                                   ;
-                                               
+		      treatedLine.getAndAdd(1) ;
+                      
                     } catch (IOException e) {
                          Logger.getLogger(Processor.class.getName())
                                .log(Level.SEVERE, null, e)         ;
@@ -375,15 +462,27 @@ public class Processor {
            
         }
         catch (Exception ex) {
-          Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex)   ;
+          Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex) ;
         } 
 	     
-        Messages.printInfoCSVTreatment(csvFile, treatedLine.get() , classe, column) ;
-	     
-	return treatedLine.get() > 0 ;
+        if( treatedLine.get() >= 0 ) {
+          Messages.printInfoCSVTreatment( csvFile                 ,
+                                          treatedLine.get() >= 0  ? 
+                                            treatedLine.get() + 1 : 
+                                            0                     ,
+                                          classe            , 
+                                          column          ) ;
+        } else {
+            
+          Messages.printInfoCSVEmptyTreatment( csvFile      ,
+                                               classe       , 
+                                               column     ) ;
+        }
+        
+	return treatedLine.get() >= 0 ;
         
       } catch (Exception ex) {
-          Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex)   ;
+          Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex) ;
      }
         
      return false ;
@@ -402,43 +501,57 @@ public class Processor {
          Set<Node> all = managerNode.getAll()           ;      
                 
          try {
-            
-            if ( graphExtractor.getMagicFilter() != null &&  
-               ! graphExtractor.getMagicFilter().trim().isEmpty() )  {
+               if ( graphExtractor.getMagicFilter() != null &&  
+                    ! graphExtractor.getMagicFilter().trim().isEmpty() )  {
 
-               /* Split if MagicFilter Enabled */
+                  /* Split if MagicFilter Enabled */
 
-               ObdaSplitter_V1.split( graphExtractor.getMagicFilter() ,
-                                      all                             ,                                     
-                                      new Variable( -9999       , 
-                                                    "idUndefVa" , 
-                                                    "UndefVar"  ,
-                                                    null        , 
-                                                    null        ,
-                                                    null        ,
-                                                    null        )     ,
-                                      obdaHeader                      ,
-                                      managerQuery                    ,
-                                      outFile )                       ;
-            }
-	  
-	     else {
-		     
-		List<String> outPut    = new ArrayList<>()                       ;
-                      
-                // Prepare Output Header 
-                outPut.addAll(obdaHeader.getHeaderOut())                         ;
-                      
-                all.stream().forEach( node -> outPut.add( node.outputObda()) )   ;
-         
-                outPut.add( ObdaProperties.MAPPING_COLLECTION_END )              ;
-		     
-		Writer.checkFile( outFile )                                      ;
-                Writer.writeTextFile(outPut, outFile)                            ;
-            
-                Messages.printMessageInfoGeneratedVariable( "Undefined Variable" ,
-                                                            outFile           )  ;        
-	     }
+                  ObdaSplitter_V1.split( graphExtractor.getMagicFilter() ,
+                                         all                             ,                                     
+                                         new Variable( -9999       , 
+                                                       "idUndefVa" , 
+                                                       "UndefVar"  ,
+                                                       null        , 
+                                                       null        ,
+                                                       null        ,
+                                                       null        )     ,
+                                         obdaHeader                      ,
+                                         managerQuery                    ,
+                                         outFile )                       ;
+               }
+
+               else {
+
+                   List<String> outPut    = new ArrayList<>()                       ;
+
+                   // Prepare Output Header 
+                   outPut.addAll(obdaHeader.getHeaderOut())                         ;
+        
+                   AtomicInteger ErrorCheckMatchersAndValidateMapping = new AtomicInteger(0) ;
+                   
+                   all.stream().forEach( node -> { 
+                       
+                                            outPut.add ( node.outputObda() )   ; 
+                                            boolean checkMatchersAndValidateMapping 
+                                                    = okMatchersAndValidateMapping( node              ,
+                                                                                    "UndefVar"        ,
+                                                                                    node.outputObda() ) ;
+                                            if( ! checkMatchersAndValidateMapping )
+                                                ErrorCheckMatchersAndValidateMapping.getAndIncrement()  ;
+                                                       
+                   })  ;
+                   
+                   if( ErrorCheckMatchersAndValidateMapping.get() == 0 ) {
+                       
+                       outPut.add( ObdaProperties.MAPPING_COLLECTION_END )              ;
+
+                       Writer.checkFile( outFile )                                      ;
+                       Writer.writeTextFile(outPut, outFile)                            ;
+
+                       Messages.printMessageInfoGeneratedVariable( "Undefined Variable" ,
+                                                                    outFile          )  ;        
+                   }
+               }
 	    
          } catch (IOException ex) {
            Logger.getLogger(Processor.class.getName())
@@ -447,6 +560,37 @@ public class Processor {
      
       return all.size() > 0 ;
       
+    }
+    
+    private void generateEmptyMappingOBDAFile( String outputFile ) {
+        
+         String _fileName = outputFile.substring(0, outputFile.lastIndexOf('.')) ;
+         String extension = outputFile.substring(outputFile.lastIndexOf('.')   ) ;
+             
+         String outEmptyFile   = _fileName + "_EMPTY_MAPPING_" +  extension      ;
+         
+         // Generate EmptyFile Once 
+         if( Writer.existFile(outEmptyFile)) {
+             return ;
+         }
+         
+         try {
+		List<String> outPut    = new ArrayList<>()                       ;
+                      
+                // Prepare Output Header 
+                outPut.addAll(obdaHeader.getHeaderOut())                         ;                      
+         
+                outPut.add( ObdaProperties.MAPPING_COLLECTION_END )              ;
+		Writer.checkFile( outEmptyFile )                                 ;
+                Writer.writeTextFile(outPut, outEmptyFile)                       ;
+            
+                Messages.printMessageInfoGeneratedVariable( "Undefined Variable" ,
+                                                            outEmptyFile      )  ;      
+	    
+         } catch (IOException ex) {
+           Logger.getLogger(Processor.class.getName())
+		                     .log(Level.SEVERE, null, ex  ) ;
+          }
     }
     
     public void process ( String       outputFile              , 
@@ -459,7 +603,9 @@ public class Processor {
       
         boolean process = false    ; 
         
-        if( includingGraphVariables && csvFile != null )                    {
+        if( includingGraphVariables           && 
+            csvFile != null                   && 
+            metaPatternManager.isMetaGraph() ) {
             
             process = processFull( outputFile  , 
                                    csvFile     , 
@@ -469,7 +615,9 @@ public class Processor {
                                    matchWord   ,
                                    version   ) ;
         }
-        else if ( ! includingGraphVariables && csvFile != null )            {
+        else if ( ! includingGraphVariables     && 
+                    csvFile != null             &&
+                   metaPatternManager.isMetaGraph()  ) {
             
             process = processOnlyCSV( outputFile  , 
                                       csvFile     , 
@@ -480,22 +628,54 @@ public class Processor {
                                       version   ) ;
         }
         else  {
-            process = processOnlyGraphVariables( outputFile , version  )     ;
+            process = processOnlyGraphVariables( outputFile , version  ) ;
         }
         
-        if( ! process )                                                      {
-            processOnlyGraphWithoutVariables( outputFile )                   ;
-        }
+        if( ! process  )                                  {
+         
+          if( metaPatternManager.isMetaGraph() ) {
+            // generateEmptyMappingOBDAFile( outputFile ) ;
+          }
+          else {
+             processOnlyGraphWithoutVariables( outputFile ) ;              
+          }
+        } 
     }
     
-    public static void checkMatchers( String variableName , String outLine ) {
-   
-        String[] tokens = outLine.split(" ") ; 
+    public static boolean okMatchersAndValidateMapping( Node node           , 
+                                                        String variableName , 
+                                                        String outLine   )  {
+        boolean  ok     = true               ;
+        String[] tokens = outLine.split("\n",2)[1].replaceAll(" +", " ")
+                                                  .replace("\t", " ")
+                                                  .replace("\n", " ")
+                                                  .split(" ") ; 
         
         for ( String token : tokens ) {
-           if ( token.contains("?") )
-           Messages.printErrorMatcher( variableName , token ) ; 
+           if ( token.contains("?") ) {
+             if(token.trim().contains(node.getUri() ) ) {
+               Messages.printErrorMatcherOnSubject(node.getCode() , 
+                                                   variableName   , 
+                                                   token  )       ; 
+             } else {
+                 /*
+                  Messages.printErrorMatcherOnObject( node.getCode() , 
+                                                      variableName   , 
+                                                      token  )       ; 
+                 */
+             }
+             if( ok ) ok = false ;
+           }
         }
+        
+        boolean validateMapping = validateMapping( node                ,
+                                                   node.outputTurtle() , 
+                                                   node.getQuery() )   ;
+        if( !validateMapping ) {
+            if ( ok ) ok = false ;
+        }
+        return ok ;
+        
     }
 
     /* Override Prefixs */
@@ -549,5 +729,68 @@ public class Processor {
        }
        return new String(Files.readAllBytes(Paths.get(magicFilterFile))) ;
     }
-
+    
+    private static boolean validateMapping( final Node    node         ,
+                                            final String  outputTurtle ,
+                                            final String  query        ) {
+        
+       if ( node == null ) return false                                 ;
+       int code  =         node.getCode()                               ;
+       
+       Matcher sql_params = PATTERN_KEY_VALUES.matcher ( outputTurtle ) ;
+       
+       String aliasesAndNames = SqlAnalyzer.extractFullyQualifiedNameAndAliases(query) ; 
+             
+       while ( sql_params.find() ) {
+           
+           String sql_param = sql_params.group(1).replaceAll("\" +", "\"") ;
+           
+           if( ! aliasesAndNames.contains( sql_param + " " )        &&
+               ! aliasesAndNames.contains( " " + sql_param + " " )  &&
+               ! aliasesAndNames.contains( "." + sql_param + " " ) ) {
+               
+               
+               if( query == null || query.equals(ManagerQuery.SPEACIAL_SQL_QUERY )) {
+                   
+                    System.out.println( " ==> [X] Error Mapping on the node code [ " + code + " ]. " ) ;
+                    
+                    System.out.println( "   --> It seems that  [ " + sql_param + " ] was used in the "  +
+                                        "[ URI ( " + code + " ) ] but no [ QUERY ( " + code + " ) ] was Provided ! " ) ;
+                    System.out.println( "   --> Please, add a QUERY with the code [ " + code + " " +
+                                        "] and make sure you SELECT the field name  [ " + sql_param + " ]" ) ;
+               
+                    System.out.println("       ** ACTUAL SELECT : [ " + aliasesAndNames + " ] " ) ;
+                    System.out.println(" ") ;
+               
+               } else {
+                    
+                     if ( node.getUri().contains("{"+ sql_param + "}")) {
+                       
+                        System.out.println( " ==> [X] Error Mapping on the node code [ " + code + " ]. " ) ;
+                       
+                        System.out.println( "   --> It seems that  [ " + sql_param + " ] was used in the " +
+                                           "[ URI ( " + code + " ) ] but not FOUND in the [ QUERY ( " + code + " ) ] ! " ) ;
+                        System.out.println( "   --> Please, add to the SLECT of the QUERY ( " 
+                                            + code + " ) the field name [ " + sql_param + " ]" )     ;
+                        System.out.println("       ** ACTUAL SELECT : [ " + aliasesAndNames + " ] " ) ;
+                        System.out.println(" ") ;
+               
+                     } else {
+                         /*
+                        System.out.println( "   --> It seems that  Node ( "  + code + 
+                           " ) is probably linked to another Node that requires the field name [ " + sql_param + " ] " ) ;
+                        System.out.println( "   --> Please, add to the SLECT of the QUERY ( " 
+                                            + code + " )  the field name [ " + sql_param + " ]" )         ;
+                         */
+                     }
+               }
+              
+               return false ;
+           }
+       }
+      
+       return true ;
+    }
+    
+    
 }

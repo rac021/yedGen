@@ -30,9 +30,10 @@ public class ManagerUri {
    }
 
   public String getUri( Integer hash, Integer code ) {
-      
+     if( uris.isEmpty() ) return null ;
      if( hash != null ) {
-      return uris.getOrDefault(hash, null).getOrDefault(code, null) ;
+      return uris.getOrDefault(hash, null)
+                 .getOrDefault(code, null) ;
      }
   
      return findUriByID(code) ;

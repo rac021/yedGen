@@ -17,7 +17,6 @@ import java.nio.file.Paths ;
 import java.util.regex.Pattern ;
 import org.inra.yedgen.graph.utils.Utils ;
 import org.inra.yedgen.graph.entities.Edge ;
-import org.inra.yedgen.processor.entities.Node ;
 import org.inra.yedgen.processor.logs.Messages ;
 import static java.util.stream.Collectors.toList ;
 import org.inra.yedgen.processor.managers.ManagerVariable ;
@@ -30,7 +29,6 @@ public class GraphExtractor {
  
     private final Map< Integer, Map< Integer, String>> mapUris             ;
     private final Map< Integer, Set<Edge>>             mapEdges            ;
-    private final Map< Integer, Map< String, Node>>    mapNodes            ;
     private final Map< Integer, Map< Integer, String>> mapQueries          ;
     private final Map< Integer, Map< String, String>>  mapConcepts         ;
     private final Map< Integer, Map< String, String>>  mapVariables        ;
@@ -52,13 +50,17 @@ public class GraphExtractor {
    
     private static final String  MATCHER_PATTERN_CONTEXT  = "##PATTERN_CONTEXT"  ;
     private static final String  MATCHER_PATTERN_PARALLEL = "##PATTERN_PARALLEL" ;
-    public  static final String  OF_ENTITY_PATTERN        = "oboe-core:ofEntity" ;
+    public  static       String  PREDICAT_PATTERN_CONTEXT = "oboe-core:ofEntity" ;
     
     private static final String  META_PATTERN_CONTEXT  = "##META_PATTERN_CONTEXT"  ;
     private static final String  META_PATTERN_PARALLEL = "##META_PATTERN_PARALLEL" ;
     private static final String  META_VERIABLE         = "?META_VARIABLE"          ;
     private static final String  MAGIC_FILTER          = "##Magic_Filter "         ;
     
+    private  static  boolean  isMetaGraph              = false                   ;
+    private  static  boolean  containsPaternParralel   = false                   ;
+    private  static  boolean  containsPaternContext    = false                   ;
+    private  static  boolean  containsVariables        = false                   ;
     
     private  JSONObject loadJsonObject ( String pathFile ) throws IOException  {
 
@@ -105,6 +107,8 @@ public class GraphExtractor {
                                                     .getString("content").trim()
                                                     .replaceAll(" +", " ") ;
   
+                    checkAndSetIfIsMetaGraph( label ) ;
+                   
                     // String  id    =  jsonObjectConcept.getString("id")  ;
                     // Utils.putInMap(mapConcepts, hash, id , label )      ;
                  
@@ -113,7 +117,7 @@ public class GraphExtractor {
                     Integer code                                           ;
                  
                     if ( label.startsWith(MATCHER_PATTERN_CONTEXT) && label.contains(" ")) {
-                                            
+                        // For the PATTERN_CONTEXT Declared in the Graph
                         Utils.putInMap( mapPatternContexts, 
                                         hash, 
                                         label.split(" ")[0] , 
@@ -123,7 +127,7 @@ public class GraphExtractor {
                                     
                     else if ( label.startsWith(MATCHER_PATTERN_PARALLEL) && 
                               label.contains(" "))                        {
-                                            
+                        // For the PATTERN_PARALLEL Declared in the Graph                   
                         Utils.putInMap( mapPatternParallels, 
                                         hash, 
                                         label.split(" ")[0] , 
@@ -283,6 +287,8 @@ public class GraphExtractor {
                                                                       .getJSONObject("y:NodeLabel")
                                                                       .getString("content").trim()
                                                                       .replaceAll(" +", " ") ;
+                                    
+                                    checkAndSetIfIsMetaGraph( label ) ;
                                      
                                     Integer code ;
 
@@ -333,8 +339,10 @@ public class GraphExtractor {
                                                                       .getString("content").trim()
                                                                       .replaceAll(" +", " ") ;
                                     
+                                    checkAndSetIfIsMetaGraph( label ) ;
+                                    
                                     if (label.startsWith(MATCHER_PATTERN_CONTEXT) && label.contains(" ")) {
-                                            
+                                            // For the PATTERN_CONTEXT Declared in the Graph
                                             Utils.putInMap( mapPatternContexts, 
                                                             hash, 
                                                             label.split(" ")[0] , 
@@ -343,7 +351,7 @@ public class GraphExtractor {
                                     }
                                     
                                     if (label.startsWith(MATCHER_PATTERN_PARALLEL) && label.contains(" ")) {
-                                            
+                                             // For the PATTERN_PARALLEL Declared in the Graph 
                                             Utils.putInMap( mapPatternParallels, 
                                                             hash, 
                                                             label.split(" ")[0] , 
@@ -490,10 +498,12 @@ public class GraphExtractor {
                                             .getString("content").trim()
                                             .replaceAll(" +", " ")     ;
 
+                            checkAndSetIfIsMetaGraph( label ) ;
+
                             int code ;
 
                             if (label.startsWith(MATCHER_PATTERN_CONTEXT) && label.contains(" ")) {
-                                    
+                                // For the PATTERN_CONTEXT Declared in the Graph    
                                 Utils.putInMap( mapPatternContexts     , 
                                                 hash                   , 
                                                 label.split(" ")[0]    , 
@@ -502,7 +512,7 @@ public class GraphExtractor {
                                 
                             }
                             else if (label.startsWith(MATCHER_PATTERN_PARALLEL) && label.contains(" ")) {
-
+                                // For the PATTERN_PARALLEL Declared in the Graph 
                                 Utils.putInMap( mapPatternParallels , 
                                                 hash                ,
                                                 label.split(" ")[0] , 
@@ -769,19 +779,44 @@ public class GraphExtractor {
             System.exit ( 0 )                                                       ; 
         }
      
-        Messages.printSeparator();
+        Messages.printSeparator() ;
     }
 
+    /*
+    private void checkAndSetIfIsMetaGraph( String label )  {
+        
+      if ( label.trim().equals(MATCHER_PATTERN_CONTEXT)  ||
+           label.trim().equals(MATCHER_PATTERN_PARALLEL) ||
+           ( label.trim().startsWith("?") && 
+             ! label.trim().contains(" ")   ) 
+         ) {
+             if ( ! isMetaGraph ) isMetaGraph = true ;
+      }     
+    }
+    */
+    
+    private void checkAndSetIfIsMetaGraph( String label )  {
+        
+      if ( label.trim().equals(MATCHER_PATTERN_CONTEXT) ) {
+           if ( ! isMetaGraph )           isMetaGraph           = true ;            
+           if ( ! containsPaternContext ) containsPaternContext = true ;            
+      }
+      else if ( label.trim().equals(MATCHER_PATTERN_PARALLEL ))          {
+           if ( ! isMetaGraph )            isMetaGraph            = true ;
+           if ( ! containsPaternParralel ) containsPaternParralel = true ;            
+      }
+      else if ( label.trim().startsWith("?") && ! label.trim().contains(" ") ) {
+           if ( ! isMetaGraph )       isMetaGraph       = true ;
+           if ( ! containsVariables ) containsVariables = true ;            
+      }
+    }
+    
     public Map<Integer, Map<Integer, String>> getMapUris() {
         return mapUris ;
     }
 
     public Map<Integer, Set<Edge>> getMapEdges()           {
         return mapEdges ;
-    }
-
-    public Map<Integer, Map<String, Node>> getMapNodes()   {
-        return mapNodes ;
     }
 
     public Map<Integer, Map<Integer, String>> getMapQueries() {
@@ -835,13 +870,28 @@ public class GraphExtractor {
     public void setMagicFilter( String magicFilter ) {
         this.magicFilter =  magicFilter ;
     }
-    
+
+    public static boolean isMetaGraph() {
+        return isMetaGraph ;
+    }
+
+    public static boolean containsPaternParralel() {
+        return containsPaternParralel ;
+    }
+
+    public static boolean containsPaternContext() {
+        return containsPaternContext ;
+    }
+
+    public static boolean containsVariables() {
+        return containsVariables ;
+    }
+       
     /* Constructor */
     
     public GraphExtractor ()                  {
         
        mapUris              = new HashMap<>() ;
-       mapNodes             = new HashMap<>() ;
        mapEdges             = new HashMap<>() ;
        mapQueries           = new HashMap<>() ;
        mapConcepts          = new HashMap<>() ;

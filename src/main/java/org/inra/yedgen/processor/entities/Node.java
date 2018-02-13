@@ -40,6 +40,8 @@ public final class Node implements Serializable  {
      
     private final Map<String , Set<String> > predicatsValues = new HashMap<>() ;
     
+    enum TypeTriple { SUBJECT , PREDICATE , OBJECT } ;
+    
     public Node( Integer hash          , 
                  String  id            , 
                  int     codeSubject   , 
@@ -57,34 +59,63 @@ public final class Node implements Serializable  {
         this.defaultPrefix   = defaultPrefix ;
         this.hash            = hash          ;
         this.id              = id            ;
-        this.code            = codeSubject   ;
+        this.code            = codeSubject   ;       
         this.label           = label         ;
         this.query           = cleanQ(query) ;
         this.queryObject     = queryObject   ;
-        this.uri             = validatePrefix( defaultPrefix, uri )       ;
-        this.type            = validatePrefix( defaultPrefix, type      ) ;
-        this.uriObject       = validatePrefix( defaultPrefix, uriObject ) ;
+       
+        this.uri             = validatePrefix( defaultPrefix      , 
+                                               uri                ,
+                                               TypeTriple.SUBJECT ) ;
+        this.type            = validatePrefix( defaultPrefix        , 
+                                               type                 , 
+                                               TypeTriple.PREDICATE ) ;
+        this.uriObject       = validatePrefix( defaultPrefix        , 
+                                               uriObject            ,  
+                                               TypeTriple.OBJECT    ) ;
         
+        if( uri == null) this.uri = type                      ;
         
-        this.addPredicatWithObject( "a", type )                         ;
-        this.predicat      = validatePrefix( defaultPrefix, predicat  ) ;
+        if( uri != null ) {
+          this.addPredicatWithObject( "a", type )             ;
+        }
+        
+        this.predicat = validatePrefix( defaultPrefix         , 
+                                        predicat              , 
+                                        TypeTriple.PREDICATE  ) ;
         
         if ( codeObject == null || codeObject != codeSubject ) {
-            
-            this.addPredicatWithObject( predicat , uriObject )          ;
+             
+            this.addPredicatWithObject( predicat , uriObject ) ;
             
         } else {
             
             /* Recursivity */
             
-             this.predicat  = this.predicat.replaceAll(" +", " ").trim()
-                       .split(Pattern.quote("{"))[0].trim() ;
+            this.predicat  = this.predicat == null ? "" :
+                             this.predicat.replaceAll(" +", " ").trim()
+                                 .split(Pattern.quote("{"))[0].trim() ;
              
-            List<String> expp =  extractPredicatePattern( predicat )    ;
+            List<String> expp =  null ;
             
-            this.addPredicatWithObject( this.predicat , 
-                                        uriObject.replace( expp.get(0).trim()   , 
-                                                          expp.get(1).trim()) ) ;
+            try {
+               expp = extractPredicatePattern( predicat )  ;
+            }  catch( Exception x) {
+                
+                x.printStackTrace()                         ;
+                System.out.println(" ")                     ;
+                
+                throw new IllegalArgumentException ( " \n May Be : \n "
+                 + " 1- You have a recursion with a bad syntax on"
+                 + " the Node having the Code [ " + code + " ] \n "
+                 + " 2- You have 2 nodes with the same Code [ " + code + " ] \n " ) ;
+            }
+            
+            if( expp != null ) {
+                this.addPredicatWithObject( this.predicat , 
+                                            uriObject.replace( expp.get(0).trim()    , 
+                                                               expp.get(1).trim()) ) ;
+            }
         }
         
     }
@@ -164,8 +195,8 @@ public final class Node implements Serializable  {
     
         if(predicat == null || object == null ) return ;
         
-        predicat = validatePrefix(defaultPrefix, predicat ) ;
-        object   = validatePrefix(defaultPrefix, object )   ;
+        predicat = validatePrefix(defaultPrefix, predicat , TypeTriple.PREDICATE ) ;
+        object   = validatePrefix(defaultPrefix, object   , TypeTriple.OBJECT )   ;
         
         if( predicatsValues.containsKey(predicat) )     {
             predicatsValues.get(predicat).add( object ) ;
@@ -333,8 +364,18 @@ public final class Node implements Serializable  {
        this.predicatsValues.remove(predicat)      ;
     }
     
-    private String validatePrefix ( String defaulPrefix , String entity ) {
-                
+    private String validatePrefix ( String     defaulPrefix , 
+                                    String     entity       ,
+                                    TypeTriple type   )     {
+         
+        if( entity != null                 &&
+            entity.trim().startsWith("\"") && 
+            entity.trim().endsWith("\"")   && 
+            type == TypeTriple.OBJECT )     {
+            
+            return entity ;
+        }
+
         if ( entity == null                 || 
              entity.startsWith("?")         ||
              entity.startsWith("##PATTERN") ||
@@ -345,7 +386,7 @@ public final class Node implements Serializable  {
            return entity ;
         
         if ( entity.contains("/") )   return entity.startsWith(":") ? entity : ":" + entity ;
-        if ( entity.contains(":") )    return entity ;
+        if ( entity.contains(":") )   return entity ;
         
         return defaulPrefix == null ? ":" + entity : defaulPrefix + ":" + entity ;
         
@@ -440,10 +481,12 @@ public final class Node implements Serializable  {
    private List<String> extractPredicatePattern( String predicate ) {
     // index 0 : sourcerPredicatePattern
     // index 1 : targetPredicatePattern
+    if( predicate == null ) return null ;
+    if( !predicate.contains("{") && ! predicate.contains("}")) return null ;
     return  Arrays.asList(predicate.replace("}", "")
                   .replaceAll(" +", " ")
                   .trim()
-                  .split(Pattern.quote("{"))[1].split(">")) ;
+                  .split(Pattern.quote("{"))[1].split(">")) ;    
    }
    
    

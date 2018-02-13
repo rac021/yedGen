@@ -6,6 +6,7 @@ import java.util.Map ;
 import java.util.List ;
 import java.util.HashMap ;
 import java.util.ArrayList ;
+import java.util.Collections;
 import java.util.regex.Pattern ;
 import java.util.stream.Collectors ;
 import org.inra.yedgen.processor.logs.Messages ;
@@ -51,8 +52,12 @@ public class ManagerPatternParallel {
        }
     }
     
-    public List<Node> genereatePatternParallel( Integer hashNode, String id_pattern ) {
+    public List<Node> generatePatternParallel( Integer hashNode, String id_pattern ) {
       
+        if ( ! metaPatternManager.containsPaternParralel() ) {
+           return Collections.emptyList() ;     
+        }
+        
         List<Node> nodes      = new ArrayList<>() ;
         
         if ( id_pattern == null )  return nodes   ;
@@ -149,11 +154,12 @@ public class ManagerPatternParallel {
         return -1 ;
     }
    
-     
+    /* 
     public void applyKeyValue ( Set<Node> nodes , String key , String value ) {
       nodes.stream()
            .forEach( node -> node.applyKeyValue( key, value )) ;
     }
+    */
     
     public void applyKeyValues ( Set<Node> nodes , Map<String, String > values ) {
         nodes.stream()
@@ -178,5 +184,5 @@ public class ManagerPatternParallel {
        nodes.stream()
             .forEach( node -> node.applyKeyValues( valuesIndexI )) ;
     }
-   
+
 }
