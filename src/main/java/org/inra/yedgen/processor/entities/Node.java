@@ -10,8 +10,10 @@ import java.util.HashSet ;
 import java.util.Objects ;
 import java.util.Iterator ;
 import java.util.Map.Entry ;
+import java.util.ArrayList ;
 import java.util.Comparator ;
 import java.io.Serializable ;
+import java.util.ListIterator;
 import java.util.regex.Pattern ;
 import java.util.stream.Collectors ;
 import org.inra.yedgen.sql.SqlAnalyzer ;
@@ -409,18 +411,25 @@ public final class Node implements Serializable  {
         
         for (Iterator< Set<String> > iterator = this.predicatsValues.values().iterator(); iterator.hasNext();) {
              
-            Set<String> set = iterator.next() ;
+            Set<String> set   = iterator.next()      ;
             
-            for (Iterator<String> iterator1 = set.iterator() ; iterator1.hasNext() ; )       {
+            List<String> list = new ArrayList<>(set) ;
             
-                String line = iterator1.next() ;
+            for ( ListIterator<String> it = list.listIterator() ; it.hasNext() ; )  {
                 
-                if(line.contains(pattern))     {
-                    set.remove(line )                                                         ;
-                    set.add(line.replace(pattern, isUri(line) ? cleanValue(value) : value  )) ;
+                 String line = it.next()        ;
+                 
+                 if(line.contains(pattern))     {
+                    it.remove()                                                      ;
+                    it.add(line.replace( pattern, 
+                                         isUri(line) ? cleanValue(value) : value  )) ;
                 }
             }
             
+            set.clear()  ;
+            
+           list.forEach((i) -> {   set.add(i) ; }) ;
+
         }
         
         uri         =  uri         != null ? uri.replace( pattern, cleanValue(value) ) : uri         ;
