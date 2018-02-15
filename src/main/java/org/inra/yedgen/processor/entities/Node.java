@@ -415,21 +415,20 @@ public final class Node implements Serializable  {
             
             List<String> list = new ArrayList<>(set) ;
             
-            for ( ListIterator<String> it = list.listIterator() ; it.hasNext() ; )  {
+            for ( ListIterator<String> it = list.listIterator() ; it.hasNext() ; )   {
                 
-                 String line = it.next()        ;
+                 String line = it.next()             ;
                  
-                 if(line.contains(pattern))     {
+                 if( line.trim().contains(pattern) ) {
                     it.remove()                                                      ;
-                    it.add(line.replace( pattern, 
+                    it.add(line.replace( pattern , 
                                          isUri(line) ? cleanValue(value) : value  )) ;
                 }
             }
             
             set.clear()  ;
             
-           list.forEach((i) -> {   set.add(i) ; }) ;
-
+            list.forEach((i) -> {   set.add(i) ; }) ;
         }
         
         uri         =  uri         != null ? uri.replace( pattern, cleanValue(value) ) : uri         ;
