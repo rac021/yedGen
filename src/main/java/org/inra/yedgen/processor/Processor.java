@@ -658,11 +658,10 @@ public class Processor {
                                                    variableName   , 
                                                    token  )       ; 
              } else {
-                 /*
+                 
                   Messages.printErrorMatcherOnObject( node.getCode() , 
                                                       variableName   , 
-                                                      token  )       ; 
-                 */
+                                                      token  )       ;                  
              }
              if( ok ) ok = false ;
            }
