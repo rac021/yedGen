@@ -1,3 +1,4 @@
+
 package org.inra.yedgen.processor ;
 
 import java.io.File ;
@@ -795,7 +796,6 @@ public class Processor {
        }
       
        return true ;
-    }
-    
+    }    
     
 }
