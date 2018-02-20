@@ -174,7 +174,7 @@ public final class Node implements Serializable  {
         
         return predicatsValues.entrySet().stream()
                               .filter(entry -> !entry.getKey().startsWith("a"))
-                              .collect(Collectors.toMap(e -> e.getKey(), e -> new HashSet(e.getValue())));
+                              .collect(Collectors.toMap(e -> e.getKey(), e -> new HashSet(e.getValue()))) ;
     }
 
     public boolean hasPredicateWithValue ( String value ) {

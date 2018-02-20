@@ -448,6 +448,9 @@ public class Processor {
                                 Writer.writeTextFile(outPut, outFile) ;
                                 Messages.printMessageInfoGeneratedVariable( variable.getVariableName() ,
                                                                             outFile                  ) ;
+                          } else {
+                              System.out.println(" Errors were detected.. " ) ;
+                              System.out.println("                        " ) ;
                           }
                       }
 
@@ -652,16 +655,19 @@ public class Processor {
                                                   .split(" ") ; 
         
         for ( String token : tokens ) {
+            
            if ( token.contains("?") ) {
+               
              if(token.trim().contains(node.getUri() ) ) {
+                 
                Messages.printErrorMatcherOnSubject(node.getCode() , 
                                                    variableName   , 
                                                    token  )       ; 
              } else {
                  
-                  Messages.printErrorMatcherOnObject( node.getCode() , 
-                                                      variableName   , 
-                                                      token  )       ;                  
+               Messages.printErrorMatcherOnObject( node.getCode() , 
+                                                   variableName   , 
+                                                   token  )       ; 
              }
              if( ok ) ok = false ;
            }
