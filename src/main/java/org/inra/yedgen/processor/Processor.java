@@ -640,12 +640,12 @@ public class Processor {
         
         if( ! process  )                                  {
          
-          if( metaPatternManager.isMetaGraph() ) {
-            // generateEmptyMappingOBDAFile( outputFile ) ;
-          }
-          else {
+         // if ( metaPatternManager.isMetaGraph() )       {
+         //    generateEmptyMappingOBDAFile( outputFile ) ;
+         // }
+         // else {
              processOnlyGraphWithoutVariables( outputFile ) ;              
-          }
+         // }
         } 
     }
     
