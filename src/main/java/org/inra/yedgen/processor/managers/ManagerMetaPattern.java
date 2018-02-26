@@ -10,10 +10,12 @@ import java.util.regex.Matcher ;
 import java.util.regex.Pattern ;
 import org.inra.yedgen.properties.CsvProperties ;
 import static org.inra.yedgen.processor.logs.Messages.* ;
+
 /**
  *
  * @author ryahiaoui
  */
+
 public class ManagerMetaPattern                {
     
     private final Integer metaPatternHash      ;
@@ -31,6 +33,8 @@ public class ManagerMetaPattern                {
     private static final String  META_VERIABLE            = "?META_VARIABLE"          ;
     private static final String  MATCHER_PATTERN_CONTEXT  = "##PATTERN_CONTEXT"       ;
     private static final String  MATCHER_PATTERN_PARALLEL = "##PATTERN_PARALLEL"      ;
+    
+    private static final String  DEFAULT_SV_SEPARATOR     = ";"                       ;
     
     private final  boolean      isMataGraph            ;    
     private final  boolean      containsPaternContext  ;
@@ -62,16 +66,16 @@ public class ManagerMetaPattern                {
             
           CSV_SEPARATOR =  
           this.csvProperties.getConfig().getString("CSV_SEPARATOR") != null ?
-          this.csvProperties.getConfig().getString("CSV_SEPARATOR") : "\t"  ;
+          this.csvProperties.getConfig().getString("CSV_SEPARATOR") : 
+          DEFAULT_SV_SEPARATOR                                      ;
           
           INTRA_COLUMN_SEPARATORS = this.csvProperties.getConfig().getString("INTRA_COLUMN_SEPARATORS") != null ?
                   Arrays.asList(csvProperties.getConfig().getString("INTRA_COLUMN_SEPARATORS").split("(?!^)")) : 
-                  Arrays.asList(",");
-                  
+                  Arrays.asList(",") ;                  
                                          
         }
         else {
-          CSV_SEPARATOR = "\t" ;
+          CSV_SEPARATOR = DEFAULT_SV_SEPARATOR         ;
           INTRA_COLUMN_SEPARATORS = Arrays.asList(",") ;
         }
         
@@ -127,10 +131,10 @@ public class ManagerMetaPattern                {
           
           if( num > total_columns - 1 ) {
               
-              throw new IllegalArgumentException("\n \n "
-                        + "ArrayIndexOutOfBoundsException : "
-                        + " trying to acces the column [" + num + "] When Max column = "
-                        + total_columns + "\n ") ;
+              throw new IllegalArgumentException ( "\n \n "
+                + "ArrayIndexOutOfBoundsException : "
+                + " trying to acces the column [" + num + "] When Max column = "
+                + total_columns + "\n ") ;
           }
           String columnValue = csvLine.replaceAll(" +", " ")
                                       .split(CSV_SEPARATOR)[num]               ;
