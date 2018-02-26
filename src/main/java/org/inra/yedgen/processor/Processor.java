@@ -710,6 +710,8 @@ public class Processor {
         
         if( connecFile == null || sourceDeclarationMap == null ) return ;
         
+        if( ! Writer.existFile ( connecFile ) ) return                  ;
+	    
         try (Stream<String> lines = Files.lines(Paths.get(connecFile))) {
 
 	  lines.forEach ( line  -> {
@@ -730,9 +732,12 @@ public class Processor {
     
     private String updateMagicFilter ( String magicFilterFile ) throws IOException {
      
-       if( magicFilterFile == null || magicFilterFile.isEmpty() ) {
+       if ( magicFilterFile == null || magicFilterFile.isEmpty() )       {
           return null ;
        }
+       
+       if ( ! Writer.existFile ( magicFilterFile ) ) return null         ;
+	    
        return new String(Files.readAllBytes(Paths.get(magicFilterFile))) ;
     }
     
