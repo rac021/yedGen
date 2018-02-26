@@ -554,6 +554,9 @@ public class Processor {
 
                        Messages.printMessageInfoGeneratedVariable( "Undefined Variable" ,
                                                                     outFile          )  ;        
+                   }  else {
+                       System.out.println(" Errors were detected.. " ) ;
+                       System.out.println("                        " ) ;
                    }
                }
 	    
@@ -732,11 +735,11 @@ public class Processor {
     
     private String updateMagicFilter ( String magicFilterFile ) throws IOException {
      
-       if ( magicFilterFile == null || magicFilterFile.isEmpty() )       {
+       if( magicFilterFile == null || magicFilterFile.isEmpty() )        {
           return null ;
        }
        
-       if ( ! Writer.existFile ( magicFilterFile ) ) return null         ;
+       if( ! Writer.existFile ( magicFilterFile ) ) return null          ;
 	    
        return new String(Files.readAllBytes(Paths.get(magicFilterFile))) ;
     }
