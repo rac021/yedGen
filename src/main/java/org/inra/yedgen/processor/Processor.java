@@ -690,8 +690,10 @@ public class Processor {
     /* Override Prefixs */
     private void updatePrefixs(String prefixFile, Map<String, String> prefixMap ) {
        
-        if( prefixFile == null || prefixMap == null ) return ;
+        if ( prefixFile == null || prefixMap == null ) return ;
          
+        if ( ! Writer.existFile ( prefixFile ) )      return  ;
+	    
         try ( Stream<String> lines = Files.lines(Paths.get(prefixFile))) {
             
             lines.forEach ( line  -> {
