@@ -343,12 +343,14 @@ public class Processor {
                     
                  if( classe != null ) {
                       
-                   if( column < 0 ) throw new IllegalArgumentException(" Column Num can't be negative ") ;
+                   if ( column < 0 ) throw new IllegalArgumentException(" Column Num can't be negative ") ;
                     
-                   if( line.split( metaPatternManager.getCSV_SEPARATOR()).length < column + 1 ) {
-                       System.out.println(" + CSV Column size = " + 
-                                              line.split(metaPatternManager.getCSV_SEPARATOR()).length)  ;
-                       throw new IllegalArgumentException(" Column [ " + column + " ] Does't exists ! ") ;
+                   if (line.trim().isEmpty() ) return                                                     ;
+			    
+                   if ( line.split( metaPatternManager.getCSV_SEPARATOR()).length < column + 1 )          {
+                        System.out.println(" + CSV Column size = " + 
+                                              line.split(metaPatternManager.getCSV_SEPARATOR()).length)   ;
+                       throw new IllegalArgumentException(" Column [ " + column + " ] Does't exists ! ")  ;
                    }
                     
                    if( ! line.split(metaPatternManager.getCSV_SEPARATOR())[column].trim()
