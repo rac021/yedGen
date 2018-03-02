@@ -262,7 +262,7 @@ public class ManagerPatternContext {
                                   String pattern         , 
                                   List<Node> patternContextNodes ) {
         
-        if( patternNode == null ) {
+        if( patternNode == null || parentContextNode == null ) {
            return Collections.emptyList() ; 
         }
         
