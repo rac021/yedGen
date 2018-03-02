@@ -88,6 +88,12 @@ public class Messages {
                            + token + " ] \n ") ; 
     }
     
+    public static void printErrorNoURIProvided( Integer code ,String variableName  )  {
+        
+       System.out.println( " ==> Error URI // Variable [ "  + variableName   + 
+                           " ] : NO URI provided for the Node ( " + code + " ) \n  ") ; 
+    }
+    
     public static void printErrorMatcherOnObject( Integer code ,String variableName, String token ) {
         
        System.out.println( " ==> Error Matcher // Variable [ "  + variableName + 
