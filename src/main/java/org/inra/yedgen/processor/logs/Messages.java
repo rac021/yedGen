@@ -69,10 +69,9 @@ public class Messages {
      }
 
     public static void printMessageInfoGeneratedVariable( String variableName, String fileName ) {
-       System.err.println( "                                                                 " ) ;
-       System.err.println( " Info // Variable : " + variableName + " Generated in Obda file -->  "
-                                                 + fileName )                                    ;
-       System.err.println( "                                                                 " ) ;
+       System.err.println( " Info // Variable : [ " + variableName + " ] Generated in Obda file "
+                           + "-->  "   + fileName )                                             ;
+       System.err.println( "                                                                " ) ;
     }
     
     public static void printErrorNumQueryNotFound( Integer numQuery ) {
@@ -97,6 +96,14 @@ public class Messages {
                            + "    Token : [ " + token + " ] \n ") ; 
     }
     
+    public static void printErrorMatcherOnQuery(Integer code, String variableName, String token) {
+             
+       System.out.println( " ==> Error Matcher // Variable [ "  + variableName + 
+                           " ] contains on the Node ( " + code + " ) \n     a "
+                           + " Query that doesn't have Matcher. \n "
+                           + "    Token : [ " + token + " ] \n ") ; 
+    }
+     
     public static void printMessageErrorCSV( String csvFile ) {
       System.out.println (" -> Error CSV File not found at path : " + csvFile ) ;
     }
@@ -120,9 +127,9 @@ public class Messages {
       System.out.println (" -> Loading "+ type + " : " + name )     ;
     }
     
-    public static void printErrorLoadingFile(String type , String name) {
-      System.out.println (" -> Error Loading : " + type + " [ "   + 
-                                     name + " ] doesn't exist " )       ;
+    public static void printWarningLoadingFile(String type , String name ) {
+      System.out.println (" -> Warning : " + type + " [ "  + 
+                            name + " ] doesn't exist " )   ;
     }
     
     public static void printSeparator() {
@@ -171,5 +178,5 @@ public class Messages {
       System.err.println(" Note : No PrefixDeclaration Detected for OBDA files ") ;
       System.err.println(" ")                                                     ;
     }
-    
+ 
 }

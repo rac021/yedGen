@@ -63,7 +63,7 @@ public class CsvProperties {
                Messages.printLoadingFile( typeJs , jsFile )      ;
           }   
           else if ( jsFile != null )  {
-               Messages.printErrorLoadingFile( typeJs , jsFile)  ;
+               Messages.printWarningLoadingFile( typeJs , jsFile)  ;
           }
          
          if ( Writer.existFile( prFile ) )  {
@@ -71,7 +71,8 @@ public class CsvProperties {
                Messages.printLoadingFile( typeProperties , prFile ) ;
          }
           else if ( prFile != null ) {
-             Messages.printErrorLoadingFile( typeProperties , prFile ) ;
+             Messages.printWarningLoadingFile( typeProperties       , 
+                                               prFile       )       ;
           }
        
       } catch (ConfigurationException ex) {

@@ -97,11 +97,11 @@ public class CsvFilter_02 {
     if( outLines.size() > 1 )     {
         Writer.checkFile( _outCsv )                                   ;
         Writer.writeTextFile( outLines , _outCsv)                     ;
-       System.out.println(" -> CSV File Generated at : " + _outCsv )  ; 
-       System.out.println("     ")                                    ;  
+        System.out.println(" -> CSV File Generated at : " + _outCsv ) ; 
+        System.out.println("     ")                                   ;  
     }
     else {
-       System.out.println(" -> No CSV File Generated       " )        ; 
+       System.out.println(" -> No CSV File ile Generated    ")        ; 
        System.out.println("     ")                                    ; 
     }
    }    

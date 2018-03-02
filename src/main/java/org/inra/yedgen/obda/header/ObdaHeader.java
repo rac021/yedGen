@@ -1,13 +1,13 @@
 
 package org.inra.yedgen.obda.header ;
 
-import entypoint.Main.VERSION;
 import java.util.Map ;
 import java.util.List ;
 import java.util.ArrayList ;
+import entypoint.Main.VERSION;
+import org.inra.yedgen.processor.logs.Messages ;
 import org.inra.yedgen.properties.ObdaProperties ;
 import org.inra.yedgen.graph.managers.GraphExtractor ;
-import org.inra.yedgen.processor.logs.Messages ;
 
 /**
  *

@@ -9,22 +9,21 @@ import java.util.Arrays ;
 import java.util.HashMap ;
 import java.io.IOException ;
 import java.util.ArrayList ;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher ;
 import java.util.stream.Stream ;
 import java.util.regex.Pattern ;
 import java.util.stream.IntStream ;
 import java.util.stream.Collectors ;
-import org.inra.yedgen.processor.Processor;
 import org.inra.yedgen.processor.io.Writer ;
 import org.inra.yedgen.obda.header.ObdaHeader ;
 import org.inra.yedgen.processor.entities.Node ;
 import static java.util.stream.Collectors.toSet ;
+import java.util.concurrent.atomic.AtomicInteger ;
 import org.inra.yedgen.properties.ObdaProperties ;
 import static java.util.stream.Collectors.toList ;
 import org.inra.yedgen.processor.entities.Variable ;
 import org.inra.yedgen.processor.managers.ManagerQuery ;
-import static org.inra.yedgen.processor.Processor.okMatchersAndValidateMapping;
+import static org.inra.yedgen.processor.Processor.okMatchersAndValidateMapping ;
 
 /**
  *
@@ -219,8 +218,8 @@ public class ObdaSplitter {
                             outPut.add( node.outputObda()) ;
                             
                             boolean checkMatchersAndValidateMapping = okMatchersAndValidateMapping( node                       , 
-                                                                                                    variable.getVariableName() , 
-                                                                                                    node.outputObda() )        ;
+                                                                                                    variable.getVariableName()
+                                                                                                   )                           ;
                             
                             if( ! checkMatchersAndValidateMapping ) ErrorCheckMatchersAndValidateMapping.getAndIncrement()     ;
                                        
@@ -271,9 +270,8 @@ public class ObdaSplitter {
                                     node.applyToQuery( filter ) ;
                                 }
                                 outPut.add( node.outputObda()) ;
-                                okMatchersAndValidateMapping( node                       ,
-                                                                 variable.getVariableName() , 
-                                                                 node.outputObda() )        ;
+                                okMatchersAndValidateMapping( node                         ,
+                                                              variable.getVariableName() ) ;
                                         
                            }) ;
                                    
@@ -332,9 +330,8 @@ public class ObdaSplitter {
                          }
                             
                          outPut.add( node.outputObda()) ;
-                         okMatchersAndValidateMapping( node                       ,
-                                                          variable.getVariableName() , 
-                                                          node.outputObda() )        ;
+                         okMatchersAndValidateMapping( node                     ,
+                                                       variable.getVariableName() ) ;
                                       
                      }) ;
                                  
@@ -391,9 +388,8 @@ public class ObdaSplitter {
                                node.applyToQuery( filter ) ;
                             }
                             outPut.add( node.outputObda()) ;
-                            okMatchersAndValidateMapping( node                       ,
-                                                             variable.getVariableName() , 
-                                                             node.outputObda() )        ;
+                            okMatchersAndValidateMapping( node                     ,
+                                                          variable.getVariableName() ) ;
                     }) ;
                                
                     outPut.add( ObdaProperties.MAPPING_COLLECTION_END ) ;

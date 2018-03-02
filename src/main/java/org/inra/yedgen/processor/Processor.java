@@ -63,6 +63,8 @@ public class Processor {
     
     private final VERSION                version                 ;
     
+    static enum PART { SUBJECT , PREDICAT_VALUES, QUERY  }       ;
+    
     static  final Pattern  PATTERN_KEY_VALUES  =  Pattern.compile( "\\{(.*?)\\}"    , 
                                                                    Pattern.DOTALL ) ;
     
@@ -89,10 +91,10 @@ public class Processor {
       updateConnection( connecFile, this.graphExtractor.getSourceDeclaration())   ;
               
       /* Add External Prefixs if prefixFile not null */ 
-      updatePrefixs(prefixFile, this.graphExtractor.getPrefixs())        ;
+      updatePrefixs(prefixFile, this.graphExtractor.getPrefixs())          ;
 
       /* Override Magic Filter if magicFilterFile not null  */
-      String updateMagicFilter = updateMagicFilter ( magicFilterFile )   ;
+      String updateMagicFilter = updateMagicFilter ( magicFilterFile )     ;
       
       /* Override Predicate_Pattern_Context if predic_pattern_context not null */
       if( predic_pattern_context != null )  
@@ -227,6 +229,11 @@ public class Processor {
       
       for( Variable variable : managerVariable.getVariables())       {
      
+         System.out.println( " ** Processing Graph Variable : "
+                             + " [ " + variable.getVariableName()
+                                               .replaceFirst(":", "")
+                               + " ]  -------------- \n " )  ;
+         
          Set<Node> graph      = managerVariable.process( variable )  ;
           
          List<String> outPut  = new ArrayList<>()                    ;
@@ -262,10 +269,9 @@ public class Processor {
                                             outPut.add ( node.outputObda() )   ; 
                                             boolean checkMatchersAndValidateMapping 
                                                     = okMatchersAndValidateMapping( node  ,
-                                                                                    variable.getVariableName() ,
-                                                                                    node.outputObda()        ) ;
+                                                                                    variable.getVariableName() ) ;
                                             if( ! checkMatchersAndValidateMapping )
-                                                ErrorCheckMatchersAndValidateMapping.getAndIncrement()         ;
+                                                ErrorCheckMatchersAndValidateMapping.getAndIncrement()           ;
                                                        
                     } )  ;
                     
@@ -339,13 +345,13 @@ public class Processor {
                 int counter = 0 ;               
                 
                 @Override
-                public void accept(String line) {
+                public void accept(String line ) {
                     
                  if( classe != null ) {
                       
                    if ( column < 0 ) throw new IllegalArgumentException(" Column Num can't be negative ") ;
                     
-                   if (line.trim().isEmpty() ) return                                                     ;
+                   if (line.trim().isEmpty() ) {  counter ++ ; return   ;  }                              ;
 			    
                    if ( line.split( metaPatternManager.getCSV_SEPARATOR()).length < column + 1 )          {
                         System.out.println(" + CSV Column size = " + 
@@ -375,7 +381,11 @@ public class Processor {
                  }
                     
                  try {
-                                  
+                              
+                     System.out.println( " ** Processing CSV Line :"
+                                         + " [ " + counter  + " ]  -------------- "
+                                                 + "\n " ) ;
+                     
                       List<String> outPut    = new ArrayList<>() ;
 
                       // Prepare Output Header 
@@ -435,9 +445,8 @@ public class Processor {
                                                       outPut.add( node.outputObda())            ;
                                                       boolean checkMatchersAndValidateMapping  =
                                                       okMatchersAndValidateMapping (
-                                                                     node                       ,
-                                                                     variable.getVariableName() , 
-                                                                     node.outputObda() )        ; 
+                                                                     node                         ,
+                                                                     variable.getVariableName() ) ; 
                                                       if ( ! checkMatchersAndValidateMapping ) {
                                                         ErrorCheckMatchersAndValidateMapping.getAndIncrement() ;
                                                       }
@@ -528,20 +537,19 @@ public class Processor {
 
                else {
 
-                   List<String> outPut    = new ArrayList<>()                       ;
+                   List<String> outPut    = new ArrayList<>()            ;
 
                    // Prepare Output Header 
-                   outPut.addAll(obdaHeader.getHeaderOut())                         ;
+                   outPut.addAll(obdaHeader.getHeaderOut())              ;
         
                    AtomicInteger ErrorCheckMatchersAndValidateMapping = new AtomicInteger(0) ;
                    
                    all.stream().forEach( node -> { 
                        
-                                            outPut.add ( node.outputObda() )   ; 
+                                            outPut.add ( node.outputObda() )      ; 
                                             boolean checkMatchersAndValidateMapping 
                                                     = okMatchersAndValidateMapping( node              ,
-                                                                                    "UndefVar"        ,
-                                                                                    node.outputObda() ) ;
+                                                                                    "UndefVar"      ) ;
                                             if( ! checkMatchersAndValidateMapping )
                                                 ErrorCheckMatchersAndValidateMapping.getAndIncrement()  ;
                                                        
@@ -554,6 +562,7 @@ public class Processor {
                        Writer.checkFile( outFile )                                      ;
                        Writer.writeTextFile(outPut, outFile)                            ;
 
+                       System.err.println( "                                        " ) ;
                        Messages.printMessageInfoGeneratedVariable( "Undefined Variable" ,
                                                                     outFile          )  ;        
                    }  else {
@@ -593,6 +602,7 @@ public class Processor {
 		Writer.checkFile( outEmptyFile )                                 ;
                 Writer.writeTextFile(outPut, outEmptyFile)                       ;
             
+                System.err.println( "                                        " ) ;
                 Messages.printMessageInfoGeneratedVariable( "Undefined Variable" ,
                                                             outEmptyFile      )  ;      
 	    
@@ -640,56 +650,76 @@ public class Processor {
             process = processOnlyGraphVariables( outputFile , version  ) ;
         }
         
-        if( ! process  )                                  {
+        if( ! process  )                                    {
          
-         // if ( metaPatternManager.isMetaGraph() )       {
-         //    generateEmptyMappingOBDAFile( outputFile ) ;
-         // }
-         // else {
              processOnlyGraphWithoutVariables( outputFile ) ;              
-         // }
         } 
     }
     
-    public static boolean okMatchersAndValidateMapping( Node node           , 
-                                                        String variableName , 
-                                                        String outLine   )  {
-        boolean  ok     = true               ;
-        String[] tokens = outLine.split("\n",2)[1].replaceAll(" +", " ")
-                                                  .replace("\t", " ")
-                                                  .replace("\n", " ")
-                                                  .split(" ") ; 
+    public static boolean okMatchersAndValidateMapping ( Node node           , 
+                                                         String variableName )  {
+     
+        String[] uri_tokens              =  toTokens ( node.getUri() )                     ;
+        String[] predicate_values_tokens =  toTokens ( node.outputOnlyPredicatesValues() ) ;
+        String[] queries_tokens          =  toTokens ( node.getQuery() )                   ;
         
-        for ( String token : tokens ) {
+        return tokensChecker   ( node, variableName, uri_tokens             , PART.SUBJECT         ) &&
+               tokensChecker   ( node, variableName, predicate_values_tokens, PART.PREDICAT_VALUES ) &&
+               tokensChecker   ( node, variableName, queries_tokens         , PART.QUERY           ) &&
+               validateMapping ( node,               node.outputTurtle()    , node.getQuery()      )  ;
+    }
+
+    private static String[] toTokens ( String token ) {
+        
+        return  token.replaceAll ( " +", " ")
+                     .replace ( "\t", " ")
+                     .replace ( "\n", " ")
+                     .split (" ") ; 
+    }
+    
+    private static boolean tokensChecker ( Node   node         , 
+                                           String variableName ,  
+                                           String[] tokens     , 
+                                           PART part           ) {
+         boolean ok = true ;
+         
+         for ( String token : tokens ) {
             
            if ( token.contains("?") ) {
                
-             if(token.trim().contains(node.getUri() ) ) {
-                 
-               Messages.printErrorMatcherOnSubject(node.getCode() , 
-                                                   variableName   , 
-                                                   token  )       ; 
-             } else {
-                 
-               Messages.printErrorMatcherOnObject( node.getCode() , 
-                                                   variableName   , 
-                                                   token  )       ; 
-             }
+               if( null !=  part ) switch ( part ) {
+                   
+                   case SUBJECT :
+                       Messages.printErrorMatcherOnSubject( node.getCode() ,
+                                                            variableName   ,
+                                                            token  )       ;
+                       break ;
+                       
+                   case PREDICAT_VALUES :
+                       Messages.printErrorMatcherOnObject( node.getCode() ,
+                                                           variableName   ,
+                                                           token  )       ;
+                       break ;
+                       
+                   case QUERY :
+                       Messages.printErrorMatcherOnQuery( node.getCode() ,
+                                                          variableName   ,
+                                                          token  )       ; 
+                       break ;
+                       
+                   default :
+                       break ;
+                       
+               }
+             
              if( ok ) ok = false ;
            }
         }
-        
-        boolean validateMapping = validateMapping( node                ,
-                                                   node.outputTurtle() , 
-                                                   node.getQuery() )   ;
-        if( !validateMapping ) {
-            if ( ok ) ok = false ;
-        }
-        return ok ;
-        
+         return ok ;
     }
-
+    
     /* Override Prefixs */
+    
     private void updatePrefixs(String prefixFile, Map<String, String> prefixMap ) {
        
         if ( prefixFile == null || prefixMap == null ) return ;
@@ -713,6 +743,7 @@ public class Processor {
     }
 
     /* Override Conection Info */ 
+    
     private void updateConnection(String connecFile, Map<String, String> sourceDeclarationMap) {
         
         if( connecFile == null || sourceDeclarationMap == null ) return ;
@@ -753,12 +784,28 @@ public class Processor {
                                             final String  query        ) {
         
        if ( node == null ) return false                                 ;
-       int code  =         node.getCode()                               ;
+       int  code  =        node.getCode()                               ;
        
        Matcher sql_params = PATTERN_KEY_VALUES.matcher ( outputTurtle ) ;
        
-       String aliasesAndNames = SqlAnalyzer.extractFullyQualifiedNameAndAliases(query) ; 
-             
+       String aliasesAndNames = "" ;
+       
+       try {
+           
+         aliasesAndNames = SqlAnalyzer.extractFullyQualifiedNameAndAliases( query ) ; 
+         
+       } catch( Exception ex ) {
+           
+            System.out.println( " ==> [X] Error Mapping on the node ( " + code + " ). " ) ;
+
+            System.out.println( "   --> It seems that the QUERY of the Node ( " + code + " ) "
+                                + "Generated a Malformed_SQL_Exception " )         ;
+            System.out.println( "   --> Please, correct the QUERY and Re-try  " )  ;
+            System.out.println("   --> Message Exception : " + ex.getMessage()  )  ;
+            System.out.println(" ")   ;
+            return false              ;
+       } 
+       
        while ( sql_params.find() ) {
            
            String sql_param = sql_params.group(1).replaceAll("\" +", "\"") ;

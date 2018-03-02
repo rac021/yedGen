@@ -10,12 +10,10 @@ import java.util.regex.Matcher ;
 import java.util.regex.Pattern ;
 import org.inra.yedgen.properties.CsvProperties ;
 import static org.inra.yedgen.processor.logs.Messages.* ;
-
 /**
  *
  * @author ryahiaoui
  */
-
 public class ManagerMetaPattern                {
     
     private final Integer metaPatternHash      ;
@@ -71,7 +69,8 @@ public class ManagerMetaPattern                {
           
           INTRA_COLUMN_SEPARATORS = this.csvProperties.getConfig().getString("INTRA_COLUMN_SEPARATORS") != null ?
                   Arrays.asList(csvProperties.getConfig().getString("INTRA_COLUMN_SEPARATORS").split("(?!^)")) : 
-                  Arrays.asList(",") ;                  
+                  Arrays.asList(",");
+                  
                                          
         }
         else {
@@ -79,7 +78,7 @@ public class ManagerMetaPattern                {
           INTRA_COLUMN_SEPARATORS = Arrays.asList(",") ;
         }
         
-        printMessage( " -> CSV_SEPARATOR           :  " + CSV_SEPARATOR )           ;
+        printMessage( " -> CSV_SEPARATOR           :  [" + CSV_SEPARATOR  + "] "  ) ;
         printMessage( " -> INTRA_COLUMN_SEPARATORS :  " + INTRA_COLUMN_SEPARATORS ) ;
         
     }
@@ -131,10 +130,10 @@ public class ManagerMetaPattern                {
           
           if( num > total_columns - 1 ) {
               
-              throw new IllegalArgumentException ( "\n \n "
-                + "ArrayIndexOutOfBoundsException : "
-                + " trying to acces the column [" + num + "] When Max column = "
-                + total_columns + "\n ") ;
+              throw new IllegalArgumentException("\n \n "
+                        + "ArrayIndexOutOfBoundsException : "
+                        + " trying to acces the column [" + num + "] When Max column = "
+                        + total_columns + "\n ") ;
           }
           String columnValue = csvLine.replaceAll(" +", " ")
                                       .split(CSV_SEPARATOR)[num]               ;

@@ -409,7 +409,7 @@ public final class Node implements Serializable  {
             value = ManagerVariable.OPTIONAL_NODE ;
         }
         
-        for (Iterator< Set<String> > iterator = this.predicatsValues.values().iterator(); iterator.hasNext();) {
+        for (Iterator< Set<String> > iterator = this.predicatsValues.values().iterator(); iterator.hasNext() ; ) {
              
             Set<String> set   = iterator.next()      ;
             
@@ -419,7 +419,7 @@ public final class Node implements Serializable  {
                 
                  String line = it.next()             ;
                  
-                 if( line.trim().contains(pattern) ) {
+                 if ( matchesStringPattenrn( line, pattern ) ) {
                     it.remove()                                                      ;
                     it.add(line.replace( pattern , 
                                          isUri(line) ? cleanValue(value) : value  )) ;
@@ -428,18 +428,31 @@ public final class Node implements Serializable  {
             
             set.clear()  ;
             
-            list.forEach((i) -> {   set.add(i) ; }) ;
+            list.forEach( (i) -> {   set.add(i) ; } ) ;
         }
         
-        uri         =  uri         != null ? uri.replace( pattern, cleanValue(value) ) : uri         ;
-        type        =  type        != null ? type.replace( pattern, value )            : type        ;
-        query       =  query       != null ? query.replace( pattern, value )           : query       ;
-        predicat    =  predicat    != null ? predicat.replace( pattern, value )        : predicat    ;
-        queryObject =  queryObject != null ? queryObject.replace( pattern, value )     : queryObject ;
+        if ( matchesStringPattenrn( uri , pattern ) ) {
+           uri = uri != null ? uri.replace( pattern, cleanValue(value) ) : uri ;
+        }
+        
+        if ( matchesStringPattenrn( type , pattern ) ) {
+           type =  type != null ? type.replace ( pattern, value ) : type       ;
+        }
+        
+        if ( matchesStringPattenrn( query , pattern ) ) {
+           query =  query       != null ? query.replace ( pattern, value ) : query      ;
+        }
+        
+        if ( matchesStringPattenrn( predicat , pattern ) ) {
+           predicat =  predicat != null ? predicat.replace( pattern, value ) : predicat ;
+        }
+        if ( matchesStringPattenrn( queryObject , pattern ) ) {
+           queryObject =  queryObject != null ? queryObject.replace( pattern, value ) : queryObject ;
+        }
         
     }
 
-    public void applyKeyValues ( Map<String, String > values )                   {
+    public void applyKeyValues ( Map<String, String > values )  {
     
        // Comparator< Entry<String,String> > comp1 = 
        // (a, b) -> Integer.compare(a.getKey().length(), b.getKey().length()) ;
@@ -517,6 +530,17 @@ public final class Node implements Serializable  {
             query = SqlAnalyzer.treatQuery(getQuery(), filterQuery ) ;
         }
         
-    }
+   }
+   
+   // matchesStringContainsPatternFollowedByNothingButSpecialChars 
+   static boolean matchesStringPattenrn ( String line    , 
+                                          String pattern ) {
+     if( line == null || pattern == null ) return false ;
+     if( ! pattern.trim().startsWith("?")) return false ;
+     // the line must contains the pattern and not followed with [a-zA-Z]
+     String patt = ".*(" + pattern.replace("?", "\\?") +")(?![a-zA-Z]).*$" ;
+     return  line.matches(patt ) ;
+        
+   }
 }
 

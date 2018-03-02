@@ -9,12 +9,12 @@ import java.util.Arrays ;
 import java.util.HashMap ;
 import java.io.IOException ;
 import java.util.ArrayList ;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Pattern ;
 import org.inra.yedgen.processor.io.Writer ;
-import org.inra.yedgen.processor.entities.Node ;
 import org.inra.yedgen.obda.header.ObdaHeader ;
+import org.inra.yedgen.processor.entities.Node ;
 import static java.util.stream.Collectors.toSet ;
+import java.util.concurrent.atomic.AtomicInteger ;
 import org.inra.yedgen.properties.ObdaProperties ;
 import org.inra.yedgen.processor.entities.Variable ;
 import org.inra.yedgen.processor.managers.ManagerQuery ;
@@ -151,11 +151,10 @@ public class ObdaSplitter_V1 {
          
                 outPut.add ( node.outputObda()) ;
                 
-                boolean checkMatchersAndValidateMapping = okMatchersAndValidateMapping( node  ,
-                                                                                        variable.getVariableName() ,
-                                                                                        node.outputObda()        ) ;
+                boolean checkMatchersAndValidateMapping = okMatchersAndValidateMapping( node                     ,
+                                                                                        variable.getVariableName() ) ;
                 
-                if( ! checkMatchersAndValidateMapping ) ErrorCheckMatchersAndValidateMapping.getAndIncrement()     ;
+                if( ! checkMatchersAndValidateMapping ) ErrorCheckMatchersAndValidateMapping.getAndIncrement()       ;
                 
               }) ;
              }                        
