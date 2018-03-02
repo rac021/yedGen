@@ -4,7 +4,7 @@ package org.inra.yedgen.obda.header ;
 import java.util.Map ;
 import java.util.List ;
 import java.util.ArrayList ;
-import entypoint.Main.VERSION;
+import entypoint.Main.VERSION ;
 import org.inra.yedgen.processor.logs.Messages ;
 import org.inra.yedgen.properties.ObdaProperties ;
 import org.inra.yedgen.graph.managers.GraphExtractor ;
@@ -67,4 +67,16 @@ public class ObdaHeader {
         return headerOut ;
     }
     
+    
+    public boolean ok() {
+        
+        return  headerOut.stream()
+                         .filter( l -> l.contains("?sourceUri")     ||
+                                       l.contains("?connectionUrl") || 
+                                       l.contains("?username")      || 
+                                       l.contains("?password")      || 
+                                       l.contains("?driverClass")    )
+                         .count() == 0 ;
+      
+    }
 }
