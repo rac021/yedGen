@@ -76,7 +76,7 @@ public final class Node implements Serializable  {
                                                uriObject            ,  
                                                TypeTriple.OBJECT    ) ;
         
-        if( uri == null) this.uri = type                      ;
+        if( uri == null && codeSubject < 0 )   this.uri = type        ;
         
         if( uri != null ) {
           this.addPredicatWithObject( "a", type )             ;
