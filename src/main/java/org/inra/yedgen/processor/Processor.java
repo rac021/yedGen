@@ -321,7 +321,7 @@ public class Processor {
            metaPatternManager.containsPaternParralel() )
        )  {
              Messages.printMessageMetaPatternsNull() ;
-             return false                            ;
+             return true                             ;
      }
   
      /*
