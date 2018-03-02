@@ -282,12 +282,16 @@ public class ManagerVariable {
     private Set<Node> generateGraphIncludingContext( String patternContext      ,
                                                      String patternContextValue )          {
         
-      Node patternContextNode = managerNode.find ( node -> node.getUri()
+      if( patternContextValue == null ) return new HashSet<>()         ;
+        
+      Node patternContextNode = managerNode.find ( node -> node.getUri() != null && 
+                                                           node.getUri()
                                                                .equals(patternContext) )   ;
       
       Node parentContextNode  = managerNode.find ( 
-                                    node -> !node.getUri().equals(patternContext) && 
-                                    node.hasPredicateWithValue(patternContext) )           ;
+                                    node -> node.getUri() != null                && 
+                                          ! node.getUri().equals(patternContext) && 
+                                            node.hasPredicateWithValue(patternContext) )   ;
       
       List<Node> generatedContextNodes = managerPatternContext
                                          .generatePatternContext( patternContextValue )    ;
