@@ -281,9 +281,7 @@ public class ManagerVariable {
     
     private Set<Node> generateGraphIncludingContext( String patternContext      ,
                                                      String patternContextValue )          {
-        
-      if( patternContextValue == null ) return new HashSet<>()         ;
-        
+             
       Node patternContextNode = managerNode.find ( node -> node.getUri() != null && 
                                                            node.getUri()
                                                                .equals(patternContext) )   ;
