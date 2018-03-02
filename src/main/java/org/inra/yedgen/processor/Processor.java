@@ -666,6 +666,12 @@ public class Processor {
     public static boolean okMatchersAndValidateMapping ( Node node           , 
                                                          String variableName )  {
      
+	if( node.getUri() == null ) {
+            Messages.printErrorNoURIProvided( node.getCode()  ,
+                                              variableName  ) ;
+            return false ;
+        }
+	    
         String[] uri_tokens              =  toTokens ( node.getUri() )                     ;
         String[] predicate_values_tokens =  toTokens ( node.outputOnlyPredicatesValues() ) ;
         String[] queries_tokens          =  toTokens ( node.getQuery() )                   ;
