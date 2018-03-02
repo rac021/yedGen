@@ -656,9 +656,9 @@ public class Processor {
         } 
 	    
 	if ( process && ! obdaHeader.ok() ) {
-           System.out.println("                                                              ") ;
-           System.out.println(" ***** Warning : Informations Connections not Provides ***** " ) ;
-           System.out.println("                                                              ") ;
+           System.out.println("                                                           ") ;
+           System.out.println(" <<<< Warning : Connection informations not Provided >>>> " ) ;
+           System.out.println("                                                           ") ;
         }
 	    
     }
