@@ -650,10 +650,17 @@ public class Processor {
             process = processOnlyGraphVariables( outputFile , version  ) ;
         }
         
-        if( ! process  )                                    {
+        if ( ! process  )                                            {
          
-             processOnlyGraphWithoutVariables( outputFile ) ;              
+            process = processOnlyGraphWithoutVariables( outputFile ) ;              
         } 
+	    
+	if ( process && ! obdaHeader.ok() ) {
+           System.out.println("                                                              ") ;
+           System.out.println(" ***** Warning : Informations Connections not Provides ***** " ) ;
+           System.out.println("                                                              ") ;
+        }
+	    
     }
     
     public static boolean okMatchersAndValidateMapping ( Node node           , 
