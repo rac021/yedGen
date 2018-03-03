@@ -59,4 +59,8 @@ public class ManagerConcept {
     return l ;
   }
 
+  public Map<Integer, Map<String, String>> getConcepts()  {
+     return concepts ;
+  }
+   
 }
