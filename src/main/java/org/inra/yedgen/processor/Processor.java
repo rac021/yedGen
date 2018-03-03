@@ -159,10 +159,29 @@ public class Processor {
                                                  ManagerEdge    managerEdge    , 
                                                  FactoryNode factoryNode    )  {
         
-         ManagerNode localManager = new ManagerNode() ;
+        ManagerNode localManager = new ManagerNode() ;
           
-         
-         Map< Integer, Set<String>>  potentialLeafNodesWithURI = new HashMap<>() ;
+        if ( managerEdge.getAll().isEmpty() ) {
+            
+            if ( ! managerConcept.getConcepts().isEmpty() ) {
+               
+                managerConcept.getConcepts().forEach( ( hash, concepts ) -> { 
+                    
+                       concepts.forEach ( ( subjectId, label ) -> {
+                           
+                               Node node = factoryNode.createNode( hash      , 
+                                                                   subjectId , 
+                                                                   null      , 
+                                                                   null      ,
+                                                                   PREFIX_PREDICAT ) ; 
+
+                               localManager.registerNode(hash, subjectId, node )     ;
+                       });
+                }) ;
+            }
+        }
+	    
+        Map< Integer, Set<String>>  potentialLeafNodesWithURI = new HashMap<>() ;
          
         for ( Edge edge : Utils.getAll(managerEdge.getEdges()) ) {
             
