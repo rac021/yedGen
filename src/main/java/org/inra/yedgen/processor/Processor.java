@@ -161,11 +161,11 @@ public class Processor {
             Integer hash_pattern_context = (Integer) findConcept.get(0) ;
             String  id_pattern_context   = (String) findConcept.get(1)  ;
           
-            Node createNode = factoryNode.createNode( hash_pattern_context , 
-                                                      id_pattern_context   ,
-                                                      null                 ,
-                                                      null                 ,
-                                                      default_prefix     ) ;
+            Node createNode = factoryNode.createNode( hash_pattern_context            , 
+                                                      id_pattern_context              ,
+                                                      null                            ,
+                                                      null                            ,
+                                                       GraphExtractor.PREFIX_PREDICAT ) ;
               
              this.managerNode.registerNode( hash_pattern_context , 
                                             id_pattern_context   , 
