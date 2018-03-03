@@ -81,9 +81,9 @@ public class Processor {
                       VERSION version         ,
                       String predic_pattern_context ) throws Exception  {
         
-      this.version         =  version                             ;
+      this.version         =  version                ;
    
-      this.graphExtractor  =  new GraphExtractor ()               ;
+      this.graphExtractor  =  new GraphExtractor ()  ;
         
       graphExtractor.genGraphPopulatingManagers( directory , extensionFile )      ;
           
@@ -150,33 +150,6 @@ public class Processor {
                                                          managerNode                      , 
                                                          managerPatternContext            , 
                                                          managerPatternParallel)          ;
-       
-      /* Hack to check if Pattern Context Exists and if is a child node */
-      /*  
-      String patter_context = ManagerMetaPattern.getMATCHER_PATTERN_CONTEXT() ;
-      Node   findNodeByURI  = managerNode.findNodeByURI( patter_context )     ;
-      
-      if( GraphExtractor.containsPaternContext() &&  findNodeByURI == null ) {
-          // Then PATTERN_CONTEXT_NODE EXISTS AND IS LEAF 
-          List findConcept = managerConcept.findConcept( patter_context ) ;
-          
-          if( findConcept != null && findConcept.size() == 2 ) {
-              
-            Integer hash_pattern_context = (Integer) findConcept.get(0) ;
-            String  id_pattern_context   = (String) findConcept.get(1)  ;
-          
-            Node createNode = factoryNode.createNode( hash_pattern_context            , 
-                                                      id_pattern_context              ,
-                                                      null                            ,
-                                                      null                            ,
-                                                       GraphExtractor.PREFIX_PREDICAT ) ;
-              
-             this.managerNode.registerNode( hash_pattern_context , 
-                                            id_pattern_context   , 
-                                            createNode         ) ;
-          }
-      }
-      */          
     }
     
     private ManagerNode instantiateManagerNode ( ManagerConcept managerConcept , 
@@ -283,7 +256,7 @@ public class Processor {
          System.out.println( " ** Processing Graph Variable : "
                              + " [ " + variable.getVariableName()
                                                .replaceFirst(":", "")
-                               + " ]  -------------- \n " )  ;
+                             + " ]  -------------- \n " )  ;
          
          Set<Node> graph      = managerVariable.process( variable )  ;
           
@@ -374,17 +347,7 @@ public class Processor {
              Messages.printMessageMetaPatternsNull() ;
              return true                             ;
      }
-  
-     /*
-     if( metaPatternManager.getMetaPatternContext()  == null  ||
-         metaPatternManager.getMetaPatternVariable() == null  ||
-         metaPatternManager.getMetaPatternParallel() == null   )  {
-                     
-         Messages.printMessageMetaPatternsNull() ;
-         return false                            ;
-     }
-     */
-     
+       
      try {
          
 	 AtomicInteger treatedLine   = new AtomicInteger(-1) ;
@@ -834,7 +797,7 @@ public class Processor {
     
     private String updateMagicFilter ( String magicFilterFile ) throws IOException {
      
-       if( magicFilterFile == null || magicFilterFile.isEmpty() )        {
+       if ( magicFilterFile == null || magicFilterFile.isEmpty() )       {
           return null ;
        }
        
@@ -847,10 +810,10 @@ public class Processor {
                                             final String  outputTurtle ,
                                             final String  query        ) {
         
-       if ( node == null ) return false                                 ;
-       int  code  =        node.getCode()                               ;
+       if ( node == null ) return false                                ;
+       int  code  =        node.getCode()                              ;
        
-       Matcher sql_params = PATTERN_KEY_VALUES.matcher ( outputTurtle ) ;
+       Matcher sql_params = PATTERN_KEY_VALUES.matcher (outputTurtle ) ;
        
        String aliasesAndNames = "" ;
        
