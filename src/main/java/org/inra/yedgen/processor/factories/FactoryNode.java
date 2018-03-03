@@ -56,6 +56,18 @@ public class FactoryNode {
         int codeForObject         = extractCode (object )                                               ; 
 
         String uriObject          = managerUri.getUriByHashAndCode( hash, codeForObject, object )       ;
+        
+         if ( uriObject == null  &&  object != null  && 
+              object.trim().startsWith("(") &&  object.trim().endsWith(")"))  {
+            
+                System.out.println(" ") ;
+                System.out.println( "  >>>>>> Warning // No URI provided for the Node " + object    + 
+                                    "  <<<<<< " ) ;
+                System.out.println("  >>>>>> the Node " + object + " will be considered as NULL and "
+                                   + "will be ignored from the Graph  <<<<<< " ) ;
+                 System.out.println(" ") ;
+        }
+                
         String queryForObject     = managerQuery.getQueryByHashAndCode( hash, codeForObject)            ;
         
         return new Node( hash            , 
