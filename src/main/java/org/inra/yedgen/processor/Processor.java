@@ -5,6 +5,8 @@ import java.io.File ;
 import java.util.Map ;
 import java.util.Set ;
 import java.util.List ;
+import java.util.HashMap ;
+import java.util.HashSet ;
 import java.io.IOException ;
 import java.nio.file.Files ;
 import java.nio.file.Paths ;
@@ -117,9 +119,11 @@ public class Processor {
                                                      managerUri       , 
                                                      managerQuery   ) ;
             
-      this.managerNode            = instantiateManagerNode ( managerEdge, factoryNode )  ;
+      this.managerNode            = instantiateManagerNode ( managerConcept   , 
+							     managerEdge      , 
+							     factoryNode )    ;
       
-      this.obdaHeader             = new ObdaHeader(graphExtractor , version )            ;
+      this.obdaHeader             = new ObdaHeader(graphExtractor , version ) ;
       
       this.managerPatternContext  = new ManagerPatternContext ( graphExtractor.getMapPatternContexts() , 
                                                                 managerQuery     , 
@@ -148,7 +152,7 @@ public class Processor {
                                                          managerPatternParallel)          ;
        
       /* Hack to check if Pattern Context Exists and if is a child node */
-        
+      /*  
       String patter_context = ManagerMetaPattern.getMATCHER_PATTERN_CONTEXT() ;
       Node   findNodeByURI  = managerNode.findNodeByURI( patter_context )     ;
       
@@ -172,13 +176,18 @@ public class Processor {
                                             createNode         ) ;
           }
       }
-                
+      */          
     }
     
-    private ManagerNode instantiateManagerNode ( ManagerEdge managerEdge , FactoryNode factoryNode )  {
+    private ManagerNode instantiateManagerNode ( ManagerConcept managerConcept , 
+                                                 ManagerEdge    managerEdge    , 
+                                                 FactoryNode factoryNode    )  {
         
          ManagerNode localManager = new ManagerNode() ;
-           
+          
+         
+         Map< Integer, Set<String>>  potentialLeafNodesWithURI = new HashMap<>() ;
+         
         for ( Edge edge : Utils.getAll(managerEdge.getEdges()) ) {
             
             int    hash      = edge.getHash()      ;
@@ -191,11 +200,53 @@ public class Processor {
                                                 predicat  , 
                                                 objectId  , 
                                                 PREFIX_PREDICAT ) ; 
+           
+            localManager.registerNode(hash, subjectId, node) ;
+
+            if( potentialLeafNodesWithURI.get(hash) != null &&
+                potentialLeafNodesWithURI.get(hash).contains(subjectId)) {
+                // Not a Ldeaf, retrives from map
+                 potentialLeafNodesWithURI.get(hash).remove(subjectId) ;
+            }
             
-            Utils.putInMap(localManager.getNodes(), hash, subjectId, node) ;
+            final String object = managerConcept.getConcept( hash, objectId ) ;
+		
+            if ( ( object.contains("(")            && 
+                   ! object.trim().startsWith("(") &&
+                   object.trim().endsWith(")") )   ||
+                   object.trim()
+	                 .equals( ManagerMetaPattern.getMATCHER_PATTERN_CONTEXT()) )
+	    {
+                // Potential leaf Node with URI
+                if ( potentialLeafNodesWithURI.containsKey(hash) )      {
+                     potentialLeafNodesWithURI.get(hash).add(objectId ) ;
+                }
+                else {
+                   Set idNodeSet = new HashSet<>() ;
+                   idNodeSet.add(objectId)         ;
+                   potentialLeafNodesWithURI.put(hash, idNodeSet) ;
+                }
+            }
         }
         
+        potentialLeafNodesWithURI.forEach ( ( hash , setNodes ) -> {
+            
+            setNodes.forEach( subjectId -> {
+                
+             Node node = factoryNode.createNode( hash      , 
+                                                 subjectId , 
+                                                 null      , 
+                                                 null      , 
+                                                 PREFIX_PREDICAT ) ; 
+           
+              localManager.registerNode(hash, subjectId, node)     ;
+            
+            }) ;
+            
+        }) ;
+        
         localManager.cloneNodes() ;
+        
         return  localManager      ;    
     }
         
