@@ -7,6 +7,7 @@ import java.util.Set ;
 import java.util.List ;
 import java.util.HashMap ;
 import java.util.HashSet ;
+import java.util.Optional ;
 import java.io.IOException ;
 import java.nio.file.Files ;
 import java.nio.file.Paths ;
@@ -123,6 +124,8 @@ public class Processor {
 							     managerEdge      , 
 							     factoryNode )    ;
       
+      boolean isRealyMetaGraph    = checkAgainIfIsMetaGraph()                 ;
+	    
       this.obdaHeader             = new ObdaHeader(graphExtractor , version ) ;
       
       this.managerPatternContext  = new ManagerPatternContext ( graphExtractor.getMapPatternContexts() , 
@@ -136,7 +139,7 @@ public class Processor {
                                                              graphExtractor.getMetaPatternContext()  , 
                                                              graphExtractor.getMetaPatternParallel() ,
                                                              csvProperties                           ,
-                                                             GraphExtractor.isMetaGraph()            ,
+                                                             isRealyMetaGraph                        ,
                                                              GraphExtractor.containsPaternContext()  ,
                                                              GraphExtractor.containsPaternParralel() ,
                                                              GraphExtractor.containsVariables()    ) ;
@@ -223,6 +226,23 @@ public class Processor {
         return  localManager      ;    
     }
         
+    private boolean checkAgainIfIsMetaGraph() {
+        
+      if ( GraphExtractor.isMetaGraph()  ) return true ;
+    
+       // check again if there's URI or QUERIES
+       // tnat contains "?"
+       Optional<Node> node = managerNode.getAll()
+                                        .stream()
+                                        .filter( n -> {
+                                                 return ( n.getUri().contains("?") ||
+                                                          n.getQuery().contains("?")); })
+                                        .findAny() ;
+	    
+       if ( node.isPresent()) { return true  ;  }
+       return false ;
+    }
+    
     public boolean processFull ( String       outputFile  , 
                                  String       csvFile     , 
                                  String       classe      ,
