@@ -12,18 +12,15 @@ import org.inra.yedgen.processor.entities.Node ;
 import org.inra.yedgen.processor.logs.Messages ;
 import org.inra.yedgen.processor.entities.Variable ;
 import org.inra.yedgen.processor.entities.PatternParallel ;
+import static org.inra.yedgen.graph.managers.GraphExtractor.* ;
 
 /**
  *
  * @author ryahiaoui
  */
 public class ManagerVariable {
-    
-    public static final String PATTERN_CONTEXT  = "##PATTERN_CONTEXT"  ;
-    public static final String PATTERN_PARALLEL = "##PATTERN_PARALLEL" ;
-    public static final String PATTERN_VARIABLE = "?VARIABLE_ENTITY"   ;
   
-    public static final String OPTIONAL_NODE          = "##NULL##"     ;
+    public  static final String OPTIONAL_NODE    = "##NULL##"          ;
     
     private final ManagerPatternContext  managerPatternContext         ;
     private final ManagerPatternParallel managerPatternParallel        ;
