@@ -78,14 +78,26 @@ public class MagicFilter {
                                                                  .trim().split("&") ;
          
          String varName  = split1[0].trim() ; 
-         
-         Stream.of(split1[1].trim().replaceAll(" +", "").split(","))
-               .filter( s -> ! s.isEmpty() )
-               .map (s -> codeQueryByVariables.compute ( 
-                          Integer.parseInt(s) ,
-                          ( k,v)-> v != null ? v + " AND " + 
-                          varName + " IN ?LIST " : varName + " IN ?LIST "))
-               .count() ;
+         try {
+              Stream.of(split1[1].trim().replaceAll(" +", "").split(","))
+                    .filter( s -> ! s.isEmpty() )
+                    .map (s -> codeQueryByVariables.compute ( 
+                               Integer.parseInt(s) ,
+                               ( k,v)-> v != null ? v + " AND " + 
+                               varName + " IN ?LIST " : varName + " IN ?LIST "))
+                    .count() ;
+           } catch( Exception ex ) {             
+             System.out.println("                            " ) ;
+             System.out.println(" ========================== " ) ;
+             System.out.println("                            " ) ;
+             System.out.println(" Magic Filter EXCEPTION :   " ) ;
+             System.out.println("                            " ) ;
+             ex.printStackTrace()                                ;
+             System.out.println("                            " ) ;
+             System.out.println(" ========================== " ) ;
+             System.out.println("                            " ) ;
+             System.exit(2)                                      ;
+         }
                                           
          vars.add( mPatternQuery.group().replace("{", "").replace("}","").trim() ) ;
       } 
