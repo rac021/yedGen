@@ -301,7 +301,10 @@ public class Processor {
     public boolean processOnlyGraphVariables ( String  outputFile ,
                                                VERSION version    )  {
       
-      Messages.printMessageStartProcessVariableGraphGeneration()     ;
+      if ( ! managerVariable.getVariables().isEmpty() ) {
+          
+          Messages.printMessageStartProcessVariableGraphGeneration() ;
+      }
       
       for( Variable variable : managerVariable.getVariables())       {
      
@@ -570,8 +573,12 @@ public class Processor {
         
     }
     
-    public boolean processOnlyGraphWithoutVariables ( String outputFile ) {
+    public boolean processOnlyGraphWithoutVariables ( String outputFile )  {
       
+         if ( metaPatternManager.isMetaGraph() ) return false   ;         
+         
+         Messages.printMessageStartProcessOnlyGraphGeneration() ;
+ 
 	 String _fileName = outputFile.substring(0, outputFile.lastIndexOf('.')) ;
          String extension = outputFile.substring(outputFile.lastIndexOf('.')   ) ;
              
@@ -720,6 +727,16 @@ public class Processor {
          
             process = processOnlyGraphWithoutVariables( outputFile ) ;              
         } 
+	 
+        if ( ! process  )                                            {
+         
+           System.out.println("                                                           ") ;
+           System.out.println(" *** No Mapping Generated  "                                ) ;
+           System.out.println("     => You Probably Provided a MetaGraph without providing "
+                              + " any 'CSV_FILE' or 'Graph_Variables'"                     ) ;
+           System.out.println("                                                           ") ;
+	   System.exit( 2 )                                                                  ;           
+        } 	    
 	    
 	if ( process && ! obdaHeader.ok() ) {
            System.out.println("                                                           ") ;
