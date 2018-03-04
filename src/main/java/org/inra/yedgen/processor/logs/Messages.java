@@ -59,6 +59,14 @@ public class Messages {
        System.err.println("                             " ) ;
      }
     
+    public static void printMessageStartProcessOnlyGraphGeneration() {
+       System.err.println("                             " ) ;
+       System.err.println(" --------------------------- " ) ;
+       System.err.println(" Process Only Graph      ... " ) ;
+       System.err.println(" --------------------------- " ) ;
+       System.err.println("                             " ) ;
+    }
+    
     public static void printMessageStartProcessCsvVariableGeneration( String path ) {
        System.err.println("                          " ) ;
        System.err.println(" ------------------------ " ) ;
