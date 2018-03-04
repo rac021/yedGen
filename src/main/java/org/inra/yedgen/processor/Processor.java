@@ -40,9 +40,9 @@ import org.inra.yedgen.processor.factories.FactoryNode ;
 import org.inra.yedgen.processor.managers.ManagerQuery ;
 import org.inra.yedgen.processor.managers.ManagerVariable ;
 import org.inra.yedgen.processor.managers.ManagerMetaPattern ;
+import static org.inra.yedgen.graph.managers.GraphExtractor.* ;
 import org.inra.yedgen.processor.managers.ManagerPatternContext ;
 import org.inra.yedgen.processor.managers.ManagerPatternParallel ;
-import static org.inra.yedgen.graph.managers.GraphExtractor.PREFIX_PREDICAT ;
 
 /**
  *
@@ -224,7 +224,7 @@ public class Processor {
                    ! object.trim().startsWith("(") &&
                    object.trim().endsWith(")") )   ||
                    object.trim()
-	                 .equals( ManagerMetaPattern.getMATCHER_PATTERN_CONTEXT()) )
+	                 .equals( PATTERN_CONTEXT ) )
 	    {
                 // Potential leaf Node with URI
                 if ( potentialLeafNodesWithURI.containsKey(hash) )      {
