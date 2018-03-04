@@ -6,7 +6,7 @@ import java.util.Map ;
 import java.util.List ;
 import java.util.HashMap ;
 import java.util.ArrayList ;
-import java.util.Collections;
+import java.util.Collections ;
 import java.util.regex.Pattern ;
 import java.util.stream.Collectors ;
 import org.inra.yedgen.processor.logs.Messages ;
