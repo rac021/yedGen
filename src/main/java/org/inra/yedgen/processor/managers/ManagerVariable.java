@@ -92,7 +92,9 @@ public class ManagerVariable {
        String  keyValuesVariable = ""             ;
        
        String stringValue      =  patternValue == null ? "" : 
-                                  patternValue.trim().replaceAll(" +", " ") ;
+                                  patternValue.trim()
+                                              .replace("{", " { ")
+                                              .replaceAll(" +", " ") ;
        
        if( stringValue.split(" ")[0].trim().startsWith(PATTERN_CONTEXT))   {
            
