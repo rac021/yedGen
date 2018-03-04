@@ -261,7 +261,7 @@ public class ManagerVariable {
                          .count() ;
 
       // How ?VARIABLE will be updated after applying KeyValues method 
-      variable.getKeyValues().put( PATTERN_VARIABLE, variable.getVariableName()) ;
+      variable.getKeyValues().put( VARIABLE_ENTITY , variable.getVariableName()) ;
         
       managerPatternParallel.applyKeyValues( new HashSet<>(generatedGraphNodes)  , 
                                                  variable.getKeyValues()  )      ;
