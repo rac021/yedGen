@@ -92,7 +92,7 @@ public final class Node implements Serializable  {
             
         } else {
             
-            /* Recursivity */
+            /* Recursivity - Recursion */
             
             this.predicat  = this.predicat == null ? "" :
                              this.predicat.replaceAll(" +", " ").trim()
@@ -100,18 +100,7 @@ public final class Node implements Serializable  {
              
             List<String> expp =  null ;
             
-            try {
-               expp = extractPredicatePattern( predicat )  ;
-            }  catch( Exception x) {
-                
-                x.printStackTrace()                         ;
-                System.out.println(" ")                     ;
-                
-                throw new IllegalArgumentException ( " \n May Be : \n "
-                 + " 1- You have a recursion with a bad syntax on"
-                 + " the Node having the Code [ " + code + " ] \n "
-                 + " 2- You have 2 nodes with the same Code [ " + code + " ] \n " ) ;
-            }
+            expp = extractPredicatePatternFromRecursion ( predicat )  ;
             
             if( expp != null ) {
                 this.addPredicatWithObject( this.predicat , 
@@ -499,17 +488,30 @@ public final class Node implements Serializable  {
     
    }
    
-   private List<String> extractPredicatePattern( String predicate ) {
+   private List<String> extractPredicatePatternFromRecursion( String predicate ) {
+       
+    // Syntax exp : hasContext { bloc_absolute_id > parent_absolute_id }
     // index 0 : sourcerPredicatePattern
     // index 1 : targetPredicatePattern
-    if( predicate == null ) return null ;
-    if( !predicate.contains("{") && ! predicate.contains("}")) return null ;
-    return  Arrays.asList(predicate.replace("}", "")
-                  .replaceAll(" +", " ")
-                  .trim()
-                  .split(Pattern.quote("{"))[1].split(">")) ;    
+       
+     if ( predicate == null ) return null ;
+       
+     if( ! predicate.matches ("\\w+\\s*\\{{1}\\s*\\w+\\s*\\>{1}\\s*\\w+\\s*\\}{1}$") ) {
+            System.out.println( " " )                                      ;
+            System.out.println( " Error when parsing syntax Recursion " )  ;
+            System.out.println(" May Be : \n "
+                      + "  1- You have a recursion with a bad syntax on"
+                      + " the Node having the Code [ " + code + " ] \n "
+                      + "  2- You have 2 nodes with the same Code [ " + code + " ] \n "
+                      + "  3- Syntax Exp : hasContext { bloc_absolute_id > parent_absolute_id } " ) ;
+            System.exit( 2)   ;   
+     }
+  
+     return  Arrays.asList(predicate.replace("}", "")
+                   .replaceAll(" +", " ")
+                   .trim()
+                   .split(Pattern.quote("{"))[1].split(">")) ;    
    }
-   
    
    public static String cleanValue( String value ) {
         
