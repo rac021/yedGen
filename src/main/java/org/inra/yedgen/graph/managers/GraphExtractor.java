@@ -19,7 +19,6 @@ import org.inra.yedgen.graph.utils.Utils ;
 import org.inra.yedgen.graph.entities.Edge ;
 import org.inra.yedgen.processor.logs.Messages ;
 import static java.util.stream.Collectors.toList ;
-import org.inra.yedgen.processor.managers.ManagerVariable ;
 
 /**
  *
@@ -55,6 +54,7 @@ public class GraphExtractor {
     public static final String  META_PATTERN_CONTEXT  = "##META_PATTERN_CONTEXT"  ;
     public static final String  META_PATTERN_PARALLEL = "##META_PATTERN_PARALLEL" ;
     public static final String  META_VERIABLE         = "?META_VARIABLE"          ;
+    public static final String  PATTERN_VARIABLE      = "?VARIABLE_ENTITY"        ;
     public static final String  MAGIC_FILTER          = "##Magic_Filter "         ;
     
     private static boolean  isMetaGraph                = false                     ;
@@ -134,14 +134,13 @@ public class GraphExtractor {
                                              .split(" ")[0]),"").trim() ) ;  
                     }
                                     
-                    else if ( label.startsWith(ManagerVariable.PATTERN_VARIABLE) && 
-                              label.contains(" "))                                {
+                    else if ( label.startsWith( PATTERN_VARIABLE) && label.contains(" "))    {
                                         
                         Utils.putInMap( mapVariables , 
                                         hash         , 
                                         id           , 
                                         label.trim().replaceFirst( Pattern.quote ( 
-                                                     ManagerVariable.PATTERN_VARIABLE),"") ) ;  
+                                                                   PATTERN_VARIABLE) , "") ) ;  
                     }
                                     
                     else if (label.startsWith(META_VERIABLE) && label.contains(" "))  {
@@ -358,13 +357,13 @@ public class GraphExtractor {
                                                                  .split(" ")[0]),"").trim() ) ;  
                                     }
                                     
-                                    else if (label.startsWith(ManagerVariable.PATTERN_VARIABLE) && label.contains(" ")) {
+                                    else if (label.startsWith( PATTERN_VARIABLE ) && label.contains(" "))    {
                                         
                                         Utils.putInMap( mapVariables, 
                                                         hash, 
                                                         id , 
                                                         label.trim().replaceFirst( Pattern.quote ( 
-                                                                     ManagerVariable.PATTERN_VARIABLE),"") ) ;  
+                                                                                   PATTERN_VARIABLE), "" ) ) ;  
                                     }
                                     
                                     else if (label.startsWith(META_VERIABLE) && label.contains(" "))              {
@@ -519,7 +518,7 @@ public class GraphExtractor {
 
                             }
                             
-                            else if (label.startsWith(ManagerVariable.PATTERN_VARIABLE) && label.contains(" ")) {  
+                            else if (label.startsWith( PATTERN_VARIABLE ) && label.contains(" "))   {  
 
                                 Utils.putInMap( mapVariables , 
                                                 hash         , 
