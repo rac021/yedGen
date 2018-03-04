@@ -725,6 +725,7 @@ public class Processor {
            System.out.println("                                                           ") ;
            System.out.println(" <<<< Warning : Connection informations not Provided >>>> " ) ;
            System.out.println("                                                           ") ;
+	   System.exit( 2 )                                                                  ;
         }
 	    
     }
