@@ -177,7 +177,10 @@ public class ManagerPatternParallel {
                   .collect(Collectors.toMap( Map.Entry::getKey ,
                                              e -> e.getValue()
                                                    .contains( ManagerMetaPattern
-                                                   .findFirstIntraColumnSeparator(e.getValue())) ? 
+                                                   .findFirstIntraColumnSeparator(e.getValue())) && 
+                                                  e.getValue().split( 
+                                                        ManagerMetaPattern.findFirstIntraColumnSeparator ( 
+                                                                                 e.getValue())).length > index ? 
                                                   e.getValue().split( ManagerMetaPattern
                                                    .findFirstIntraColumnSeparator(e.getValue()))[index].trim() : 
                                                   e.getValue().trim() ) ) ;
