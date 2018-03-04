@@ -227,10 +227,10 @@ public class ManagerVariable {
                                                                       .findFirstIntraColumnSeparator(s2)).length ? 1 : -1 )
                                                 .orElse("") ;
         
-        int repeatitions = valWithIntraSeparator.split( ManagerMetaPattern.findFirstIntraColumnSeparator ( 
+        int repetitions = valWithIntraSeparator.split( ManagerMetaPattern.findFirstIntraColumnSeparator ( 
                                                                                             valWithIntraSeparator) ).length ;
         
-        for ( int parallelIndex = 0 ; parallelIndex < repeatitions ; parallelIndex++ ) {
+        for ( int parallelIndex = 0 ; parallelIndex < repetitions ; parallelIndex++ ) {
                 
             List<Node> generatePatternParallel = managerPatternParallel.generatePatternParallel ( variable.getHash()        ,
                                                                                                   patternParallel.getId() ) ;
