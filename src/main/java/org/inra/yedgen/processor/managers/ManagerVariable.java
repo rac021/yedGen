@@ -219,17 +219,18 @@ public class ManagerVariable {
         
         Map<String, String> keyValues = patternParallel.getKeyValues() ;
         
-        String deepest = keyValues.values()
-                                  .stream()
-                                  .max( ( s1, s2 ) -> s1.split( ManagerMetaPattern
-                                                        .findFirstIntraColumnSeparator(s1)).length >
-                                                      s2.split( ManagerMetaPattern
-                                                        .findFirstIntraColumnSeparator(s2)).length ? 1 : -1 )
-                                  .orElse("") ;
+        String valWithIntraSeparator = keyValues.values()
+                                                .stream()
+                                                .max( ( s1, s2 ) -> s1.split( ManagerMetaPattern
+                                                                      .findFirstIntraColumnSeparator(s1)).length >
+                                                                    s2.split( ManagerMetaPattern
+                                                                      .findFirstIntraColumnSeparator(s2)).length ? 1 : -1 )
+                                                .orElse("") ;
         
-        int repeat = deepest.split(ManagerMetaPattern.findFirstIntraColumnSeparator(deepest)).length ;
+        int repeatitions = valWithIntraSeparator.split( ManagerMetaPattern.findFirstIntraColumnSeparator ( 
+                                                                                            valWithIntraSeparator) ).length ;
         
-        for ( int parallelIndex = 0 ; parallelIndex < repeat ; parallelIndex++ ) {
+        for ( int parallelIndex = 0 ; parallelIndex < repeatitions ; parallelIndex++ ) {
                 
             List<Node> generatePatternParallel = managerPatternParallel.generatePatternParallel ( variable.getHash()        ,
                                                                                                   patternParallel.getId() ) ;
