@@ -363,7 +363,7 @@ public class GraphExtractor {
                                                         hash, 
                                                         id , 
                                                         label.trim().replaceFirst( Pattern.quote ( 
-                                                                                   VARIABL ), "" ) ) ;  
+                                                                                   VARIABLE ), "" ) ) ;  
                                     }
                                     
                                     else if (label.startsWith(META_VERIABLE) && label.contains(" "))              {
