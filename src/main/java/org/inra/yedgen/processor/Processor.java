@@ -192,14 +192,13 @@ public class Processor {
             
             final String label  = managerConcept.getConcept( hash, subjectId ) ;
             
-            if ( label.trim().equals ( ManagerVariable.PATTERN_PARALLEL ) )  {
+            if ( label.trim().equals ( PATTERN_PARALLEL ) )       {
                                     
                 // means that The Pattern_Parallel is not Leaf Node
                                     
                 System.out.println("   ") ;
-                System.out.println( " => The [ " 
-                                    + ManagerVariable.PATTERN_PARALLEL + " ]"
-                                    + " Node must be a Leaf Node ") ;
+                System.out.println( " => The [ "  + PATTERN_PARALLEL 
+				  + " ] Node must be a Leaf Node ") ;
                 System.out.println("   ")                           ;
                 System.exit( 2 )                                    ;
             }
