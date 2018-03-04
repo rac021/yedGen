@@ -10,6 +10,8 @@ import java.util.regex.Matcher ;
 import java.util.regex.Pattern ;
 import org.inra.yedgen.properties.CsvProperties ;
 import static org.inra.yedgen.processor.logs.Messages.* ;
+import static org.inra.yedgen.graph.managers.GraphExtractor.* ;
+
 /**
  *
  * @author ryahiaoui
@@ -26,19 +28,14 @@ public class ManagerMetaPattern                {
     private static String       CSV_SEPARATOR            ;
     public  static List<String> INTRA_COLUMN_SEPARATORS  ;
     
-    private static final String  META_PATTERN_CONTEXT     = "##META_PATTERN_CONTEXT"  ;
-    private static final String  META_PATTERN_PARALLEL    = "##META_PATTERN_PARALLEL" ;
-    private static final String  META_VERIABLE            = "?META_VARIABLE"          ;
-    private static final String  MATCHER_PATTERN_CONTEXT  = "##PATTERN_CONTEXT"       ;
-    private static final String  MATCHER_PATTERN_PARALLEL = "##PATTERN_PARALLEL"      ;
-    
-    private static final String  DEFAULT_SV_SEPARATOR     = ";"                       ;
-    
-    private final  boolean      isMataGraph            ;    
-    private final  boolean      containsPaternContext  ;
-    private final  boolean      containsPaternParralel ;
-    private final  boolean      containsVariables      ;
+    private final  boolean      isMataGraph              ;    
+    private final  boolean      containsPaternContext    ;
+    private final  boolean      containsPaternParralel   ; 
+    private final  boolean      containsVariables        ;
 
+    private static final String  DEFAULT_SV_SEPARATOR    = ";"      ;
+    
+    
     public ManagerMetaPattern( Integer       metaPatternHash        ,
                                String        metaPatternVariable    ,
                                String        metaPatternContext     , 
@@ -67,11 +64,12 @@ public class ManagerMetaPattern                {
           this.csvProperties.getConfig().getString("CSV_SEPARATOR") : 
           DEFAULT_SV_SEPARATOR                                      ;
           
-          INTRA_COLUMN_SEPARATORS = this.csvProperties.getConfig().getString("INTRA_COLUMN_SEPARATORS") != null ?
-                  Arrays.asList(csvProperties.getConfig().getString("INTRA_COLUMN_SEPARATORS").split("(?!^)")) : 
-                  Arrays.asList(",");
-                  
-                                         
+          INTRA_COLUMN_SEPARATORS = this.csvProperties.getConfig()
+                                        .getString("INTRA_COLUMN_SEPARATORS") != null ?
+                                    Arrays.asList( csvProperties.getConfig()
+                                                                .getString("INTRA_COLUMN_SEPARATORS")
+                                                                .split("(?!^)")) : 
+                                    Arrays.asList(",") ;
         }
         else {
           CSV_SEPARATOR = DEFAULT_SV_SEPARATOR         ;
@@ -110,6 +108,7 @@ public class ManagerMetaPattern                {
         String variable = metaPatternVariable         ;
          
         Pattern p = Pattern.compile("[:'\"]?COLUMN_+\\w+['\"]?") ;
+        
         Matcher m = p.matcher(metaPatternVariable )              ;
         
         List<String> usedColumns = new ArrayList()                         ;
@@ -132,7 +131,8 @@ public class ManagerMetaPattern                {
               
               throw new IllegalArgumentException("\n \n "
                         + "ArrayIndexOutOfBoundsException : "
-                        + " trying to acces the column [" + num + "] When Max column = "
+                        + " trying to acces the column [" + num + "] "
+                        + "When Max column = "
                         + total_columns + "\n ") ;
           }
           String columnValue = csvLine.replaceAll(" +", " ")
@@ -150,8 +150,8 @@ public class ManagerMetaPattern                {
            variable = variable.replaceAll ( columnPattern, columnValue )       ;
         }
 
-        return variable.replace(META_PATTERN_CONTEXT, MATCHER_PATTERN_CONTEXT  )
-                       .replace(META_PATTERN_PARALLEL, MATCHER_PATTERN_PARALLEL) ;        
+        return variable.replace(META_PATTERN_CONTEXT, PATTERN_CONTEXT  )
+                       .replace(META_PATTERN_PARALLEL, PATTERN_PARALLEL) ;        
     }
 
         
@@ -176,7 +176,8 @@ public class ManagerMetaPattern                {
        int variablesColumnNum = Integer.parseInt( column.replaceAll("[^0-9]", "")) ;
        
        if( variablesColumnNum > csvLine.split(CSV_SEPARATOR).length ) {
-            printMessageError( "-> Error : ColumnNumber > csvLine_Separator // Probably Bad CSV_SEPARATOR ! " ) ;
+            printMessageError( "-> Error : ColumnNumber > csvLine_Separator // "
+                               + " Probably Bad CSV_SEPARATOR ! " )   ;
             System.exit( 0 ) ;
         }
 
@@ -229,33 +230,38 @@ public class ManagerMetaPattern                {
       if( ( metaPatternVariable == null     || 
             metaPatternVariable.isEmpty() ) && 
             containsVariables ) {
+          
          printMessageMetaPatternError("metaPatternVariable") ;
          return false ;
+         
       } 
 
-      if( metaPatternVariable != null && containsPaternContext   &&
+      if ( metaPatternVariable != null && containsPaternContext  &&
          ! metaPatternVariable.contains( META_PATTERN_CONTEXT ) ) {
+          
          printMessageMetaPatternErrorMustContains( META_VERIABLE, META_PATTERN_CONTEXT ) ;
          return false ;
+         
       }
         
-      if(  metaPatternVariable != null && containsPaternParralel &&
-         ! metaPatternVariable.contains( META_PATTERN_PARALLEL ))  {
+      if (  metaPatternVariable != null && containsPaternParralel  &&
+         ! metaPatternVariable.contains( META_PATTERN_PARALLEL ))   {
+          
          printMessageMetaPatternErrorMustContains( META_VERIABLE           , 
                                                    META_PATTERN_PARALLEL ) ;
          return false ;
+         
       }
     
       return true ;
       
     }
     
-    private void checkMetaPatternContext() {
+    private void checkMetaPatternContext()  {
 
-      if( metaPatternContext == null || metaPatternContext.isEmpty())   {
+      if ( metaPatternContext == null || metaPatternContext.isEmpty())   {
          printMessageMetaPatternError("metaPatternContext") ;
-      }        
-         
+      }  
     }
     
     private void checkMetaPatternParallel() {
@@ -279,7 +285,7 @@ public class ManagerMetaPattern                {
         return isMataGraph ;
     }
     public boolean containsPaternContext() {
-        return containsPaternContext;
+        return containsPaternContext ;
     }
 
     public boolean containsPaternParralel() {
@@ -287,11 +293,11 @@ public class ManagerMetaPattern                {
     }
 
     public boolean containsVariables() {
-        return containsVariables ;
+        return containsVariables     ;
     } 
     
     public static String getMETA_PATTERN_CONTEXT() {
-        return META_PATTERN_CONTEXT ;
+        return META_PATTERN_CONTEXT  ;
     }
 
     public static String getMETA_PATTERN_PARALLEL() {
@@ -299,15 +305,7 @@ public class ManagerMetaPattern                {
     }
 
     public static String getMETA_VERIABLE() {
-        return META_VERIABLE ;
-    }
-
-    public static String getMATCHER_PATTERN_CONTEXT() {
-        return MATCHER_PATTERN_CONTEXT ;
-    }
-
-    public static String getMATCHER_PATTERN_PARALLEL() {
-        return MATCHER_PATTERN_PARALLEL ;
+        return META_VERIABLE         ;
     }
     
     /*
