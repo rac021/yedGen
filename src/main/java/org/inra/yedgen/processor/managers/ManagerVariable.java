@@ -259,9 +259,6 @@ public class ManagerVariable {
                          .flatMap( set -> set.stream())
                          .map( s -> s.remove(PATTERN_PARALLEL))
                          .count() ;
-
-      // How ?VARIABLE will be updated after applying KeyValues method 
-      variable.getKeyValues().put( VARIABLE_ENTITY , variable.getVariableName()) ;
         
       managerPatternParallel.applyKeyValues( new HashSet<>(generatedGraphNodes)  , 
                                                  variable.getKeyValues()  )      ;
