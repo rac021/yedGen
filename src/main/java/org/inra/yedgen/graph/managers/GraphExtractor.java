@@ -45,7 +45,7 @@ public class GraphExtractor {
     private final Map<String,  String>  SourceDeclaration                  ;
     private final Map<String , String>  prefixs                            ;
 
-    public static String  PREFIX_PREDICAT                 =  "NULL-PREFIX"      ;
+    public static       String  PREFIX_PREDICAT          =  "NULL-PREFIX"       ;
    
     public static final String  PATTERN_CONTEXT          = "##PATTERN_CONTEXT"  ;
     public static final String  PATTERN_PARALLEL         = "##PATTERN_PARALLEL" ;
