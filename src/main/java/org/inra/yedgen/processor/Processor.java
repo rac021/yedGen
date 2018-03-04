@@ -190,6 +190,20 @@ public class Processor {
             String objectId  = edge.getObjetId()   ;
             String predicat  = edge.getPredicat()  ;
             
+            final String label  = managerConcept.getConcept( hash, subjectId ) ;
+            
+            if ( label.trim().equals ( ManagerVariable.PATTERN_PARALLEL ) )  {
+                                    
+                // means that The Pattern_Parallel is not Leaf Node
+                                    
+                System.out.println("   ") ;
+                System.out.println( " => The [ " 
+                                    + ManagerVariable.PATTERN_PARALLEL + " ]"
+                                    + " Node must be a Leaf Node ") ;
+                System.out.println("   ")                           ;
+                System.exit( 2 )                                    ;
+            }
+		
             Node node = factoryNode.createNode( hash      , 
                                                 subjectId , 
                                                 predicat  , 
