@@ -146,6 +146,10 @@ public class ManagerMetaPattern                {
              columnValue = "\"" + columnValue ;
              if ( columnPattern.trim().endsWith("\"") ) columnValue += "\""    ;
           }
+          else if ( columnPattern.trim().startsWith(":") )    {
+             columnValue = ":" + columnValue ;
+             if ( columnPattern.trim().endsWith(":") ) columnValue += ":"      ;
+          }
           
            variable = variable.replaceAll ( columnPattern, columnValue )       ;
         }
