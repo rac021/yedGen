@@ -294,7 +294,7 @@ public class Processor {
         boolean processVariables = processOnlyGraphVariables( outputFile ,
                                                               version  ) ;
         
-        return processVariables && processCSV ;
+        return processVariables || processCSV ;
       
     }
 
