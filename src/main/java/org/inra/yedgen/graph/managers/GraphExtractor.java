@@ -163,7 +163,7 @@ public class GraphExtractor {
                               label.contains(":"))                                         { 
                         magicFilter = label.trim().replaceAll(" +", " ")
                                            .replaceFirst(Pattern.quote(MAGIC_FILTER),"")
-                                           .split(Pattern.quote(":"))[1] ;
+                                           .split(Pattern.quote(":"), 2 ) [1] ;
                     }
 
                     else if (label.toLowerCase().startsWith("query_(")) {
@@ -380,7 +380,7 @@ public class GraphExtractor {
                                               label.contains(":"))                                         { 
                                         magicFilter = label.trim().replaceAll(" +", " ")
                                                            .replaceFirst(Pattern.quote(MAGIC_FILTER),"")
-                                                           .split(Pattern.quote(":"))[1] ;
+                                                           .split(Pattern.quote(":"), 2 ) [1] ;
                                     }
 
                                     int code ;
@@ -539,7 +539,7 @@ public class GraphExtractor {
                             else if ( label.trim().replaceAll(" +", " ").startsWith(MAGIC_FILTER) && label.contains(":")) { 
                                         magicFilter = label.trim().replaceAll(" +", " ")
                                                            .replaceFirst(Pattern.quote(MAGIC_FILTER),"")
-                                                           .split(Pattern.quote(":"))[1] ;
+                                                           .split(Pattern.quote(":"), 2 ) [1] ;
                             }
 
                             else if(label.toLowerCase().startsWith("query_("))  {
