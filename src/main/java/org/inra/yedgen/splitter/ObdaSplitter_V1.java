@@ -208,9 +208,9 @@ public class ObdaSplitter_V1 {
        Map<Integer, String> copy = new HashMap<>(codeQueryByVariables)      ; 
        
        copy.replaceAll ( (k, u) ->  u.replaceAll( Pattern.quote("?DATE_0")  ,
-                                                 "'" + l.get(0).toString()  + "'" )
+                                                  l.get(0).toString()       )
                                      .replaceAll( Pattern.quote("?DATE_1" ) , 
-                                                  "'" + l.get(1).toString() + "'" )
+                                                  l.get(1).toString()       )
        ) ;
        return copy ;
     }
