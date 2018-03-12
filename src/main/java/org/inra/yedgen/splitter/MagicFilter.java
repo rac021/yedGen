@@ -81,10 +81,17 @@ public class MagicFilter {
          try {
               Stream.of(split1[1].trim().replaceAll(" +", "").split(","))
                     .filter( s -> ! s.isEmpty() )
+                    /*
                     .map (s -> codeQueryByVariables.compute ( 
                                Integer.parseInt(s) ,
                                ( k,v)-> v != null ? v + " AND " + 
                                varName + " IN ?LIST " : varName + " IN ?LIST "))
+                     */
+                   .map (s -> codeQueryByVariables.compute (
+                               Integer.parseInt(s) ,
+                               ( k,v)-> v != null ? 
+                               v + " AND LOWER ( " + varName.toLowerCase() + " ) IN ?LIST " : 
+                               varName.toLowerCase() + " IN ?LIST ") )
                     .count() ;
            } catch( Exception ex ) {             
              System.out.println("                            " ) ;
