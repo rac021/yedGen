@@ -109,8 +109,8 @@ public class ObdaSplitter_V1 {
                                      .map( node -> node.copy() )
                                      .collect(toSet()) ;
          
-          List<String> outPut    = new ArrayList<>() ;
-          outPut.addAll(obdaHeader.getHeaderOut())   ; 
+          List<String> outPut    = new ArrayList<>()   ;
+          outPut.addAll(obdaHeader.getHeaderOut())     ; 
                 
           List< Map<Integer, String> > combined = new ArrayList<>() ;
 
