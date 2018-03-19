@@ -55,7 +55,7 @@ public final class Node implements Serializable  {
                  Integer codeObject    ,
                  String  uriObject     ,
                  String  queryObject   ,
-                 String  defaultPrefix )  {
+                 String  defaultPrefix )     {
 
         Objects.requireNonNull(codeSubject ) ;
         this.defaultPrefix   = defaultPrefix ;
