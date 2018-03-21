@@ -44,6 +44,9 @@ public final class Node implements Serializable  {
     
     enum TypeTriple { SUBJECT , PREDICATE , OBJECT } ;
     
+    private static final String URI_VALIDATOR = 
+            "^((https?|ftp|file)://|(www\\.))[-a-zA-Z0-9+&@#/%?=~_|!:,.;µs%°]*[-a-zA-Z0-9+&@#/%=~_|]" ;
+            
     public Node( Integer hash          , 
                  String  id            , 
                  int     codeSubject   , 
@@ -78,7 +81,7 @@ public final class Node implements Serializable  {
         
         if( uri == null && codeSubject < 0 )   this.uri = type        ;
         
-        if( uri != null ) {
+        if( uri != null  && ! uri.trim().equals(label.trim()) )     {
           this.addPredicatWithObject( "a", type )             ;
         }
         
@@ -88,6 +91,18 @@ public final class Node implements Serializable  {
         
         if ( codeObject == null || codeObject != codeSubject ) {
              
+            if( ! uriObject.contains("?")) {
+            
+               if( uriObject.matches( URI_VALIDATOR) )  {
+                   uriObject = "<" + uriObject  + ">"   ;
+               }
+               else if ( ! uriObject.trim().startsWith("\"") &&
+                         ! uriObject.trim().startsWith("\"") &&
+                         ! uriObject.trim().contains(":") )   {
+                   uriObject = "\"" + uriObject + "\"" ;
+               }
+            }
+            
             this.addPredicatWithObject( predicat , uriObject ) ;
             
         } else {
@@ -409,9 +424,23 @@ public final class Node implements Serializable  {
                  String line = it.next()             ;
                  
                  if ( matchesStringPattenrn( line, pattern ) ) {
-                    it.remove()                                                      ;
-                    it.add(line.replace( pattern , 
-                                         isUri(line) ? cleanValue(value) : value  )) ;
+                                     
+                    // it.add(line.replace( pattern , 
+                    //                   isUri(line) ? cleanValue(value) : value  )) ;
+                    
+                    line = line.replace( pattern , value ) ;
+                    
+                    if ( line.matches(URI_VALIDATOR) ) {
+                         line = "<" + line + ">" ;                     
+                    }                                      
+                    else if ( ! line.contains(":")    && 
+                              ! line.startsWith("\"") && 
+                              ! line.endsWith("\"") )  {
+                         line = "\"" + line   + "\""   ; 
+                    }
+                    
+                    it.remove()    ;
+                    it.add( line ) ;
                 }
             }
             
@@ -421,8 +450,18 @@ public final class Node implements Serializable  {
         }
         
         if ( matchesStringPattenrn( uri , pattern ) ) {
-           uri = uri != null ? uri.replace( pattern, cleanValue(value) ) : uri ;
+           //uri = uri != null ? uri.replace( pattern, cleanValue(value) ) : uri ;
+           uri = uri != null ? uri.replace( pattern, value ) : uri ;          
         }
+        
+        if ( uri.matches( URI_VALIDATOR ) ) {
+             uri = "<" + uri + ">" ;
+        }
+        else if( ! uri.contains(":")   && 
+                 ! uri.startsWith("<") && 
+                 ! uri.endsWith(">") )  {
+             uri = ":" + uri          ;
+        }        
         
         if ( matchesStringPattenrn( type , pattern ) ) {
            type =  type != null ? type.replace ( pattern, value ) : type       ;
@@ -499,11 +538,11 @@ public final class Node implements Serializable  {
      if( ! predicate.matches ("\\w+\\s*\\{{1}\\s*\\w+\\s*\\>{1}\\s*\\w+\\s*\\}{1}$") ) {
             System.out.println( " " )                                      ;
             System.out.println( " Error when parsing syntax Recursion " )  ;
-            System.out.println(" May Be : \n "
-                      + "  1- You have a recursion with a bad syntax on"
-                      + " the Node having the Code [ " + code + " ] \n "
-                      + "  2- You have 2 nodes with the same Code [ " + code + " ] \n "
-                      + "  3- Syntax Exp : hasContext { bloc_absolute_id > parent_absolute_id } " ) ;
+            System.out.println( " May Be : \n "
+                                + "  1- You have a recursion with a bad syntax on"
+                                + " the Node having the Code [ " + code + " ] \n "
+                                + "  2- You have 2 nodes with the same Code [ " + code + " ] \n "
+                                + "  3- Syntax Exp : hasContext { bloc_absolute_id > parent_absolute_id } " ) ;
             System.exit( 2)   ;   
      }
   
@@ -513,8 +552,11 @@ public final class Node implements Serializable  {
                    .split(Pattern.quote("{"))[1].split(">")) ;    
    }
    
+   /*
    public static String cleanValue( String value ) {
         
+      // if (value.matches(URI_VALIDATOR))  return value ;
+       
       return value.startsWith(":")        ?
              value.replace(":" , "")
                   .replace("'" , "")
@@ -525,6 +567,7 @@ public final class Node implements Serializable  {
                   .replace("\"", "")
                   .replaceAll(" +" , "")  ;
    }
+   */
    
    public void applyToQuery(String filterQuery ) {
        

@@ -54,7 +54,7 @@ public class ManagerUri {
      
   public String getUriByHashAndCode( Integer hash , Integer codeUri , String label ) {
         
-     if ( codeUri == -1 ) return label ;
+     if ( codeUri == -1 || label.trim().contains("?") ) return label ;
      
      if ( label.startsWith("(") && label.endsWith(")") ) {
           return getUri( null, codeUri ) ;
