@@ -89,9 +89,9 @@ public final class Node implements Serializable  {
                                         predicat              , 
                                         TypeTriple.PREDICATE  ) ;
         
-        if ( codeObject == null || codeObject != codeSubject ) {
+        if ( codeObject == null || codeObject != codeSubject )  {
              
-            if( ! uriObject.contains("?")) {
+            if( uriObject != null && ! uriObject.contains("?")) {
             
                if( uriObject.matches( URI_VALIDATOR) )  {
                    uriObject = "<" + uriObject  + ">"   ;
