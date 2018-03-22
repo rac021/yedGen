@@ -20,6 +20,7 @@ import org.inra.yedgen.sql.SqlAnalyzer ;
 import org.apache.commons.lang.StringUtils ;
 import org.inra.yedgen.properties.ObdaProperties ;
 import static java.util.stream.Collectors.joining ;
+import org.inra.yedgen.graph.managers.GraphExtractor ;
 import org.inra.yedgen.processor.managers.ManagerVariable ;
 
 /**
@@ -91,7 +92,10 @@ public final class Node implements Serializable  {
         
         if ( codeObject == null || codeObject != codeSubject )  {
              
-            if( uriObject != null && ! uriObject.contains("?")) {
+            if (  uriObject != null                                 &&
+                ! uriObject.contains("?")                           &&
+                ! uriObject.equals(GraphExtractor.PATTERN_CONTEXT)  &&
+                ! uriObject.equals(GraphExtractor.PATTERN_PARALLEL) ) {
             
                if( uriObject.matches( URI_VALIDATOR) )  {
                    uriObject = "<" + uriObject  + ">"   ;
