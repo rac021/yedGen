@@ -137,9 +137,14 @@ public class FactoryNode {
       String uri    = managerUri.getUri(hash, code)      ;    
       String query  = managerQuery.getQuery(hash, code ) ;    
 
-      String predicatObject = token.split(" ")[1] ;
-      String object         = treateConcept( hash, token.split(" ")[2]) ;
+      String predicatObject = null                       ;
+      String object         = null                       ;
       
+      if ( token.split(" ").length >= 3 )      {
+          predicatObject = token.split(" ")[1] ;
+          object         = treateConcept( hash, token.split(" ")[2]) ;
+      }
+            
       if( uri == null ) {
            System.err.println("")   ;
            System.err.println(" Error // No Uri found with Hash : " + hash + " // Code : " + code ) ;
