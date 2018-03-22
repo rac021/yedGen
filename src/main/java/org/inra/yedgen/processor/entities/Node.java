@@ -436,7 +436,13 @@ public final class Node implements Serializable  {
                     
                     if ( line.matches(URI_VALIDATOR) ) {
                          line = "<" + line + ">" ;                     
-                    }                                      
+                    } 
+                    else if ( isUri(line))         {
+                      if ( ! line.contains(":")   &&  
+                           ! line.startsWith(":")) {
+                         line = ":" + line    ;
+                    }
+                    }
                     else if ( ! line.contains(":")    && 
                               ! line.startsWith("\"") && 
                               ! line.endsWith("\"") )  {
