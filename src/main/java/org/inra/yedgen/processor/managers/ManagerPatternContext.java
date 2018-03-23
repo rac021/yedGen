@@ -187,14 +187,18 @@ public class ManagerPatternContext {
             String typeOfSubject  = entity     .split("_") [0] ;
             String entityName     = entity     .split("_") [1] ;
 
-            int numQuery           = Integer.parseInt(vars.get(i)
-                                            .split(" " )[1].split("_")[1]) ;
+            int numQuery          = -6981 ;
+            
+            if( vars.get(i).split(" " ).length > 1 )   {
+                numQuery  = Integer.parseInt(vars.get(i)
+                                   .split(" " )[1].split("_")[1]) ;
+            }
              
             /* register a link between numQuery and startCode in the managerQuery */
             managerQuery.registerLink( startCode, numQuery ) ;
             
-            String queryForSubject =  managerQuery.getQuery( null , numQuery ) ; 
-            
+            String queryForSubject =  numQuery == -6981 ? ManagerQuery.SPEACIAL_SQL_QUERY : 
+                                                          managerQuery.getQuery( null , numQuery ) ; 
             
             if( queryForSubject == null ) {
                 System.out.println("")   ;
