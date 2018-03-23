@@ -185,12 +185,22 @@ public class ManagerMetaPattern                {
             System.exit( 0 ) ;
         }
 
-        String nums            = matcher.split("Q_")[1]               ;
-        int    startQueryNum   = Integer.parseInt(nums.split("_")[0]) ;
-        int    middleQueryNum  = Integer.parseInt(nums.split("_")[1]) ;
-        int    endQueryNum     = Integer.parseInt(nums.split("_")[2]) ;
-        int    loop            = startQueryNum                        ;        
-       
+        String nums            =  null         ;
+        int    startQueryNum   = -6981         ;
+        int    middleQueryNum  = -6981         ;
+        int    endQueryNum     = -6981         ;
+        int    loop            = startQueryNum ;    
+        
+        if ( matcher.contains("Q_")) {
+            
+          nums            = matcher.split("Q_")[1]               ;
+          startQueryNum   = Integer.parseInt(nums.split("_")[0]) ;
+          middleQueryNum  = Integer.parseInt(nums.split("_")[1]) ;
+          endQueryNum     = Integer.parseInt(nums.split("_")[2]) ;
+          loop            = startQueryNum                        ;        
+            
+        }
+        
         if ( csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim().length() == 0 ) return null ;        
          
         String variableContextColumn = csvLine.split(CSV_SEPARATOR)[variablesColumnNum].trim()
