@@ -100,6 +100,12 @@ public final class Node implements Serializable  {
                if( uriObject.matches( URI_VALIDATOR) )  {
                    uriObject = "<" + uriObject  + ">"   ;
                }
+               else if ( isUri(uriObject) )         {
+                  if ( ! uriObject.contains(":")  && 
+                       ! uriObject.startsWith(":")) {
+                      uriObject = ":" + uriObject   ;
+                  }
+               }
                else if ( ! uriObject.trim().startsWith("\"") &&
                          ! uriObject.trim().startsWith("\"") &&
                          ! uriObject.trim().contains(":") )   {
