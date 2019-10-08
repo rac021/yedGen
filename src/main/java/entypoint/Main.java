@@ -64,6 +64,8 @@ public class Main {
        
     int     nbParams                = 0       ;
        
+    cleanArgs(args)                           ;
+      
     for ( int i = 0 ; i < args.length ; i++ ) {
             
         String token = args[i] ;
@@ -85,10 +87,10 @@ public class Main {
          case "-class"       :  classe    = args[i+1] ; nbParams += 2      ;
                                 break ;    
          case "-column"      :  column   = Integer.parseInt(args [ i+1 ]
-                                                .replaceAll(" +", ""))     ; 
-                                nbParams += 2                              ; 
+                                                .replaceAll(" +", ""))     ;
+                                nbParams += 2                              ;
                                 break ;    
-         case "-ig"          :  includingGraphVariables = true             ;  
+         case "-ig"          :  includingGraphVariables = true             ;
                                 nbParams += 1                              ;
                                 break ;            
          case "-verbose"     :  verbose   = true                           ;
@@ -110,8 +112,8 @@ public class Main {
          case "-matchWord"   :  _matchWord = args[i+1] ; nbParams += 2     ;
                                 break ;
          case "-matchColumn" :  matchColumn = Integer.parseInt(args [ i+1 ]
-                                                 .replaceAll(" +", ""))    ; 
-                                nbParams += 2                              ; 
+                                                 .replaceAll(" +", ""))    ;
+                                nbParams += 2                              ;
                                 break ;
          case "-magicFilter" :  magicFilterFile = args[i+1]                ;
                                 nbParams += 2                              ;
@@ -120,7 +122,7 @@ public class Main {
          case "-predicat_pattern_context" : 
                                 predic_pattern_context = args[i+1]         ;
                                 nbParams += 2                              ;
-                                break ;                              
+                                break ; 
        }
     }
        
@@ -195,11 +197,27 @@ public class Main {
         
     long executionTime = System.currentTimeMillis() - startTime ;
         
-    System.out.println(" Elapsed seconds : "                    + 
-                                  executionTime / 1000 + " s" ) ; 
+    System.out.println(" Elapsed seconds : "                    +
+                                  executionTime / 1000 + " s" ) ;
         
     System.out.println(" ")                                     ;
     
+  }
+    
+  private static void cleanArgs(String[] args )  {
+       for (int j = 0; j < args.length; j++)  {
+       args[j] = removeDoubleQuotes(args[j])  ;
+      }
+  }
+
+  private static String removeDoubleQuotes( String str ) {
+        
+      if( str.trim().startsWith("\"") &&
+          str.trim().endsWith("\""))  {
+          return str.substring( 1, str.length() - 1 )   ;
+      }
+       
+      return str ;
   }
  
 }
